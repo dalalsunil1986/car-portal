@@ -2,21 +2,41 @@ angular
     .module('app')
     .controller('CarsController', CarsController);
 
-CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll'];
+CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', 'NotificationService'];
 
-function CarsController($scope, CarService, $location, $anchorScroll) {
+function CarsController($scope, CarService, $location, $anchorScroll, NotificationService) {
 
     $scope.filter = {};
     $scope.filter.selectedMakes = [];
     $scope.filter.selectedBrands = [];
+    $scope.filter.selectedTypes = [];
     $scope.filter.selectedModels = [];
 
-    $scope.filter.selectedTypes = [];
+    $scope.selectedMakeNames = {};
+    $scope.selectedBrandNames = {};
+    $scope.selectedTypeNames = {};
+    $scope.selectedModelNames = {};
 
     $scope.showModal = false;
-    $scope.toggleModal = function(){
+
+    $scope.toggleModal = function () {
         $scope.showModal = !$scope.showModal;
+        if($scope.showModal) {
+            $scope.getNotify();
+        }
     };
+
+    $scope.getNotify = function() {
+        NotificationService.getData($scope.filter.selectedMakes, $scope.filter.selectedBrands, $scope.filter.selectedTypes, $scope.filter.selectedModels)
+            .then(function (data) {
+                // GET the makes,brands,models,types with unique values, excluding the values which are already selected
+                $scope.selectedMakeNames = data.results.makes;
+                $scope.selectedBrandNames = data.results.brands;
+                $scope.selectedTypeNames = data.results.types;
+                $scope.selectedModelNames = data.results.models;
+            }
+        );
+    }
 
     $scope.initCars = function () {
 

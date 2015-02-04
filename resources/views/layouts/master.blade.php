@@ -70,6 +70,7 @@
 
     {!! Html::script('app/controllers/FavoritesController.js') !!}
     {!! Html::script('app/services/FavoriteService.js') !!}
+    {!! Html::script('app/services/NotificationService.js') !!}
     <!-- end angular -->
 
     <!-- custom scripts -->

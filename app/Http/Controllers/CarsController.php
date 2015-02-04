@@ -411,5 +411,27 @@ class CarsController extends Controller {
         }
     }
 
+    public function getNotify(){
+        // get the inputs and make it an array
+        $getMakes  = array_filter(explode(',', Input::get('make')));
+        $getBrands = array_filter(explode(',', Input::get('brand')));
+        $getModels = array_filter(explode(',', Input::get('model')));
+        $getTypes  = array_filter(explode(',', Input::get('type')));
+
+        $makes=  empty($getMakes) ? '' : $this->carMakeRepository->getNames($getMakes);
+        $brands=  empty($getBrands) ? '' : $this->carBrandRepository->getNames($getBrands);
+        $models=  empty($getModels) ? '' : $this->carModelRepository->getNames($getModels);
+        $types=  empty($getTypes) ? '' : $this->carTypeRepository->getNames($getTypes);
+
+        return $return = [
+            'results' => [
+                'makes'       => $makes,
+                'brands'      => $brands,
+                'types'       => $types,
+                'models'      => $models
+            ]
+        ];
+
+    }
 
 }

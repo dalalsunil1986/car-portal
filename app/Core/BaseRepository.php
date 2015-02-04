@@ -111,19 +111,26 @@ abstract class BaseRepository {
     }
 
     /**
-     * @return mixed
+     * @param null $array
+     * @return mixed Get Localed Name
      * Get Localed Name
      */
-    public function getNames()
+    public function getNames($array = null)
     {
-        $data = $this->model->get(['id', 'name_' . App::getLocale() . ' as name']);
+        if ( !empty($array) ) {
+            $data = $this->model->whereIn('id',$array)->get(['id', 'name_' . App::getLocale() . ' as name']);
+        } else {
+            $data = $this->model->get(['id', 'name_' . App::getLocale() . ' as name']);
+        }
 
         return $data;
     }
 
-    public function getClassShortName(Model $model) {
-        $model = new \ReflectionClass($model);
+    public function getClassShortName(Model $model)
+    {
+        $model          = new \ReflectionClass($model);
         $classShortName = $model->getShortName();
+
         return $classShortName;
     }
 

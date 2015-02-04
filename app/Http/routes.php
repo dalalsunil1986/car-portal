@@ -74,6 +74,10 @@ $router->group(array('prefix' => 'api'), function ($router) {
 	 ********************************************************************************************************/
 	$router->resource('favorites', 'FavoritesController');
 
+	/*********************************************************************************************************
+	 * Notifcation
+	 ********************************************************************************************************/
+	$router->get('notifications/notify','CarsController@getNotify');
 });
 
 Route::get('test', 'CarsController@getCars');

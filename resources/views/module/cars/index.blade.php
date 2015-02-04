@@ -4,7 +4,11 @@
     <!-- Styles -->
     {!! HTML::style('packages/select2/select2.css') !!}
     @parent
-    {!! HTML::style('site/css/layout-filter-page.css') !!}
+    <style>
+        .modal-backdrop {
+            z-index: -5000;
+        }
+    </style>
 @stop
 
 @section('content')
