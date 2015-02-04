@@ -1,0 +1,12 @@
+<div class="row clearfix language-bar">
+	<div class="col-md-12">
+		<span class="pull-right"><a href="#" class="arabic-lang">العربية</a></span>
+
+		<div ng-controller="UsersController">
+			<span ng-show="loggedIn" class=" pull-right register" ><a href="/#/" ng-click="logout()"> Logout</a></span>
+			<span ng-show="loggedIn" class=" pull-right register" >Welcome, {{ username }}</span>
+			<span ng-hide="loggedIn" class=" pull-right"><a href="/#/login">Login</a></span>
+			<span ng-hide="loggedIn" class=" pull-right register"><a href="/#/register"> Register</a></span>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+<div class="row car-result-box">
+	<div class="row car-result-box">
+		<div class="col-sm-3 column img-box">
+			<a href="#"><img src="assets/img/custom/2.jpg" class="img-responsive result-image"/></img></a>
+		</div>
+
+		<div class="col-sm-3 col-sm-push-6 column price-box">
+			<div class="asking text-center">Asking Price</div>
+			<div class="price-cost text-center">{[ car.price ]}</div>
+			<favorite-tpl favoreable-type="Car" favoreable-id="{[car.id]}"/>
+		</div>
+
+		<div class="col-sm-6 col-sm-pull-3 column info-box">
+			<h4><a ur-sref="/#/cars/{[ car.id ]}">{[ car.year]} - {[ car.model.brand.name_en ]} - {[ car.model.name_en ]}</a></h4>
+			<p class="distance-box">
+				<img src="assets/img/icons/speed-icon.png" class="km-icon" style="width:18;height:10"/>
+				{[ car.mileage ]}
+			</p>
+			<p class="posted-date-box pull-right">{[ car.created_at ]}</p>
+			<a class="more-box text-center" href="/#/cars/{[ car.id ]}">More Information</a>
+		</div>
+	</div>
+
+</div>

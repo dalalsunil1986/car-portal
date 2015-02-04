@@ -1,0 +1,179 @@
+/** ||||||||||||| Select 2  ||||||||||||||*/
+
+.select2-container-multi .select2-choices {
+    background-image: none;
+    border: 1px solid #CECECE;
+}
+
+.select2-container-multi .select2-choices .select2-search-choice {
+    background: #FAFAFA none;
+    border: rgba(252, 252, 252, 0.7);;
+}
+
+.select2-container-multi {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.select2-search-field {
+    padding-top: 0;
+}
+
+.select2-container-multi .select2-choices .select2-search-field input {
+    width: 302px;
+    padding-bottom: 0;
+    padding-left: 15px;
+    padding-top: 7px;
+}
+
+ul.select2-choices {
+    border-radius: 0 5px 5px 0;
+}
+
+.select2-container .select2-choice {
+    border-radius: 0 5px 5px 0;
+    margin: auto;
+    padding-left: 7%;
+    padding-top: 5px;
+    height: 36px;
+    color: #999;
+}
+
+div#select2-drop {
+    width: 221px;
+}
+
+
+.select2-container-multi .select2-choices {
+    min-height: 37px;
+}
+
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+    .select2-search-field {
+        height: 37px;
+    }
+
+    .select2-container .select2-choice {
+        height: 37px;
+        padding-top: 5px;
+    }
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+    .select2-search-field {
+        height: 37px;
+    }
+
+    .select2-container .select2-choice {
+        height: 37px;
+        padding-top: 5px;
+    }
+
+    .select2-container-multi .select2-choices .select2-search-field input {
+        padding-left: 7px;
+        padding-bottom: 4px;
+        padding-top: 7px;
+        width: 308px;
+    }
+
+}
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+    li.select2-search-field {
+        border-radius: 0 5px 5px 0;
+        margin: auto;
+        padding-left: 7%;
+        padding-top: 5px;
+        height: 35px;
+    }
+
+}
+
+/** ||||||||||||| SUBMIT WIZARD  ||||||||||||||*/
+
+.bs-wizard-sidebar {
+    margin: 15px auto;
+}
+
+.panel {
+    border-radius: 0;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.no-margin {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.marg-bot {
+    margin-bottom: 8px;
+}
+
+.label-style {
+    margin: 10px 0px 5px 15px;
+    border-radius: 5px;
+}
+
+.panel {
+    border: 3px solid #3694c8;
+    border-radius: 8px;
+}
+
+.panel-heading {
+    background-color: rgba(71, 79, 76, 0.1);
+    border-color: #ddd;
+}
+
+html.sb-active-left, html.sb-active-right {
+    overflow: hidden;
+}
+
+.sb-left {
+    width: 180px;
+}
+
+
+/*==================================================
+                  Media Queries
+==================================================*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+

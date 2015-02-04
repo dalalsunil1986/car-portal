@@ -1,0 +1,824 @@
+/*
+
+Note:
+
+Global Styles for the site. Styles are used on every page.
+
+Table of Content:
+1. CSS RESET
+2. Left & Right Expandable Sidebars
+3. Navigation Bar
+4. Language Bar
+5. Footer
+6. Extra
+
+*/
+
+/** ||||||||||||| CSS RESET ||||||||||||||*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}
+/** ||||||||||||| Base Styles ||||||||||||||*/
+
+
+
+body {
+    background-color: #FFF;
+    font-family: 'Open Sans', sans-serif;
+    overflow-y: hidden;
+    font-weight: 300 !important;
+}
+
+h1, h2, h3, label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300 !important;
+}
+
+h3 {
+
+    font-size: 1.8em;
+
+}
+
+::selection {
+    background: rgba(10, 166, 153, 1);
+    color: white;
+}
+
+::-moz-selection {
+    background: rgba(10, 166, 153, 1);
+    color: white;
+}
+
+.middle {
+    overflow: hidden;
+}
+
+.contain {
+    margin-left: 6%;
+}
+
+.middle_section {
+    margin-left: 1%;
+}
+
+.container {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+
+/*            Media Queries             */
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+/** ||||||||||||| RIGHT SIDEBAR (NAVIGATION) ||||||||||||||*/
+
+.nav-col {
+    width: 40px;
+    padding: 0;
+    background-color: #0aa699;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    color: #FFF;
+    transition: height 0.5s;
+    overflow: hidden;
+    z-index: 1000;
+    -webkit-transition: width .3s ease-in;
+    -moz-transition: width .3s ease-in;
+    -ms-transition: width .3s ease-in;
+    -o-transition: width .3s ease-in;
+    transition: width .3s ease-in;
+}
+
+.nav-col:hover {
+    width: 180px;
+    -webkit-box-shadow: 2px 1px 0px 20000px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 2px 1px 0px 20000px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 1px 0px 20000px rgba(0, 0, 0, 0.3);
+}
+
+.logo-icon {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+}
+
+.kuwaitii_logo {
+    display: none;
+    margin-top: 28px;
+    margin-left: 27px;
+}
+
+.nav-col:hover > .logo-icon {
+    right: 25px;
+}
+
+.nav-col:hover > .kuwaitii_logo {
+    display: block;
+}
+
+.username-nav {
+    display: none;
+    font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+    top: 70px;
+    right: 1.5em;
+}
+
+.nav-col:hover > .username-nav {
+    display: block;
+    margin: auto;
+}
+
+.profiel_picture_nav {
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+    border: 1px solid rgba(255, 255, 255, .5);
+}
+
+.nav-col ul li {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.nav-links {
+    position: relative;
+    padding-left: 0;
+    top: 30px;
+}
+
+.nav-links a {
+    font-size: 16px;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: #FFF;
+    width: 205px;
+    margin: 16px 0 16px 0;
+}
+
+.nav-links a:hover {
+    border-left: 2px solid #FFF;
+}
+
+.shift-link-icon {
+    margin-left: 8px;
+    padding-top: 0;
+}
+
+.shift-link-text {
+    padding-left: 40px;
+}
+
+.icon-container {
+    display: inline-block;
+    width: 20px;
+}
+
+.profile-links a {
+    text-decoration: none;
+}
+
+.profile-links {
+    position: relative;
+    top: 25px;
+    width: 250px;
+    padding-bottom: 5px;
+    background-color: #0fb1a3;
+    height: 42px;
+    padding-top: 11px;
+    border-bottom: 1px solid rgba(82, 70, 70, 0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.col-nav:hover > .profile-links {
+    left: 10px;
+}
+
+.mail-icon {
+    padding: 10px;
+    position: relative;
+    display: inline;
+    transition: background-color 0.35s ease;
+}
+
+.mail-icon:hover {
+    background-color: #1a7b72;
+}
+
+.mail-count {
+    position: absolute;
+    overflow: hidden;
+    display: inline;
+    background-color: #ff7373;
+    -webkit-border-radius: 180px;
+    -moz-border-radius: 180px;
+    border-radius: 180px;
+
+    height: 15px;
+    width: 15px;
+    right: 6px;
+    top: 24px;
+    font-size: 12px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.user-icon, .my-posts-icon {
+    overflow: hidden;
+    display: inline;
+    width: 15px;
+    height: 15px;
+    padding: 9px 13px 10px 13px;
+    margin-left: 28px;
+    transition: background-color 0.35s ease;
+}
+
+.user-icon:hover, .my-posts-icon:hover {
+    background-color: #1a7b72;
+}
+
+/*==================================================
+                  Media Queries
+==================================================*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+
+
+/** ||||||||||||| LEFT SIDEBAR (FAVORITES )||||||||||||||*/
+
+.int-col {
+    width: 20px;
+    background-color: #0aa699;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    color: #FFF;
+    padding: 0;
+    z-index: 1000;
+    -webkit-transition: width .3s ease-in;
+    -moz-transition: width .3s ease-in;
+    -ms-transition: width .3s ease-in;
+    -o-transition: width .3s ease-in;
+    transition: width .3s ease-in;
+    transition-delay: .1s;
+    -webkit-transition-delay: .1s;
+}
+
+.int-col:hover {
+    width: 200px;
+}
+
+.plus-icon {
+    position: fixed;
+    display: block;
+    margin-left: 3px;
+    margin-top: 9px;
+}
+
+.int-title {
+    margin: 5px 0 25px 39px;
+}
+
+.int-container {
+    position: relative;
+    margin-left: 22px;
+    width: 160px;
+    height: auto;
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin-bottom: 25px;
+}
+
+.int-container .img-thumb {
+    width: 160px;
+}
+
+.delete-button {
+    color: white;
+    width: 20px;
+    height: 20px;
+    background-color: #F00;
+    border: 1px solid rgba(255, 0, 0, 0);
+    top: -8px;
+    right: -8px;
+    position: absolute;
+    -webkit-border-radius: 120px;
+    -moz-border-radius: 120px;
+    border-radius: 120px;
+}
+
+button.close {
+    background: #ff7373;
+}
+
+.close:hover, .close:focus {
+    color: #FFF;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1;
+    background-color: rgba(176, 9, 0, 1);
+    transition: background-color 0.35s ease;
+}
+
+.close {
+    font-weight: normal;
+    float: right;
+    font-size: 17px;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 1px 0 #CECECE;
+    opacity: 1;
+    background-color: #F00;
+}
+
+.int-view-button {
+    font-size: 14px;
+    padding-left: 29px;
+    background-color: #0c7a71;
+    color: #FFF;
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.35s ease;
+}
+
+.int-view-button:hover {
+    text-decoration: none;
+    background-color: #0b675f;
+}
+
+
+/*==================================================
+                  Media Queries
+==================================================*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+
+
+
+/** ||||||||||||| CAR INDEX ||||||||||||||*/
+.page-title {
+    border-bottom: 1px solid rgba(255, 51, 0, .2);
+    padding-bottom: 7px;
+}
+
+.control-label {
+    height: 34px;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+}
+
+.control-feild {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.results {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.05em;
+    margin-right: 17px;
+}
+
+
+/*==================================================
+                  Media Queries
+==================================================*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+
+
+/** ||||||||||||| LANGUAGE BAR ||||||||||||||*/
+
+.language-bar a {
+    color: #0aa699;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 10px;
+    text-decoration: none;
+    transition: background-color 0.35s ease;
+}
+
+.language-bar a:hover {
+    color: #fc8383;
+}
+
+.language-bar {
+    padding-top: 10px;
+}
+
+.register {
+    margin-right: 10px;
+}
+
+.sign-in {
+    margin-right: 25px;
+}
+
+.log-in-field{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.log-in-field input[type=checkbox] {
+float: none;
+}
+
+.social-login .btn{
+    color: rgb(241, 241, 241);
+    background-color: rgba(51, 148, 213, 1);
+    margin-right: 5px;
+}
+.social-login{
+    margin: auto;
+}
+.results-title {
+    display: inline;
+    padding-bottom: 0;
+    margin-right: 13px;
+    margin-bottom: 0;
+}
+
+.toggle-reset {
+    border-width: 0;
+    padding: 0 10px 0 10px;
+    margin: 10px 0 0 13px;
+    display: block;
+    transition: background-color 0.35s ease;
+}
+
+/*==================================================
+                  Media Queries
+==================================================*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+    .language-bar {
+        padding-right: 4%;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .language-bar {
+        padding-right: 13%;
+    }
+}
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+    .language-bar {
+        padding-right: 12%;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+
+/** ||||||||||||| MENU  ||||||||||||||*/
+
+#red-text {
+    color: #fc8383;
+}
+
+
+.row-result-nav {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(252, 131, 131, 0.3);
+    width: 85%;
+    margin-bottom: 13px;
+
+}
+
+.row-filter-nav {
+    padding-left: 0;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(252, 131, 131, 0.3);
+    width: 82.5%;
+    margin-bottom: 13px;
+}
+
+/** ||||||||||||| MOBILE NAVIGATION BAR  ||||||||||||||*/
+
+.navbar {
+    background-color: #0aa699;
+    border: 0;
+    padding-top: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    height: 54px;
+}
+
+.kuwaitii-logo-sm img {
+    display: block;
+    margin: 0 auto 0 auto;
+}
+
+.right-toggle {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 5px 5px 5px 10px;
+    padding-right: 22px;
+    padding-left: 24px;
+}
+
+.left-toggle {
+    padding-left: 24px;
+    position: fixed;
+    top: 0;
+    margin: 5px;
+}
+
+.navbar-default .navbar-toggle {
+    background: rgba(255, 255, 255, .0);
+    border-color: #FFF;
+    height: 42px;
+    margin-bottom: 10px;
+    width: 71px;
+    margin-left: 20px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFF;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: rgba(3, 3, 3, 0.21);
+}
+
+.navbar-default:hover .navbar-toggle:hover {
+    background: rgba(255, 255, 255, .5);
+}
+
+.logo-sb-full {
+    margin: auto;
+    padding-top: 10px;
+}
+
+.sb-username-nav {
+    font-size: 18px;
+    padding-top: 20px;
+    margin-left: 25px;
+}
+
+.profiel_picture_sb {
+    margin-top: 10px;
+}
+
+.right-tog-icon {
+    padding-left: 24px;
+}
+
+
+    .sb-slidebar {
+        background-color: #0aa699;
+        color: #FFF;
+    }
+
+
+
+/** ||||||||||||| FOOTER ||||||||||||||*/
+
+.footer {
+    margin: 5px;
+    margin-top: 2em;
+
+}
+
+.footer-links a {
+    margin-right: 1em;
+    color: rgb(207, 207, 207);
+}
+
+
+/*==================================================
+                  Media Queries
+==================================================*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+
+/** ||||||||||||| LAYOUT ||||||||||||||*/
+
+    /* Custom, iPhone Retina */
+    @media only screen and (min-width : 320px) {
+
+
+    }
+
+
+    /* Extra Small Devices, Phones */
+    @media only screen and (min-width : 480px) {
+        .content {
+            padding-left: 0%;
+            padding-right: 0%;
+        }
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+
+        .content{
+            padding-left: 8%;
+            padding-right: 0%;
+        }
+
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+        .content {
+            padding-left: 8%;
+            padding-right: 8%;
+        }
+
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+
+    }

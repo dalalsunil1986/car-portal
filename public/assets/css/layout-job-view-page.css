@@ -1,0 +1,89 @@
+/* Large desktop */
+@media (min-width: 1200px) {
+
+    .container {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    .salery-color, .title-color {
+        height: 47px;
+    }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (max-width: 768px) and (max-width: 990px) {
+    .container {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    .salery-color, .title-color {
+        height: 47px;
+    }
+
+    .salery-color {
+
+        padding-bottom: 16px;
+
+    }
+
+    .title-color {
+        border-radius: 5px 5px 0 0;
+
+    }
+
+    .price-cost {
+        margin-top: 0;
+        padding-top: 5px;
+    }
+
+    .main-info {
+        border-right: none;
+    }
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 767px) {
+    .container {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 545px) {
+
+    .container {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .job-summary {
+        text-align: center;
+    }
+
+    .title-color h3 {
+        margin-bottom: 0;
+        padding-bottom: 10px;
+        padding-left: 0;
+        text-align: center;
+
+    }
+
+    .price-cost {
+        margin-top: 0;
+        padding-top: 5px;
+    }
+
+    .title-color {
+        border-radius: 5px 5px 0 0;
+
+    }
+
+    .main-info {
+        border-right: none;
+    }
+}

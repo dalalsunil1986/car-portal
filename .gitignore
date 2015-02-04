@@ -1,0 +1,10 @@
+/vendor
+.env
+.idea
+storage/debugbar/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+public/packages/*
+public/uploads/*
+_ide_helper.php
