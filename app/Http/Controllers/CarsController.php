@@ -1,17 +1,17 @@
 <?php namespace App\Http\Controllers;
 
-use App\Src\Car\Repository\CarBrandRepository;
-use App\Src\Car\Repository\CarMakeRepository;
-use App\Src\Car\Repository\CarModelRepository;
-use App\Src\Car\CarRepository;
-use App\Src\Car\Repository\CarTypeRepository;
-use App\Src\Favorite\FavoriteRepository;
-use App\Src\Photo\PhotoRepository;
-use App\Src\Tag\TagRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
+use App\Src\Car\CarRepository;
+use App\Src\Car\Repository\CarBrandRepository;
+use App\Src\Car\Repository\CarMakeRepository;
+use App\Src\Car\Repository\CarModelRepository;
+use App\Src\Car\Repository\CarTypeRepository;
+use App\Src\Favorite\FavoriteRepository;
+use App\Src\Photo\PhotoRepository;
+use App\Src\Tag\TagRepository;
 
 class CarsController extends Controller {
 
