@@ -1,38 +1,33 @@
 <?php
 /*********************************************************************************************************
- * Application Routes
- ********************************************************************************************************/
-use App\Src\Message\Thread;
-
-/*********************************************************************************************************
  * Car Routes
  ********************************************************************************************************/
-$router->resource('cars', 'CarsController');
+Route::resource('cars', 'CarsController');
 
 /*********************************************************************************************************
  * Auth Routes
  ********************************************************************************************************/
-$router->get('login', ['as' => 'user.login.get', 'uses' => 'AuthController@getLogin']);
+Route::get('login', ['as' => 'user.login.get', 'uses' => 'AuthController@getLogin']);
 
-$router->post('login', ['as' => 'user.login.post', 'uses' => 'AuthController@postLogin']);
+Route::post('login', ['as' => 'user.login.post', 'uses' => 'AuthController@postLogin']);
 
-$router->get('account/logout', ['as' => 'user.logout', 'uses' => 'AuthController@getLogout']);
+Route::get('account/logout', ['as' => 'user.logout', 'uses' => 'AuthController@getLogout']);
 
-$router->get('signup', ['as' => 'user.register.get', 'uses' => 'AuthController@getSignup']);
+Route::get('signup', ['as' => 'user.register.get', 'uses' => 'AuthController@getSignup']);
 
-$router->post('signup', ['as' => 'user.register.post', 'uses' => 'AuthController@postSignup']);
+Route::post('signup', ['as' => 'user.register.post', 'uses' => 'AuthController@postSignup']);
 
-$router->get('account/forgot', ['as' => 'user.forgot.get', 'uses' => 'AuthController@getForgot']);
+Route::get('account/forgot', ['as' => 'user.forgot.get', 'uses' => 'AuthController@getForgot']);
 
-$router->post('account/forgot', ['as' => 'user.forgot.post', 'uses' => 'AuthController@postForgot']);
+Route::post('account/forgot', ['as' => 'user.forgot.post', 'uses' => 'AuthController@postForgot']);
 
-$router->get('password/reset/{token}', ['as' => 'user.token.get', 'uses' => 'AuthController@getReset']);
+Route::get('password/reset/{token}', ['as' => 'user.token.get', 'uses' => 'AuthController@getReset']);
 
-$router->post('password/reset', ['as' => 'user.token.post', 'uses' => 'AuthController@postReset']);
+Route::post('password/reset', ['as' => 'user.token.post', 'uses' => 'AuthController@postReset']);
 
-$router->get('account/activate/{token}', ['as' => 'user.token.confirm', 'uses' => 'AuthController@activate']);
+Route::get('account/activate/{token}', ['as' => 'user.token.confirm', 'uses' => 'AuthController@activate']);
 
-$router->post('account/send-activation-link', ['as' => 'user.token.send-activation', 'uses' => 'AuthController@sendActivationLink']);
+Route::post('account/send-activation-link', ['as' => 'user.token.send-activation', 'uses' => 'AuthController@sendActivationLink']);
 
 /*********************************************************************************************************
  * User Routes
@@ -44,40 +39,40 @@ Route::resource('user', 'UsersController');
 /*********************************************************************************************************
  * Messages
  ********************************************************************************************************/
-$router->resource('messages', 'MessagesController');
+Route::resource('messages', 'MessagesController');
 
 
 /*********************************************************************************************************
  * Misc
  ********************************************************************************************************/
 
-$router->get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 
 /*********************************************************************************************************
  * API Routes
  ********************************************************************************************************/
 
-$router->group(array('prefix' => 'api'), function ($router) {
+Route::group(array('prefix' => 'api'), function ($router) {
 
 	/*********************************************************************************************************
 	 * Car Routes
 	 ********************************************************************************************************/
-	$router->get('cars/filter', 'CarsController@filter'); // get Filter ( Ajax )
+	Route::get('cars/filter', 'CarsController@filter'); // get Filter ( Ajax )
 
-	$router->get('cars/{id}/favorite', 'CarsController@favorite');
+	Route::get('cars/{id}/favorite', 'CarsController@favorite');
 
-	$router->get('cars', 'CarsController@getCars');
+	Route::get('cars', 'CarsController@getCars');
 
 	/*********************************************************************************************************
 	 * Favorites
 	 ********************************************************************************************************/
-	$router->resource('favorites', 'FavoritesController');
+	Route::resource('favorites', 'FavoritesController');
 
 	/*********************************************************************************************************
 	 * Notifcation
 	 ********************************************************************************************************/
-	$router->get('notifications/notify','CarsController@getNotify');
+	Route::get('notifications/notify','CarsController@getNotify');
 });
 
 Route::get('test', 'CarsController@getCars');
