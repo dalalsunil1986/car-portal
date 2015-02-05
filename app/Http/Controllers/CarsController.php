@@ -8,44 +8,23 @@ use App\Src\Car\Repository\CarTypeRepository;
 use App\Src\Favorite\FavoriteRepository;
 use App\Src\Photo\PhotoRepository;
 use App\Src\Tag\TagRepository;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
+use phpDocumentor\Reflection\DocBlock\Tag;
 
 class CarsController extends Controller {
 
     private $carRepository;
 
-    private $carMakeRepository;
-
-    private $carBrandRepository;
-
-    private $carModelRepository;
-
-    private $carTypeRepository;
-
-    private $tagRepository;
-
-    private $photoRepository;
-
     /**
      * @param CarRepository $carRepository
-     * @param CarMakeRepository $carMakeRepository
-     * @param CarBrandRepository $carBrandRepository
-     * @param CarModelRepository $carModelRepository
-     * @param CarTypeRepository $carTypeRepository
-     * @param TagRepository $tagRepository
-     * @param PhotoRepository $photoRepository
      */
-    public function __construct(CarRepository $carRepository, CarMakeRepository $carMakeRepository, CarBrandRepository $carBrandRepository, CarModelRepository $carModelRepository, CarTypeRepository $carTypeRepository, TagRepository $tagRepository, PhotoRepository $photoRepository)
+    public function __construct(CarRepository $carRepository)
     {
         $this->carRepository      = $carRepository;
-        $this->carMakeRepository  = $carMakeRepository;
-        $this->carBrandRepository = $carBrandRepository;
-        $this->carModelRepository = $carModelRepository;
-        $this->carTypeRepository  = $carTypeRepository;
-        $this->tagRepository      = $tagRepository;
-        $this->photoRepository    = $photoRepository;
+        Auth::loginUsingId(1);
     }
 
     public function index()
@@ -56,28 +35,34 @@ class CarsController extends Controller {
 
     public function show($id)
     {
-        $car = $this->carRepository->model->with(['model.brand', 'user', 'thumbnail','photos'])->find($id);
+        $car = $this->carRepository->model->with(['model.brand', 'user', 'thumbnail', 'photos'])->find($id);
 
         return view('module.cars.view', compact('car'));
     }
 
-    public function create()
+    /**
+     * @param CarModelRepository $carModelRepository
+     * @param TagRepository $tagRepository
+     * @return \Illuminate\View\View
+     */
+    public function create(CarModelRepository $carModelRepository, TagRepository $tagRepository)
     {
-        $models = ['' => ''] + $this->carModelRepository->model->get()->lists('name', 'id');
-        $tags   = $this->tagRepository->model->get()->lists('name', 'id');
+        $models = ['' => ''] + $carModelRepository->model->get()->lists('name', 'id');
+        $tags   = $tagRepository->model->get()->lists('name', 'id');
 
         return view('module.cars.create', compact('models', 'tags'));
     }
 
     /**
+     * @param PhotoRepository $photoRepository
+     * @param TagRepository $tagRepository
      * @return mixed
-     * @throws \Exception
      * @internal param PostCarRequest $request
      */
-    public function store()
+    public function store(PhotoRepository $photoRepository, TagRepository $tagRepository)
     {
         $val    = $this->carRepository->getCreateForm();
-        $userId = 1; // todo: replace with Auth::user()->id;
+        $userId = Auth::user()->id; // todo: replace with Auth::user()->id;
 
         if ( !$val->isValid() ) {
 
@@ -89,7 +74,7 @@ class CarsController extends Controller {
         if ( $car ) {
             // upload the file to the server
 
-            $upload = $this->photoRepository->attach(Input::file('thumbnail'), $car, ['thumbnail' => 1]);
+            $upload = $photoRepository->attach(Input::file('thumbnail'), $car, ['thumbnail' => 1]);
 
             if ( !$upload ) {
 
@@ -100,26 +85,26 @@ class CarsController extends Controller {
 
             // save the file in the db
             $tags = is_array(Input::get('tags')) ? Input::get('tags') : [];
-            if ( !(empty($tags)) ) $this->tagRepository->attach($car, $tags);
+            if ( !(empty($tags)) ) $tagRepository->attach($car, $tags);
         }
 
         return Redirect::action('CarsController@edit', [$car->id, '#optionals'])->with('success', 'Saved');
     }
 
-    public function edit($id)
+    public function edit($id, CarModelRepository $carModelRepository, TagRepository $tagRepository)
     {
         $car          = $this->carRepository->model->find($id);
-        $tags         = $this->tagRepository->model->get()->lists('name', 'id');
-        $attachedTags = ['' => ''] + $car->tags->lists('name', 'id');
-        $models       = $this->carModelRepository->model->get()->lists('name_en', 'id');
+        $tags         = $tagRepository->model->get()->lists('name_en', 'id');
+        $models       = $carModelRepository->model->get()->lists('name_en', 'id');
+        $attachedTags = ['' => ''] + $car->tags->lists('name_en', 'id');
 
         return view('module.cars.edit', compact('car', 'tags', 'attachedTags', 'models'));
     }
 
-    public function update($id)
+    public function update($id, PhotoRepository $photoRepository, TagRepository $tagRepository)
     {
         $val    = $this->carRepository->getEditForm($id);
-        $userId = 1; // todo: replace with Auth::user()->id;
+        $userId = Auth::user()->id; // todo: replace with Auth::user()->id;
 
         if ( !$val->isValid() ) {
 
@@ -132,7 +117,7 @@ class CarsController extends Controller {
 
             if ( Input::hasFile('thumbnail') ) {
                 // upload the file to the server
-                $upload = $this->photoRepository->replace(Input::file('thumbnail'), $car, ['thumbnail' => 1], $id);
+                $upload = $photoRepository->replace(Input::file('thumbnail'), $car, ['thumbnail' => 1], $id);
 
                 if ( !$upload ) {
 
@@ -144,14 +129,14 @@ class CarsController extends Controller {
 
             if ( Input::hasFile('photos') && is_array(Input::file('photos')) ) {
                 foreach ( Input::file('photos') as $photo ) {
-                    $this->photoRepository->attach($photo, $car);
+                    $photoRepository->attach($photo, $car);
                 }
             }
 
             // save the file in the db
             $tags = is_array(Input::get('tags')) ? Input::get('tags') : [];
 
-            if ( !(empty($tags)) ) $this->tagRepository->attach($car, $tags);
+            if ( !(empty($tags)) ) $tagRepository->attach($car, $tags);
         }
 
         return Redirect::action('CarsController@show', $car->id)->with('success', 'Saved');
@@ -234,8 +219,13 @@ class CarsController extends Controller {
 
     /**
      * Find Data's For Car Filter
+     * @param CarMakeRepository $carMakeRepository
+     * @param CarBrandRepository $carBrandRepository
+     * @param CarTypeRepository $carTypeRepository
+     * @param CarModelRepository $carModelRepository
+     * @return array
      */
-    public function filter()
+    public function filter(CarMakeRepository $carMakeRepository, CarBrandRepository $carBrandRepository, CarTypeRepository $carTypeRepository, CarModelRepository $carModelRepository)
     {
         // get the inputs and make it an array
         $getMakes  = array_filter(explode(',', Input::get('make')));
@@ -244,14 +234,14 @@ class CarsController extends Controller {
         $getTypes  = array_filter(explode(',', Input::get('type')));
 
         // Get the Car Filter Initial Values From the Database
-        $makes  = $this->carMakeRepository->getNames();
-        $brands = $this->carBrandRepository->getNames();
-        $models = $this->carModelRepository->getNames();
-        $types  = $this->carTypeRepository->getNames();
+        $makes  = $carMakeRepository->getNames();
+        $brands = $carBrandRepository->getNames();
+        $models = $carModelRepository->getNames();
+        $types  = $carTypeRepository->getNames();
 
         if ( $getMakes ) {
             // find the brands
-            $brands = $this->carBrandRepository->model
+            $brands = $carBrandRepository->model
                 ->whereIn('make_id', $getMakes)
                 ->get(['id', 'name_en as name']);
 
@@ -261,7 +251,7 @@ class CarsController extends Controller {
                 if ( $getTypes ) {
 
                     // Fetch the Models For Make ID
-                    $models = $this->carModelRepository->model
+                    $models = $carModelRepository->model
                         ->whereHas('brand', function ($query) use ($getMakes, $getTypes) {
                             $query->whereIn('car_brands.make_id', $getMakes)->whereIn('type_id', $getTypes);
                         })->get(['id', 'name_en as name']);
@@ -269,7 +259,7 @@ class CarsController extends Controller {
                 } else {
 
                     // Just Get the Models For Make ID
-                    $models = $this->carModelRepository->model
+                    $models = $carModelRepository->model
                         ->whereHas('brand', function ($query) use ($getMakes) {
                             $query->whereIn('car_brands.make_id', $getMakes);
                         })->get(['id', 'name_en as name']);
@@ -283,7 +273,7 @@ class CarsController extends Controller {
             $makesNotInGET = array_diff($makesArray, $getMakes);
 
             if ( count($makesNotInGET) ) {
-                $makes = $this->carMakeRepository->model->whereIn('id', $makesNotInGET)->get(['id', 'name_en as name']);
+                $makes = $carMakeRepository->model->whereIn('id', $makesNotInGET)->get(['id', 'name_en as name']);
             } else {
                 $makes = [];
             }
@@ -295,14 +285,14 @@ class CarsController extends Controller {
             if ( $getTypes ) {
 
                 // Fetch the Models for type Where Has the Brand ID and Type Id
-                $models = $this->carModelRepository->model->whereIn('brand_id', $getBrands)
+                $models = $carModelRepository->model->whereIn('brand_id', $getBrands)
                     ->whereIn('type_id', $getTypes)
                     ->get(['id', 'name_en as name']);
 
             } else {
 
                 // Fetch the Models for type Where Has the Brand ID only
-                $models = $this->carModelRepository->model
+                $models = $carModelRepository->model
                     ->whereIn('brand_id', $getBrands)
                     ->get(['id', 'name_en as name']);
             }
@@ -322,7 +312,7 @@ class CarsController extends Controller {
             if ( count($brandsNotInGET) ) {
 
                 // If there are any brands left in the DB that are not in the GET Request, Then fetch it.
-                $brands = $this->carBrandRepository->model->whereIn('id', $brandsNotInGET)->get(['id', 'name_en as name']);
+                $brands = $carBrandRepository->model->whereIn('id', $brandsNotInGET)->get(['id', 'name_en as name']);
             } else {
                 // pass an empty string, so that no option will be showed to select in the front end select2 element
                 $brands = [];
@@ -334,7 +324,7 @@ class CarsController extends Controller {
 
             if ( !$getMakes && !$getBrands ) {
 
-                $models = $this->carModelRepository->model
+                $models = $carModelRepository->model
                     ->whereIn('type_id', $getTypes)
                     ->get(['id', 'name_en as name']);
 
@@ -353,7 +343,7 @@ class CarsController extends Controller {
 
             if ( count($typesNotInGET) ) {
 
-                $types = $this->carTypeRepository->model->whereIn('id', $typesNotInGET)->get(['id', 'name_en as name']);
+                $types = $carTypeRepository->model->whereIn('id', $typesNotInGET)->get(['id', 'name_en as name']);
             } else {
 
                 $types = [];
@@ -374,7 +364,7 @@ class CarsController extends Controller {
 
             if ( count($modelsNotInGET) ) {
 
-                $models = $this->carModelRepository->model->whereIn('id', $modelsNotInGET)->get(['id', 'name_en as name']);
+                $models = $carModelRepository->model->whereIn('id', $modelsNotInGET)->get(['id', 'name_en as name']);
             } else {
                 $models = [];
             }
@@ -412,7 +402,14 @@ class CarsController extends Controller {
         }
     }
 
-    public function getNotify()
+    /**
+     * @param CarMakeRepository $carMakeRepository
+     * @param CarBrandRepository $carBrandRepository
+     * @param CarTypeRepository $carTypeRepository
+     * @param CarModelRepository $carModelRepository
+     * @return array
+     */
+    public function getNotify(CarMakeRepository $carMakeRepository, CarBrandRepository $carBrandRepository, CarTypeRepository $carTypeRepository, CarModelRepository $carModelRepository)
     {
         // get the inputs and make it an array
         $getMakes  = array_filter(explode(',', Input::get('make')));
@@ -420,10 +417,10 @@ class CarsController extends Controller {
         $getModels = array_filter(explode(',', Input::get('model')));
         $getTypes  = array_filter(explode(',', Input::get('type')));
 
-        $makes  = empty($getMakes) ? '' : $this->carMakeRepository->getNames($getMakes);
-        $brands = empty($getBrands) ? '' : $this->carBrandRepository->getNames($getBrands);
-        $models = empty($getModels) ? '' : $this->carModelRepository->getNames($getModels);
-        $types  = empty($getTypes) ? '' : $this->carTypeRepository->getNames($getTypes);
+        $makes  = empty($getMakes) ? '' : $carMakeRepository->getNames($getMakes);
+        $brands = empty($getBrands) ? '' : $carBrandRepository->getNames($getBrands);
+        $models = empty($getModels) ? '' : $carModelRepository->getNames($getModels);
+        $types  = empty($getTypes) ? '' : $carTypeRepository->getNames($getTypes);
 
         return $return = [
             'results' => [

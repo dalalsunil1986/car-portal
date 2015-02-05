@@ -27,7 +27,6 @@ class MessagesController extends Controller {
         $this->messageRepository = $messageRepository;
         $this->threadRepository  = $threadRepository;
         Auth::loginUsingId(1);
-        parent::__construct();
     }
 
     /**
