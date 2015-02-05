@@ -56,7 +56,7 @@ class CarsController extends Controller {
 
     public function show($id)
     {
-        $car = $this->carRepository->model->with(['model.brand', 'user'])->find($id);
+        $car = $this->carRepository->model->with(['model.brand', 'user', 'thumbnail','photos'])->find($id);
 
         return view('module.cars.view', compact('car'));
     }
@@ -100,7 +100,7 @@ class CarsController extends Controller {
 
             // save the file in the db
             $tags = is_array(Input::get('tags')) ? Input::get('tags') : [];
-            $this->tagRepository->attach($car, $tags);
+            if ( !(empty($tags)) ) $this->tagRepository->attach($car, $tags);
         }
 
         return Redirect::action('CarsController@edit', [$car->id, '#optionals'])->with('success', 'Saved');
@@ -111,7 +111,7 @@ class CarsController extends Controller {
         $car          = $this->carRepository->model->find($id);
         $tags         = $this->tagRepository->model->get()->lists('name', 'id');
         $attachedTags = ['' => ''] + $car->tags->lists('name', 'id');
-        $models       = $this->carModelRepository->model->get()->lists('name', 'id');
+        $models       = $this->carModelRepository->model->get()->lists('name_en', 'id');
 
         return view('module.cars.edit', compact('car', 'tags', 'attachedTags', 'models'));
     }
@@ -150,7 +150,8 @@ class CarsController extends Controller {
 
             // save the file in the db
             $tags = is_array(Input::get('tags')) ? Input::get('tags') : [];
-            $this->tagRepository->attach($car, $tags);
+
+            if ( !(empty($tags)) ) $this->tagRepository->attach($car, $tags);
         }
 
         return Redirect::action('CarsController@show', $car->id)->with('success', 'Saved');
@@ -411,24 +412,25 @@ class CarsController extends Controller {
         }
     }
 
-    public function getNotify(){
+    public function getNotify()
+    {
         // get the inputs and make it an array
         $getMakes  = array_filter(explode(',', Input::get('make')));
         $getBrands = array_filter(explode(',', Input::get('brand')));
         $getModels = array_filter(explode(',', Input::get('model')));
         $getTypes  = array_filter(explode(',', Input::get('type')));
 
-        $makes=  empty($getMakes) ? '' : $this->carMakeRepository->getNames($getMakes);
-        $brands=  empty($getBrands) ? '' : $this->carBrandRepository->getNames($getBrands);
-        $models=  empty($getModels) ? '' : $this->carModelRepository->getNames($getModels);
-        $types=  empty($getTypes) ? '' : $this->carTypeRepository->getNames($getTypes);
+        $makes  = empty($getMakes) ? '' : $this->carMakeRepository->getNames($getMakes);
+        $brands = empty($getBrands) ? '' : $this->carBrandRepository->getNames($getBrands);
+        $models = empty($getModels) ? '' : $this->carModelRepository->getNames($getModels);
+        $types  = empty($getTypes) ? '' : $this->carTypeRepository->getNames($getTypes);
 
         return $return = [
             'results' => [
-                'makes'       => $makes,
-                'brands'      => $brands,
-                'types'       => $types,
-                'models'      => $models
+                'makes'  => $makes,
+                'brands' => $brands,
+                'types'  => $types,
+                'models' => $models
             ]
         ];
 

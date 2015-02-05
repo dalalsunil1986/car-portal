@@ -85,22 +85,24 @@ class PhotoRepository extends BaseRepository {
      * @param array $fields
      * Replace the Existing Thumbnail Photo with the current one
      * @param $imageableID
+     * @return bool
      */
     public function replace(UploadedFile $file, Model $model, $fields = [], $imageableID)
     {
         $reflectionModel = new \ReflectionClass($model);
-        $photos          = $this->model->where('imageable_type', $reflectionModel->name)->where('imageable_id', $imageableID)->where('thumbnail', 1)->get();
-        foreach ( $photos as $photo ) {
-            $this->setImageService($model);
-            $this->imageService->destroy($photo->name);
+        $photos          = $this->model->where('imageable_type', $reflectionModel->getShortName())->where('imageable_id', $imageableID)->where('thumbnail', 1)->get();
+
+        // delete the old file
+        if ( count($photos) ) {
+            foreach ( $photos as $photo ) {
+                $this->destroy($model, $photo);
+            }
         }
 
+        //attach new file
+        return $this->attach($file, $model, $fields);
     }
 
-    public function destroy()
-    {
-
-    }
 
     /**
      * @return mixed
@@ -118,5 +120,17 @@ class PhotoRepository extends BaseRepository {
         $imageService = App::make('App\\Src\\' . $this->getClassShortName($model) . '\\ImageService');
 
         $this->imageService = $imageService;
+    }
+
+    private function destroy($model, $photo)
+    {
+        // set the class
+        $this->setImageService($model);
+
+        // destroy the file
+        $this->imageService->destroy($photo->name);
+
+        //destroy the db file
+        $photo->delete();
     }
 }

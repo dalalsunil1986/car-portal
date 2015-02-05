@@ -24,8 +24,11 @@
 
             <div class="row clearfix result-entry">
                 <div class="col-md-9 col-sm-9 column title-color">
-                    <img class="result-image" src="/assets/img/custom/car-thumb.jpg">
-
+                    @if($car->thumbnail)
+                        <img class="img-responsive result-image" src="/uploads/thumbnail/{{ $car->thumbnail->name }}">
+                    @else
+                        <img class="img-responsive result-image" src="/assets/img/custom/car-thumb.jpg">
+                    @endif
                     <h3 id="car-title">{{ $car->title }}</h3>
                 </div>
                 <div class="col-md-3 col-sm-3 column interested-box">
@@ -33,16 +36,20 @@
                 </div>
             </div>
 
-
-
             <section class="cd-single-item">
                 <div class="cd-slider-wrapper">
                     <ul class="cd-slider">
-                        <li class="selected"><img  src="/assets/img/custom/sample1.jpg" alt="Product Image 1"></li>
-                        <li><img  src="/assets/img/custom/sample2.jpg" alt="Product Image 1"></li>
-                        <li><img  src="/assets/img/custom/sample3.jpg" alt="Product Image 2"></li>
-                        <li><img  src="/assets/img/custom/sample4.jpg" alt="Product Image 1"></li>
-                        <li><img  src="/assets/img/custom/sample5.jpg" alt="Product Image 2"></li>
+                        @if(count($car->photos))
+                            <?php $i=0; ?>
+                            @foreach($car->photos as $photo)
+                                <li <?php echo $i == 0 ? 'class="selected"' : '' ?>>
+                                    <img src="/uploads/large/{{ $photo->name }}" alt="Product Image 1">
+                                </li>
+                                <?php $i++; ?>
+                            @endforeach
+                        @else
+                            <li class="selected"><img src="/assets/img/custom/sample1.jpg" alt="Product Image 1"></li>
+                        @endif
                     </ul> <!-- cd-slider -->
 
                     <ul class="cd-slider-navigation">

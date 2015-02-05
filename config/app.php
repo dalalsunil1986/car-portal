@@ -152,7 +152,7 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
-//		'Intervention\Image\ImageServiceProvider'
+		'Intervention\Image\ImageServiceProvider'
 
 	],
 
@@ -209,7 +209,7 @@ return [
 		'Form'      => 'Illuminate\Html\FormFacade',
 		'HTML'      => 'Illuminate\Html\HtmlFacade',
 		'Debugbar'  => 'Barryvdh\Debugbar\Facade',
-//		'Image' => 'Intervention\Image\Facades\Image'
+		'Image' => 'Intervention\Image\Facades\Image'
 	],
 
 ];

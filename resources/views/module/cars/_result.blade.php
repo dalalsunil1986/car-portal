@@ -29,7 +29,12 @@
                             <div class="row car-result-box">
 
                                 <div class="col-sm-3 column img-box">
-                                    <a href="#"><img ng-src="/uploads/thumbnail/{[ car.thumbnail.name ]}" class="img-responsive result-image"/></a>
+                                    <span ng-show="car.thumbnail">
+                                        <a href="#"><img ng-src="/uploads/thumbnail/{[ car.thumbnail.name ]}" class="img-responsive result-image"/></a>
+                                    </span>
+                                    <span ng-hide="car.thumbnail">
+                                        <a href="#"><img src="assets/img/custom/2.jpg" class="img-responsive result-image"/></a>
+                                    </span>
                                 </div>
 
                                 <div class="col-sm-3 col-sm-push-6 column price-box">
