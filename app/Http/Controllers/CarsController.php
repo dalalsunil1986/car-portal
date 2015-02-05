@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
-use phpDocumentor\Reflection\DocBlock\Tag;
 
 class CarsController extends Controller {
 
@@ -23,7 +22,7 @@ class CarsController extends Controller {
      */
     public function __construct(CarRepository $carRepository)
     {
-        $this->carRepository      = $carRepository;
+        $this->carRepository = $carRepository;
         Auth::loginUsingId(1);
     }
 
@@ -31,7 +30,6 @@ class CarsController extends Controller {
     {
         return view('module.cars.index');
     }
-
 
     public function show($id)
     {
@@ -162,6 +160,9 @@ class CarsController extends Controller {
         $priceTo     = Input::get('price-to');
         $yearFrom    = Input::get('year-from');
         $yearTo      = Input::get('year-to');
+        $maxPrice    = 50000;
+        $maxYear     = date('Y');
+        $maxMileage  = 150000;
 
         if ( !(empty($getMakes)) || !(empty($getBrands)) || !(empty($getModels)) || !(empty($getTypes)) || !(empty($priceFrom)) || !(empty($yearFrom)) || !(empty($mileageFrom)) ) {
 
@@ -172,7 +173,7 @@ class CarsController extends Controller {
 
             $cars = $this->carRepository->model->with(['thumbnail'])
                 // start querying
-                ->where(function ($query) use ($makeArray, $brandArray, $modelArray, $typeArray, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo) {
+                ->where(function ($query) use ($makeArray, $brandArray, $modelArray, $typeArray, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $maxMileage, $maxPrice, $maxYear) {
                     if ( count($makeArray) ) {
                         $query->whereHas('model', function ($query) use ($makeArray) {
                             $query->whereHas('brand', function ($query) use ($makeArray) {
@@ -197,16 +198,22 @@ class CarsController extends Controller {
                         });
                     }
 
-                    if ( $mileageFrom ) {
+                    if ( $mileageTo < $maxMileage ) {
                         $query->where('mileage', '>', $mileageFrom)->where('mileage', '<', $mileageTo);
+                    } else {
+                        $query->where('mileage', '>', $mileageFrom);
                     }
 
-                    if ( $priceFrom ) {
+                    if ( $priceTo < $maxPrice ) {
                         $query->where('price', '>', $priceFrom)->where('price', '<', $priceTo);
+                    } else {
+                        $query->where('price', '>', $priceFrom);
                     }
 
-                    if ( $yearFrom ) {
+                    if ( $yearTo < $maxYear ) {
                         $query->where('year', '>', $yearFrom)->where('year', '<', $yearTo);
+                    } else {
+                        $query->where('year', '>', $yearFrom);
                     }
 
                 })->paginate(10);
