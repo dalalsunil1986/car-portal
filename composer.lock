@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "be497ab7469aea68eb4e80ac6fa3b237",
+    "hash": "7e8d392871eeb898cd151c72db2692f3",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -850,12 +850,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "bb313e0ae07e23bf6a677015942f6584963b9014"
+                "reference": "50f13bbf47b528cab1a49840e4f70ae5eb8278b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/bb313e0ae07e23bf6a677015942f6584963b9014",
-                "reference": "bb313e0ae07e23bf6a677015942f6584963b9014",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/50f13bbf47b528cab1a49840e4f70ae5eb8278b0",
+                "reference": "50f13bbf47b528cab1a49840e4f70ae5eb8278b0",
                 "shasum": ""
             },
             "require": {
@@ -967,7 +967,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-02-02 19:37:34"
+            "time": "2015-02-07 02:12:27"
         },
         {
             "name": "league/flysystem",
@@ -1170,16 +1170,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "5cb6e71055f7b0b57956b73d324cc4de31278f42"
+                "reference": "bb87460c995d97fe55b39e65f6ffb7f64b0a941e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5cb6e71055f7b0b57956b73d324cc4de31278f42",
-                "reference": "5cb6e71055f7b0b57956b73d324cc4de31278f42",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bb87460c995d97fe55b39e65f6ffb7f64b0a941e",
+                "reference": "bb87460c995d97fe55b39e65f6ffb7f64b0a941e",
                 "shasum": ""
             },
             "require": {
@@ -1212,7 +1212,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2014-09-26 02:52:02"
+            "time": "2015-02-06 05:07:29"
         },
         {
             "name": "nikic/php-parser",
@@ -3158,16 +3158,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "2.0.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "caa8c24412eb538c5d80f82f5bb74b06a68561fa"
+                "reference": "69680d55abe244e3efd7ce99fd18369005593395"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/caa8c24412eb538c5d80f82f5bb74b06a68561fa",
-                "reference": "caa8c24412eb538c5d80f82f5bb74b06a68561fa",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/69680d55abe244e3efd7ce99fd18369005593395",
+                "reference": "69680d55abe244e3efd7ce99fd18369005593395",
                 "shasum": ""
             },
             "require": {
@@ -3179,7 +3179,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -3208,20 +3208,20 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2015-02-02 09:07:07"
+            "time": "2015-02-05 14:26:05"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
-            "version": "2.0.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-                "reference": "73003c0beaee525104fc0dd71c64af9035100b25"
+                "reference": "bb8d0169ba515acc587d287d5bfef4f4d9d48bfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/73003c0beaee525104fc0dd71c64af9035100b25",
-                "reference": "73003c0beaee525104fc0dd71c64af9035100b25",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/bb8d0169ba515acc587d287d5bfef4f4d9d48bfd",
+                "reference": "bb8d0169ba515acc587d287d5bfef4f4d9d48bfd",
                 "shasum": ""
             },
             "require": {
@@ -3241,7 +3241,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.11-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -3271,7 +3271,7 @@
                 "phpstorm",
                 "sublime"
             ],
-            "time": "2015-01-29 07:13:38"
+            "time": "2015-02-05 17:11:23"
         },
         {
             "name": "fzaninotto/faker",
@@ -3327,16 +3327,16 @@
         },
         {
             "name": "maximebf/debugbar",
-            "version": "v1.10.3",
+            "version": "v1.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "060fbaf6a4e2d328dcdb31cc606d2f2ed145104b"
+                "reference": "7b2006e6e095126b5a061ec33fca3d90ea8a8219"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/060fbaf6a4e2d328dcdb31cc606d2f2ed145104b",
-                "reference": "060fbaf6a4e2d328dcdb31cc606d2f2ed145104b",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/7b2006e6e095126b5a061ec33fca3d90ea8a8219",
+                "reference": "7b2006e6e095126b5a061ec33fca3d90ea8a8219",
                 "shasum": ""
             },
             "require": {
@@ -3379,7 +3379,7 @@
             "keywords": [
                 "debug"
             ],
-            "time": "2015-01-30 08:24:55"
+            "time": "2015-02-05 07:51:20"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -3662,7 +3662,6 @@
         "barryvdh/laravel-ide-helper": 20
     },
     "prefer-stable": false,
-    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }
