@@ -416,7 +416,7 @@ class CarsController extends Controller {
      * @param CarModelRepository $carModelRepository
      * @return array
      */
-    public function getNotify(CarMakeRepository $carMakeRepository, CarBrandRepository $carBrandRepository, CarTypeRepository $carTypeRepository, CarModelRepository $carModelRepository)
+    public function getFilterNames(CarMakeRepository $carMakeRepository, CarBrandRepository $carBrandRepository, CarTypeRepository $carTypeRepository, CarModelRepository $carModelRepository)
     {
         // get the inputs and make it an array
         $getMakes  = array_filter(explode(',', Input::get('make')));
@@ -440,4 +440,15 @@ class CarsController extends Controller {
 
     }
 
+    public function postNotifyMeRequest() {
+        // get the inputs and make it an array
+
+
+
+        $params = Input::all();
+
+        $this->carRepository->notifyMe($params);
+
+        dd(Input::all());
+    }
 }

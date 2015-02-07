@@ -2,9 +2,9 @@ angular
     .module('app')
     .controller('CarsController', CarsController);
 
-CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', 'NotificationService'];
+CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll'];
 
-function CarsController($scope, CarService, $location, $anchorScroll, NotificationService) {
+function CarsController($scope, CarService, $location, $anchorScroll) {
 
     $scope.filter = {};
     $scope.filter.selectedMakes = [];
@@ -21,19 +21,27 @@ function CarsController($scope, CarService, $location, $anchorScroll, Notificati
 
     $scope.toggleModal = function () {
         $scope.showModal = !$scope.showModal;
-        if($scope.showModal) {
-            $scope.getNotify();
+        if ($scope.showModal) {
+            $scope.getFilterNames();
         }
     };
 
-    $scope.getNotify = function() {
-        NotificationService.getData($scope.filter.selectedMakes, $scope.filter.selectedBrands, $scope.filter.selectedTypes, $scope.filter.selectedModels)
+    $scope.getFilterNames = function() {
+        CarService.getFilterNames($scope.filter.selectedMakes, $scope.filter.selectedBrands, $scope.filter.selectedTypes, $scope.filter.selectedModels)
             .then(function (data) {
                 // GET the makes,brands,models,types with unique values, excluding the values which are already selected
                 $scope.selectedMakeNames = data.results.makes;
                 $scope.selectedBrandNames = data.results.brands;
                 $scope.selectedTypeNames = data.results.types;
                 $scope.selectedModelNames = data.results.models;
+            }
+        );
+    }
+
+    $scope.notifyMe = function () {
+        CarService.notifyMe($scope.filter.selectedMakes, $scope.filter.selectedBrands, $scope.filter.selectedTypes, $scope.filter.selectedModels, $scope.priceFrom, $scope.priceTo, $scope.mileageFrom, $scope.mileageTo, $scope.yearFrom, $scope.yearTo)
+            .then(function (data) {
+
             }
         );
     }

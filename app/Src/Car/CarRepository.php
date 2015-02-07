@@ -28,4 +28,19 @@ class CarRepository extends BaseRepository {
         return $this->model->with($with);
     }
 
+    public function notifyMe($params)
+    {
+        $getMakes  = array_filter(explode(',', $params['make']));
+        $getBrands = array_filter(explode(',', $params['brand']));
+        $getModels = array_filter(explode(',', $params['model']));
+        $getTypes  = array_filter(explode(',', $params['type']));
+        $mileageFrom = $params['mileage-from'];
+        $mileageTo   = $params['mileage-to'];
+        $priceFrom   = $params['price-from'];
+        $priceTo     = $params['price-to'];
+        $yearFrom    = $params['year-from'];
+        $yearTo      = $params['year-to'];
+
+    }
+
 }

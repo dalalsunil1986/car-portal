@@ -7,10 +7,10 @@
     function NotificationService($http, $q) {
 
         return {
-            getData: getData
+            getFilterNames: getFilterNames
         };
 
-        function getData(make, brand, type, model) {
+        function getFilterNames(make, brand, type, model) {
             var defer = $q.defer();
             $http.get('/api/notifications/notify/?make=' + make + '&brand=' + brand + '&model=' + model + '&type=' + type)
                 .success(function (data) {

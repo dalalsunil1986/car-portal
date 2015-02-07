@@ -75,8 +75,7 @@
                 <i class="icon-white fa fa-phone "></i> Notify Me
             </button>
 
-            <!--Notify Confirmation Panel Start-->
-            <modal div class="cd-popup" role="alert" visible="showModal">
+            <modal title="Get Notified" class="cd-popup" visible="true">
                 <div class="cd-popup-container">
                     <h3>NotifyMe</h3>
 
@@ -133,27 +132,24 @@
                     </div>
                     <ul class="cd-buttons">
                         <li><a class="cd-close" href="#0">Cancel</a></li>
-                        <li><a class="cd-save" href="#0">Save</a></li>
-
+                        <li ng-click="notifyMe()"><a class="cd-save" href="#0">Save</a></li>
                     </ul>
                     <a href="#0" class="cd-popup-close img-replace"></a>
                 </div>
-                <!-- cd-popup-container -->
             </modal>
-            <!-- cd-popup -->
 
             <!--Notify Confirmation Panel End-->
 
             <button type="submit" class="btn btn-info btn-large col-lg-6 hidden-md hidden-sm hidden-xs filter-btn">
-                <i class="icon-white fa fa-sort-by-attributes" id="submit" name="submit" ng-click="initCars()"></i> Yalla Filter!
+                <i class="icon-white fa fa-sort-by-attributes" ng-click="initCars()"></i> Yalla Filter!
             </button>
 
             <!--Btn Sm Layout-->
             <button class="btn btn-info btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl filter-btn">
-                <i class="icon-white fa fa-sort-by-attributes"></i> Yalla Filter!
+                <i class="icon-white fa fa-sort-by-attributes" ng-click="initCars()"></i> Yalla Filter!
             </button>
-            <button class="btn cd-popup-trigger btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl notify-sm notify-btn" data-toggle="modal" data-target="#notify-modal">
-                <i class="icon-white fa fa-phone"></i> Notify Me
+            <button class="btn cd-popup-trigger btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl notify-sm notify-btn" data-toggle="modal"
+                    data-target="#notify-modal"><i class="icon-white fa fa-phone  "></i> Notify Me
             </button>
         </div>
 
