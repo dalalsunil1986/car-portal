@@ -17,6 +17,7 @@ function CarsController($scope, CarService, $location, $anchorScroll) {
     $scope.selectedTypeNames = {};
     $scope.selectedModelNames = {};
 
+    $scope.a = 'a';
     $scope.showModal = false;
 
     $scope.toggleModal = function () {

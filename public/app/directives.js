@@ -114,7 +114,7 @@ favoriteTpl.$inject = ['FavoriteService'];
 function favoriteTpl(FavoriteService) {
     return {
         restrict: 'EA',
-        templateUrl: 'app/views/partials/favorite-tpl.html',
+        templateUrl: '/app/views/partials/favorite-tpl.html',
         scope: {
             favoreableType: '@',
             favoreableId: '@'
@@ -140,16 +140,13 @@ notificationTpl.$inject = ['NotificationService'];
 function notificationTpl(NotificationService) {
     return {
         restrict: 'EA',
-        templateUrl: 'app/views/partials/notification-tpl.html',
-        scope: {
-            type: '@'
-        },
+        templateUrl: '/app/views/partials/notification-tpl.html',
         link: function link(scope, element) {
             scope.save = function () {
                 var postData = {
                     "type": scope.type
                 };
-                NotificationService.save().then(function () {
+                NotificationService.save(postData).then(function () {
                     //element.html('Favorited').addClass('text-muted text-center');
                 });
             };
@@ -218,61 +215,7 @@ function favoritePanel(FavoriteService) {
 //    }
 //}]);
 
-//angular.module('app').directive('formModal', ['$http', '$compile', function($http, $compile) {
-//    return {
-//        scope: {
-//            formObject: '=',
-//            formErrors: '=',
-//            title: '@',
-//            template: '@',
-//            okButtonText: '@',
-//            formSubmit: '&'
-//        },
-//        compile: function(element, cAtts){
-//        var template,
-//            $element,
-//            loader;
-//
-//        loader = $http.get('app/views/partials/modal.html')
-//            .success(function(data) {
-//                template = data;
-//            });
-//
-//        //return the Link function
-//        return function(scope, element, lAtts) {
-//            loader.then(function() {
-//                //compile templates/form_modal.html and wrap it in a jQuery object
-//                $element = $( $compile(template)(scope) );
-//            });
-//
-//            //called by form_modal.html cancel button
-//            scope.close = function() {
-//                $element.modal('hide');
-//            };
-//
-//            //called by form_modal.html form ng-submit
-//            scope.submit = function() {
-//                var result = scope.formSubmit();
-//
-//                if (Object.isObject(result)) {
-//                    result.success(function() {
-//                        $element.modal('hide');
-//                    });
-//                } else if (result === false) {
-//                    //noop
-//                } else {
-//                    $element.modal('hide');
-//                }
-//            };
-//
-//            element.on('click', function(e) {
-//                e.preventDefault();
-//                $element.modal('show');
-//            });
-//        };
-//    }
-//}
-//}]);
+;
 
 angular.module('app').directive('modal', function () {
     return {
@@ -289,9 +232,7 @@ angular.module('app').directive('modal', function () {
                 else
                     $(element).modal('hide');
             });
-            attrs.notify.click(function(){
-               alert('aa');
-            });
         }
     };
 });
+
