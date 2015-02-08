@@ -29,6 +29,9 @@
 
     {!! Html::script('app/controllers/CarsController.js') !!}
     {!! Html::script('app/services/CarService.js') !!}
+    {!! Html::script('app/services/NotificationService.js') !!}
+
+
 
     <script>
         $(document).ready(function () {

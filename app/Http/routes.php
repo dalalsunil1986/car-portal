@@ -64,7 +64,6 @@ Route::group(array('prefix' => 'api'), function ($router) {
 
 	Route::get('cars/name','CarsController@getFilterNames');
 
-	Route::get('cars/notify-me','CarsController@postNotifyMeRequest'); //todo : change to post
 
 	Route::get('cars', 'CarsController@getCars');
 
@@ -76,6 +75,8 @@ Route::group(array('prefix' => 'api'), function ($router) {
 	/*********************************************************************************************************
 	 * Notifcation
 	 ********************************************************************************************************/
+	Route::resource('notifications','NotificationsController'); //todo : change to post
+
 });
 
 Route::get('test', 'CarsController@getCars');

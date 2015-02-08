@@ -1,26 +1,30 @@
-    angular
-        .module('app')
-        .factory('NotificationService', NotificationService);
+angular.module('app').service('NotificationService', NotificationService);
 
-    NotificationService.inject = ['$http', '$q'];
+NotificationService.$inject = ['$rootScope','$q' ,'$resource'];
 
-    function NotificationService($http, $q) {
+function NotificationService($rootScope, $q ,$resource) {
 
-        return {
-            getFilterNames: getFilterNames
-        };
+    var resource = $resource('/api/notifications/:id', {id: '@id'});
+    var deferred = $q.defer();
 
-        function getFilterNames(make, brand, type, model) {
-            var defer = $q.defer();
-            $http.get('/api/notifications/notify/?make=' + make + '&brand=' + brand + '&model=' + model + '&type=' + type)
-                .success(function (data) {
-                    defer.resolve(data);
-                }
-            ).error(function () {
-                    defer.reject('An error has occurred ');
-                }
-            );
-            return defer.promise;
-        }
+    var service = {
+        save: save
+    };
 
+    return service;
+
+    function save(favorites) {
+
+        resource.save(favorites).$promise.then(
+            function (data) {
+
+                deferred.resolve(data);
+            },
+            function (data) {
+                deferred.reject(data);
+            }
+        );
+        return deferred.promise;
     }
+
+}

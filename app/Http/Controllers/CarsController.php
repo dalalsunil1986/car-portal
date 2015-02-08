@@ -2,7 +2,6 @@
 
 use App\Events\CarWasPosted;
 use App\Src\Car\CarRepository;
-use App\Src\Notification\Car\CarNotificationRepository;
 use App\Src\Car\Repository\CarBrandRepository;
 use App\Src\Car\Repository\CarMakeRepository;
 use App\Src\Car\Repository\CarModelRepository;
@@ -449,22 +448,4 @@ class CarsController extends Controller {
 
     }
 
-    /**
-     * @param CarNotificationRepository $carNotificationRepository
-     * @param Request $request
-     */
-    public function postNotifyMeRequest(CarNotificationRepository $carNotificationRepository, Request $request) {
-        // get the inputs and make it an array
-//
-        $car = $this->carRepository->model->first(); // replace this with added car
-        $user = Auth::user();
-        Event::fire(new CarWasPosted($car,$user,$request));
-
-//        $params = Input::all();
-//        $params['user_id'] = Auth::user()->id;
-//        $carNotificationRepository->create($params);
-
-        dd('aaa');
-        dd(Input::all());
-    }
 }
