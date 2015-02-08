@@ -12,9 +12,18 @@ class CreateNotificationsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('notifications', function(Blueprint $table)
-		{
-            $table->increments('id');
+		//
+		Schema::create('notifications', function (Blueprint $table) {
+			$table->increments('id');
+			$table->string('type')->index(); // JOB,CAR
+			$table->integer('user_id')->unsigned()->index();
+			$table->string('year_from')->nullable();
+			$table->string('year_to')->nullable();
+			$table->string('mileage_from')->nullable();
+			$table->string('mileage_to')->nullable();
+			$table->string('price_from')->nullable();
+			$table->string('price_to')->nullable();
+			$table->timestamps();
 			$table->softDeletes();
 		});
 	}
@@ -26,10 +35,8 @@ class CreateNotificationsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('notifications', function(Blueprint $table)
-		{
-            $table->drop();
-		});
+		//
+		Schema::drop('notifications');
 	}
 
 }

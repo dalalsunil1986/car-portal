@@ -1,10 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Response;
+use App\Events\CarWasPosted;
 use App\Src\Car\CarRepository;
+use App\Src\Notification\Car\CarNotificationRepository;
 use App\Src\Car\Repository\CarBrandRepository;
 use App\Src\Car\Repository\CarMakeRepository;
 use App\Src\Car\Repository\CarModelRepository;
@@ -12,6 +10,12 @@ use App\Src\Car\Repository\CarTypeRepository;
 use App\Src\Favorite\FavoriteRepository;
 use App\Src\Photo\PhotoRepository;
 use App\Src\Tag\TagRepository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 
 class CarsController extends Controller {
 
@@ -54,10 +58,12 @@ class CarsController extends Controller {
     /**
      * @param PhotoRepository $photoRepository
      * @param TagRepository $tagRepository
+     * @param Request $request
      * @return mixed
+     * @throws \Exception
      * @internal param PostCarRequest $request
      */
-    public function store(PhotoRepository $photoRepository, TagRepository $tagRepository)
+    public function store(PhotoRepository $photoRepository, TagRepository $tagRepository, Request $request)
     {
         $val    = $this->carRepository->getCreateForm();
         $userId = Auth::user()->id; // todo: replace with Auth::user()->id;
@@ -84,6 +90,9 @@ class CarsController extends Controller {
             // save the file in the db
             $tags = is_array(Input::get('tags')) ? Input::get('tags') : [];
             if ( !(empty($tags)) ) $tagRepository->attach($car, $tags);
+
+            // fire notify user filter event
+//            Event::fire(new CarWasPosted($request));
         }
 
         return Redirect::action('CarsController@edit', [$car->id, '#optionals'])->with('success', 'Saved');
@@ -440,15 +449,22 @@ class CarsController extends Controller {
 
     }
 
-    public function postNotifyMeRequest() {
+    /**
+     * @param CarNotificationRepository $carNotificationRepository
+     * @param Request $request
+     */
+    public function postNotifyMeRequest(CarNotificationRepository $carNotificationRepository, Request $request) {
         // get the inputs and make it an array
+//
+        $car = $this->carRepository->model->first(); // replace this with added car
+        $user = Auth::user();
+        Event::fire(new CarWasPosted($car,$user,$request));
 
+//        $params = Input::all();
+//        $params['user_id'] = Auth::user()->id;
+//        $carNotificationRepository->create($params);
 
-
-        $params = Input::all();
-
-        $this->carRepository->notifyMe($params);
-
+        dd('aaa');
         dd(Input::all());
     }
 }

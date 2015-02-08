@@ -17,6 +17,11 @@ class Car extends BaseModel {
 
     protected $with = ['model.brand'];
 
+    // brand      => model => car
+    // countries  => users =>  posts
+    // make => brand => model
+    // hasManyThrough
+
     public function user()
     {
         return $this->belongsTo('App\Src\User\User', 'user_id');
