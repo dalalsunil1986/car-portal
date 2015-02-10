@@ -133,26 +133,6 @@ function favoriteTpl(FavoriteService) {
     };
 }
 
-angular.module('app').directive('notificationTpl', notificationTpl);
-
-notificationTpl.$inject = ['NotificationService'];
-
-function notificationTpl(NotificationService) {
-    return {
-        restrict: 'EA',
-        templateUrl: '/app/views/partials/notification-tpl.html',
-        link: function link(scope, element) {
-            scope.save = function () {
-                var postData = {
-                    "type": scope.type
-                };
-                NotificationService.save(postData).then(function () {
-                    //element.html('Favorited').addClass('text-muted text-center');
-                });
-            };
-        }
-    };
-}
 
 
 angular.module('app').directive('favoritePanel', favoritePanel);
@@ -217,22 +197,41 @@ function favoritePanel(FavoriteService) {
 
 ;
 
-angular.module('app').directive('modal', function () {
-    return {
-        template: '<div class="modal fade">' +
-        '<div class="modal-body" ng-transclude></div>',
-        restrict: 'E',
-        transclude: true,
-        replace: true,
-        scope: true,
-        link: function postLink(scope, element, attrs) {
-            scope.$watch(attrs.visible, function (value) {
-                if (value == true)
-                    $(element).modal('show');
-                else
-                    $(element).modal('hide');
-            });
-        }
-    };
-});
+//angular.module('app').directive('modal', function () {
+//    return {
+//        templateUrl: '',
+//        restrict: 'E',
+//        templateUrl: '/app/views/partials/notification-tpl.html',
+//        replace: true,
+//        link: function postLink(scope, element, attrs) {
+//            scope.$watch(attrs.visible, function (value) {
+//                if (value == true)
+//                    $(element).modal('show');
+//                else
+//                    $(element).modal('hide');
+//            });
+//        }
+//    };
+//});
 
+//angular.module('app').directive('notificationTpl', notificationTpl);
+//
+//notificationTpl.$inject = ['NotificationService'];
+//
+//function notificationTpl(NotificationService) {
+//    return {
+//        restrict: 'EA',
+//        templateUrl: '/app/views/partials/notification-tpl.html',
+//        link: function link(scope, element) {
+//            scope.save = function () {
+//                var postData = {
+//                    "type": scope.type
+//                };
+//                NotificationService.save(postData).then(function () {
+//                    //element.html('Favorited').addClass('text-muted text-center');
+//                });
+//            };
+//        }
+//    };
+//}
+//

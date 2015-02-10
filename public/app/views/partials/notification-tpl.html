@@ -1,7 +1,6 @@
-<modal title="Get Notified" class="cd-popup" visible="true">
+<div class="modal-body" ng-controller="CarsController">
 	<div class="cd-popup-container">
 		<h3>NotifyMe</h3>
-
 		<p> NotifyMe will automatically send you a notification when a new submission matches your criteria.</p>
 		<dl>
 			<div class="row">
@@ -54,9 +53,9 @@
 			</div>
 		</div>
 		<ul class="cd-buttons">
-			<li><a class="cd-close" href="#0">Cancel</a></li>
-			<li ng-click="save()"><a class="cd-save" href="#0">Save</a></li>
+			<li><a class="cd-close" href="#0" ng-click="cancel()">Cancel</a></li>
+			<li ng-click="notifyMe()"><a class="cd-save" href="#0">Save</a></li>
 		</ul>
 		<a href="#0" class="cd-popup-close img-replace"></a>
 	</div>
-</modal>
+</div>

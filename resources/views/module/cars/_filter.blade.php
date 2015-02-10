@@ -71,12 +71,10 @@
 
         <!--Model Filter End-->
         <div class="row">
-            <button ng-click="toggleModal()" class="btn btn-large cd-popup-trigger col-lg-5 hidden-md hidden-sm hidden-xs notify-lg notify-btn">
+            <button ng-click="openModal('lg')" class="btn btn-large cd-popup-trigger col-lg-5 hidden-md hidden-sm hidden-xs notify-lg notify-btn">
                 <i class="icon-white fa fa-phone "></i> Notify Me
             </button>
 
-            <notification-tpl type="Car"/>
-            </notification-tpl>
             <!--Notify Confirmation Panel End-->
 
             <button type="submit" class="btn btn-info btn-large col-lg-6 hidden-md hidden-sm hidden-xs filter-btn">
@@ -87,8 +85,8 @@
             <button class="btn btn-info btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl filter-btn">
                 <i class="icon-white fa fa-sort-by-attributes" ng-click="initCars()"></i> Yalla Filter!
             </button>
-            <button class="btn cd-popup-trigger btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl notify-sm notify-btn" data-toggle="modal"
-                    data-target="#notify-modal"><i class="icon-white fa fa-phone  "></i> Notify Me
+            <button ng-click="openModal('lg')" class="btn cd-popup-trigger btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl notify-sm notify-btn"
+                    ><i class="icon-white fa fa-phone  "></i> Notify Me
             </button>
         </div>
 
