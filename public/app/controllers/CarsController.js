@@ -16,20 +16,20 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
     $scope.filters.selectedTypeNames = [];
     $scope.filters.selectedModelNames = [];
 
-    $scope.filters.priceFrom = 1000;
-    $scope.filters.priceTo = 50000;
-    $scope.filters.priceMin = 50000;
+    $scope.filters.priceMin = 1000;
     $scope.filters.priceMax = 50000;
+    $scope.filters.priceFrom = 1000;
+    $scope.filters.priceTo = 10000;
 
-    $scope.filters.mileageFrom = 5000;
-    $scope.filters.mileageTo = 135000;
-    $scope.filters.mileageMin = 135000;
-    $scope.filters.mileageMax = 135000;
+    $scope.filters.mileageMin = 5000;
+    $scope.filters.mileageMax = 300000;
+    $scope.filters.mileageFrom = 6000;
+    $scope.filters.mileageTo = 100000;
 
-    $scope.filters.yearFrom = 1970;
+    $scope.filters.yearMin = 1970;
+    $scope.filters.yearMax = 2015;
+    $scope.filters.yearFrom = 2005;
     $scope.filters.yearTo = 2014;
-    $scope.filters.yearMin = 2014;
-    $scope.filters.yearMax = 2014;
 
     $scope.initCars = function () {
 

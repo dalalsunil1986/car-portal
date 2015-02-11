@@ -10,14 +10,11 @@ angular.module('app').directive('priceSlider', function () {
         restrict: 'EA',
         link: function (scope, element) {
             var moved = false;
-            var from = scope.filters.priceFrom;
-            var to = scope.filters.priceTo;
-            var $i = 1;
             element.ionRangeSlider({
-                min: 500,
-                max: 50000,
-                from: from,
-                to: to,
+                min: scope.filters.priceMin,
+                max: scope.filters.priceMax,
+                from: scope.filters.priceFrom,
+                to: scope.filters.priceTo,
                 type: 'double',
                 step: 200,
                 postfix: " KD",
@@ -46,13 +43,11 @@ angular.module('app').directive('mileageSlider', function () {
         link: function (scope, element) {
 
             var moved = false;
-            var from = scope.filters.mileageFrom;
-            var to = scope.filters.mileageTo;
             element.ionRangeSlider({
-                min: 1000,
-                max: 150000,
-                from: from,
-                to: to,
+                min: scope.filters.mileageMin,
+                max: scope.filters.mileageMax,
+                from: scope.filters.mileageFrom,
+                to: scope.filters.mileageTo,
                 type: 'double',
                 step: 5000,
                 postfix: " KM",
@@ -83,13 +78,11 @@ angular.module('app').directive('yearSlider', function () {
         restrict: 'EA',
         link: function (scope, element) {
             var moved = false;
-            var from = scope.filters.yearFrom;
-            var to = scope.filters.yearTo;
             element.ionRangeSlider({
-                min: 1970,
-                max: 2015,
-                from: from,
-                to: to,
+                min: scope.filters.yearMin,
+                max: scope.filters.yearMax,
+                from: scope.filters.yearFrom,
+                to: scope.filters.yearTo,
                 type: 'double',
                 step: 1,
                 prettify: false,
