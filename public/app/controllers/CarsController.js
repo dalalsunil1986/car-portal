@@ -7,29 +7,49 @@ CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', '
 function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
 
     $scope.filters = {};
+    $scope.slider = {};
+
+    // Select Makes,Brands,Types,Models For Car Search Filter
+
     $scope.filters.selectedMakes = [];
     $scope.filters.selectedBrands = [];
     $scope.filters.selectedTypes = [];
     $scope.filters.selectedModels = [];
+
+    // Get the Names of Selected Filters
     $scope.filters.selectedMakeNames = [];
     $scope.filters.selectedBrandNames = [];
     $scope.filters.selectedTypeNames = [];
     $scope.filters.selectedModelNames = [];
 
-    $scope.filters.priceMin = 1000;
-    $scope.filters.priceMax = 50000;
+    //Slider Filters
     $scope.filters.priceFrom = 1000;
     $scope.filters.priceTo = 10000;
 
-    $scope.filters.mileageMin = 5000;
-    $scope.filters.mileageMax = 300000;
     $scope.filters.mileageFrom = 6000;
     $scope.filters.mileageTo = 100000;
 
-    $scope.filters.yearMin = 1970;
-    $scope.filters.yearMax = 2015;
     $scope.filters.yearFrom = 2005;
     $scope.filters.yearTo = 2014;
+
+    // Directive Vars
+    $scope.slider.type = 'double';
+    $scope.slider.maxPostfix = "+";
+    $scope.slider.minPostfix = "-";
+    $scope.slider.mileageStep = 5000;
+    $scope.slider.mileageMin = 5000;
+    $scope.slider.mileageMax = 300000;
+    $scope.slider.mileagePostfix = " KM";
+
+    $scope.slider.priceMin = 1000;
+    $scope.slider.priceMax = 50000;
+    $scope.slider.priceStep = 500;
+    $scope.slider.pricePostfix = " KD";
+
+
+    $scope.slider.yearMin = 1970;
+    $scope.slider.yearMax = 2015;
+    $scope.slider.yearStep = 2;
 
     $scope.initCars = function () {
 

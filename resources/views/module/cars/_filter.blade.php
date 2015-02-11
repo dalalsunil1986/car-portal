@@ -55,12 +55,12 @@
 
         <div class="form-group row">
             <div class="range-div form-control-inline col-sm-11 col-xs-12">
-                <input x-year-slider type="text"/>
+                <input x-year-slider type="text" />
             </div>
         </div>
         <div class="form-group row">
             <div class="range-div form-control-inline col-sm-11  col-xs-12">
-                <input x-mileage-slider type="text"/>
+                <input x-mileage-slider slider="slider" filters="filters" type="text"/>
             </div>
         </div>
         <div class="form-group row">

@@ -1,6 +1,8 @@
 angular.module('app').directive('carResults', function () {
     return {
         restrict: "EA",
+        replace: true,
+        scope: true,
         templateUrl: '/app/views/cars/result.html'
     }
 });
@@ -8,17 +10,19 @@ angular.module('app').directive('carResults', function () {
 angular.module('app').directive('priceSlider', function () {
     return {
         restrict: 'EA',
+        scope: true,
+        replace: true,
         link: function (scope, element) {
             var moved = false;
             element.ionRangeSlider({
-                min: scope.filters.priceMin,
-                max: scope.filters.priceMax,
+                min: scope.slider.priceMin,
+                max: scope.slider.priceMax,
                 from: scope.filters.priceFrom,
                 to: scope.filters.priceTo,
-                type: 'double',
-                step: 200,
-                postfix: " KD",
-                maxPostfix: "+",
+                type: scope.slider.type,
+                step: scope.slider.priceStep,
+                postfix: scope.slider.pricePostfix,
+                maxPostfix: scope.slider.maxPostfix,
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
                     _.defer(function () {
@@ -40,22 +44,24 @@ angular.module('app').directive('priceSlider', function () {
 angular.module('app').directive('mileageSlider', function () {
     return {
         restrict: 'EA',
+        scope: true,
+        replace: true,
         link: function (scope, element) {
-
             var moved = false;
             element.ionRangeSlider({
-                min: scope.filters.mileageMin,
-                max: scope.filters.mileageMax,
+                min: scope.slider.mileageMin,
+                max: scope.slider.mileageMax,
                 from: scope.filters.mileageFrom,
                 to: scope.filters.mileageTo,
-                type: 'double',
-                step: 5000,
-                postfix: " KM",
-                maxPostfix: "+",
-                minPostfix: "-",
+                type: scope.slider.type,
+                step: scope.slider.mileageStep,
+                postfix: scope.slider.mileagePostfix,
+                maxPostfix: scope.slider.maxPostfix,
+                minPostfix: scope.slider.minPostfix,
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
-
+                    scope.filters.mileageFrom = obj.fromNumber;
+                    scope.filters.mileageTo = obj.toNumber;
                     scope.$apply();
                     _.defer(function () {
                         scope.$apply();
@@ -76,14 +82,17 @@ angular.module('app').directive('mileageSlider', function () {
 angular.module('app').directive('yearSlider', function () {
     return {
         restrict: 'EA',
+        scope: true,
+        replace: true,
         link: function (scope, element) {
             var moved = false;
             element.ionRangeSlider({
-                min: scope.filters.yearMin,
-                max: scope.filters.yearMax,
+                min: scope.slider.yearMin,
+                max: scope.slider.yearMax,
                 from: scope.filters.yearFrom,
                 to: scope.filters.yearTo,
-                type: 'double',
+                type: scope.slider.type,
+
                 step: 1,
                 prettify: false,
                 maxPostfix: "+",
