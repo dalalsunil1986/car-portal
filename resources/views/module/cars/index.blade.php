@@ -12,7 +12,7 @@
 @stop
 
 @section('content')
-    <div ng-controller="CarsController">
+    <div ng-controller="CarsController" ng-init="initCars()">
 
         @include('module.cars._filter')
         @include('module.cars._result')
@@ -30,8 +30,6 @@
     {!! Html::script('app/controllers/CarsController.js') !!}
     {!! Html::script('app/services/CarService.js') !!}
     {!! Html::script('app/services/NotificationService.js') !!}
-
-
 
     <script>
         $(document).ready(function () {

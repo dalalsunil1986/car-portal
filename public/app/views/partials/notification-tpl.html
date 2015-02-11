@@ -4,24 +4,22 @@
 		<p> NotifyMe will automatically send you a notification when a new submission matches your criteria.</p>
 		<dl>
 			<div class="row">
-				<h4>I am looking for:</h4>
-
 				<div class="col-xs-6">
 					<dt>Make:</dt>
 					<dd>
-						<span ng-repeat="make in selectedMakeNames">{[make.name]} {[ $last ? '' : ', ']} </span>
+						<span ng-repeat="make in filters.selectedMakeNames">{[make.name]} {[ $last ? '' : ', ']} </span>
 					</dd>
 					<dt>Brand:</dt>
 					<dd>
-						<span ng-repeat="brand in selectedBrandNames">{[brand.name]} {[ $last ? '' : ', ']} </span>
+						<span ng-repeat="brand in filters.selectedBrandNames">{[brand.name]} {[ $last ? '' : ', ']} </span>
 					</dd>
 					<dt>Type:</dt>
 					<dd>
-						<span ng-repeat="type in selectedTypeNames">{[type.name]} {[ $last ? '' : ', ']} </span>
+						<span ng-repeat="type in filters.selectedTypeNames">{[type.name]} {[ $last ? '' : ', ']} </span>
 					</dd>
 					<dt>Model:</dt>
 					<dd>
-						<span ng-repeat="model in selectedModelNames">{[model.name]} {[ $last ? '' : ', ']} </span>
+						<span ng-repeat="model in filters.selectedModelNames">{[model.name]} {[ $last ? '' : ', ']} </span>
 					</dd>
 				</div>
 
