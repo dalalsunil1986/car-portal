@@ -28,6 +28,9 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
     $scope.slider.yearMax = 2015;
     $scope.slider.yearStep = 1;
 
+    //filters
+    $scope.filters.type = 'car';
+
     // Select Makes,Brands,Types,Models For Car Search Filter
     $scope.filters.selectedMakes = [];
     $scope.filters.selectedBrands = [];
@@ -129,7 +132,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
                     $modalInstance.dismiss('cancel');
                 };
                 $scope.notifyMe = function () {
-                    NotificationService.create($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels, $scope.filters.priceFrom, $scope.filters.priceTo, $scope.filters.mileageFrom, $scope.filters.mileageTo, $scope.filters.yearFrom, $scope.filters.yearTo)
+                    NotificationService.create($scope.filters.type, $scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels, $scope.filters.priceFrom, $scope.filters.priceTo, $scope.filters.mileageFrom, $scope.filters.mileageTo, $scope.filters.yearFrom, $scope.filters.yearTo)
                         .then(function (data) {
                         }
                     );
