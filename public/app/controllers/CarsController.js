@@ -15,12 +15,12 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
     $scope.filters.selectedBrandNames = [];
     $scope.filters.selectedTypeNames = [];
     $scope.filters.selectedModelNames = [];
-    $scope.priceFrom = 1000;
-    $scope.priceTo = 50000;
-    $scope.mileageFrom = 5000;
-    $scope.mileageTo = 150000;
-    $scope.yearFrom = 1970;
-    $scope.yearTo = 2014;
+    $scope.filters.priceFrom = 1000;
+    $scope.filters.priceTo = 50000;
+    $scope.filters.mileageFrom = 5000;
+    $scope.filters.mileageTo = 150000;
+    $scope.filters.yearFrom = 1970;
+    $scope.filters.yearTo = 2014;
 
     $scope.initCars = function () {
 
@@ -53,7 +53,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
 
             $scope.loading = true;
 
-            CarService.getIndex($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels, $scope.priceFrom, $scope.priceTo, $scope.mileageFrom, $scope.mileageTo, $scope.yearFrom, $scope.yearTo, $scope.page).then(function (response) {
+            CarService.getIndex($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels, $scope.filters.priceFrom, $scope.filters.priceTo, $scope.filters.mileageFrom, $scope.filters.mileageTo, $scope.filters.yearFrom, $scope.filters.yearTo, $scope.page).then(function (response) {
 
                 $scope.sortorder = "-created_at";
 
@@ -88,7 +88,6 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
                 $scope.cancel = function () {
                     $modalInstance.dismiss('cancel');
                 };
-
                 $scope.notifyMe = function () {
                     CarService.notifyMe($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels, $scope.priceFrom, $scope.priceTo, $scope.mileageFrom, $scope.mileageTo, $scope.yearFrom, $scope.yearTo)
                         .then(function (data) {
@@ -100,7 +99,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
             size: size,
             resolve: {
                 filters: function () {
-                    return $scope.filter = selectedFilters;
+                    return $scope.filters = selectedFilters;
                 }
             }
         });
@@ -108,7 +107,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
         modalInstance.result.then(function (selectedFilters) {
             $scope.filters = selectedFilters;
         }, function () {
-            console.log($scope.filters);
+            console.log($scope.filters.selectedMakeNames);
         });
     };
 

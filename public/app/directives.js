@@ -10,8 +10,8 @@ angular.module('app').directive('priceSlider', function () {
         restrict: 'A',
         link: function (scope, element) {
             var moved = false;
-            var from = scope.priceFrom;
-            var to = scope.priceTo;
+            var from = scope.filters.priceFrom;
+            var to = scope.filters.priceTo;
             element.ionRangeSlider({
                 min: 500,
                 max: 50000,
@@ -23,8 +23,8 @@ angular.module('app').directive('priceSlider', function () {
                 maxPostfix: "+",
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
-                    scope.priceFrom = obj.fromNumber;
-                    scope.priceTo = obj.toNumber;
+                    scope.filters.priceFrom = obj.fromNumber;
+                    scope.filters.priceTo = obj.toNumber;
                     _.defer(function () {
                         scope.$apply();
                     });
@@ -44,8 +44,8 @@ angular.module('app').directive('mileageSlider', function () {
         link: function (scope, element) {
 
             var moved = false;
-            var from = scope.mileageFrom;
-            var to = scope.mileageTo;
+            var from = scope.filters.mileageFrom;
+            var to = scope.filters.mileageTo;
             element.ionRangeSlider({
                 min: 1000,
                 max: 150000,
@@ -58,13 +58,16 @@ angular.module('app').directive('mileageSlider', function () {
                 minPostfix: "-",
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
-                    scope.mileageFrom = obj.fromNumber;
-                    scope.mileageTo = obj.toNumber;
+                    scope.filters.mileageFrom = obj.fromNumber;
+                    scope.filters.mileageTo = obj.toNumber;
+                    scope.$apply();
                     _.defer(function () {
                         scope.$apply();
                     });
                 },
                 onFinish: function () { // callback, is called once, after slider finished it's work
+                    scope.page = 0;
+                    scope.cars = [];
                     scope.getIndex();
                 }
             });
@@ -79,8 +82,8 @@ angular.module('app').directive('yearSlider', function () {
         link: function (scope, element) {
 
             var moved = false;
-            var from = scope.yearFrom;
-            var to = scope.yearTo;
+            var from = scope.filters.yearFrom;
+            var to = scope.filters.yearTo;
             element.ionRangeSlider({
                 min: 1970,
                 max: 2015,
@@ -92,8 +95,8 @@ angular.module('app').directive('yearSlider', function () {
                 maxPostfix: "+",
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
-                    scope.yearFrom = obj.fromNumber;
-                    scope.yearTo = obj.toNumber;
+                    scope.filters.yearFrom = obj.fromNumber;
+                    scope.filters.yearTo = obj.toNumber;
                     _.defer(function () {
                         scope.$apply();
                     });
