@@ -40,7 +40,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
                 $scope.filters.selectedBrands = data.results.brandsArray;
                 $scope.filters.selectedModels = data.results.modelsArray;
 
-                //$scope.getIndex();
+                $scope.getIndex();
             }
         );
     };
