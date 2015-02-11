@@ -65,14 +65,14 @@ class CarsController extends Controller {
     public function store(PhotoRepository $photoRepository, TagRepository $tagRepository, Request $request)
     {
         $val    = $this->carRepository->getCreateForm();
-        $userId = Auth::user()->id; // todo: replace with Auth::user()->id;
+        $user = Auth::user(); // todo: replace with Auth::user();
 
         if ( !$val->isValid() ) {
 
             return Redirect::back()->with('errors', $val->getErrors())->withInput();
         }
 
-        $car = $this->carRepository->create(array_merge(['user_id' => $userId], $val->getInputData()));
+        $car = $this->carRepository->create(array_merge(['user_id' => $user->id], $val->getInputData()));
 
         if ( $car ) {
             // upload the file to the server
@@ -91,7 +91,7 @@ class CarsController extends Controller {
             if ( !(empty($tags)) ) $tagRepository->attach($car, $tags);
 
             // fire notify user filter event
-//            Event::fire(new CarWasPosted($request));
+//            Event::fire(new CarWasPosted($car, $user, $request));
         }
 
         return Redirect::action('CarsController@edit', [$car->id, '#optionals'])->with('success', 'Saved');

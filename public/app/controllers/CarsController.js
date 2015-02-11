@@ -2,9 +2,9 @@ angular
     .module('app')
     .controller('CarsController', CarsController);
 
-CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', '$modal'];
+CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', '$modal','NotificationService'];
 
-function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
+function CarsController($scope, CarService, $location, $anchorScroll, $modal, NotificationService) {
 
     $scope.filters = {};
     $scope.slider = {};
@@ -50,16 +50,9 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
     $scope.filters.yearFrom = 2005;
     $scope.filters.yearTo = 2014;
 
-    $scope.alerter  = function () {
-        alert('aa');
-    };
-
     $scope.initCars = function () {
 
-        $scope.page = 0;
-        $scope.cars = [];
-        $scope.hasRecord = true;
-        $scope.loading = false;
+        $scope.resetValues();
 
         CarService.getFilter($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels)
             .then(function (data) {
@@ -80,7 +73,6 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
     };
 
     $scope.getCars = function () {
-
         $scope.page++;
 
         if ($scope.hasRecord) {
@@ -126,7 +118,9 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
     }
 
     $scope.openModal = function (size, selectedFilters) {
+
         $scope.getFilterNames();
+
         var modalInstance = $modal.open({
             templateUrl: '/app/views/partials/notification-tpl.html',
             controller: function ($scope, $modalInstance, filters) {
@@ -135,11 +129,11 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
                     $modalInstance.dismiss('cancel');
                 };
                 $scope.notifyMe = function () {
-                    CarService.notifyMe($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels, $scope.priceFrom, $scope.priceTo, $scope.mileageFrom, $scope.mileageTo, $scope.yearFrom, $scope.yearTo)
+                    NotificationService.create($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels, $scope.filters.priceFrom, $scope.filters.priceTo, $scope.filters.mileageFrom, $scope.filters.mileageTo, $scope.filters.yearFrom, $scope.filters.yearTo)
                         .then(function (data) {
                         }
                     );
-                    $modalInstance.dismiss('cancel');
+                    $modalInstance.dismiss(alert('you will be shortly notified'));
                 };
             },
             size: size,
@@ -162,6 +156,11 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
         $scope.cars = [];
         $scope.hasRecord = true;
         $scope.loading = false;
+    }
+
+    $scope.refreshCars = function () {
+        $scope.resetValues();
+        $scope.getCars();
     }
 
     // Model Watchers

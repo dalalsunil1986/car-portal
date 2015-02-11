@@ -1,40 +1,49 @@
 <?php namespace App\Http\Controllers;
 
+use App\Commands\CreateNotification;
 use App\Src\Favorite\FavoriteRepository;
 use App\Src\Notification\NotificationRepository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 
-class NotificationssController extends Controller {
+class NotificationsController extends Controller {
 
     /**
      * @var NotificationRepository
      */
-    private $carNotificationRepository;
+    public $notificationRepository;
 
     /**
-     * @param NotificationRepository $carNotificationRepository
+     * @param NotificationRepository $notificationRepository
      */
-    public function __construct(NotificationRepository $carNotificationRepository)
+    public function __construct(NotificationRepository $notificationRepository)
     {
-        $this->carNotificationRepository = $carNotificationRepository;
+        $this->notificationRepository = $notificationRepository;
     }
-
 
     /**
      * @param Request $request
      */
-    public function store(Request $request) {
-        // get the inputs and make it an array
-//
-        $car = $this->carRepository->model->first(); // replace this with added car
+    public function create(Request $request)
+    {
         $user = Auth::user();
-        Event::fire(new CarWasPosted($car,$user,$request));
+        $this->dispatchFrom(CreateNotification::class,$request);
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function store(Request $request)
+    {
+        dd(Input::all());
+        $car  = $this->carRepository->model->first(); // replace this with added car
+        $user = Auth::user();
+        Event::fire(new CarWasPosted($car, $user, $request));
 
 //        $params = Input::all();
 //        $params['user_id'] = Auth::user()->id;
 //        $carNotificationRepository->create($params);
-
-        dd('aaa');
-        dd(Input::all());
-    }}
+    }
+}

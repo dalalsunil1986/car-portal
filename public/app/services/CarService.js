@@ -10,8 +10,7 @@ function CarService($http, $q) {
         getFilter: getFilter,
         getIndex: getIndex,
         getView: getView,
-        getFilterNames: getFilterNames,
-        notifyMe: notifyMe
+        getFilterNames: getFilterNames
     };
 
     function getFilter(make, brand, type, model) {
@@ -67,17 +66,5 @@ function CarService($http, $q) {
         return defer.promise;
     }
 
-    function notifyMe(make, brand, type, model, priceFrom, priceTo, mileageFrom, mileageTo, yearFrom, yearTo) {
-        var defer = $q.defer();
-        $http.get('/api/cars/notify-me/?make=' + make + '&brand=' + brand + '&model=' + model + '&type=' + type + '&price-from=' + priceFrom + '&price-to=' + priceTo + '&mileage-from=' + mileageFrom + '&mileage-to=' + mileageTo + '&year-from=' + yearFrom + '&year-to=' + yearTo)
-            .success(function (data) {
-                defer.resolve(data);
-            }
-        ).error(function () {
-                defer.reject('An error has occurred ');
-            }
-        );
-        return defer.promise;
-    }
 
 }
