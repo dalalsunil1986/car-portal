@@ -82,7 +82,6 @@ angular.module('app').directive('yearSlider', function () {
     return {
         restrict: 'EA',
         link: function (scope, element) {
-
             var moved = false;
             var from = scope.filters.yearFrom;
             var to = scope.filters.yearTo;
