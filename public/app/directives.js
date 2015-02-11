@@ -1,13 +1,13 @@
 angular.module('app').directive('carResults', function () {
     return {
-        restrict: "A",
+        restrict: "EA",
         templateUrl: '/app/views/cars/result.html'
     }
 });
 
 angular.module('app').directive('priceSlider', function () {
     return {
-        restrict: 'A',
+        restrict: 'EA',
         link: function (scope, element) {
             var moved = false;
             var from = scope.filters.priceFrom;
@@ -24,21 +24,15 @@ angular.module('app').directive('priceSlider', function () {
                 maxPostfix: "+",
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
-                    //console.log($i++ + ' - value of price from before changing ' + scope.filters.priceFrom);
-                    scope.filters.priceFrom = obj.fromNumber;
-                    scope.filters.priceTo = obj.toNumber;
                     _.defer(function () {
                         scope.$apply();
                     });
-                    //console.log($i++ +' - value of price after changing ' + scope.filters.priceFrom);
                 },
-                onFinish: function () { // callback, is called once, after slider finished it's work
+                onFinish: function (obj) { // callback, is called once, after slider finished it's work
+                    scope.filters.priceFrom = obj.fromNumber;
+                    scope.filters.priceTo = obj.toNumber;
                     scope.resetValues();
-                    //console.log($i++ + ' - value of price before calling getIndex ' + scope.filters.priceFrom);
                     scope.getIndex();
-                    //console.log($i++ + ' - called getIndex');
-                    //console.log($i++ + ' - value of price from after calling getIndex ' + scope.filters.priceFrom);
-
                 }
             });
 
@@ -48,7 +42,7 @@ angular.module('app').directive('priceSlider', function () {
 
 angular.module('app').directive('mileageSlider', function () {
     return {
-        restrict: 'A',
+        restrict: 'EA',
         link: function (scope, element) {
 
             var moved = false;
@@ -66,15 +60,16 @@ angular.module('app').directive('mileageSlider', function () {
                 minPostfix: "-",
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
-                    scope.filters.mileageFrom = obj.fromNumber;
-                    scope.filters.mileageTo = obj.toNumber;
+
                     scope.$apply();
                     _.defer(function () {
                         scope.$apply();
                     });
                 },
-                onFinish: function () { // callback, is called once, after slider finished it's work
+                onFinish: function (obj) { // callback, is called once, after slider finished it's work
                     scope.resetValues();
+                    scope.filters.mileageFrom = obj.fromNumber;
+                    scope.filters.mileageTo = obj.toNumber;
                     scope.getIndex();
                 }
             });
@@ -85,7 +80,7 @@ angular.module('app').directive('mileageSlider', function () {
 
 angular.module('app').directive('yearSlider', function () {
     return {
-        restrict: 'A',
+        restrict: 'EA',
         link: function (scope, element) {
 
             var moved = false;
@@ -102,14 +97,14 @@ angular.module('app').directive('yearSlider', function () {
                 maxPostfix: "+",
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
-                    scope.filters.yearFrom = obj.fromNumber;
-                    scope.filters.yearTo = obj.toNumber;
                     _.defer(function () {
                         scope.$apply();
                     });
                 },
-                onFinish: function () { // callback, is called once, after slider finished it's work
+                onFinish: function (obj) { // callback, is called once, after slider finished it's work
                     scope.resetValues();
+                    scope.filters.yearFrom = obj.fromNumber;
+                    scope.filters.yearTo = obj.toNumber;
                     scope.getIndex();
                 }
             });
