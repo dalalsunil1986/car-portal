@@ -10,7 +10,6 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
     $scope.slider = {};
 
     // Select Makes,Brands,Types,Models For Car Search Filter
-
     $scope.filters.selectedMakes = [];
     $scope.filters.selectedBrands = [];
     $scope.filters.selectedTypes = [];
@@ -34,11 +33,12 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
 
     // Directive Vars
     $scope.slider.type = 'double';
-    $scope.slider.maxPostfix = "+";
-    $scope.slider.minPostfix = "-";
-    $scope.slider.mileageStep = 5000;
+    $scope.slider.maxPostfix = " +";
+    $scope.slider.minPostfix = " -";
+
     $scope.slider.mileageMin = 5000;
     $scope.slider.mileageMax = 300000;
+    $scope.slider.mileageStep = 5000;
     $scope.slider.mileagePostfix = " KM";
 
     $scope.slider.priceMin = 1000;
@@ -46,14 +46,16 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
     $scope.slider.priceStep = 500;
     $scope.slider.pricePostfix = " KD";
 
-
     $scope.slider.yearMin = 1970;
     $scope.slider.yearMax = 2015;
     $scope.slider.yearStep = 2;
 
     $scope.initCars = function () {
 
-        $scope.resetValues();
+        $scope.page = 0;
+        $scope.cars = [];
+        $scope.hasRecord = true;
+        $scope.loading = false;
 
         CarService.getFilter($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels)
             .then(function (data) {
@@ -66,12 +68,14 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
                 $scope.filters.selectedBrands = data.results.brandsArray;
                 $scope.filters.selectedModels = data.results.modelsArray;
 
-                $scope.getIndex();
+                // reset page and other initial loading values
+                // load cars
+                $scope.getCars();
             }
         );
     };
 
-    $scope.getIndex = function () {
+    $scope.getCars = function () {
 
         $scope.page++;
 
@@ -156,6 +160,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
         $scope.loading = false;
     }
 
+    // Model Watchers
     $scope.$watch('filters.selectedMakes', function (newVal, oldVal) {
         if (!(newVal)) return;
 
