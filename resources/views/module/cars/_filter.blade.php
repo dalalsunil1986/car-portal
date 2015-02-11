@@ -2,7 +2,7 @@
 
     <div class="row">
 
-        <h3 class="row-filter-nav" ng-click="getFilterNames()">Filter</h3>
+        <h3 class="row-filter-nav">Filter</h3>
 
         <!--Make Filter Start-->
         <div class="form-group row">
@@ -77,16 +77,16 @@
 
             <!--Notify Confirmation Panel End-->
 
-            <button type="submit" class="btn btn-info btn-large col-lg-6 hidden-md hidden-sm hidden-xs filter-btn">
-                <i class="icon-white fa fa-sort-by-attributes" ng-click="initCars()"></i> Yalla Filter!
+            <button ng-click="alerter()" class="btn btn-info btn-large col-lg-6 hidden-md hidden-sm hidden-xs filter-btn" >
+                <i class="icon-white fa fa-sort-by-attributes" ></i> Yalla Filter!
             </button>
 
             <!--Btn Sm Layout-->
-            <button class="btn btn-info btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl filter-btn">
-                <i class="icon-white fa fa-sort-by-attributes" ng-click="initCars()"></i> Yalla Filter!
+            <button ng-click="alerter()" class="btn btn-info btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl filter-btn" >
+                <i class="icon-white fa fa-sort-by-attributes" ></i> Yalla Filter!
             </button>
-            <button ng-click="openModal('lg',filters)" class="btn cd-popup-trigger btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl notify-sm notify-btn"
-                    ><i class="icon-white fa fa-phone  "></i> Notify Me
+            <button ng-click="openModal('lg',filters)" class="btn cd-popup-trigger btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl notify-sm notify-btn">
+                <i class="icon-white fa fa-phone  "></i> Notify Me
             </button>
         </div>
 
