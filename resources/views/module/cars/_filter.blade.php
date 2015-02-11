@@ -4,7 +4,6 @@
 
         <h3 class="row-filter-nav" ng-click="getFilterNames()">Filter</h3>
 
-        makes : <span ng-repeat="make in filters.selectedMakeNames">{[make.name]} {[ $last ? '' : ', ']} </span>
         <!--Make Filter Start-->
         <div class="form-group row">
             <label class="col-xs-3 padding-left">Make</label>

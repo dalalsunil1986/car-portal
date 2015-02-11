@@ -18,16 +18,13 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
     $scope.filters.priceFrom = 1000;
     $scope.filters.priceTo = 50000;
     $scope.filters.mileageFrom = 5000;
-    $scope.filters.mileageTo = 150000;
+    $scope.filters.mileageTo = 135000;
     $scope.filters.yearFrom = 1970;
     $scope.filters.yearTo = 2014;
 
     $scope.initCars = function () {
 
-        $scope.page = 0;
-        $scope.cars = [];
-        $scope.hasRecord = true;
-        $scope.loading = false;
+        $scope.resetValues();
 
         CarService.getFilter($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels)
             .then(function (data) {
@@ -79,6 +76,18 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
         }
     };
 
+    $scope.getFilterNames = function () {
+        CarService.getFilterNames($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels)
+            .then(function (data) {
+                // GET the makes,brands,models,types with unique values, excluding the values which are already selected
+                $scope.filters.selectedMakeNames = data.results.makes;
+                $scope.filters.selectedBrandNames = data.results.brands;
+                $scope.filters.selectedTypeNames = data.results.types;
+                $scope.filters.selectedModelNames = data.results.models;
+            }
+        );
+    }
+
     $scope.openModal = function (size, selectedFilters) {
         $scope.getFilterNames();
         var modalInstance = $modal.open({
@@ -111,16 +120,11 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal) {
         });
     };
 
-    $scope.getFilterNames = function () {
-        CarService.getFilterNames($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels)
-            .then(function (data) {
-                // GET the makes,brands,models,types with unique values, excluding the values which are already selected
-                $scope.filters.selectedMakeNames = data.results.makes;
-                $scope.filters.selectedBrandNames = data.results.brands;
-                $scope.filters.selectedTypeNames = data.results.types;
-                $scope.filters.selectedModelNames = data.results.models;
-            }
-        );
+    $scope.resetValues = function () {
+        $scope.page = 0;
+        $scope.cars = [];
+        $scope.hasRecord = true;
+        $scope.loading = false;
     }
 
     $scope.$watch('filters.selectedMakes', function (newVal, oldVal) {

@@ -12,6 +12,7 @@ angular.module('app').directive('priceSlider', function () {
             var moved = false;
             var from = scope.filters.priceFrom;
             var to = scope.filters.priceTo;
+            var $i = 1;
             element.ionRangeSlider({
                 min: 500,
                 max: 50000,
@@ -23,14 +24,21 @@ angular.module('app').directive('priceSlider', function () {
                 maxPostfix: "+",
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
+                    //console.log($i++ + ' - value of price from before changing ' + scope.filters.priceFrom);
                     scope.filters.priceFrom = obj.fromNumber;
                     scope.filters.priceTo = obj.toNumber;
                     _.defer(function () {
                         scope.$apply();
                     });
+                    //console.log($i++ +' - value of price after changing ' + scope.filters.priceFrom);
                 },
                 onFinish: function () { // callback, is called once, after slider finished it's work
+                    scope.resetValues();
+                    //console.log($i++ + ' - value of price before calling getIndex ' + scope.filters.priceFrom);
                     scope.getIndex();
+                    //console.log($i++ + ' - called getIndex');
+                    //console.log($i++ + ' - value of price from after calling getIndex ' + scope.filters.priceFrom);
+
                 }
             });
 
@@ -66,8 +74,7 @@ angular.module('app').directive('mileageSlider', function () {
                     });
                 },
                 onFinish: function () { // callback, is called once, after slider finished it's work
-                    scope.page = 0;
-                    scope.cars = [];
+                    scope.resetValues();
                     scope.getIndex();
                 }
             });
@@ -102,6 +109,7 @@ angular.module('app').directive('yearSlider', function () {
                     });
                 },
                 onFinish: function () { // callback, is called once, after slider finished it's work
+                    scope.resetValues();
                     scope.getIndex();
                 }
             });
@@ -135,7 +143,6 @@ function favoriteTpl(FavoriteService) {
         }
     };
 }
-
 
 
 angular.module('app').directive('favoritePanel', favoritePanel);
