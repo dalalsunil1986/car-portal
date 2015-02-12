@@ -120,7 +120,7 @@ function favoriteTpl(FavoriteService) {
         scope: {
             favoreableType: '@',
             favoreableId: '@',
-            favorite:'='
+            favorite: '='
         },
         link: function link(scope) {
             scope.save = function () {
@@ -129,11 +129,15 @@ function favoriteTpl(FavoriteService) {
                     "favoriteable_type": scope.favoreableType
                 };
                 FavoriteService.save(postData).then(function (response) {
+                    console.log('response is '+ response);
                     scope.favorite = response;
+                    console.log('after saved ' +scope.favorite);
                 });
             };
             scope.destroy = function () {
-                FavoriteService.destroy(scope.favorite).then(function (response) {
+                console.log('before deleting ' + scope.favorite);
+
+                FavoriteService.destroy(scope.favorite).then(function (data) {
                     scope.favorite = null;
                 });
             };
