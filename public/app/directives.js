@@ -128,15 +128,15 @@ function favoriteTpl(FavoriteService) {
                     "favoriteable_id": scope.favoreableId,
                     "favoriteable_type": scope.favoreableType
                 };
-                FavoriteService.save(postData).then(function (response) {
-                    console.log('response is '+ response);
+                var response = FavoriteService.save(postData);
+                    //console.log('response is '+ response);
                     scope.favorite = response;
-                    console.log('after saved ' +scope.favorite);
-                });
+                    //console.log('after saved ' +scope.favorite);
+                //});
             };
             scope.destroy = function () {
-                console.log('before deleting ' + scope.favorite);
-
+                //console.log('favorite is '+favorite);
+                //console.log('before deleting ' + scope.favorite);
                 FavoriteService.destroy(scope.favorite).then(function (data) {
                     scope.favorite = null;
                 });

@@ -34,24 +34,26 @@ function FavoriteService($rootScope, $http, $q, $resource) {
 
     function save(favorites) {
 
-        resource.save(favorites).$promise.then(
-            function (data) {
+        //resource.save(favorites).$promise.then(
+        //    function (data) {
+        //
+        //        deferred.resolve(data);
+        //
+        //        service.favorites.push(data);
+        //
+        //        $rootScope.$broadcast('favorites.update');
+        //
+        //    },
+        //    function (data) {
+        //        deferred.reject(data);
+        //    }
+        //);
 
-                //deferred.resolve(data);
+        var data = resource.save(favorites);
+        service.favorites.push(data);
+        $rootScope.$broadcast('favorites.update');
 
-                service.favorites.push(data);
-
-                $rootScope.$broadcast('favorites.update');
-
-                console.log('data '+data);
-                return data;
-            },
-            function (data) {
-                deferred.reject(data);
-            }
-        );
-        console.log('after' + deferred.promise);
-        return deferred.promise;
+        return data;
     }
 
     function destroy(favorite) {
