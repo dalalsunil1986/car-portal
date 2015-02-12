@@ -41,14 +41,8 @@
                                     <div class="asking text-center">Asking Price</div>
                                     <div class="price-cost text-center">{[ car.price ]}</div>
 
-                                    <span ng-hide="car.favorited">
-                                        <favorite-tpl favoreable-type="Car" favoreable-id="{[car.id]}"/>
-                                        </favorite-tpl>
-                                    </span>
-                                    <span ng-show="car.favorited">
-                                        <unfavorite-tpl favorite="car.favorited" favoreable-type="Car" favoreable-id="{[car.favorited.id]}"/>
-                                        </unfavorite-tpl>
-                                    </span>
+                                    <favorite-tpl favorite="car.favorited" favoreable-type="Car" favoreable-id="{[car.id]}"/>
+                                    </favorite-tpl>
 
                                 </div>
 

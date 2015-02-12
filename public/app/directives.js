@@ -119,45 +119,27 @@ function favoriteTpl(FavoriteService) {
         templateUrl: '/app/views/partials/favorite-tpl.html',
         scope: {
             favoreableType: '@',
-            favoreableId: '@'
+            favoreableId: '@',
+            favorite:'='
         },
-        link: function link(scope, element) {
+        link: function link(scope) {
             scope.save = function () {
                 var postData = {
                     "favoriteable_id": scope.favoreableId,
                     "favoriteable_type": scope.favoreableType
                 };
-                FavoriteService.save(postData).then(function () {
-                    //element.html('Favorited').addClass('text-muted text-center');
+                FavoriteService.save(postData).then(function (response) {
+                    scope.favorite = response;
                 });
             };
-        }
-    };
-}
-
-angular.module('app').directive('unfavoriteTpl', unfavoriteTpl);
-
-unfavoriteTpl.$inject = ['FavoriteService'];
-
-function unfavoriteTpl(FavoriteService) {
-    return {
-        restrict: 'EA',
-        templateUrl: '/app/views/partials/unfavorite-tpl.html',
-        scope: {
-            favoreableType: '@',
-            favoreableId: '@',
-            favorite:'='
-        },
-        link: function link(scope, element) {
             scope.destroy = function () {
-                FavoriteService.destroy(scope.favorite).then(function (result) {
-                    //element.fadeOut(1000);
+                FavoriteService.destroy(scope.favorite).then(function (response) {
+                    scope.favorite = null;
                 });
             };
         }
     };
 }
-
 
 angular.module('app').directive('favoritePanel', favoritePanel);
 

@@ -43,6 +43,7 @@ function FavoriteService($rootScope, $http, $q, $resource) {
                 service.favorites.push(data);
 
                 $rootScope.$broadcast('favorites.update');
+                return data;
             },
             function (data) {
                 deferred.reject(data);
