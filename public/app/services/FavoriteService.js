@@ -11,7 +11,8 @@ function FavoriteService($rootScope, $http, $q, $resource) {
         favorites: '',
         list: list,
         save: save,
-        destroy: destroy
+        destroy: destroy,
+        del:del
     };
 
     return service;
@@ -59,6 +60,13 @@ function FavoriteService($rootScope, $http, $q, $resource) {
             service.favorites.splice(index, 1);
 
             $rootScope.$broadcast('favorites.update');
+
+        });
+    }
+
+    function del(favoriteableId) {
+        //return resource.delete({ id:id });
+        return $http.delete('api/favorites/' + favoriteableId).then(function () {
 
         });
     }

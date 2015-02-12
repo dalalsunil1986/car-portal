@@ -36,7 +36,7 @@ class CarsController extends Controller {
 
     public function show($id)
     {
-        $car = $this->carRepository->model->with(['model.brand', 'user', 'thumbnail', 'photos'])->find($id);
+        $car = $this->carRepository->model->with(['model.brand', 'user', 'thumbnail', 'photos','favorited'])->find($id);
 
         return view('module.cars.view', compact('car'));
     }
@@ -64,7 +64,7 @@ class CarsController extends Controller {
      */
     public function store(PhotoRepository $photoRepository, TagRepository $tagRepository, Request $request)
     {
-        $val    = $this->carRepository->getCreateForm();
+        $val  = $this->carRepository->getCreateForm();
         $user = Auth::user(); // todo: replace with Auth::user();
 
         if ( !$val->isValid() ) {
@@ -91,7 +91,7 @@ class CarsController extends Controller {
             if ( !(empty($tags)) ) $tagRepository->attach($car, $tags);
 
             // fire notify user filter event
-//            Event::fire(new CarWasPosted($car, $user, $request));
+            Event::fire(new CarWasPosted($car, $user, $request));
         }
 
         return Redirect::action('CarsController@edit', [$car->id, '#optionals'])->with('success', 'Saved');
@@ -170,7 +170,7 @@ class CarsController extends Controller {
         $yearTo      = Input::get('year-to');
         $maxPrice    = 50000;
         $maxYear     = date('Y');
-        $maxMileage  = 150000;
+        $maxMileage  = 300000;
 
         if ( !(empty($getMakes)) || !(empty($getBrands)) || !(empty($getModels)) || !(empty($getTypes)) || !(empty($priceFrom)) || !(empty($yearFrom)) || !(empty($mileageFrom)) ) {
 
@@ -179,7 +179,7 @@ class CarsController extends Controller {
             $modelArray = array_filter(explode(',', $getModels));
             $typeArray  = array_filter(explode(',', $getTypes));
 
-            $cars = $this->carRepository->model->with(['thumbnail'])
+            $cars = $this->carRepository->model->with(['thumbnail','favorited'])
                 // start querying
                 ->where(function ($query) use ($makeArray, $brandArray, $modelArray, $typeArray, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $maxMileage, $maxPrice, $maxYear) {
                     if ( count($makeArray) ) {
@@ -226,7 +226,7 @@ class CarsController extends Controller {
 
                 })->paginate(10);
         } else {
-            $cars = $this->carRepository->model->with(['thumbnail'])->paginate(10);
+            $cars = $this->carRepository->model->with(['thumbnail','favorited'])->paginate(10);
         }
 
         return $cars;
