@@ -123,20 +123,20 @@ function favoriteTpl(FavoriteService) {
             favorite: '='
         },
         link: function link(scope) {
+            // format of scope.favorite = { id: 1, user_id: 1, favoriteable_id: 30, favoriteable_type: "Car", created_at: "2015-02-13 09:38:20", updated_at: "2015-02-13 09:38:20", deleted_at: null }
+            if (typeof scope.favorite != 'object') {
+                return false;
+            }
             scope.save = function () {
                 var postData = {
                     "favoriteable_id": scope.favoreableId,
                     "favoriteable_type": scope.favoreableType
                 };
                 var response = FavoriteService.save(postData);
-                    //console.log('response is '+ response);
-                    scope.favorite = response;
-                    //console.log('after saved ' +scope.favorite);
-                //});
+                scope.favorite = response;
             };
+
             scope.destroy = function () {
-                //console.log('favorite is '+favorite);
-                //console.log('before deleting ' + scope.favorite);
                 FavoriteService.destroy(scope.favorite).then(function (data) {
                     scope.favorite = null;
                 });

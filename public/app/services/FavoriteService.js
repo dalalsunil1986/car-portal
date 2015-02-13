@@ -5,7 +5,7 @@ FavoriteService.$inject = ['$rootScope', '$http', '$q', '$resource'];
 function FavoriteService($rootScope, $http, $q, $resource) {
 
     var resource = $resource('/api/favorites/:id', {id: '@id'});
-    var deferred = $q.defer();
+    var defer = $q.defer();
 
     var service = {
         favorites: '',
@@ -21,23 +21,21 @@ function FavoriteService($rootScope, $http, $q, $resource) {
         resource.query().$promise.then(
             function (data) {
 
-                deferred.resolve(data);
+                defer.resolve(data);
 
                 service.favorites = data;
             },
             function (data) {
-                deferred.reject(data);
+                defer.reject(data);
             }
         );
-        return deferred.promise;
+        return defer.promise;
     }
 
-    function save(favorites) {
+    function save(favorite) {
 
-        //resource.save(favorites).$promise.then(
+        //resource.save(favorite).$promise.then(
         //    function (data) {
-        //
-        //        deferred.resolve(data);
         //
         //        service.favorites.push(data);
         //
@@ -45,11 +43,12 @@ function FavoriteService($rootScope, $http, $q, $resource) {
         //
         //    },
         //    function (data) {
-        //        deferred.reject(data);
+        //        defer.reject(data);
         //    }
         //);
+        //return defer.promise;
 
-        var data = resource.save(favorites);
+        var data = resource.save(favorite);
         service.favorites.push(data);
         $rootScope.$broadcast('favorites.update');
 
