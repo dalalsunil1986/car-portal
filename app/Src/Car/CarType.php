@@ -20,6 +20,8 @@ class CarType extends BaseModel {
 
     protected $localeStrings = ['name'];
 
+    protected $morphClass = 'CarType';
+
     public function brands()
     {
         return $this->hasMany('App\Src\Car\CarBrand', 'make_id');
@@ -30,4 +32,8 @@ class CarType extends BaseModel {
         return $this->hasMany('App\Src\Car\CarModel', 'type_id');
     }
 
+    public function filters()
+    {
+        return $this->morphMany('App\Src\Notification\NotificationFilter', 'filterable');
+    }
 }

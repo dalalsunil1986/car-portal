@@ -16,8 +16,7 @@ class CreateNotificationFiltersTable extends Migration {
 		Schema::create('notification_filters', function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('notification_id')->unsigned()->index();
-			$table->integer('filter_id')->unsigned()->index();
-			$table->string('filter_type')->index();
+			$table->morphs('filterable');
 			$table->timestamps();
 			$table->softDeletes();
 		});

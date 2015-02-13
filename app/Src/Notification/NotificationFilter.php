@@ -8,4 +8,10 @@ class NotificationFilter extends BaseModel {
 
     protected $table = 'notification_filters';
 
+    protected $morphClass = 'NotificationFilter';
+
+    public function filterable()
+    {
+        return $this->morphTo();
+    }
 }

@@ -17,6 +17,4 @@ class CarMakeRepository extends BaseRepository  {
 
         $this->model = $model;
     }
-
-
 }
