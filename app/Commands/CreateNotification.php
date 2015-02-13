@@ -114,7 +114,7 @@ class CreateNotification extends Command implements SelfHandling {
         $types  = array_filter(explode(',', $this->type));
 
         $notification = $notificationRepository->model->create([
-            'type'         => ucfirst($this->filterType),
+            'type'         => ucfirst($this->filterType), // Car,Job
             'user_id'      => Auth::user()->id,
             'year_from'    => $this->yearFrom,
             'year_to'      => $this->yearTo,
@@ -127,7 +127,6 @@ class CreateNotification extends Command implements SelfHandling {
         foreach ( $makes as $make ) {
             $carMakeModel = $carMakeRepository->model->find($make);
             $carMakeModel->filters()->create(['notification_id' => $notification->id]);
-//            $carMakeModel->filters()->save(new NotificationFilter(['notification_id' => $notification->id]));
         }
 
         foreach ( $brands as $brand ) {
@@ -144,7 +143,6 @@ class CreateNotification extends Command implements SelfHandling {
             $carTypeModel = $carTypeRepository->model->find($type);
             $carTypeModel->filters()->create(['notification_id' => $notification->id]);
         }
-
 
         return true;
     }

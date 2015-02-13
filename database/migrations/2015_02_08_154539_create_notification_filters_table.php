@@ -17,8 +17,6 @@ class CreateNotificationFiltersTable extends Migration {
 			$table->increments('id');
 			$table->integer('notification_id')->unsigned()->index();
 			$table->morphs('filterable');
-			$table->timestamps();
-			$table->softDeletes();
 		});
 	}
 

@@ -10,6 +10,8 @@ class NotificationFilter extends BaseModel {
 
     protected $morphClass = 'NotificationFilter';
 
+    public $timestamps = false;
+
     public function filterable()
     {
         return $this->morphTo();
