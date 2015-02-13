@@ -4,20 +4,21 @@ use App\Core\BaseRepository;
 use App\Core\CrudableTrait;
 use Illuminate\Support\MessageBag;
 
-class NotificationRepository extends BaseRepository  {
+class NotificationFilterRepository extends BaseRepository  {
 
     use CrudableTrait;
 
     public $model;
 
     /**
-     * @param Notification $model
+     * @param NotificationFilter $model
      */
-    public function __construct(Notification $model)
+    public function __construct(NotificationFilter $model)
     {
         parent::__construct(new MessageBag);
 
         $this->model = $model;
     }
+
 
 }

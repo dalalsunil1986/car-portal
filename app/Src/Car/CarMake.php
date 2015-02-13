@@ -8,7 +8,7 @@ class CarMake extends BaseModel {
     use LocaleTrait;
     public static $name = 'carMake';
 
-    protected $fillable = [];
+    protected $guarded = ['id'];
 
     protected $table = 'car_makes';
 

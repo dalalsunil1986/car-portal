@@ -1,9 +1,12 @@
 <?php namespace App\Commands;
 
+use App\Src\Car\CarMake;
 use App\Src\Car\Repository\CarBrandRepository;
 use App\Src\Car\Repository\CarMakeRepository;
 use App\Src\Car\Repository\CarModelRepository;
 use App\Src\Car\Repository\CarTypeRepository;
+use App\Src\Notification\NotificationFilter;
+use App\Src\Notification\NotificationFilterRepository;
 use App\Src\Notification\NotificationRepository;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Queue\SerializesModels;
@@ -100,8 +103,10 @@ class CreateNotification extends Command implements SelfHandling {
      * @param CarBrandRepository $carBrandRepository
      * @param CarModelRepository $carModelRepository
      * @param CarTypeRepository $carTypeRepository
+     * @param NotificationFilterRepository $notificationFilterRepository
+     * @return bool
      */
-    public function handle(NotificationRepository $notificationRepository, CarMakeRepository $carMakeRepository, CarBrandRepository $carBrandRepository, CarModelRepository $carModelRepository, CarTypeRepository $carTypeRepository)
+    public function handle(NotificationRepository $notificationRepository, CarMakeRepository $carMakeRepository, CarBrandRepository $carBrandRepository, CarModelRepository $carModelRepository, CarTypeRepository $carTypeRepository, NotificationFilterRepository $notificationFilterRepository)
     {
         $makes  = array_filter(explode(',', $this->make));
         $brands = array_filter(explode(',', $this->brand));
@@ -121,29 +126,27 @@ class CreateNotification extends Command implements SelfHandling {
 
         foreach ( $makes as $make ) {
             $carMakeModel = $carMakeRepository->model->find($make);
-
             $carMakeModel->filters()->create(['notification_id' => $notification->id]);
+//            $carMakeModel->filters()->save(new NotificationFilter(['notification_id' => $notification->id]));
         }
 
         foreach ( $brands as $brand ) {
             $carBrandModel = $carBrandRepository->model->find($brand);
-
             $carBrandModel->filters()->create(['notification_id' => $notification->id]);
         }
 
         foreach ( $models as $model ) {
             $carModelModel = $carModelRepository->model->find($model);
-
             $carModelModel->filters()->create(['notification_id' => $notification->id]);
         }
 
         foreach ( $types as $type ) {
             $carTypeModel = $carTypeRepository->model->find($type);
-
             $carTypeModel->filters()->create(['notification_id' => $notification->id]);
         }
 
-        dd('done');
+
+        return true;
     }
 
 
