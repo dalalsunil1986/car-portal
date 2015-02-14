@@ -42,7 +42,7 @@ function CarService($http, $q) {
     function getIndex(make, brand, type, model, priceFrom, priceTo, mileageFrom, mileageTo, yearFrom, yearTo, page) {
 
         var defer = $q.defer();
-        $http.get('/api/cars?make=' + make + '&brand=' + brand + '&model=' + model + '&type=' + type + '&price-from=' + priceFrom + '&price-to=' + priceTo + '&mileage-from=' + mileageFrom + '&mileage-to=' + mileageTo + '&year-from=' + yearFrom + '&year-to=' + yearTo + '&page=' + page)
+        $http.get('/api/cars?make=' + make + '&brand=' + brand + '&model=' + model + '&type=' + type + '&price_from=' + priceFrom + '&price_to=' + priceTo + '&mileage_from=' + mileageFrom + '&mileage_to=' + mileageTo + '&year_from=' + yearFrom + '&year_to=' + yearTo + '&page=' + page)
             .success(function (data) {
                 defer.resolve(data);
             }
