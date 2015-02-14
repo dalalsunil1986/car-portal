@@ -154,23 +154,24 @@ class CarsController extends Controller {
      ********************************************************************************************************/
     /**
      * Gets Car Asynchronously For Search Filters
+     * @param CarRepository $carRepository
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getCars()
+    public function getCars(CarRepository $carRepository)
     {
         $getMakes    = Input::get('make') ? Input::get('make') : '';
         $getBrands   = Input::get('brand') ? Input::get('brand') : '';
         $getModels   = Input::get('model') ? Input::get('model') : '';
         $getTypes    = Input::get('type') ? Input::get('type') : '';
-        $mileageFrom = Input::get('mileage-from');
-        $mileageTo   = Input::get('mileage-to');
-        $priceFrom   = Input::get('price-from');
-        $priceTo     = Input::get('price-to');
-        $yearFrom    = Input::get('year-from');
-        $yearTo      = Input::get('year-to');
-        $maxPrice    = 50000;
-        $maxYear     = date('Y');
-        $maxMileage  = 300000;
+        $mileageFrom = Input::get('mileage_from');
+        $mileageTo   = Input::get('mileage_to');
+        $priceFrom   = Input::get('price_from');
+        $priceTo     = Input::get('price_to');
+        $yearFrom    = Input::get('year_from');
+        $yearTo      = Input::get('year_to');
+        $maxPrice    = $carRepository::MAXPRICE;
+        $maxYear     = $carRepository::MAXYEAR;
+        $maxMileage  = $carRepository::MAXMILEAGE;
 
         if ( !(empty($getMakes)) || !(empty($getBrands)) || !(empty($getModels)) || !(empty($getTypes)) || !(empty($priceFrom)) || !(empty($yearFrom)) || !(empty($mileageFrom)) ) {
 

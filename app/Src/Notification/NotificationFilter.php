@@ -12,6 +12,11 @@ class NotificationFilter extends BaseModel {
 
     public $timestamps = false;
 
+    public function notification()
+    {
+        return $this->belongsTo('App\Src\Notification\Notification', 'notification_id');
+    }
+
     public function filterable()
     {
         return $this->morphTo();
