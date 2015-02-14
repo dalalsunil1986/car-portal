@@ -76,6 +76,7 @@ Route::group(array('prefix' => 'api'), function ($router) {
 	 * Notifcation
 	 ********************************************************************************************************/
 	Route::get('notifications/create', 'NotificationsController@create');
+	Route::get('notifications/test', 'NotificationsController@store');
 	Route::resource('notifications','NotificationsController'); //todo : change to post
 
 });

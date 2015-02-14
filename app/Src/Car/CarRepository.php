@@ -11,6 +11,11 @@ class CarRepository extends BaseRepository {
 
     public $model;
 
+    const MAXYEAR = '2015';
+    const MAXMILEAGE = '300000';
+    const MAXPRICE = '50000';
+
+
     public function __construct(Car $model)
     {
         parent::__construct(new MessageBag);

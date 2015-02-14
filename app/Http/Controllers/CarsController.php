@@ -154,9 +154,10 @@ class CarsController extends Controller {
      ********************************************************************************************************/
     /**
      * Gets Car Asynchronously For Search Filters
+     * @param CarRepository $carRepository
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getCars()
+    public function getCars(CarRepository $carRepository)
     {
         $getMakes    = Input::get('make') ? Input::get('make') : '';
         $getBrands   = Input::get('brand') ? Input::get('brand') : '';
@@ -168,9 +169,9 @@ class CarsController extends Controller {
         $priceTo     = Input::get('price-to');
         $yearFrom    = Input::get('year-from');
         $yearTo      = Input::get('year-to');
-        $maxPrice    = 50000;
-        $maxYear     = date('Y');
-        $maxMileage  = 300000;
+        $maxPrice    = $carRepository::MAXPRICE;
+        $maxYear     = $carRepository::MAXYEAR;
+        $maxMileage  = $carRepository::MAXMILEAGE;
 
         if ( !(empty($getMakes)) || !(empty($getBrands)) || !(empty($getModels)) || !(empty($getTypes)) || !(empty($priceFrom)) || !(empty($yearFrom)) || !(empty($mileageFrom)) ) {
 

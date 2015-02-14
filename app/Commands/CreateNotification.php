@@ -124,24 +124,38 @@ class CreateNotification extends Command implements SelfHandling {
             'price_to'     => $this->priceTo
         ]);
 
-        foreach ( $makes as $make ) {
-            $carMakeModel = $carMakeRepository->model->find($make);
-            $carMakeModel->filters()->create(['notification_id' => $notification->id]);
-        }
+        // if model is set, ignore the rest ..
+        // if types are set, ignore the rest except models
+        // if brands are set, ignore the rest except models and make
+        // if makes are set, include everything
 
-        foreach ( $brands as $brand ) {
-            $carBrandModel = $carBrandRepository->model->find($brand);
-            $carBrandModel->filters()->create(['notification_id' => $notification->id]);
-        }
-
-        foreach ( $models as $model ) {
-            $carModelModel = $carModelRepository->model->find($model);
-            $carModelModel->filters()->create(['notification_id' => $notification->id]);
-        }
-
-        foreach ( $types as $type ) {
-            $carTypeModel = $carTypeRepository->model->find($type);
-            $carTypeModel->filters()->create(['notification_id' => $notification->id]);
+        if ( $models ) {
+            foreach ( $models as $model ) {
+                $carModelModel = $carModelRepository->model->find($model);
+                $carModelModel->filters()->create(['notification_id' => $notification->id]);
+            }
+        } elseif ( $brands ) {
+            foreach ( $brands as $brand ) {
+                $carBrandModel = $carBrandRepository->model->find($brand);
+                $carBrandModel->filters()->create(['notification_id' => $notification->id]);
+            }
+            if ( $types ) {
+                foreach ( $types as $type ) {
+                    $carTypeModel = $carTypeRepository->model->find($type);
+                    $carTypeModel->filters()->create(['notification_id' => $notification->id]);
+                }
+            }
+        } elseif ( $makes ) {
+            foreach ( $makes as $make ) {
+                $carMakeModel = $carMakeRepository->model->find($make);
+                $carMakeModel->filters()->create(['notification_id' => $notification->id]);
+            }
+            if ( $types ) {
+                foreach ( $types as $type ) {
+                    $carTypeModel = $carTypeRepository->model->find($type);
+                    $carTypeModel->filters()->create(['notification_id' => $notification->id]);
+                }
+            }
         }
 
         return true;
