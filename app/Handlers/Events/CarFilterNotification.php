@@ -49,14 +49,15 @@ class CarFilterNotification {
 
         $carRepository = $event->carRepository;
         // get the car Model
+        $car = $event->car;
         $carModel = $event->car->model;
 
         // find the filters for the specific model
-        $filters = $carModel->filters()->with(['notification' => function ($query) use ($mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $carRepository) {
+        $filters = $carModel->filters()->with(['notification' => function ($query) use ($car,$mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $carRepository) {
             if ( $mileageTo < $carRepository::MAXMILEAGE ) {
-                $query->where('mileage_from', '>', $mileageFrom)->where('mileage', '<', $mileageTo);
+                $query->where('mileage_from', '>', $car->mileage)->where('mileage_to', '<', $mileageTo);
             } else {
-                $query->where('mileage', '>', $mileageFrom);
+                $query->where('mileage_from', '>', $mileageFrom);
             }
 
             if ( $priceTo < $carRepository::MAXPRICE ) {

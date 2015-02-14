@@ -18,7 +18,6 @@ class UsersController extends Controller {
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
-        parent::__construct();
     }
 
     /**
@@ -39,8 +38,8 @@ class UsersController extends Controller {
      */
     public function getProfile($id)
     {
-        $user = $this->userRepository->findById($id);
-        $this->render('site.users.profile', compact('user'));
+        $user = $this->userRepository->model->find($id);
+        return view('modile.users.profile', compact('user'));
     }
 
     /**

@@ -41,4 +41,4 @@
 
     </div>
 
-@section('stop')
+@stop
