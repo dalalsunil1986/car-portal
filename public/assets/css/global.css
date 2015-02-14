@@ -415,7 +415,6 @@ h3 {
 
 .int-col:hover {
     width: 200px;
-    width: 180px;
     -webkit-box-shadow: 2px 1px 0px 20000px  rgba(69, 89, 87, 0.42);
     -moz-box-shadow: 2px 1px 0px 20000px  rgba(69, 89, 87, 0.42);
     box-shadow: 2px 1px 0px 20000px rgba(69, 89, 87, 0.42);
@@ -494,13 +493,14 @@ button.close {
 
 .int-view-button {
     font-size: 14px;
-    padding-left: 29px;
+    text-align: center;
     background-color: #0c7a71;
     color: #FFF;
     display: block;
     text-decoration: none;
     transition: background-color 0.35s ease;
     border-radius: 0 0 5px 5px;
+    padding: 2px 0;
 }
 
 .int-view-button:hover {
