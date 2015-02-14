@@ -10,7 +10,6 @@
                     {!! Form::select('model_id', $models , null , ['class' => 'populate select2-offscreen pull-left col-sm-8 col-xs-8 input', 'id' => 'model_id', 'data-placeholder' =>'Select a Make' ]) !!}
                 </div>
             </div>
-
             <div class="row">
                 <div class="form-group col-lg-12 col-sm-12 ">
                     <label class="pull-left col-sm-2 col-xs-3">Year</label>

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "72734bf9e39c18cd2d0938858c8d7b1f",
+    "hash": "5ef82239de1697b59839e477b10cd385",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -72,12 +72,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "37304e83a752ea3fcf1857d86c41f12e171584b4"
+                "reference": "b38fd4ecafe12b7bc7da059ace637e7f5aedcc6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/37304e83a752ea3fcf1857d86c41f12e171584b4",
-                "reference": "37304e83a752ea3fcf1857d86c41f12e171584b4",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/b38fd4ecafe12b7bc7da059ace637e7f5aedcc6e",
+                "reference": "b38fd4ecafe12b7bc7da059ace637e7f5aedcc6e",
                 "shasum": ""
             },
             "require": {
@@ -97,9 +97,8 @@
             },
             "require-dev": {
                 "codeception/specify": "~0.3",
-                "codegyre/robo": "@dev",
                 "facebook/php-sdk": "~3.2",
-                "flow/jsonpath": "~0.1",
+                "flow/jsonpath": "~0.2",
                 "monolog/monolog": "~1.8",
                 "pda/pheanstalk": "~2.0",
                 "videlalvaro/php-amqplib": "~2.4"
@@ -145,20 +144,20 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2015-02-03 01:18:10"
+            "time": "2015-02-10 23:33:09"
         },
         {
             "name": "danielstjules/stringy",
-            "version": "1.8.1",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danielstjules/Stringy.git",
-                "reference": "6a7b0391b2baf0bfdca3ec0c8d33ff379c2835ad"
+                "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/6a7b0391b2baf0bfdca3ec0c8d33ff379c2835ad",
-                "reference": "6a7b0391b2baf0bfdca3ec0c8d33ff379c2835ad",
+                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
+                "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
                 "shasum": ""
             },
             "require": {
@@ -201,7 +200,7 @@
                 "utility",
                 "utils"
             ],
-            "time": "2015-01-08 15:21:43"
+            "time": "2015-02-10 06:19:18"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -850,12 +849,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "50f13bbf47b528cab1a49840e4f70ae5eb8278b0"
+                "reference": "388aa6a1c3aa16a4e7f6fa850fa6f08bd3143ccd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/50f13bbf47b528cab1a49840e4f70ae5eb8278b0",
-                "reference": "50f13bbf47b528cab1a49840e4f70ae5eb8278b0",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/388aa6a1c3aa16a4e7f6fa850fa6f08bd3143ccd",
+                "reference": "388aa6a1c3aa16a4e7f6fa850fa6f08bd3143ccd",
                 "shasum": ""
             },
             "require": {
@@ -967,7 +966,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-02-07 02:12:27"
+            "time": "2015-02-13 23:23:27"
         },
         {
             "name": "league/flysystem",
@@ -1670,16 +1669,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.3.3",
+            "version": "v0.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "0355cecab0591c83fed019a9572c510b0da29174"
+                "reference": "2ce0e8f3020fd292c2ad2a496c5d83939823f642"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/0355cecab0591c83fed019a9572c510b0da29174",
-                "reference": "0355cecab0591c83fed019a9572c510b0da29174",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/2ce0e8f3020fd292c2ad2a496c5d83939823f642",
+                "reference": "2ce0e8f3020fd292c2ad2a496c5d83939823f642",
                 "shasum": ""
             },
             "require": {
@@ -1729,14 +1728,14 @@
                 }
             ],
             "description": "An interactive shell for modern PHP.",
-            "homepage": "https://github.com/bobthecow/psysh",
+            "homepage": "http://psysh.org",
             "keywords": [
                 "REPL",
                 "console",
                 "interactive",
                 "shell"
             ],
-            "time": "2015-01-20 21:18:03"
+            "time": "2015-02-12 19:35:52"
         },
         {
             "name": "react/promise",
@@ -3162,16 +3161,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "69680d55abe244e3efd7ce99fd18369005593395"
+                "reference": "f904a4bfa58157959beedf44ecdfb569e9e06542"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/69680d55abe244e3efd7ce99fd18369005593395",
-                "reference": "69680d55abe244e3efd7ce99fd18369005593395",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/f904a4bfa58157959beedf44ecdfb569e9e06542",
+                "reference": "f904a4bfa58157959beedf44ecdfb569e9e06542",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "5.0.*",
+                "illuminate/support": "5.0.x",
                 "maximebf/debugbar": "~1.10.2",
                 "php": ">=5.4.0",
                 "symfony/finder": "~2.6"
@@ -3208,7 +3207,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2015-02-05 14:26:05"
+            "time": "2015-02-13 12:10:32"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -3216,12 +3215,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-                "reference": "bb8d0169ba515acc587d287d5bfef4f4d9d48bfd"
+                "reference": "1f5e436d0078ca6abbcb07e5e08bcef126a8a14f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/bb8d0169ba515acc587d287d5bfef4f4d9d48bfd",
-                "reference": "bb8d0169ba515acc587d287d5bfef4f4d9d48bfd",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/1f5e436d0078ca6abbcb07e5e08bcef126a8a14f",
+                "reference": "1f5e436d0078ca6abbcb07e5e08bcef126a8a14f",
                 "shasum": ""
             },
             "require": {
@@ -3271,7 +3270,7 @@
                 "phpstorm",
                 "sublime"
             ],
-            "time": "2015-02-05 17:11:23"
+            "time": "2015-02-12 09:50:01"
         },
         {
             "name": "fzaninotto/faker",
@@ -3279,12 +3278,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "81e4eccea302300ac0c69c7ed04c94e29f580633"
+                "reference": "80c1424e6522a3303d320b611647fa6fbc29a8e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/81e4eccea302300ac0c69c7ed04c94e29f580633",
-                "reference": "81e4eccea302300ac0c69c7ed04c94e29f580633",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/80c1424e6522a3303d320b611647fa6fbc29a8e4",
+                "reference": "80c1424e6522a3303d320b611647fa6fbc29a8e4",
                 "shasum": ""
             },
             "require": {
@@ -3323,7 +3322,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-01-27 08:16:46"
+            "time": "2015-02-12 21:08:01"
         },
         {
             "name": "maximebf/debugbar",
@@ -3662,7 +3661,6 @@
         "barryvdh/laravel-ide-helper": 20
     },
     "prefer-stable": false,
-    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }
