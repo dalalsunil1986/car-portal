@@ -103,8 +103,8 @@
                                 <div class="row">
                                     <div class="form-group">
                                         <div class="map-wrapper">
-                                            <div id="map" style="height: 400px;"></div>
                                             <div class="small">You can drag and drop the marker to the correct location</div>
+                                            <div id="map" style="height: 400px;"></div>
                                             <input id="addresspicker_map" name="addresspicker_map" class="form-control" placeholder="Type the Street Address or drag and drop the map marker to the correct location">
                                             {!! Form::hidden('latitude',null, array('id' => 'latitude')) !!}
                                             {!! Form::hidden('longitude',null, array('id' => 'longitude')) !!}
@@ -119,13 +119,15 @@
                                         <div class="col-xs-10">
                                             <input type="file" name="photos[]" id="photos" class="multi max-5 accept-jpg|png maxsize-2048 with-preview" maxlength="5"/>
                                         </div>
+
+
+                                        <div class="clearfix pull-right">
+                                            <input type="checkbox" name="terms" id="terms" class="required terms_checkbox" checked>
+                                            <span>I agree to <a href="">Terms of Service</a></span>
+                                        </div>
+
                                     </div>
 
-                                </div>
-
-                                <div class="clearfix pull-right">
-                                    <input type="checkbox" name="terms" id="terms" class="required terms_checkbox" checked>
-                                    <span>I agree to <a href="">Terms of Service</a></span>
                                 </div>
 
                                 <div class="row">
