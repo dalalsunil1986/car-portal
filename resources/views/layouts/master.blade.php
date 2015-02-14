@@ -1,5 +1,5 @@
 <!DOCTYPE html >
-<html lang="en"  ng-app='app' ng-hint ng-cloak>
+<html lang="en"  ng-app='app' ng-cloak>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -55,7 +55,8 @@
     {!! HTML::script('packages/bootstrap/dist/js/bootstrap.js') !!}
 
     {!! Html::script('packages/angular/angular.js') !!}
-    {!! Html::script('packages/angular-hint/hint.js') !!}
+    {!! Html::script('packages/angular-bootstrap/ui-bootstrap.js') !!}
+    {!! Html::script('packages/angular-bootstrap/ui-bootstrap-tpls.js') !!}
     {!! Html::script('packages/angular-animate/angular-animate.js') !!}
     {!! Html::script('packages/angular-sanitize/angular-sanitize.js') !!}
     {!! Html::script('packages/angular-resource/angular-resource.js') !!}
@@ -70,7 +71,6 @@
 
     {!! Html::script('app/controllers/FavoritesController.js') !!}
     {!! Html::script('app/services/FavoriteService.js') !!}
-    {!! Html::script('app/services/NotificationService.js') !!}
     <!-- end angular -->
 
     <!-- custom scripts -->

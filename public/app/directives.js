@@ -1,36 +1,39 @@
 angular.module('app').directive('carResults', function () {
     return {
-        restrict: "A",
+        restrict: "EA",
+        replace: true,
+        scope: true,
         templateUrl: '/app/views/cars/result.html'
     }
 });
 
 angular.module('app').directive('priceSlider', function () {
     return {
-        restrict: 'A',
+        restrict: 'EA',
+        scope: true,
+        replace: true,
         link: function (scope, element) {
             var moved = false;
-            var from = scope.priceFrom;
-            var to = scope.priceTo;
             element.ionRangeSlider({
-                min: 500,
-                max: 50000,
-                from: from,
-                to: to,
-                type: 'double',
-                step: 200,
-                postfix: " KD",
-                maxPostfix: "+",
+                min: scope.slider.priceMin,
+                max: scope.slider.priceMax,
+                type: scope.slider.type,
+                step: scope.slider.priceStep,
+                postfix: scope.slider.pricePostfix,
+                maxPostfix: scope.slider.maxPostfix,
+                from: scope.filters.priceFrom,
+                to: scope.filters.priceTo,
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
-                    scope.priceFrom = obj.fromNumber;
-                    scope.priceTo = obj.toNumber;
                     _.defer(function () {
                         scope.$apply();
                     });
                 },
-                onFinish: function () { // callback, is called once, after slider finished it's work
-                    scope.getIndex();
+                onFinish: function (obj) { // callback, is called once, after slider finished it's work
+                    scope.filters.priceFrom = obj.fromNumber;
+                    scope.filters.priceTo = obj.toNumber;
+                    scope.resetValues();
+                    scope.getCars();
                 }
             });
 
@@ -40,32 +43,32 @@ angular.module('app').directive('priceSlider', function () {
 
 angular.module('app').directive('mileageSlider', function () {
     return {
-        restrict: 'A',
+        restrict: 'EA',
+        scope: true,
+        replace: true,
         link: function (scope, element) {
-
             var moved = false;
-            var from = scope.mileageFrom;
-            var to = scope.mileageTo;
             element.ionRangeSlider({
-                min: 1000,
-                max: 150000,
-                from: from,
-                to: to,
-                type: 'double',
-                step: 5000,
-                postfix: " KM",
-                maxPostfix: "+",
-                minPostfix: "-",
+                min: scope.slider.mileageMin,
+                max: scope.slider.mileageMax,
+                type: scope.slider.type,
+                step: scope.slider.mileageStep,
+                postfix: scope.slider.mileagePostfix,
+                maxPostfix: scope.slider.maxPostfix,
+                minPostfix: scope.slider.minPostfix,
+                from: scope.filters.mileageFrom,
+                to: scope.filters.mileageTo,
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
-                    scope.mileageFrom = obj.fromNumber;
-                    scope.mileageTo = obj.toNumber;
                     _.defer(function () {
                         scope.$apply();
                     });
                 },
-                onFinish: function () { // callback, is called once, after slider finished it's work
-                    scope.getIndex();
+                onFinish: function (obj) { // callback, is called once, after slider finished it's work
+                    scope.resetValues();
+                    scope.filters.mileageFrom = obj.fromNumber;
+                    scope.filters.mileageTo = obj.toNumber;
+                    scope.getCars();
                 }
             });
 
@@ -75,31 +78,30 @@ angular.module('app').directive('mileageSlider', function () {
 
 angular.module('app').directive('yearSlider', function () {
     return {
-        restrict: 'A',
+        restrict: 'EA',
+        scope: true,
+        replace: true,
         link: function (scope, element) {
-
             var moved = false;
-            var from = scope.yearFrom;
-            var to = scope.yearTo;
             element.ionRangeSlider({
-                min: 1970,
-                max: 2015,
-                from: from,
-                to: to,
-                type: 'double',
-                step: 1,
-                prettify: false,
-                maxPostfix: "+",
+                min: scope.slider.yearMin,
+                max: scope.slider.yearMax,
+                type: scope.slider.type,
+                step: scope.slider.yearStep,
+                maxPostfix: scope.slider.maxPostfix,
+                from: scope.filters.yearFrom,
+                to: scope.filters.yearTo,
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
-                    scope.yearFrom = obj.fromNumber;
-                    scope.yearTo = obj.toNumber;
                     _.defer(function () {
                         scope.$apply();
                     });
                 },
-                onFinish: function () { // callback, is called once, after slider finished it's work
-                    scope.getIndex();
+                onFinish: function (obj) { // callback, is called once, after slider finished it's work
+                    scope.resetValues();
+                    scope.filters.yearFrom = obj.fromNumber;
+                    scope.filters.yearTo = obj.toNumber;
+                    scope.getCars();
                 }
             });
 
@@ -114,19 +116,29 @@ favoriteTpl.$inject = ['FavoriteService'];
 function favoriteTpl(FavoriteService) {
     return {
         restrict: 'EA',
-        templateUrl: 'app/views/partials/favorite-tpl.html',
+        templateUrl: '/app/views/partials/favorite-tpl.html',
         scope: {
             favoreableType: '@',
-            favoreableId: '@'
+            favoreableId: '@',
+            favorite: '='
         },
-        link: function link(scope, element) {
+        link: function link(scope) {
+            // format of scope.favorite = { id: 1, user_id: 1, favoriteable_id: 30, favoriteable_type: "Car", created_at: "2015-02-13 09:38:20", updated_at: "2015-02-13 09:38:20", deleted_at: null }
+            if (typeof scope.favorite != 'object') {
+                return false;
+            }
             scope.save = function () {
                 var postData = {
                     "favoriteable_id": scope.favoreableId,
                     "favoriteable_type": scope.favoreableType
                 };
-                FavoriteService.save(postData).then(function () {
-                    element.html('Favorited').addClass('text-muted text-center');
+                var response = FavoriteService.save(postData);
+                scope.favorite = response;
+            };
+
+            scope.destroy = function () {
+                FavoriteService.destroy(scope.favorite).then(function (data) {
+                    scope.favorite = null;
                 });
             };
         }
@@ -152,132 +164,3 @@ function favoritePanel(FavoriteService) {
     }
 
 }
-
-angular.module('app').directive('notifyButton', notifyButton);
-
-notifyButton.$inject = ['CarService'];
-
-function notifyButton(CarService) {
-    return {
-        restrict: 'EA',
-        templateUrl: '/app/views/partials/favorite-panel.html',
-        link: function (scope) {
-            scope.destroy = function (favorite) {
-                FavoriteService.delete(favorite).then(function (result) {
-                    //element.fadeOut(1000);
-                });
-            };
-        }
-    }
-}
-
-//angular.module('app').directive('formModal', ['$http', function($http) {
-//    return {
-//        scope: {
-//            formObject: '=',
-//            formErrors: '=',
-//            title: '@',
-//            template: '@',
-//            okButtonText: '@',
-//            formSubmit: '&'
-//        },
-//        compile: function(element, cAtts){
-//            var template;
-//
-//            $http.get('templates/form_modal.html')
-//                .success(function(response) {
-//                    template = response;
-//                });
-//
-//        }
-//    }
-//}]);
-
-//angular.module('app').directive('formModal', ['$http', '$compile', function($http, $compile) {
-//    return {
-//        scope: {
-//            formObject: '=',
-//            formErrors: '=',
-//            title: '@',
-//            template: '@',
-//            okButtonText: '@',
-//            formSubmit: '&'
-//        },
-//        compile: function(element, cAtts){
-//        var template,
-//            $element,
-//            loader;
-//
-//        loader = $http.get('app/views/partials/modal.html')
-//            .success(function(data) {
-//                template = data;
-//            });
-//
-//        //return the Link function
-//        return function(scope, element, lAtts) {
-//            loader.then(function() {
-//                //compile templates/form_modal.html and wrap it in a jQuery object
-//                $element = $( $compile(template)(scope) );
-//            });
-//
-//            //called by form_modal.html cancel button
-//            scope.close = function() {
-//                $element.modal('hide');
-//            };
-//
-//            //called by form_modal.html form ng-submit
-//            scope.submit = function() {
-//                var result = scope.formSubmit();
-//
-//                if (Object.isObject(result)) {
-//                    result.success(function() {
-//                        $element.modal('hide');
-//                    });
-//                } else if (result === false) {
-//                    //noop
-//                } else {
-//                    $element.modal('hide');
-//                }
-//            };
-//
-//            element.on('click', function(e) {
-//                e.preventDefault();
-//                $element.modal('show');
-//            });
-//        };
-//    }
-//}
-//}]);
-
-angular.module('app').directive('modal', function () {
-    return {
-        template: '<div class="modal fade">' +
-        '<div class="modal-body" ng-transclude></div>',
-        restrict: 'E',
-        transclude: true,
-        replace:true,
-        scope:true,
-        link: function postLink(scope, element, attrs) {
-            scope.title = attrs.title;
-
-            scope.$watch(attrs.visible, function(value){
-                if(value == true)
-                    $(element).modal('show');
-                else
-                    $(element).modal('hide');
-            });
-
-            $(element).on('shown.bs.modal', function(){
-                scope.$apply(function(){
-                    scope.$parent[attrs.visible] = true;
-                });
-            });
-
-            $(element).on('hidden.bs.modal', function(){
-                scope.$apply(function(){
-                    scope.$parent[attrs.visible] = false;
-                });
-            });
-        }
-    };
-});

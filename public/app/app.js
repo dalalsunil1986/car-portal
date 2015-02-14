@@ -4,7 +4,8 @@ angular
         'ngSanitize',
         'ui.select',
         'infinite-scroll',
-        'ngResource'
+        'ngResource',
+        'ui.bootstrap'
     ]);
 
 //set the angular tags to {[ ]} to avoid conflict with laravel blade tags

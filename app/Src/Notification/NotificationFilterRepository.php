@@ -1,20 +1,24 @@
-<?php namespace App\Src\Car\Repository;
+<?php namespace App\Src\Notification;
 
 use App\Core\BaseRepository;
 use App\Core\CrudableTrait;
-use App\Src\Car\CarMake;
 use Illuminate\Support\MessageBag;
 
-class CarMakeRepository extends BaseRepository  {
+class NotificationFilterRepository extends BaseRepository  {
 
     use CrudableTrait;
 
     public $model;
 
-    public function __construct(CarMake $model)
+    /**
+     * @param NotificationFilter $model
+     */
+    public function __construct(NotificationFilter $model)
     {
         parent::__construct(new MessageBag);
 
         $this->model = $model;
     }
+
+
 }

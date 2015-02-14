@@ -1,9 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Response;
+use App\Events\CarWasPosted;
 use App\Src\Car\CarRepository;
 use App\Src\Car\Repository\CarBrandRepository;
 use App\Src\Car\Repository\CarMakeRepository;
@@ -12,6 +9,12 @@ use App\Src\Car\Repository\CarTypeRepository;
 use App\Src\Favorite\FavoriteRepository;
 use App\Src\Photo\PhotoRepository;
 use App\Src\Tag\TagRepository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 
 class CarsController extends Controller {
 
@@ -33,7 +36,7 @@ class CarsController extends Controller {
 
     public function show($id)
     {
-        $car = $this->carRepository->model->with(['model.brand', 'user', 'thumbnail', 'photos'])->find($id);
+        $car = $this->carRepository->model->with(['model.brand', 'user', 'thumbnail', 'photos','favorited'])->find($id);
 
         return view('module.cars.view', compact('car'));
     }
@@ -54,20 +57,22 @@ class CarsController extends Controller {
     /**
      * @param PhotoRepository $photoRepository
      * @param TagRepository $tagRepository
+     * @param Request $request
      * @return mixed
+     * @throws \Exception
      * @internal param PostCarRequest $request
      */
-    public function store(PhotoRepository $photoRepository, TagRepository $tagRepository)
+    public function store(PhotoRepository $photoRepository, TagRepository $tagRepository, Request $request)
     {
-        $val    = $this->carRepository->getCreateForm();
-        $userId = Auth::user()->id; // todo: replace with Auth::user()->id;
+        $val  = $this->carRepository->getCreateForm();
+        $user = Auth::user(); // todo: replace with Auth::user();
 
         if ( !$val->isValid() ) {
 
             return Redirect::back()->with('errors', $val->getErrors())->withInput();
         }
 
-        $car = $this->carRepository->create(array_merge(['user_id' => $userId], $val->getInputData()));
+        $car = $this->carRepository->create(array_merge(['user_id' => $user->id], $val->getInputData()));
 
         if ( $car ) {
             // upload the file to the server
@@ -84,6 +89,9 @@ class CarsController extends Controller {
             // save the file in the db
             $tags = is_array(Input::get('tags')) ? Input::get('tags') : [];
             if ( !(empty($tags)) ) $tagRepository->attach($car, $tags);
+
+            // fire notify user filter event
+            Event::fire(new CarWasPosted($car, $user, $request));
         }
 
         return Redirect::action('CarsController@edit', [$car->id, '#optionals'])->with('success', 'Saved');
@@ -162,7 +170,7 @@ class CarsController extends Controller {
         $yearTo      = Input::get('year-to');
         $maxPrice    = 50000;
         $maxYear     = date('Y');
-        $maxMileage  = 150000;
+        $maxMileage  = 300000;
 
         if ( !(empty($getMakes)) || !(empty($getBrands)) || !(empty($getModels)) || !(empty($getTypes)) || !(empty($priceFrom)) || !(empty($yearFrom)) || !(empty($mileageFrom)) ) {
 
@@ -171,7 +179,7 @@ class CarsController extends Controller {
             $modelArray = array_filter(explode(',', $getModels));
             $typeArray  = array_filter(explode(',', $getTypes));
 
-            $cars = $this->carRepository->model->with(['thumbnail'])
+            $cars = $this->carRepository->model->with(['thumbnail','favorited'])
                 // start querying
                 ->where(function ($query) use ($makeArray, $brandArray, $modelArray, $typeArray, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $maxMileage, $maxPrice, $maxYear) {
                     if ( count($makeArray) ) {
@@ -218,7 +226,7 @@ class CarsController extends Controller {
 
                 })->paginate(10);
         } else {
-            $cars = $this->carRepository->model->with(['thumbnail'])->paginate(10);
+            $cars = $this->carRepository->model->with(['thumbnail','favorited'])->paginate(10);
         }
 
         return $cars;
@@ -416,7 +424,7 @@ class CarsController extends Controller {
      * @param CarModelRepository $carModelRepository
      * @return array
      */
-    public function getNotify(CarMakeRepository $carMakeRepository, CarBrandRepository $carBrandRepository, CarTypeRepository $carTypeRepository, CarModelRepository $carModelRepository)
+    public function getFilterNames(CarMakeRepository $carMakeRepository, CarBrandRepository $carBrandRepository, CarTypeRepository $carTypeRepository, CarModelRepository $carModelRepository)
     {
         // get the inputs and make it an array
         $getMakes  = array_filter(explode(',', Input::get('make')));

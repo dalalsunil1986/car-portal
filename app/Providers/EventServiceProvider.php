@@ -1,5 +1,7 @@
 <?php namespace App\Providers;
 
+use App\Events\CarWasPosted;
+use App\Handlers\Events\CarFilterNotification;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -11,9 +13,13 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
-		],
+//		'App\Events\CarWasPosted' => [
+//			'App\Handlers\Events\CarFilterNotification@handle',
+//		],
+		CarWasPosted::class => [
+			CarFilterNotification::class
+		]
+
 	];
 
 	/**

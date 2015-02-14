@@ -20,7 +20,7 @@
             </div>
             <div class="result-entry">
                 <!--SAMPLE ROW-->
-                <div infinite-scroll="getIndex()" infinite-scroll-distance='0' infinite-scroll-disabled='loading'
+                <div infinite-scroll="getCars()" infinite-scroll-distance='0' infinite-scroll-disabled='loading'
                      infinite-scroll-parent="true"
                      infinite-scroll-immediate-check="false">
                     <div id="Hf31x6{[car.id]}" class="my-repeat-animation" ng-repeat="car in cars | orderBy:sortorder ">
@@ -41,8 +41,9 @@
                                     <div class="asking text-center">Asking Price</div>
                                     <div class="price-cost text-center">{[ car.price ]}</div>
 
-                                    <favorite-tpl favoreable-type="Car" favoreable-id="{[car.id]}"/>
+                                    <favorite-tpl favorite="car.favorited" favoreable-type="Car" favoreable-id="{[car.id]}"/>
                                     </favorite-tpl>
+
                                 </div>
 
                                 <div class="col-sm-6 col-sm-pull-3 column info-box">

@@ -1,4 +1,10 @@
 <div class="interested-button text-center">
-	<img src="/assets/img/icons/plus_icon.png" class="int-icon" style="width:14;height:13"/>
-	<span ng-click="save(car)"> Favorite</span>
+	<div ng-show="favorite">
+		<img ng-src="/assets/img/icons/remove-icon.png" class="int-icon" style="width:14px;height:13px"/>
+		<span ng-click="destroy(car.favorited)"> Remove</span>
+	</div>
+	<div ng-hide="favorite">
+		<img ng-src="/assets/img/icons/plus_icon.png" class="int-icon" style="width:14px;height:13px"/>
+		<span ng-click="save(car.favorited)"> Favorite</span>
+	</div>
 </div>

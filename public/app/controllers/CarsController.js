@@ -2,50 +2,62 @@ angular
     .module('app')
     .controller('CarsController', CarsController);
 
-CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', 'NotificationService'];
+CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', '$modal','NotificationService'];
 
-function CarsController($scope, CarService, $location, $anchorScroll, NotificationService) {
+function CarsController($scope, CarService, $location, $anchorScroll, $modal, NotificationService) {
 
-    $scope.filter = {};
-    $scope.filter.selectedMakes = [];
-    $scope.filter.selectedBrands = [];
-    $scope.filter.selectedTypes = [];
-    $scope.filter.selectedModels = [];
+    $scope.filters = {};
+    $scope.slider = {};
 
-    $scope.selectedMakeNames = {};
-    $scope.selectedBrandNames = {};
-    $scope.selectedTypeNames = {};
-    $scope.selectedModelNames = {};
+    // Directive Vars
+    $scope.slider.type = 'double';
+    $scope.slider.maxPostfix = " +";
+    $scope.slider.minPostfix = " -";
 
-    $scope.showModal = false;
+    $scope.slider.mileageMin = 5000;
+    $scope.slider.mileageMax = 300000;
+    $scope.slider.mileageStep = 3000;
+    $scope.slider.mileagePostfix = " KM";
 
-    $scope.toggleModal = function () {
-        $scope.showModal = !$scope.showModal;
-        if($scope.showModal) {
-            $scope.getNotify();
-        }
-    };
+    $scope.slider.priceMin = 1000;
+    $scope.slider.priceMax = 50000;
+    $scope.slider.priceStep = 500;
+    $scope.slider.pricePostfix = " KD";
 
-    $scope.getNotify = function() {
-        NotificationService.getData($scope.filter.selectedMakes, $scope.filter.selectedBrands, $scope.filter.selectedTypes, $scope.filter.selectedModels)
-            .then(function (data) {
-                // GET the makes,brands,models,types with unique values, excluding the values which are already selected
-                $scope.selectedMakeNames = data.results.makes;
-                $scope.selectedBrandNames = data.results.brands;
-                $scope.selectedTypeNames = data.results.types;
-                $scope.selectedModelNames = data.results.models;
-            }
-        );
-    }
+    $scope.slider.yearMin = 1970;
+    $scope.slider.yearMax = 2015;
+    $scope.slider.yearStep = 1;
+
+    //filters
+    $scope.filters.type = 'car';
+
+    // Select Makes,Brands,Types,Models For Car Search Filter
+    $scope.filters.selectedMakes = [];
+    $scope.filters.selectedBrands = [];
+    $scope.filters.selectedTypes = [];
+    $scope.filters.selectedModels = [];
+
+    // Get the Names of Selected Filters
+    $scope.filters.selectedMakeNames = [];
+    $scope.filters.selectedBrandNames = [];
+    $scope.filters.selectedTypeNames = [];
+    $scope.filters.selectedModelNames = [];
+
+    //Slider Filters
+    $scope.filters.priceFrom = 1000;
+    $scope.filters.priceTo = 10000;
+
+    $scope.filters.mileageFrom = 6000;
+    $scope.filters.mileageTo = 100000;
+
+    $scope.filters.yearFrom = 2005;
+    $scope.filters.yearTo = 2014;
 
     $scope.initCars = function () {
 
-        $scope.page = 0;
-        $scope.cars = [];
-        $scope.hasRecord = true;
-        $scope.loading = false;
+        $scope.resetValues();
 
-        CarService.getFilter($scope.filter.selectedMakes, $scope.filter.selectedBrands, $scope.filter.selectedTypes, $scope.filter.selectedModels)
+        CarService.getFilter($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels)
             .then(function (data) {
                 // GET the makes,brands,models,types with unique values, excluding the values which are already selected
                 $scope.makes = data.results.makes;
@@ -53,23 +65,24 @@ function CarsController($scope, CarService, $location, $anchorScroll, Notificati
                 $scope.types = data.results.types;
                 $scope.models = data.results.models;
                 // Selected Values
-                $scope.filter.selectedBrands = data.results.brandsArray;
-                $scope.filter.selectedModels = data.results.modelsArray;
+                $scope.filters.selectedBrands = data.results.brandsArray;
+                $scope.filters.selectedModels = data.results.modelsArray;
 
-                $scope.getIndex();
+                // reset page and other initial loading values
+                // load cars
+                $scope.getCars();
             }
         );
     };
 
-    $scope.getIndex = function () {
-
+    $scope.getCars = function () {
         $scope.page++;
 
         if ($scope.hasRecord) {
 
             $scope.loading = true;
 
-            CarService.getIndex($scope.filter.selectedMakes, $scope.filter.selectedBrands, $scope.filter.selectedTypes, $scope.filter.selectedModels, $scope.priceFrom, $scope.priceTo, $scope.mileageFrom, $scope.mileageTo, $scope.yearFrom, $scope.yearTo, $scope.page).then(function (response) {
+            CarService.getIndex($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels, $scope.filters.priceFrom, $scope.filters.priceTo, $scope.filters.mileageFrom, $scope.filters.mileageTo, $scope.filters.yearFrom, $scope.filters.yearTo, $scope.page).then(function (response) {
 
                 $scope.sortorder = "-created_at";
 
@@ -90,19 +103,71 @@ function CarsController($scope, CarService, $location, $anchorScroll, Notificati
                 if (response.next_page_url == null) {
                     $scope.hasRecord = false;
                 }
-
                 $scope.loading = false;
-
             });
-
         }
-
     };
 
-    // initially call on load
-    $scope.initCars();
+    $scope.getFilterNames = function () {
+        CarService.getFilterNames($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels)
+            .then(function (data) {
+                // GET the makes,brands,models,types with unique values, excluding the values which are already selected
+                $scope.filters.selectedMakeNames = data.results.makes;
+                $scope.filters.selectedBrandNames = data.results.brands;
+                $scope.filters.selectedTypeNames = data.results.types;
+                $scope.filters.selectedModelNames = data.results.models;
+            }
+        );
+    }
 
-    $scope.$watch('filter.selectedMakes', function (newVal, oldVal) {
+    $scope.openModal = function (size, selectedFilters) {
+
+        $scope.getFilterNames();
+
+        var modalInstance = $modal.open({
+            templateUrl: '/app/views/partials/notification-tpl.html',
+            controller: function ($scope, $modalInstance, filters) {
+                $scope.filters = filters;
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+                $scope.notifyMe = function () {
+                    NotificationService.create($scope.filters.type, $scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels, $scope.filters.priceFrom, $scope.filters.priceTo, $scope.filters.mileageFrom, $scope.filters.mileageTo, $scope.filters.yearFrom, $scope.filters.yearTo)
+                        .then(function (data) {
+                        }
+                    );
+                    $modalInstance.dismiss(alert('you will be shortly notified'));
+                };
+            },
+            size: size,
+            resolve: {
+                filters: function () {
+                    return $scope.filters = selectedFilters;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedFilters) {
+            $scope.filters = selectedFilters;
+        }, function () {
+            console.log($scope.filters.selectedMakeNames);
+        });
+    };
+
+    $scope.resetValues = function () {
+        $scope.page = 0;
+        $scope.cars = [];
+        $scope.hasRecord = true;
+        $scope.loading = false;
+    }
+
+    $scope.refreshCars = function () {
+        $scope.resetValues();
+        $scope.getCars();
+    }
+
+    // Model Watchers
+    $scope.$watch('filters.selectedMakes', function (newVal, oldVal) {
         if (!(newVal)) return;
 
         if (oldVal == newVal) return;
@@ -111,7 +176,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, Notificati
 
     }, true);
 
-    $scope.$watch('filter.selectedBrands', function (newVal, oldVal) {
+    $scope.$watch('filters.selectedBrands', function (newVal, oldVal) {
 
         if (!(newVal)) return;
 
@@ -121,7 +186,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, Notificati
 
     }, true);
 
-    $scope.$watch('filter.selectedTypes', function (newVal, oldVal) {
+    $scope.$watch('filters.selectedTypes', function (newVal, oldVal) {
         if (!(newVal)) return;
 
         if (oldVal == newVal) return;
@@ -130,7 +195,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, Notificati
 
     }, true);
 
-    $scope.$watch('filter.selectedModels', function (newVal, oldVal) {
+    $scope.$watch('filters.selectedModels', function (newVal, oldVal) {
 
         if (!(newVal)) return;
 
@@ -139,14 +204,5 @@ function CarsController($scope, CarService, $location, $anchorScroll, Notificati
         $scope.initCars();
 
     }, true);
-
-    $scope.priceFrom = 1000;
-    $scope.priceTo = 50000;
-
-    $scope.mileageFrom = 5000;
-    $scope.mileageTo = 150000;
-
-    $scope.yearFrom = 1970;
-    $scope.yearTo = 2014;
 
 }

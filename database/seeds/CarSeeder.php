@@ -22,7 +22,7 @@ class CarSeeder extends Seeder {
 
         for($i =0 ; $i < 50; $i++) {
             Car::create([
-                'user_id' => 1,
+                'user_id' => 2,
                 'model_id' => CarModel::orderBY(DB::raw('RAND()'))->first()->id,
                 'year' => $faker->year,
                 'mileage' => $faker->numberBetween('5000','20000'),

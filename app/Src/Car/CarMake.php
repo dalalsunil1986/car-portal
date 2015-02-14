@@ -8,7 +8,7 @@ class CarMake extends BaseModel {
     use LocaleTrait;
     public static $name = 'carMake';
 
-    protected $fillable = [];
+    protected $guarded = ['id'];
 
     protected $table = 'car_makes';
 
@@ -20,6 +20,8 @@ class CarMake extends BaseModel {
 
     protected $localeStrings = ['name'];
 
+    protected $morphClass = 'CarMake';
+
     public function brands()
     {
         return $this->hasMany('App\Src\Car\CarBrand', 'make_id');
@@ -30,4 +32,8 @@ class CarMake extends BaseModel {
         return $this->hasManyThrough('App\Src\Car\CarModel', 'App\Src\Car\CarBrand', 'make_id', 'brand_id');
     }
 
+    public function filters()
+    {
+        return $this->morphMany('App\Src\Notification\NotificationFilter', 'filterable');
+    }
 }

@@ -28,4 +28,6 @@ class CarRepository extends BaseRepository {
         return $this->model->with($with);
     }
 
+
+
 }
