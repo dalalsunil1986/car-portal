@@ -3,10 +3,7 @@
 use App\Events\CarWasPosted;
 
 use App\Src\Car\CarRepository;
-use App\Src\Notification\Car\CarNotificationRepository;
 use App\Src\Notification\NotificationRepository;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldBeQueued;
 use Illuminate\Support\Facades\Mail;
 
 class CarFilterNotification {
@@ -62,15 +59,61 @@ class CarFilterNotification {
 
 
         // 1
-        $modelFilters = $carModel->filters->all();
+        $modelFilters = $carModel->filters;
 
-        $brandFilters = $carBrand->filters->all();
+        $brandFilters = $carBrand->filters;
 
-        $makeFilters = $carMake->filters->all();
+        $makeFilters = $carMake->filters;
 
-        $typeFilters = $carType->filters->all();
+        $typeFilters = $carType->filters;
 
-        dd($modelFilters);
+        $mergedFilters = $modelFilters->merge($brandFilters, $makeFilters, $typeFilters);
+
+        $notificationIds = $mergedFilters->lists('notification_id');
+        $notifications   = $this->notificationRepository->model->with(['user'])
+            ->whereIn('id', $notificationIds)
+            ->where('mileage_from', '>', $car->mileage)
+            ->where('mileage_to', '<', $car->mileage)
+            ->where('year_from', '>', $car->year)
+            ->groupBy('user_id')
+//            ->where('year_to', '<', $car->year)
+//            ->where('price_from', '>', $car->price)
+//            ->where('price_to', '<', $car->price)
+            ->get();
+
+        foreach ( $notifications as $notification ) {
+            Mail::send('emails.welcome', [], function ($message) use ($notification) {
+                $message->to($notification->user->email, $notification->user->name)->subject('a car has been posted !');
+            });
+        }
+        dd($notifications->toArray());
+
+//        $notifications   = $this->notificationRepository->model
+//            ->whereIn('id', $notificationIds)
+//            ->where('mileage_from', function ($query) use ($car, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $carRepository) {
+//                if ( $mileageTo <= $carRepository::MAXMILEAGE ) {
+//                    $query->where('mileage_froms', '>', $car->mileage)->where('mileage_to', '<', $car->mileage);
+//                } else {
+//                    $query->where('mileage_from', '>', $car->mileage);
+//                }
+//            })
+//            ->where('year_from', function ($query) use ($car, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $carRepository) {
+//                if ( $yearTo <= $carRepository::MAXYEAR ) {
+//                    $query->where('year_froms', '>', $car->year)->where('year_to', '<', $car->year);
+//                } else {
+//                    $query->where('year_from', '>', $car->year);
+//                }
+//            })
+//            ->where('price_from', function ($query) use ($car, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $carRepository) {
+//
+//                if ( $priceTo <= $carRepository::MAXPRICE ) {
+//                    $query->where('price_from', '>', $car->price)->where('price_to', '<', $car->price);
+//                } else {
+//                    $query->where('price_from', '>', $car->price);
+//                }
+//
+//            })
+//            ->get();
 
     }
 
