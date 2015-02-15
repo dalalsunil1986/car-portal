@@ -77,17 +77,24 @@
 
             <!--Notify Confirmation Panel End-->
 
-            <button ng-click="refreshCars()" class="btn btn-info btn-large col-lg-6 hidden-md hidden-sm hidden-xs filter-btn" >
-                <i class="icon-white fa fa-sort-by-attributes" ></i> Yalla Filter!
+            <button ng-click="refreshCars()" class="btn btn-info btn-large filter-btn col-lg-6  hidden-md hidden-sm hidden-xs filter-btn" >
+                <i class="icon-white fa fa-sort-by-attributes" ></i> Filter!
             </button>
 
             <!--Btn Sm Layout-->
             <button ng-click="refreshCars()" class="btn btn-info btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl filter-btn" >
-                <i class="icon-white fa fa-sort-by-attributes" ></i> Yalla Filter!
+                <i class="icon-white fa fa-sort-by-attributes" ></i> Filter!
             </button>
             <button ng-click="openModal('lg',filters)" class="btn cd-popup-trigger btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl notify-sm notify-btn">
                 <i class="icon-white fa fa-phone  "></i> Notify Me
             </button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 list-block">
+                {!! HTML::image('/assets/img/icons/key.png', null , array('class'=>'shift-link-icon nav-icons')) !!}
+              <span> <a href="cars/create">List your car. It's quick and free!</a></span>
+            </div>
         </div>
 
 

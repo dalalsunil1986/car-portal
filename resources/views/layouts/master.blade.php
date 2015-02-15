@@ -13,7 +13,6 @@
         {!! HTML::style('packages/ionrangeslider/css/ion.rangeSlider.css') !!}
         {!! HTML::style('packages/ionrangeslider/css/ion.rangeSlider.skinFlat.css') !!}
         {!! HTML::style('packages/nanoscroller/bin/css/nanoscroller.css') !!}
-
         {!! HTML::style('assets/css/modules/form.css') !!}
         {!! HTML::style('assets/css/modules/filter.css') !!}
         {!! HTML::style('assets/css/modules/result.css') !!}
@@ -84,8 +83,20 @@
             angular.module("app").constant("CSRF_TOKEN", '{{ csrf_token() }}');
             runSlidebars();
             $(window).resize(runSlidebars);
+
         });
+
+    //init-nanoscroller
+    $(".int-col").click( function(){
+        $(".nano").nanoScroller();
+    });
+
+
+
+
+
     </script>
+
 @show
 
 </body>
