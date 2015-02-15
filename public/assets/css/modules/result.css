@@ -180,8 +180,12 @@ Created on: 7/7/2014 By Vincent.
 .info-box h4 a {
     color: white;
     text-decoration: none;
+    transition: all .3s;
 }
 
+.info-box h4 a:hover {
+    color: rgb(0, 103, 152);
+}
 .car-result-box {
     margin-bottom: 15px;
     width: 100%;
@@ -212,6 +216,52 @@ Created on: 7/7/2014 By Vincent.
     padding-bottom: 3px;
 }
 
+.sort-row .dropdown-menu {
+    margin: 0px 109px 0;
+    border: none;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, .175);
+    webkit-box-shadow: 0 6px 15px rgba(0, 0, 0, .175);
+}
+
+button#dropdownMenu1 {
+    transition: all .3s;
+    margin-top: 0px;
+    background-color:  #ffffff;
+    border: none;
+}
+button#dropdownMenu1:hover {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    background-color:  #ffffff;
+    border: none;
+}
+button#dropdownMenu1:active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    background-color:  rgba(249, 249, 249, 0.5);
+    border: none;
+}
+button#dropdownMenu1:focus {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    background-color:  rgba(249, 249, 249, 0.5);
+    border: none;
+}
+
+.sort-row .btn-default {
+    border-color: #FFF;
+    padding-bottom: 2px;
+    height: 33px;
+    padding-top: 2px;
+    margin-top: 4px;
+}
+
+.sort-row .btn-default:hover {
+   background: #F4F4F4;
+}
+
+#loading{
+    margin: auto;
+    width: 1px;
+    padding-right: 100px;
+}
 .input-small {
     border: none;
     color: black;

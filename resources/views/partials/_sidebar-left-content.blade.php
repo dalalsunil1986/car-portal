@@ -19,6 +19,7 @@
 <!--Start Navigation Links-->
 
 <ul class="nav-links">
+
     <li>
         <a href="{{ action('CarsController@index') }}">
             <div class="icon-container">
@@ -26,6 +27,7 @@
             </div>
             <span class="shift-link-text">Autos</span></a>
     </li>
+
     <li>
         <a href="#">
             <div class="icon-container">
@@ -34,18 +36,41 @@
             <span class="shift-link-text">Jobs</span>
         </a>
     </li>
+
     <li>
         <a href="#">
             <div class="icon-container">
-                {!! HTML::image('/assets/img/icons/directory_icon.png', null , array('class'=>'shift-link-icon nav-icons')) !!}
+                {!! HTML::image('/assets/img/icons/home_icon.png', null , array('class'=>'shift-link-icon nav-icons')) !!}
             </div>
-            <span class="shift-link-text">Direcotry</span>
+            <span class="shift-link-text">Realestate</span>
         </a>
     </li>
+
+    <li>
+        <a href="#">
+            <div class="icon-container">
+                {!! HTML::image('/assets/img/icons/travel-icon.png', null , array('class'=>'shift-link-icon nav-icons')) !!}
+            </div>
+            <span class="shift-link-text">Travel</span>
+        </a>
+    </li>
+
+
+
     <li><a href="#">
             <div class="icon-container">
                 {!! HTML::image('/assets/img/icons/events_icon.png', null , array('class'=>'shift-link-icon nav-icons')) !!}
             </div>
             <span class="shift-link-text">Events</span></a>
     </li>
+
+    <li>
+        <a href="#">
+            <div class="icon-container">
+                {!! HTML::image('/assets/img/icons/electronics-icon.png', null , array('class'=>'shift-link-icon nav-icons')) !!}
+            </div>
+            <span class="shift-link-text">Electroncis</span>
+        </a>
+    </li>
+
 </ul>

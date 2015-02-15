@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+footer, header, menu, nav, section {
     display: block;
 }
 
@@ -414,7 +414,7 @@ h3 {
 }
 
 .int-col:hover {
-    width: 200px;
+    width: 210px;
     -webkit-box-shadow: 2px 1px 0px 20000px  rgba(69, 89, 87, 0.42);
     -moz-box-shadow: 2px 1px 0px 20000px  rgba(69, 89, 87, 0.42);
     box-shadow: 2px 1px 0px 20000px rgba(69, 89, 87, 0.42);
@@ -423,6 +423,33 @@ h3 {
 
 }
 
+.nano {
+    width: 200px;
+    height: 900px;
+}
+
+.nano .content {
+    padding: 10px;
+}
+
+.nano .pane {
+    background: #888;
+    margin-top: 60px;
+}
+
+.nano .slider {
+    background: #111;
+}
+
+
+.nano > .nano-pane {
+    background: rgba(0, 0, 0, 0.11);
+    margin-top: 60px;
+}
+
+.nano > .nano-pane > .nano-slider {
+    background: rgba(12, 122, 113, 1);
+}
 .plus-icon {
     position: fixed;
     display: block;
@@ -1120,3 +1147,31 @@ button.close {
  [ng\:cloak], [ng-cloak], .ng-cloak {
      display: none !important;
  }
+
+
+
+
+ /*Bootstrap Reset*/
+
+.modal-content {
+     -webkit-box-shadow: none;
+     box-shadow:none;
+}
+
+.modal-content {
+    position: relative;
+     background-color: rgba(255, 255, 255, 0);
+     -webkit-background-clip: padding-box;
+     background-clip: padding-box;
+     border: none;
+     border-radius: 0px;
+     outline: 0;
+     -webkit-box-shadow: none;
+     box-shadow:none;
+}
+
+
+.modal-open .modal{
+    overflow: hidden;
+    overflow-y: hidden;
+}

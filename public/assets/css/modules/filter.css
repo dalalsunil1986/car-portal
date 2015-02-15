@@ -32,6 +32,7 @@ label {
     background-color: #0aa699;
     border-color: rgba(219, 219, 219, 0);
     transition: background-color 0.35s ease;
+
 }
 .btn-info:hover{
     background-color: #088B80;
@@ -42,27 +43,9 @@ label {
     background-color: #066b62;
     border-color: rgba(38, 154, 188, 0);
 }
-.btn-large {
-    border-radius: 5px;
+.btn-large{
+    border-radus: 5px;
 }
-
-.nano {
-    width: 200px;
-    height: 600px;
-}
-
-.nano .content {
-    padding: 10px;
-}
-
-.nano .pane {
-    background: #888;
-}
-
-.nano .slider {
-    background: #111;
-}
-
 
 body.modal-open #sb-site {
     position: static;
@@ -78,16 +61,20 @@ body.modal-open #sb-site {
 
 .notify-lg {
     margin-right: 4px;
+    padding-bottom: 8px;
 }
 
 .notify-sm {
     margin-top: 10px;
+
 }
 
 .notify-btn {
     background-color: rgba(38, 136, 110, 0.41);
     color: rgb(255, 255, 255);
     transition: background-color 0.35s ease;
+    border: rgba(38, 136, 110, 0.41);
+
 }
 
 .notify-btn:hover {
@@ -97,6 +84,7 @@ body.modal-open #sb-site {
 .notify-btn:focus {
     background-color: rgba(9, 120, 108, 0.97);
     color: rgb(255, 255, 255);
+    border: rgba(9, 120, 108, 0.97);
 }
 
 
@@ -215,7 +203,7 @@ div#select2-drop {
 }
 .cd-popup h3{
     padding-top: 12px;
-
+    padding-top: 10px;
 }
 .cd-popup-container {
     position: relative;
@@ -254,6 +242,9 @@ div#select2-drop {
     font-weight: bold;
     color: rgb(123, 123, 123);
     font-size: 14px;
+}
+.cd-popup-container h3{
+    padding-top: 12px;
 }
 .cd-popup-container .cd-buttons:after {
     content: "";
@@ -343,10 +334,14 @@ div#select2-drop {
 .notifyMe-notification-bar{
     height: 20px;
     padding: 5px;
-    margin-bottom: 21px;
+    margin-bottom: 25px;
 
 }
-
+span#sms-rate-notify {
+    padding-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
 p.checkbox-title {
     padding: 0;
     color: rgb(92, 92, 92);
@@ -357,6 +352,42 @@ p.checkbox-title {
 dl{
     margin-bottom: 15px;
 }
+
+.notify-checkbox-div {
+    padding-left: 65px;
+}
+
+.notify-checkbox-div input{
+    float: left;
+}
+.notify-checkbox-div span{
+    margin-bottom: 0px;
+    float: left;
+    margin-top: 14px;
+    margin-left: 5px;
+}
+
+.sms{
+    padding-left: 15px;
+}
+
+
+.list-block{
+    width: 80%;
+    border-top: 1px solid rgba(255, 0, 0, 0.18);
+    margin-top: 12px;
+    padding: 0;
+    padding-top: 11px;
+}
+
+.list-block span a{
+    padding-left: 4px;
+    color: rgb(2, 44, 40);
+}
+.list-block img{
+    margin-top: -5px;
+}
+
 /*==================================================
                   Media Queries
 ==================================================*/

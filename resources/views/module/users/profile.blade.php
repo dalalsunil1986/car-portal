@@ -215,15 +215,15 @@
                 <div class="tab-pane" id="posts">
                     <div class="btn-group pull-left clearfix">
                         <button class="btn btn-default dropdown-toggle toggle-reset" data-toggle="dropdown">All <span
-                                    class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Cars</a></li>
-                            <li><a href="#">Jobs</a></li>
-                            <li><a href="#">Property</a></li>
-                            <li><a href="#">Places</a></li>
-                            <li><a href="#">Events</a></li>
-                        </ul>
-                    </div>
+                                class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Cars</a></li>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Property</a></li>
+                        <li><a href="#">Places</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
                     <div class="row item-row post-item">
                         <div class="col-md-8 column title-color">
                             <img class="post-image" src="../img/custom/car-thumb.jpg">
