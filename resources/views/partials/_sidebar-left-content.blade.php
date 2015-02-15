@@ -72,6 +72,5 @@
             <span class="shift-link-text">Electroncis</span>
         </a>
     </li>
-    
 
 </ul>

@@ -10,7 +10,4 @@
     </div>
     </div>
 
-    <script>
-        $(".nano").nanoScroller();
-    </script>
 </div>
