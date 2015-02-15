@@ -87,7 +87,7 @@
         });
 
     //init-nanoscroller
-    $(".int-col").click( function(){
+    $(".int-col").hover( function(){
         $(".nano").nanoScroller();
     });
 
