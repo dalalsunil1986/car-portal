@@ -87,10 +87,10 @@
         });
 
     //init-nanoscroller
-    $(".int-col").hover( function(){
-        $(".nano").nanoScroller();
-    });
-
+//    $(".int-col").hover( function(){
+//        $(".nano").nanoScroller();
+//    });
+//
 
 
 
