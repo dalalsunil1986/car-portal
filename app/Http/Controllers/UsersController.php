@@ -39,7 +39,7 @@ class UsersController extends Controller {
     public function getProfile($id)
     {
         $user = $this->userRepository->model->find($id);
-        return view('modile.users.profile', compact('user'));
+        return view('module.users.profile', compact('user'));
     }
 
     /**

@@ -70,7 +70,7 @@ class CarFilterNotification {
 
         $typeFilters = $carType->filters->all();
 
-        dd($typeFilters);
+        dd($modelFilters);
 
     }
 
