@@ -36,7 +36,7 @@ class CarsController extends Controller {
 
     public function show($id)
     {
-        $car = $this->carRepository->model->with(['model.brand', 'user', 'thumbnail', 'photos','favorited'])->find($id);
+        $car = $this->carRepository->model->with(['model.brand', 'user', 'thumbnail', 'photos', 'favorited'])->find($id);
 
         return view('module.cars.view', compact('car'));
     }
@@ -48,7 +48,7 @@ class CarsController extends Controller {
      */
     public function create(CarModelRepository $carModelRepository, TagRepository $tagRepository)
     {
-        $models = ['' => ''] + $carModelRepository->model->get()->lists('name', 'id');
+        $models = ['' => ''] + $carModelRepository->model->get()->lists('name_en', 'id');
         $tags   = $tagRepository->model->get()->lists('name', 'id');
 
         return view('module.cars.create', compact('models', 'tags'));
@@ -91,7 +91,8 @@ class CarsController extends Controller {
             if ( !(empty($tags)) ) $tagRepository->attach($car, $tags);
 
             // fire notify user filter event
-            Event::fire(new CarWasPosted($car, $user, $request));
+            Event::fire(new CarWasPosted($car, Auth::user(), $request, $this->carRepository));
+
         }
 
         return Redirect::action('CarsController@edit', [$car->id, '#optionals'])->with('success', 'Saved');
@@ -180,7 +181,7 @@ class CarsController extends Controller {
             $modelArray = array_filter(explode(',', $getModels));
             $typeArray  = array_filter(explode(',', $getTypes));
 
-            $cars = $this->carRepository->model->with(['thumbnail','favorited'])
+            $cars = $this->carRepository->model->with(['thumbnail', 'favorited'])
                 // start querying
                 ->where(function ($query) use ($makeArray, $brandArray, $modelArray, $typeArray, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $maxMileage, $maxPrice, $maxYear) {
                     if ( count($makeArray) ) {
@@ -227,7 +228,7 @@ class CarsController extends Controller {
 
                 })->paginate(10);
         } else {
-            $cars = $this->carRepository->model->with(['thumbnail','favorited'])->paginate(10);
+            $cars = $this->carRepository->model->with(['thumbnail', 'favorited'])->paginate(10);
         }
 
         return $cars;

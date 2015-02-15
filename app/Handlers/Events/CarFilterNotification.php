@@ -29,19 +29,12 @@ class CarFilterNotification {
     {
         // find the car filterer's who mathches with the car request
         // send them email
-        $models        = $event->request->model;
-        $mileageFrom   = $event->request->mileage_from;
-        $mileageTo     = $event->request->mileage_to;
-        $priceFrom     = $event->request->price_from;
-        $priceTo       = $event->request->price_to;
-        $yearFrom      = $event->request->year_from;
-        $yearTo        = $event->request->year_to;
-        $carRepository = $event->carRepository;
-        $car           = $event->car;
-        $carModel      = $event->car->model;
-        $carBrand      = $carModel->brand;
-        $carMake       = $carBrand->make;
-        $carType       = $carModel->type;
+        $models   = $event->car->model;
+        $car      = $event->car;
+        $carModel = $event->car->model;
+        $carBrand = $carModel->brand;
+        $carMake  = $carBrand->make;
+        $carType  = $carModel->type;
 
         // task => Notify all users for the filter
         // 1- get all the filters for the car model
@@ -57,8 +50,6 @@ class CarFilterNotification {
 
         // get the users and send them message
 
-
-        // 1
         $modelFilters = $carModel->filters;
 
         $brandFilters = $carBrand->filters;
@@ -72,48 +63,21 @@ class CarFilterNotification {
         $notificationIds = $mergedFilters->lists('notification_id');
         $notifications   = $this->notificationRepository->model->with(['user'])
             ->whereIn('id', $notificationIds)
-            ->where('mileage_from', '>', $car->mileage)
-            ->where('mileage_to', '<', $car->mileage)
-            ->where('year_from', '>', $car->year)
-            ->groupBy('user_id')
-//            ->where('year_to', '<', $car->year)
-//            ->where('price_from', '>', $car->price)
-//            ->where('price_to', '<', $car->price)
+            ->where('mileage_from', '<', $car->mileage)
+//            ->where('mileage_to', '>', $car->mileage)
+            ->where('year_from', '<', $car->year)
+//            ->where('year_to', '>', $car->year)
+            ->where('price_from', '<', $car->price)
+//            ->where('price_to', '>', $car->price)
+//            ->groupBy('user_id')
             ->get();
 
         foreach ( $notifications as $notification ) {
+            dd($notification->user->email);
             Mail::send('emails.welcome', [], function ($message) use ($notification) {
                 $message->to($notification->user->email, $notification->user->name)->subject('a car has been posted !');
             });
         }
-        dd($notifications->toArray());
-
-//        $notifications   = $this->notificationRepository->model
-//            ->whereIn('id', $notificationIds)
-//            ->where('mileage_from', function ($query) use ($car, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $carRepository) {
-//                if ( $mileageTo <= $carRepository::MAXMILEAGE ) {
-//                    $query->where('mileage_froms', '>', $car->mileage)->where('mileage_to', '<', $car->mileage);
-//                } else {
-//                    $query->where('mileage_from', '>', $car->mileage);
-//                }
-//            })
-//            ->where('year_from', function ($query) use ($car, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $carRepository) {
-//                if ( $yearTo <= $carRepository::MAXYEAR ) {
-//                    $query->where('year_froms', '>', $car->year)->where('year_to', '<', $car->year);
-//                } else {
-//                    $query->where('year_from', '>', $car->year);
-//                }
-//            })
-//            ->where('price_from', function ($query) use ($car, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $carRepository) {
-//
-//                if ( $priceTo <= $carRepository::MAXPRICE ) {
-//                    $query->where('price_from', '>', $car->price)->where('price_to', '<', $car->price);
-//                } else {
-//                    $query->where('price_from', '>', $car->price);
-//                }
-//
-//            })
-//            ->get();
 
     }
 

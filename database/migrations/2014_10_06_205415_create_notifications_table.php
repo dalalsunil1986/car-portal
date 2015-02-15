@@ -17,12 +17,12 @@ class CreateNotificationsTable extends Migration {
 			$table->increments('id');
 			$table->string('type')->index(); // JOB,CAR
 			$table->integer('user_id')->unsigned()->index();
-			$table->string('year_from')->nullable();
-			$table->string('year_to')->nullable();
-			$table->string('mileage_from')->nullable();
-			$table->string('mileage_to')->nullable();
-			$table->string('price_from')->nullable();
-			$table->string('price_to')->nullable();
+			$table->integer('year_from')->nullable();
+			$table->integer('year_to')->nullable();
+			$table->integer('mileage_from')->nullable();
+			$table->integer('mileage_to')->nullable();
+			$table->decimal('price_from',6,2)->nullable();
+			$table->decimal('price_to',6,2)->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
