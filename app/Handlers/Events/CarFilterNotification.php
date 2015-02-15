@@ -64,16 +64,15 @@ class CarFilterNotification {
         $notifications   = $this->notificationRepository->model->with(['user'])
             ->whereIn('id', $notificationIds)
             ->where('mileage_from', '<', $car->mileage)
-//            ->where('mileage_to', '>', $car->mileage)
+            ->where('mileage_to', '>', $car->mileage)
             ->where('year_from', '<', $car->year)
-//            ->where('year_to', '>', $car->year)
+            ->where('year_to', '>', $car->year)
             ->where('price_from', '<', $car->price)
-//            ->where('price_to', '>', $car->price)
-//            ->groupBy('user_id')
+            ->where('price_to', '>', $car->price)
+            ->groupBy('user_id')
             ->get();
 
         foreach ( $notifications as $notification ) {
-            dd($notification->user->email);
             Mail::send('emails.welcome', [], function ($message) use ($notification) {
                 $message->to($notification->user->email, $notification->user->name)->subject('a car has been posted !');
             });

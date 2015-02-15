@@ -5,7 +5,10 @@ use App\Events\CarWasPosted;
 use App\Src\Car\Car;
 use App\Src\Car\CarRepository;
 use App\Src\Favorite\FavoriteRepository;
+use App\Src\Notification\Notification;
+use App\Src\Notification\NotificationFilter;
 use App\Src\Notification\NotificationRepository;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
@@ -32,7 +35,7 @@ class NotificationsController extends Controller {
      */
     public function create(Request $request)
     {
-        $this->dispatchFrom(CreateNotification::class,$request);
+        $this->dispatchFrom(CreateNotification::class, $request);
     }
 
     /**
@@ -41,8 +44,38 @@ class NotificationsController extends Controller {
      */
     public function store(Request $request, CarRepository $carRepository)
     {
-        $car = new Car();
-        Event::fire(new CarWasPosted($car->find(6), Auth::user(), $request,$carRepository));
+
+//        $notificationRequest = [
+//            'user_id'      => '1',
+//            'type'=>'Car',
+//            'price_from'   => '2000',
+//            'price_to'     => '3000',
+//            'mileage_from' => '10000',
+//            'mileage_to'   => '200000',
+//            'year_from'    => '2000',
+//            'year_to'      => '2013'
+//        ];
+//
+//        $notification  = new Notification();
+//        $n             = $notification->create($notificationRequest);
+//        $filterRequest = [
+//            'notification_id' => $n->id,
+//            'filterable_id'   => '2',
+//            'filterable_type' => 'CarModel'
+//        ];
+//        $filter = new NotificationFilter();
+//        $filter->create($filterRequest);
+
+        $carModel           = new Car();
+        $carArray            = [
+            'model_id' => '2',
+            'price'    => '2500',
+            'mileage'  => '30000',
+            'year'     => '2010'
+        ];
+        $car = $carModel->create($carArray);
+
+        Event::fire(new CarWasPosted($car, Auth::user(), $request, $carRepository));
 //        $car  = $this->carRepository->model->first(); // replace this with added car
 //        $user = Auth::user();
 //        Event::fire(new CarWasPosted($car, $user, $request));
