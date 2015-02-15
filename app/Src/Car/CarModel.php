@@ -32,9 +32,9 @@ class CarModel extends BaseModel {
         return $this->belongsTo('App\Src\Car\CarBrand', 'brand_id');
     }
 
-    public function make()
+    public function type()
     {
-        return $this->hasManyThrough('App\Src\Car\Car', 'User');
+        return $this->belongsTo('App\Src\Car\CarType', 'type_id');
     }
 
     public function filters()
