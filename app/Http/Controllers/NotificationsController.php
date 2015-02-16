@@ -39,49 +39,56 @@ class NotificationsController extends Controller {
     }
 
     /**
+     * @param NotificationRepository $notificationRepository
+     */
+    public function store(NotificationRepository $notificationRepository)
+    {
+        $params = Input::all();
+        $params['user_id'] = Auth::user()->id;
+        $notificationRepository->create($params);
+    }
+
+    /**
      * @param Request $request
      * @param CarRepository $carRepository
+     * Test Notification
      */
-    public function store(Request $request, CarRepository $carRepository)
+    public function test(Request $request, CarRepository $carRepository)
     {
+        $filterModel = new NotificationFilter();
+        $notificationModel  = new Notification();
 
-//        $notificationRequest = [
-//            'user_id'      => '1',
-//            'type'=>'Car',
-//            'price_from'   => '2000',
-//            'price_to'     => '3000',
-//            'mileage_from' => '10000',
-//            'mileage_to'   => '200000',
-//            'year_from'    => '2000',
-//            'year_to'      => '2013'
-//        ];
-//
-//        $notification  = new Notification();
-//        $n             = $notification->create($notificationRequest);
-//        $filterRequest = [
-//            'notification_id' => $n->id,
-//            'filterable_id'   => '2',
-//            'filterable_type' => 'CarModel'
-//        ];
-//        $filter = new NotificationFilter();
-//        $filter->create($filterRequest);
+        $notificationArray = [
+            'user_id'      => '1',
+            'type'=>'Car',
+            'price_from'   => '2000',
+            'price_to'     => '3000',
+            'mileage_from' => '10000',
+            'mileage_to'   => '200000',
+            'year_from'    => '2000',
+            'year_to'      => '2013'
+        ];
 
-        $carModel           = new Car();
-        $carArray            = [
+        $notification  = $notificationModel->create($notificationArray);
+
+        $filterArray = [
+            'notification_id' => $notification->id,
+            'filterable_id'   => '2',
+            'filterable_type' => 'CarModel'
+        ];
+        $filterModel->create($filterArray);
+
+        $carModel = new Car();
+        $carArray = [
             'model_id' => '2',
             'price'    => '2500',
             'mileage'  => '30000',
             'year'     => '2010'
         ];
-        $car = $carModel->create($carArray);
+        $car      = $carModel->create($carArray);
 
         Event::fire(new CarWasPosted($car, Auth::user(), $request, $carRepository));
-//        $car  = $this->carRepository->model->first(); // replace this with added car
-//        $user = Auth::user();
-//        Event::fire(new CarWasPosted($car, $user, $request));
 
-//        $params = Input::all();
-//        $params['user_id'] = Auth::user()->id;
-//        $carNotificationRepository->create($params);
     }
+
 }

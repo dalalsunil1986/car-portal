@@ -61,6 +61,7 @@ class CarFilterNotification {
         $mergedFilters = $modelFilters->merge($brandFilters, $makeFilters, $typeFilters);
 
         $notificationIds = $mergedFilters->lists('notification_id');
+
         $notifications   = $this->notificationRepository->model->with(['user'])
             ->whereIn('id', $notificationIds)
             ->where('mileage_from', '<', $car->mileage)

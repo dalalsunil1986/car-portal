@@ -108,10 +108,10 @@ class CreateNotification extends Command implements SelfHandling {
      */
     public function handle(NotificationRepository $notificationRepository, CarMakeRepository $carMakeRepository, CarBrandRepository $carBrandRepository, CarModelRepository $carModelRepository, CarTypeRepository $carTypeRepository, NotificationFilterRepository $notificationFilterRepository)
     {
-        $makes  = array_filter(explode(',', $this->make));
-        $brands = array_filter(explode(',', $this->brand));
-        $models = array_filter(explode(',', $this->model));
-        $types  = array_filter(explode(',', $this->type));
+        $makes  = array_filter($this->make);
+        $brands = array_filter($this->brand);
+        $models = array_filter($this->model);
+        $types  = array_filter($this->type);
 
         $notification = $notificationRepository->model->create([
             'type'         => ucfirst($this->filterType), // Car,Job
