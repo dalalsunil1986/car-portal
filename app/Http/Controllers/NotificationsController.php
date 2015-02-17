@@ -39,16 +39,6 @@ class NotificationsController extends Controller {
     }
 
     /**
-     * @param NotificationRepository $notificationRepository
-     */
-    public function create(NotificationRepository $notificationRepository)
-    {
-        $params = Input::all();
-        $params['user_id'] = Auth::user()->id;
-        $notificationRepository->create($params);
-    }
-
-    /**
      * @param Request $request
      * @param CarRepository $carRepository
      * Test Notification

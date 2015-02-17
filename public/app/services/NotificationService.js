@@ -1,8 +1,8 @@
 angular.module('app').service('NotificationService', NotificationService);
 
-NotificationService.$inject = ['$q', '$http', '$resource', 'CSRF_TOKEN'];
+NotificationService.$inject = ['$q', '$resource', 'CSRF_TOKEN'];
 
-function NotificationService($q, $http, $resource, CSRF_TOKEN) {
+function NotificationService($q, $resource, CSRF_TOKEN) {
 
     var resource = $resource('/api/notifications/:id', {id: '@id'});
     var deferred = $q.defer();
