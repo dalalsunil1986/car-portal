@@ -33,6 +33,7 @@ function NotificationService($rootScope, $q, $http, $resource) {
         $http({
             url: '/api/notifications/create',
             method: "POST",
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             data: {
                 'filter_type': filterType,
                 'make': make,
@@ -47,7 +48,22 @@ function NotificationService($rootScope, $q, $http, $resource) {
                 'year_to': yearTo
             }
         })
-            .then(function (data) {
+
+        //$http.post('/api/notifications/create', {
+        //    'filter_type': filterType,
+        //    'make': make,
+        //    'brand': brand,
+        //    'model': model,
+        //    'type': type,
+        //    'price_from': priceFrom,
+        //    'price_to': priceTo,
+        //    'mileage_from': mileageFrom,
+        //    'mileage_to': mileageTo,
+        //    'year_from': yearFrom,
+        //    'year_to': yearTo
+        //
+        //})
+            .success(function (data) {
                 // success
                 defer.resolve(data);
 
@@ -79,4 +95,6 @@ function NotificationService($rootScope, $q, $http, $resource) {
         //);
         //return defer.promise;
     }
+
+
 }

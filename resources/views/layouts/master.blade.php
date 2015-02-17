@@ -79,8 +79,9 @@
     {!! Html::script('/packages/nanoscroller/bin/javascripts/jquery.nanoscroller.js') !!}
 
     <script>
+        angular.module("app").constant("CSRF_TOKEN", '{!! csrf_token() !!}');
+
         $(document).ready(function () {
-            angular.module("app").constant("CSRF_TOKEN", '{{ csrf_token() }}');
             runSlidebars();
             $(window).resize(runSlidebars);
 
