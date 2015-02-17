@@ -87,9 +87,20 @@
 
         });
 
+<<<<<<< HEAD
         $(".int-col").hover(function () {
             $(".nano").nanoScroller();
         });
+=======
+    //init-nanoscroller
+    $(".int-col").hover( function(){
+        $(".nano").nanoScroller();
+    });
+
+
+
+
+>>>>>>> 8873da479dc8408287225d2b60f93dc60a55915f
 
     </script>
 
