@@ -2,9 +2,9 @@ angular
     .module('app')
     .controller('CarsController', CarsController);
 
-CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', '$modal', 'NotificationService',CSRF_TOKEN];
+CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', '$modal', 'NotificationService'];
 
-function CarsController($scope, CarService, $location, $anchorScroll, $modal, NotificationService,CSRF_TOKEN) {
+function CarsController($scope, CarService, $location, $anchorScroll, $modal, NotificationService) {
 
     $scope.filters = {};
     $scope.slider = {};
@@ -30,7 +30,6 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
 
     //filters
     $scope.filters.filterType = 'car';
-    $scope.filters._token = CSRF_TOKEN;
 
     // Select Makes,Brands,Types,Models For Car Search Filter
     $scope.filters.selectedMakes = [];
