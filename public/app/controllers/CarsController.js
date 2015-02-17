@@ -13,6 +13,11 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
     $scope.slider.type = 'double';
     $scope.slider.maxPostfix = " +";
     $scope.slider.minPostfix = " -";
+    $scope.slider.forceEdges = true;
+    $scope.slider.grid = true;
+    $scope.slider.gridNum = 4;
+    $scope.slider.gridMargin = true;
+    $scope.slider.keyboard = true;
 
     $scope.slider.mileageMin = 5000;
     $scope.slider.mileageMax = 300000;
