@@ -86,7 +86,7 @@
 
         });
 
-    init-nanoscroller
+    //init-nanoscroller
     $(".int-col").hover( function(){
         $(".nano").nanoScroller();
     });
