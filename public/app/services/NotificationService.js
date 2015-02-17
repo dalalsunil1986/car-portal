@@ -14,9 +14,9 @@ function NotificationService($rootScope, $q, $http, $resource) {
 
     return service;
 
-    function save(favorites) {
+    function save(filters) {
 
-        resource.save(favorites).$promise.then(
+        resource.save(filters).$promise.then(
             function (data) {
                 deferred.resolve(data);
             },
@@ -27,42 +27,43 @@ function NotificationService($rootScope, $q, $http, $resource) {
         return deferred.promise;
     }
 
-    function create(filterType, make, brand, type, model, priceFrom, priceTo, mileageFrom, mileageTo, yearFrom, yearTo) {
+    //function create(filterType, make, brand, type, model, priceFrom, priceTo, mileageFrom, mileageTo, yearFrom, yearTo) {
+    function create(filters) {
         var defer = $q.defer();
 
         $http({
-            url: '/api/notifications/create',
+            url: '/api/notifications/store',
             method: "POST",
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             data: {
-                'filter_type': filterType,
-                'make': make,
-                'brand': brand,
-                'model': model,
-                'type': type,
-                'price_from': priceFrom,
-                'price_to': priceTo,
-                'mileage_from': mileageFrom,
-                'mileage_to': mileageTo,
-                'year_from': yearFrom,
-                'year_to': yearTo
+                'filter_type': filters.type,
+                'make': filters.make,
+                'brand': filters.brand,
+                'model': filters.model,
+                'type': filters.type,
+                'price_from': filters.priceFrom,
+                'price_to': filters.priceTo,
+                'mileage_from': filters.mileageFrom,
+                'mileage_to': filters.mileageTo,
+                'year_from': filters.yearFrom,
+                'year_to': filters.yearTo
             }
         })
 
-        //$http.post('/api/notifications/create', {
-        //    'filter_type': filterType,
-        //    'make': make,
-        //    'brand': brand,
-        //    'model': model,
-        //    'type': type,
-        //    'price_from': priceFrom,
-        //    'price_to': priceTo,
-        //    'mileage_from': mileageFrom,
-        //    'mileage_to': mileageTo,
-        //    'year_from': yearFrom,
-        //    'year_to': yearTo
-        //
-        //})
+            //$http.post('/api/notifications/create', {
+            //    'filter_type': filterType,
+            //    'make': make,
+            //    'brand': brand,
+            //    'model': model,
+            //    'type': type,
+            //    'price_from': priceFrom,
+            //    'price_to': priceTo,
+            //    'mileage_from': mileageFrom,
+            //    'mileage_to': mileageTo,
+            //    'year_from': yearFrom,
+            //    'year_to': yearTo
+            //
+            //})
             .success(function (data) {
                 // success
                 defer.resolve(data);
@@ -74,6 +75,7 @@ function NotificationService($rootScope, $q, $http, $resource) {
             }
         );
         return defer.promise;
+
 
         //$http.post("/api/register", sanitizeCredentials(data)).success(function (data) {
         //        defer.resolve(data);

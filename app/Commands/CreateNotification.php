@@ -67,32 +67,32 @@ class CreateNotification extends Command implements SelfHandling {
     /**
      * Create a new command instance.
      *
-     * @param filter_type
-     * @param $make
-     * @param $brand
-     * @param $model
-     * @param $type
-     * @param $price_from
-     * @param $price_to
-     * @param $mileage_from
-     * @param $mileage_to
-     * @param $year_from
-     * @param $year_to
+     * @param $filterType
+     * @param $selectedMakes
+     * @param $selectedBrands
+     * @param $selectedModels
+     * @param $selectedTypes
+     * @param $priceFrom
+     * @param $priceTo
+     * @param $mileageFrom
+     * @param $mileageTo
+     * @param $yearFrom
+     * @param $yearTo
      * @internal param $user
      */
-    public function __construct($filter_type, $make, $brand, $model, $type, $price_from, $price_to, $mileage_from, $mileage_to, $year_from, $year_to)
+    public function __construct($filterType, $selectedMakes, $selectedBrands, $selectedModels, $selectedTypes, $priceFrom, $priceTo, $mileageFrom, $mileageTo, $yearFrom, $yearTo)
     {
-        $this->make        = $make;
-        $this->brand       = $brand;
-        $this->model       = $model;
-        $this->type        = $type;
-        $this->priceFrom   = $price_from;
-        $this->priceTo     = $price_to;
-        $this->mileageFrom = $mileage_from;
-        $this->mileageTo   = $mileage_to;
-        $this->yearFrom    = $year_from;
-        $this->yearTo      = $year_to;
-        $this->filterType  = $filter_type;
+        $this->filterType  = $filterType;
+        $this->make        = $selectedMakes;
+        $this->brand       = $selectedBrands;
+        $this->model       = $selectedModels;
+        $this->type        = $selectedTypes;
+        $this->priceFrom   = $priceFrom;
+        $this->priceTo     = $priceTo;
+        $this->mileageFrom = $mileageFrom;
+        $this->mileageTo   = $mileageTo;
+        $this->yearFrom    = $yearFrom;
+        $this->yearTo      = $yearTo;
     }
 
     /**

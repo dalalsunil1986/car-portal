@@ -75,10 +75,14 @@ Route::group(array('prefix' => 'api'), function ($router) {
 	/*********************************************************************************************************
 	 * Notifcation
 	 ********************************************************************************************************/
-	Route::post('notifications/create', 'NotificationsController@create');
+//	Route::post('notifications/create', 'NotificationsController@create');
 	Route::get('notifications/test', 'NotificationsController@test');
 	Route::resource('notifications','NotificationsController'); //todo : change to post
 
 });
 
 Route::get('test', 'CarsController@getCars');
+
+Route::get('token', function () {
+    return csrf_token();
+});

@@ -33,7 +33,7 @@ class NotificationsController extends Controller {
     /**
      * @param Request $request
      */
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $this->dispatchFrom(CreateNotification::class, $request);
     }
@@ -41,7 +41,7 @@ class NotificationsController extends Controller {
     /**
      * @param NotificationRepository $notificationRepository
      */
-    public function store(NotificationRepository $notificationRepository)
+    public function create(NotificationRepository $notificationRepository)
     {
         $params = Input::all();
         $params['user_id'] = Auth::user()->id;

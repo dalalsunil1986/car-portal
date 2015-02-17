@@ -2,9 +2,9 @@ angular
     .module('app')
     .controller('CarsController', CarsController);
 
-CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', '$modal','NotificationService'];
+CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', '$modal', 'NotificationService',CSRF_TOKEN];
 
-function CarsController($scope, CarService, $location, $anchorScroll, $modal, NotificationService) {
+function CarsController($scope, CarService, $location, $anchorScroll, $modal, NotificationService,CSRF_TOKEN) {
 
     $scope.filters = {};
     $scope.slider = {};
@@ -29,7 +29,8 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
     $scope.slider.yearStep = 1;
 
     //filters
-    $scope.filters.type = 'car';
+    $scope.filters.filterType = 'car';
+    $scope.filters._token = CSRF_TOKEN;
 
     // Select Makes,Brands,Types,Models For Car Search Filter
     $scope.filters.selectedMakes = [];
@@ -132,7 +133,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
                     $modalInstance.dismiss('cancel');
                 };
                 $scope.notifyMe = function () {
-                    NotificationService.create($scope.filters.type, $scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels, $scope.filters.priceFrom, $scope.filters.priceTo, $scope.filters.mileageFrom, $scope.filters.mileageTo, $scope.filters.yearFrom, $scope.filters.yearTo)
+                    NotificationService.save($scope.filters)
                         .then(function (data) {
                         }
                     );
