@@ -1,16 +1,21 @@
-<p class="username-nav">Hi Muahmmad!</p>
-{!! HTML::image('/assets/img/custom/user_profile_picture.jpg', 'Profile Picture', array('class'=>'profiel_picture_nav img-responsive', 'width'=>'225','height'=>'225')) !!}
+<p class="username-nav">Hi Khalid!</p>
+<a href="{{ action('UsersController@getProfile') }}">{!! HTML::image('/assets/img/custom/user_profile_picture.jpg', 'Profile Picture', array('class'=>'profiel_picture_nav img-responsive', 'width'=>'225','height'=>'225')) !!}</a>
 
 <!--Start Profile Links-->
 
 <div class="profile-links">
+
+    <a href="{{ action('MessagesController@index') }}">
     <div class="mail-icon">
-        <a href="{{ action('MessagesController@index') }}">{!! HTML::image('/assets/img/icons/mail_icon.png') !!}</a>
-        <div class="mail-count"> 5 </div>
+        {!! HTML::image('/assets/img/icons/mail_icon.png') !!}
+        <div class="mail-count"> 1 </div>
     </div>
-    <div class="user-icon">
-        <a href="{{ action('UsersController@getProfile') }}">{!! HTML::image('/assets/img/icons/user-icon.png', null , array('width'=>'15', 'height'=>'16')) !!}</a>
+    </a>
+    <a href="{{ action('UsersController@getProfile') }}">
+        <div class="user-icon">
+       {!! HTML::image('/assets/img/icons/user-icon.png', null , array('width'=>'15', 'height'=>'16')) !!}
     </div>
+    </a>
     <div class="my-posts-icon">
         {!! HTML::image('/assets/img/icons/post_icon.png', null, array('width'=>'14', 'height'=>'14')) !!}
     </div>

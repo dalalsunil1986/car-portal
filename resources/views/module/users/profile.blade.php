@@ -44,55 +44,38 @@
                     <div class="tab-pane active" id="account">
                         <div class="row account-row">
                             <div class="col-xs-4 photo-row">
-                                <div class="flip">
-                                    <div class="card">
-                                        <div class="face front effects clearfix" id="effect-5">
-                                            <div class="img img-rounded img-responsive img-profile"><img
-                                                        src="../img/custom/user_profile_picture.jpg">
+                                <img src="/assets/img/custom/user_profile_picture.jpg" alt="Profile Picture" class="img-responsive img-profile" width="225" height="225">
 
-                                                <div class="overlay"><a href="#" class="expand"><span
-                                                                class="glyphicon glyphicon-user"></span> </a></div>
-                                            </div>
-                                        </div>
-                                        <div class="face back">
-                                            <div class="profile-image-add profile-image-setting"><span
-                                                        class="back-text">New Photo</span> <span
-                                                        class="glyphicon glyphicon-upload"></span></div>
-                                            <div class="profile-image-remove profile-image-setting"><span
-                                                        class="back-text">Remove</span> <span
-                                                        class="glyphicon  glyphicon-remove"></span></div>
-                                            <div class="back-profile profile-image-setting">
-                                                <span class="back-text">Back</span>
-                                                <span class="glyphicon glyphicon-share-alt"></span></div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="col-xs-7 basic-info">
                                 <div class="row">
-                                    <h2>Basic</h2>
 
-                                    <div class="col-xs-12">
+                                    <h2>Khalid Al-Something</h2>
 
-                                        <a href="#" id="username" data-type="text" data-pk="1" data-url="/post"
-                                           data-title="Enter username">superuser</a>
+                                    <div class="col-xs-12 account-row">
 
-                                        <span class="glyphicon glyphicon-pencil"> </span></div>
-                                    <div class="col-xs-12">example@gmail.com<span class="glyphicon glyphicon-pencil"></span>
-                                    </div>
-                                    <div class="col-xs-12">Password<span class="glyphicon glyphicon-pencil"></span>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h2>Optional</h2>
+                               {{--<a href="#" id="username" data-type="text" data-pk="1" data-url="/post"--}}
+                                       {{--data-title="Enter username">superuser</a>--}}
 
-                                            <div class="col-xs-12">Manage CV<span class="glyphicon glyphicon-pencil"></span>
-                                            </div>
-                                            <div class="col-xs-12">Account<span class="glyphicon glyphicon-pencil"></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-xs-12"><span>E-Mail: </span>thedude45@gmail.com</div>
+                                <div class="col-xs-12"><span>Mobile: </span>959-845-9542</div>
+
+                            </div>
+
                                 </div>
+
+
+                                <div class="row">
+
+                                    <h2>Settings</h2>
+
+                                    <div class="col-xs-12 account-row">
+                                        <div class="col-xs-12"><a href="#"> Edit Account</a></div>
+                                        <div class="col-xs-12">Deactivate</div>
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -110,13 +93,12 @@
                         </div>
                         <div class="row item-row post-item">
                             <div class="col-md-8 column title-color">
-                                <img class="post-image" src="../img/custom/car-thumb.jpg">
-
+                                <img class="post-image" src="/assets/img/custom/car-thumb.jpg">
                                 <h3 class="post-title">2010 - BMW - M3</h3>
                             </div>
                             <div class="col-md-2 column cost-color">
                                 <div class="post-option">Edit</div>
-                                <div class="post-option"> View</div>
+                                <div class="post-option">View</div>
                                 <button type="button" class="delete delete-button" aria-hidden="true">×</button>
                             </div>
                         </div>
@@ -138,7 +120,7 @@
 
                             <div class="row item-row">
                                 <div class="col-xs-8 column title-color">
-                                    <img class="post-image" src="../img/custom/car-thumb.jpg">
+                                    <img class="post-image" src="/assets/img/custom/car-thumb.jpg">
 
                                     <h3 class="post-title">2010 - BMW - M3</h3>
                                 </div>
@@ -151,26 +133,22 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="notifyme">
+                        <div class="btn-group pull-left clearfix">
+                            <button class="btn btn-default dropdown-toggle toggle-reset" data-toggle="dropdown">All <span
+                                        class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Cars</a></li>
+                                <li><a href="#">Jobs</a></li>
+                                <li><a href="#">Property</a></li>
+                                <li><a href="#">Places</a></li>
+                                <li><a href="#">Events</a></li>
+                            </ul>
+                        </div>
                         <div class="row">
-                            <div class="col-md-10 column">
-                                <div class="row clearfix ntf-row">
-                                    <div class="col-md-6 column">
-                                        <div class="input-group"><span class="input-group-addon">+965</span>
-                                            <input type="text" class="form-control" placeholder="Mobile Number">
-                                        </div>
-                                    </div>
-                                    <div class="row clearfix ntf-row ">
-                                        <div class="col-md-6 column">
-                                            <div class="input-group"><span class="input-group-addon">Email</span>
-                                                <input type="text" class="form-control" placeholder="name@gmail.com">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="row">
-                                <div class="col-md-10">
-                                    <div class="row clearfix notify-pannel">
+                                <div class="col-md-9 notify-pannel">
+                                    <div class="row clearfix">
                                         <button type="button" class="delete delete-button" aria-hidden="true">×</button>
                                         <div class="col-xs-6 column">
                                             <div class="row clearfix ntf-row">
@@ -215,53 +193,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <div class="row clearfix notify-pannel">
-                                        <button type="button" class="delete delete-button" aria-hidden="true">×</button>
-                                        <div class="col-xs-6 column">
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Make:</span></div>
-                                                <div class="col-md-9 column">
-                                                    <span class="ntf-input">Japanese, American</span></div>
-                                            </div>
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Type:</span></div>
-                                                <div class="col-md-9 column"><span class="ntf-input">SUV</span></div>
-                                            </div>
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Brand:</span></div>
-                                                <div class="col-md-9 column"><span class="ntf-input">Unspecified</span>
-                                                </div>
-                                            </div>
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Model:</span></div>
-                                                <div class="col-md-9 column"><span class="ntf-input">Unspecified</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 column">
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Years:</span></div>
-                                                <div class="col-md-9 column"><span class="ntf-input">2008 - 20013</span>
-                                                </div>
-                                            </div>
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Milage:</span>
-                                                </div>
-                                                <div class="col-md-9 column">
-                                                    <span class="ntf-input">50,000 - 80,000</span>
-                                                </div>
-                                            </div>
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Price:</span></div>
-                                                <div class="col-md-9 column">
-                                                    <span class="ntf-input">4,000KD - 6,000 KD</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+
+
+
+
                         </div>
                     </div>
                 </div>

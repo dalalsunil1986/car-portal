@@ -23,23 +23,39 @@
 }
 /*Account Tab*/
 
-.account-row {
-    margin-left: 60px;
-}
+
 .info-row{
     padding-left: 45px;
 }
-.basic-info > div {
-    padding-top: 10px;
-    font-size: 20px;
+
+.account-row{
+    padding: 0 5px;
+    padding-top: 7px;
+    font-size: 18px;
+}
+.account-row div{
+    margin: 4px 0;
+    padding-bottom: 1px;
+}
+
+.account-row div span{
+  font-weight: 600;
+  font-size: 15px;
 
 }
 
+.basic-info > div {
+    font-size: 20px;
+}
+
+.basic-info  {
+    padding-left: 5px;
+}
+
 .basic-info h2 {
-    font-weight: 400 !important;
+    font-weight: 600 !important;
     color: rgb(83, 180, 157);
-    font-size: 21px;
-    padding-top: 10px;
+    font-size: 18px;
 }
 
 .basic-info a {
@@ -77,15 +93,15 @@ ul.dropdown-menu {
 
 .photo-row {
     padding-right: 0;
-    margin-right: 30px;
+    margin-left: 30px;
 }
 
 .img-profile {
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.24);
-    width: 100%;
-}
-
-.edit-photo {
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.24);
+    max-width: 210px;
+    border-radius: 5px;
+    float: right;
+    margin-right: 38px;
 }
 
 .effects {
@@ -407,16 +423,19 @@ button.delete {
 
 /*Notify*/
 
-.notify-panel {
+
+
+.notify-pannel{
     background-color: #009fe3;
-    color: whitesmoke;
-    border-radius: 8px;
-    padding: 20px 30px;
-    margin-left: 55px;
-    margin-right: 0;
-    border-bottom: 5px solid rgb(45, 134, 184);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-left: 25px;
 }
 
+.ntf-input {
+    color: rgba(255, 255, 255, 1);
+}
 div.row.clearfix.ntf-row {
     padding-bottom: 5px;
 }

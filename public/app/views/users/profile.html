@@ -51,7 +51,9 @@
             <section id="section-bar-1 profile-row">
                 <div class="row">
                     <div class="col-md-4">
-	                    <img src="/assets/img/custom/user_profile_picture.jpg" alt="Profile Picture" class="img-responsive profile-img" width="225" height="225">
+
+                        {!! HTML::image('/assets/img/custom/user_profile_picture.jpg', 'Profile Picture', array('class'=>'profile-img img-responsive', 'width'=>'225','height'=>'225')) !!}
+
                     <span class="pull-right change-profile-image">Change</span>
                     </div>
                     <div class="col-md-7">
@@ -62,10 +64,6 @@
                                 <li>example@yahoo.com</li>
                                 <li>Change Password</li>
                                 <li>900-900-900</li>
-                            </ul>
-                            <li>Extra</li>
-                            <ul>
-                                <li>Edit Resume</li>
                                 <li>Deactivate Account</li>
                             </ul>
 

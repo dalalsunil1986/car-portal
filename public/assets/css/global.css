@@ -327,7 +327,6 @@ h3 {
     -webkit-border-radius: 180px;
     -moz-border-radius: 180px;
     border-radius: 180px;
-
     height: 15px;
     width: 15px;
     right: 6px;
@@ -335,6 +334,7 @@ h3 {
     font-size: 12px;
     padding-top: 2px;
     text-align: center;
+    color: white;
 }
 
 .user-icon, .my-posts-icon {
