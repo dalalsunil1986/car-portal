@@ -74,7 +74,6 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
                 $scope.filters.selectedBrands = data.results.brandsArray;
                 $scope.filters.selectedModels = data.results.modelsArray;
 
-                // reset page and other initial loading values
                 // load cars
                 $scope.getCars();
             }
