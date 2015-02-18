@@ -15,7 +15,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
     $scope.slider.minPostfix = " -";
     $scope.slider.forceEdges = true;
     $scope.slider.grid = true;
-    $scope.slider.gridNum = 5;
+    $scope.slider.gridNum = 3;
     $scope.slider.gridMargin = true;
     $scope.slider.keyboard = true;
 
@@ -85,19 +85,21 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
 
         if ($scope.hasRecord) {
 
-            $scope.loading = true;
-
             CarService.getIndex($scope.filters).then(function (response) {
-
                 $scope.sortorder = "-created_at";
 
                 // If Data retrieved is equal, then just return
                 if (angular.equals(response.data, $scope.cars)) {
+                    $scope.loading = false;
+                    $scope.hasRecord = false;
+                    if (!$scope.cars.length) {
+                        $scope.noResults = true;
+                    }
                     return;
                 }
 
-                angular.forEach(response.data, function (d) {
-                    this.push(d);
+                angular.forEach(response.data, function (response) {
+                    this.push(response);
                 }, $scope.cars);
 
                 $location.hash('Hf31x6' + response.from);
@@ -105,8 +107,8 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
                 $anchorScroll();
 
                 // if there is no more record, set has Records to false so that no more ajax requests are sent to server
-                if (response.next_page_url == null) {
-                    $scope.hasRecord = false;
+                if (response.next_page_url != null) {
+                    $scope.hasRecord = true;
                 }
                 $scope.loading = false;
             });
@@ -160,10 +162,11 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
     };
 
     $scope.resetValues = function () {
+        $scope.loading = true;
         $scope.filters.page = 0;
         $scope.cars = [];
         $scope.hasRecord = true;
-        $scope.loading = false;
+        $scope.noResults = false;
     }
 
     $scope.refreshCars = function () {
