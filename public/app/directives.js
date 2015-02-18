@@ -49,7 +49,6 @@ angular.module('app').directive('priceSlider', function () {
 angular.module('app').directive('mileageSlider', function () {
     return {
         restrict: 'EA',
-        scope: true,
         replace: true,
         link: function (scope, element) {
             var moved = false;
@@ -70,14 +69,14 @@ angular.module('app').directive('mileageSlider', function () {
                 keyboard:scope.slider.keyboard,
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
+                    scope.filters.mileageFrom = obj.fromNumber;
+                    scope.filters.mileageTo = obj.toNumber;
                     _.defer(function () {
                         scope.$apply();
                     });
                 },
                 onFinish: function (obj) { // callback, is called once, after slider finished it's work
-                    scope.resetValues();
-                    scope.filters.mileageFrom = obj.fromNumber;
-                    scope.filters.mileageTo = obj.toNumber;
+                    //scope.resetValues();
                     scope.getCars();
                 }
             });
