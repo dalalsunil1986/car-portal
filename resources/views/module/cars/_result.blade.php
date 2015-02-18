@@ -11,13 +11,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" ng-model="sortorder" role="menu" aria-labelledby="dropdownMenu1">
-                        <li>
-                            <option value="+created_at">Oldest</option>
-                        </li>
+                        <li><option value="+created_at">Oldest</option></li>
                         <li><a href="#" value="-year">Year: Old to new</a></li>
-                        <li>
-                            <option value="+price">Low Price</option>
-                        </li>
+                        <li><option value="+price">Low Price</option></li>
                         <li><a href="#">Price: High to Low </a></li>
                         <li><a href="#">Mileage: High to Low</a></li>
                         <li><a href="#">Mileage: Low to High</a></li>
@@ -49,6 +45,7 @@
                     <div id="Hf31x6{[car.id]}" class="my-repeat-animation" ng-repeat="car in cars | orderBy:sortorder ">
                         <div class="row car-result-box">
                             <div class="row car-result-box">
+
                                 <div class="col-sm-3 column img-box">
                                     <span ng-show="car.thumbnail">
                                         <a href="/cars/{[ car.id ]}"><img ng-src="/uploads/thumbnail/{[ car.thumbnail.name ]}" class="img-responsive result-image"/></a>
@@ -71,15 +68,14 @@
                                     <h4>
                                         <a href="/cars/{[ car.id ]}">{[ car.year]} - {[ car.model.brand.name_en ]} - {[ car.model.name_en ]}</a>
                                     </h4>
-
                                     <p class="distance-box">
                                         <img src="/assets/img/icons/speed-icon.png" class="km-icon" style="width:18px;height:10px"/>
                                         {[ car.mileage ]} KM
                                     </p>
-
                                     <p class="posted-date-box pull-right">{[ car.created_at ]}</p>
                                     <a class="more-box text-center" href="/cars/{[ car.id ]}">More Information</a>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -89,7 +85,7 @@
                     <div id="loading" ng-switch-when="true"> {!! HTML::image('assets/img/icons/loader.gif') !!}</div>
                     <div ng-switch-when="false">
                         <div ng-if="emptyRecords">
-                            <h1 style="text-align: center">No results</h1>
+                            <h1 style="text-align: center">No Records</h1>
                         </div>
                     </div>
                 </div>

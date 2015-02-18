@@ -89,6 +89,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
             $scope.filters.page++;
 
             CarService.getIndex($scope.filters).then(function (response) {
+
                 $scope.sortorder = "-created_at";
 
                 // If Data retrieved is equal, then just return

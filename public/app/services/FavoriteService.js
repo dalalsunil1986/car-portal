@@ -18,6 +18,7 @@ function FavoriteService($rootScope, $http, $q, $resource) {
 
     function list() {
 
+        console.log('listing fav');
         resource.query().$promise.then(
             function (data) {
 
