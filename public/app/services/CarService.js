@@ -13,10 +13,19 @@ function CarService($http, $q) {
         getFilterNames: getFilterNames
     };
 
-    function getFilter(make, brand, type, model) {
+    function getFilter(filters) {
         var defer = $q.defer();
-        $http.get('/api/cars/filter?make=' + make + '&brand=' + brand + '&model=' + model + '&type=' + type)
-            .success(function (data) {
+        var params = {
+            make: filters.selectedMakes,
+            brand: filters.selectedBrands,
+            type: filters.selectedTypes,
+            model: filters.selectedModels
+        };
+        $http({
+            url: 'api/cars/filter',
+            method: "GET",
+            params: params
+        }).success(function (data) {
                 defer.resolve(data);
             }
         ).error(function () {
@@ -26,10 +35,19 @@ function CarService($http, $q) {
         return defer.promise;
     }
 
-    function getFilterNames(make, brand, type, model) {
+    function getFilterNames(filters) {
         var defer = $q.defer();
-        $http.get('/api/cars/name/?make=' + make + '&brand=' + brand + '&model=' + model + '&type=' + type)
-            .success(function (data) {
+        var params = {
+            make: filters.selectedMakes,
+            brand: filters.selectedBrands,
+            type: filters.selectedTypes,
+            model: filters.selectedModels
+        };
+        $http({
+            url: 'api/cars/name',
+            method: "GET",
+            params: params
+        }).success(function (data) {
                 defer.resolve(data);
             }
         ).error(function () {
@@ -40,6 +58,7 @@ function CarService($http, $q) {
     }
 
     function getIndex(filters) {
+        var defer = $q.defer();
         var params = {
             make: filters.selectedMakes,
             brand: filters.selectedBrands,
@@ -53,7 +72,6 @@ function CarService($http, $q) {
             year_to: filters.yearTo,
             page: filters.page
         };
-        var defer = $q.defer();
         $http({
             url: 'api/cars',
             method: "GET",

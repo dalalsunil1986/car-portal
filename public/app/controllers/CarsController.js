@@ -63,7 +63,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
 
         $scope.resetValues();
 
-        CarService.getFilter($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels)
+        CarService.getFilter($scope.filters)
             .then(function (data) {
                 // GET the makes,brands,models,types with unique values, excluding the values which are already selected
                 $scope.makes = data.results.makes;
@@ -115,7 +115,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
     };
 
     $scope.getFilterNames = function () {
-        CarService.getFilterNames($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels)
+        CarService.getFilterNames($scope.filters)
             .then(function (data) {
                 // GET the makes,brands,models,types with unique values, excluding the values which are already selected
                 $scope.filters.selectedMakeNames = data.results.makes;
