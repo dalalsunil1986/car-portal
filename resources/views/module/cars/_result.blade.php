@@ -90,7 +90,7 @@
                 <div ng-switch on="loading">
                     <div id="loading" ng-switch-when="true"> {!! HTML::image('assets/img/icons/loader.gif') !!}</div>
                     <div ng-switch-when="false">
-                        <div ng-if="noResults">
+                        <div ng-if="emptyRecords">
                             <h1 style="text-align: center">No results</h1>
                         </div>
                     </div>

@@ -81,19 +81,23 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
     };
 
     $scope.getCars = function () {
-        $scope.filters.page++;
 
-        if ($scope.hasRecord) {
+        if ($scope.hasRecords) {
+
+            $scope.loading = true;
+
+            $scope.filters.page++;
 
             CarService.getIndex($scope.filters).then(function (response) {
                 $scope.sortorder = "-created_at";
 
                 // If Data retrieved is equal, then just return
+                // if there is no more record, set has Records to false so that no more ajax requests are sent to server
                 if (angular.equals(response.data, $scope.cars)) {
                     $scope.loading = false;
-                    $scope.hasRecord = false;
+                    $scope.hasRecords = false;
                     if (!$scope.cars.length) {
-                        $scope.noResults = true;
+                        $scope.emptyRecords = true;
                     }
                     return;
                 }
@@ -106,12 +110,17 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
 
                 $anchorScroll();
 
-                // if there is no more record, set has Records to false so that no more ajax requests are sent to server
-                if (response.next_page_url != null) {
-                    $scope.hasRecord = true;
+                if (response.next_page_url == null) {
+                    // set there are no more records . just to avoid unnecessary XHR requests
+                    $scope.hasRecords = false;
                 }
+
+                // set loading to false
                 $scope.loading = false;
+
             });
+        } else {
+            $scope.loading = false;
         }
     };
 
@@ -157,7 +166,6 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
         modalInstance.result.then(function (selectedFilters) {
             $scope.filters = selectedFilters;
         }, function () {
-            console.log($scope.filters.selectedMakeNames);
         });
     };
 
@@ -165,8 +173,8 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
         $scope.loading = true;
         $scope.filters.page = 0;
         $scope.cars = [];
-        $scope.hasRecord = true;
-        $scope.noResults = false;
+        $scope.hasRecords = true;
+        $scope.emptyRecords = false;
     }
 
     $scope.refreshCars = function () {
