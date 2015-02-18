@@ -35,6 +35,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
 
     //filters
     $scope.filters.filterType = 'car';
+    $scope.filters.page = 0;
 
     // Select Makes,Brands,Types,Models For Car Search Filter
     $scope.filters.selectedMakes = [];
@@ -81,13 +82,13 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
     };
 
     $scope.getCars = function () {
-        $scope.page++;
+        $scope.filters.page++;
 
         if ($scope.hasRecord) {
 
             $scope.loading = true;
 
-            CarService.getIndex($scope.filters.selectedMakes, $scope.filters.selectedBrands, $scope.filters.selectedTypes, $scope.filters.selectedModels, $scope.filters.priceFrom, $scope.filters.priceTo, $scope.filters.mileageFrom, $scope.filters.mileageTo, $scope.filters.yearFrom, $scope.filters.yearTo, $scope.page).then(function (response) {
+            CarService.getIndex($scope.filters).then(function (response) {
 
                 $scope.sortorder = "-created_at";
 
@@ -160,7 +161,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
     };
 
     $scope.resetValues = function () {
-        $scope.page = 0;
+        $scope.filters.page = 0;
         $scope.cars = [];
         $scope.hasRecord = true;
         $scope.loading = false;

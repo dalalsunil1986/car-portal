@@ -39,11 +39,26 @@ function CarService($http, $q) {
         return defer.promise;
     }
 
-    function getIndex(make, brand, type, model, priceFrom, priceTo, mileageFrom, mileageTo, yearFrom, yearTo, page) {
-
+    function getIndex(filters) {
+        var params = {
+            make: filters.selectedMakes,
+            brand: filters.selectedBrands,
+            type: filters.selectedTypes,
+            model: filters.selectedModels,
+            price_from: filters.priceFrom,
+            price_to: filters.priceTo,
+            mileage_from: filters.mileageFrom,
+            mileage_to: filters.mileageTo,
+            year_from: filters.yearFrom,
+            year_to: filters.yearTo,
+            page: filters.page
+        };
         var defer = $q.defer();
-        $http.get('/api/cars?make=' + make + '&brand=' + brand + '&model=' + model + '&type=' + type + '&price_from=' + priceFrom + '&price_to=' + priceTo + '&mileage_from=' + mileageFrom + '&mileage_to=' + mileageTo + '&year_from=' + yearFrom + '&year_to=' + yearTo + '&page=' + page)
-            .success(function (data) {
+        $http({
+            url: 'api/cars',
+            method: "GET",
+            params: params
+        }).success(function (data) {
                 defer.resolve(data);
             }
         ).error(function () {
