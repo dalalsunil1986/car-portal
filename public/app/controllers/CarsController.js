@@ -14,7 +14,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
     $scope.slider.maxPostfix = " +";
     $scope.slider.minPostfix = " -";
     $scope.slider.forceEdges = true;
-    $scope.slider.grid = true;
+    $scope.slider.grid = false;
     $scope.slider.gridNum = 3;
     $scope.slider.gridMargin = true;
     $scope.slider.keyboard = true;
