@@ -13,6 +13,11 @@ angular
     .module('app')
     .config(configure);
 
+//var xhReq = new XMLHttpRequest();
+//xhReq.open("GET", "/token", false);
+//xhReq.send(null);
+//
+//angular.module('app').constant("CSRF_TOKEN", xhReq.responseText);
 configure.inject = ['$interpolateProvider'];
 
 function configure($interpolateProvider) {

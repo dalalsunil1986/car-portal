@@ -23,6 +23,11 @@ angular.module('app').directive('priceSlider', function () {
                 maxPostfix: scope.slider.maxPostfix,
                 from: scope.filters.priceFrom,
                 to: scope.filters.priceTo,
+                force_edges:scope.slider.forceEdges,
+                grid: scope.slider.grid,
+                grid_num: scope.slider.gridNum,
+                grid_margin:scope.slider.gridMargin,
+                keyboard:scope.slider.keyboard,
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
                     _.defer(function () {
@@ -58,6 +63,11 @@ angular.module('app').directive('mileageSlider', function () {
                 minPostfix: scope.slider.minPostfix,
                 from: scope.filters.mileageFrom,
                 to: scope.filters.mileageTo,
+                force_edges:scope.slider.forceEdges,
+                grid: scope.slider.grid,
+                grid_num: scope.slider.gridNum,
+                grid_margin:scope.slider.gridMargin,
+                keyboard:scope.slider.keyboard,
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
                     _.defer(function () {
@@ -91,6 +101,11 @@ angular.module('app').directive('yearSlider', function () {
                 maxPostfix: scope.slider.maxPostfix,
                 from: scope.filters.yearFrom,
                 to: scope.filters.yearTo,
+                force_edges:scope.slider.forceEdges,
+                grid: scope.slider.grid,
+                grid_num: scope.slider.gridNum,
+                grid_margin:scope.slider.gridMargin,
+                keyboard:scope.slider.keyboard,
                 onChange: function (obj) { // callback, is called on every change
                     moved = true;
                     _.defer(function () {

@@ -87,11 +87,10 @@
 
         });
 
-
-    //init-nanoscroller
-    $(".int-col").hover( function(){
-        $(".nano").nanoScroller();
-    });
+        //init-nanoscroller
+        $(".int-col").hover( function(){
+            $(".nano").nanoScroller();
+        });
 
     </script>
 
