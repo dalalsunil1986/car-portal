@@ -5,7 +5,7 @@ FavoriteService.$inject = ['$rootScope', '$http', '$q', '$resource'];
 function FavoriteService($rootScope, $http, $q, $resource) {
 
     var resource = $resource('/api/favorites/:id', {id: '@id'});
-    var defer = $q.defer();
+    var deferred = $q.defer();
 
     var service = {
         favorites: '',
@@ -18,47 +18,36 @@ function FavoriteService($rootScope, $http, $q, $resource) {
 
     function list() {
 
-        console.log('listing fav');
         resource.query().$promise.then(
             function (data) {
-
-                defer.resolve(data);
+                deferred.resolve(data);
 
                 service.favorites = data;
             },
             function (data) {
-                defer.reject(data);
+                deferred.reject(data);
             }
         );
-        return defer.promise;
+        return deferred.promise;
     }
 
     function save(favorite) {
 
-        //resource.save(favorite).$promise.then(
-        //    function (data) {
-        //
-        //        service.favorites.push(data);
-        //
-        //        $rootScope.$broadcast('favorites.update');
-        //
-        //    },
-        //    function (data) {
-        //        defer.reject(data);
-        //    }
-        //);
-        //return defer.promise;
+        resource.save(favorite,
+            function (data) {
+                deferred.resolve(data);
+                service.favorites.push(data);
+                $rootScope.$broadcast('favorites.update');
+            },
+            function (data) {
+                deferred.reject(data);
+            });
 
-        var data = resource.save(favorite);
-        service.favorites.push(data);
-        $rootScope.$broadcast('favorites.update');
+        return deferred.promise;
 
-        return data;
     }
 
     function destroy(favorite) {
-        //return resource.delete({ id:id });
-        console.log('deleting favorite ' + favorite.id);
         return $http.delete('api/favorites/' + favorite.id).then(function () {
 
             var index = service.favorites.indexOf(favorite);

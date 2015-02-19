@@ -30,12 +30,12 @@ angular.module('app').directive('priceSlider', function () {
                 onFinish: function (obj) { // callback, is called once, after slider finished it's work
                     scope.filters.priceFrom = obj.from;
                     scope.filters.priceTo = obj.to;
-                    scope.resetValues();
-                    scope.getCars();
+                    scope.refreshCars();
                 }
             });
 
         }
+
     }
 });
 
@@ -61,10 +61,9 @@ angular.module('app').directive('mileageSlider', function () {
                 grid_margin: scope.slider.gridMargin,
                 keyboard: scope.slider.keyboard,
                 onFinish: function (obj) { // callback, is called once, after slider finished it's work
-                    scope.resetValues();
                     scope.filters.mileageFrom = obj.from;
                     scope.filters.mileageTo = obj.to;
-                    scope.getCars();
+                    scope.refreshCars();
                 }
             });
 
@@ -92,10 +91,9 @@ angular.module('app').directive('yearSlider', function () {
                 grid_margin: scope.slider.gridMargin,
                 keyboard: scope.slider.keyboard,
                 onFinish: function (obj) { // callback, is called once, after slider finished it's work
-                    scope.resetValues();
                     scope.filters.yearFrom = obj.from;
                     scope.filters.yearTo = obj.to;
-                    scope.getCars();
+                    scope.refreshCars();
                 }
             });
 
@@ -126,8 +124,11 @@ function favoriteTpl(FavoriteService) {
                     "favoriteable_id": scope.favoreableId,
                     "favoriteable_type": scope.favoreableType
                 };
-                var response = FavoriteService.save(postData);
-                scope.favorite = response;
+
+                FavoriteService.save(postData).then(function (favorite) {
+                    scope.favorite = favorite;
+                })
+
             };
 
             scope.destroy = function () {

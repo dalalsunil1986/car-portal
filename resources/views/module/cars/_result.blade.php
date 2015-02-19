@@ -72,7 +72,7 @@
                                         <img src="/assets/img/icons/speed-icon.png" class="km-icon" style="width:18px;height:10px"/>
                                         {[ car.mileage ]} KM
                                     </p>
-                                    <p class="posted-date-box pull-right">{[ car.created_at ]}</p>
+                                    <p class="posted-date-box pull-right">{[ car.created_at | myDateFormat ]}</p>
                                     <a class="more-box text-center" href="/cars/{[ car.id ]}">More Information</a>
                                 </div>
 
@@ -84,9 +84,7 @@
                 <div ng-switch on="loading">
                     <div id="loading" ng-switch-when="true"> {!! HTML::image('assets/img/icons/loader.gif') !!}</div>
                     <div ng-switch-when="false">
-                        <div ng-if="emptyRecords">
-                            <h1 style="text-align: center">No Records</h1>
-                        </div>
+                        <div ng-show="emptyRecords"><h1 style="text-align: center">No Records</h1></div>
                     </div>
                 </div>
 
