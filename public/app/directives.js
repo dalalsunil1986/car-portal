@@ -132,7 +132,7 @@ function favoriteTpl(FavoriteService) {
             };
 
             scope.destroy = function () {
-                FavoriteService.destroy(scope.favorite).then(function (data) {
+                FavoriteService.destroy(scope.favorite).then(function () {
                     scope.favorite = null;
                 });
             };
@@ -154,7 +154,7 @@ function favoritePanel(FavoriteService) {
                 element.addClass('ng-leave');
                 element.fadeOut(1000);
                 FavoriteService.destroy(favorite).then(function () {
-
+                    scope.favorite = null;
                 });
             };
         }
