@@ -1175,3 +1175,21 @@ button.close {
     overflow: hidden;
     overflow-y: hidden;
 }
+
+
+
+.favorite-show-hide {
+    padding:10px;
+    border:1px solid black;
+    background:white;
+}
+
+.favorite-show-hide {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+}
+
+.favorite-show-hide.ng-hide {
+    opacity:0;
+}
+

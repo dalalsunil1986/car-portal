@@ -149,10 +149,12 @@ function favoritePanel(FavoriteService) {
     return {
         restrict: 'EA',
         templateUrl: '/app/views/partials/favorite-panel.html',
-        link: function (scope) {
+        link: function (scope,element) {
             scope.destroy = function (favorite) {
-                FavoriteService.destroy(favorite).then(function (result) {
-                    //element.fadeOut(1000);
+                element.addClass('ng-leave');
+                element.fadeOut(1000);
+                FavoriteService.destroy(favorite).then(function () {
+
                 });
             };
         }
