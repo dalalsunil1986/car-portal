@@ -13,13 +13,12 @@ angular
     .module('app')
     .config(configure);
 
-//var xhReq = new XMLHttpRequest();
-//xhReq.open("GET", "/token", false);
-//xhReq.send(null);
-//
-//angular.module('app').constant("CSRF_TOKEN", xhReq.responseText);
-configure.inject = ['$interpolateProvider'];
+configure.inject = ['$interpolateProvider','$locationProvider'];
 
-function configure($interpolateProvider) {
+function configure($interpolateProvider,$locationProvider) {
     $interpolateProvider.startSymbol('{[').endSymbol(']}');
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
 }
