@@ -53,39 +53,15 @@ function FavoriteService($rootScope, $http, $q, $resource) {
 
         return deferred.promise;
 
-        //var deferred = $q.defer();
-        //
-        //resource.save(favorite,
-        //    function (data) {
-        //        deferred.resolve(data);
-        //        service.favorites.push(data);
-        //        $rootScope.$broadcast('favorites.update');
-        //    },
-        //    function (data) {
-        //        deferred.reject(data);
-        //    });
-        //
-        //return deferred.promise;
-        //
     }
 
     function destroy(favorite) {
 
-        //return resource.delete(favorite.id).$promise.then(function () {
-        //    var index = service.favorites.indexOf(favorite);
-        //
-        //    service.favorites.splice(index, 1);
-        //
-        //    $rootScope.$broadcast('favorites.update');
-        //});
-
-        return $http.delete('api/favorites/' + favorite.id).then(function () {
+        $http.delete('api/favorites/' + favorite.id).then(function () {
 
             var index = service.favorites.indexOf(favorite);
 
             service.favorites.splice(index, 1);
-
-            //$rootScope.$broadcast('favorites.update');
 
         });
     }
