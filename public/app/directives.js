@@ -115,7 +115,6 @@ function favoriteTpl(FavoriteService) {
             favorite: '='
         },
         link: function link(scope) {
-            // format of scope.favorite = { id: 1, user_id: 1, favoriteable_id: 30, favoriteable_type: "Car", created_at: "2015-02-13 09:38:20", updated_at: "2015-02-13 09:38:20", deleted_at: null }
             if (typeof scope.favorite != 'object') {
                 return false;
             }
