@@ -804,25 +804,28 @@ button.close {
 /** ||||||||||||| Sign-Up/Register Styles ||||||||||||||*/
 .register-signin-form {
     width: 100%;
-    margin: auto;
-    margin-top: 5%;
+    margin: 5% auto auto;
     background: rgb(248, 248, 248);
     padding: 20px;
     border-radius: 5px;
+
 }
 
 .register-signin-form h3 {
     padding-bottom: 25px;
-    color: #0aa699;
+    color: #8B8B8B;
 }
 
 .register-signin-form h3 a {
-    color: #8B8B8B;
+    color: #0aa699;
+
 }
 
 .register-signin-form h3 a:hover {
     color: #474747;
     text-decoration: none;
+    border-bottom: 1px solid rgb(10, 166, 153);
+    transition: all .3s;
 }
 
 .register-signin-form .input-group {
@@ -876,6 +879,20 @@ button.close {
     background-color: #0C998D;
     border: none;
     border-bottom: 3px solid #17887F;
+}
+
+
+.tos-agreement{
+    padding-top: 7px;
+    font-size: 12px;
+    color: rgb(151, 151, 151);
+    line-height: 1.2em;
+}
+
+.password-reset-link{
+    margin-top: 3px;
+    font-size: 12px;
+    color: rgb(151, 151, 151);
 }
 
 /** ||||||||||||| OTHER ||||||||||||||*/

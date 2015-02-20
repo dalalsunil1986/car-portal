@@ -16,9 +16,11 @@
        {!! HTML::image('/assets/img/icons/user-icon.png', null , array('width'=>'15', 'height'=>'16')) !!}
     </div>
     </a>
+    <a href="cars/create">
     <div class="my-posts-icon">
         {!! HTML::image('/assets/img/icons/post_icon.png', null, array('width'=>'14', 'height'=>'14')) !!}
     </div>
+    </a>
 </div>
 <!--End Profile Links-->
 <!--Start Navigation Links-->

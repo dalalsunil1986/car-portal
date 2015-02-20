@@ -3,71 +3,20 @@
 @section('style')
     {!! HTML::style('packages/select2/select2.css') !!}
     {!! Html::style('packages/jquery-ui/themes/base/all.css') !!}
+    {!! Html::style('assets/css/car-submit.css') !!}
     @parent
-    <style>
 
-        /* Mimic table appearance */
-        div.table {
-            display: table;
-        }
-
-        div.table .file-row {
-            display: table-row;
-        }
-
-        div.table .file-row > div {
-            display: table-cell;
-            vertical-align: top;
-            border-top: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        div.table .file-row:nth-child(odd) {
-            background: #f9f9f9;
-        }
-
-        /* The total progress gets shown by event listeners */
-        #total-progress {
-            opacity: 0;
-            transition: opacity 0.3s linear;
-        }
-
-        /* Hide the progress bar when finished */
-        #previews .file-row.dz-success .progress {
-            opacity: 0;
-            transition: opacity 0.3s linear;
-        }
-
-        /* Hide the delete button initially */
-        #previews .file-row .delete {
-            display: none;
-        }
-
-        /* Hide the start and cancel buttons and show the delete button */
-
-        #previews .file-row.dz-success .start,
-        #previews .file-row.dz-success .cancel {
-            display: none;
-        }
-
-        #previews .file-row.dz-success .delete {
-            display: block;
-        }
-
-    </style>
 @stop
 
 @section('content')
     @parent
 
     <div class="col-md-10 col-sm-12">
-        <div class="row bs-wizard">
+
+
+        <div class="row create-panel">
 
             <div class="col-lg-3">
-                <ol class="bs-wizard-sidebar text-center">
-                    <li class="active"><a href="#">Details</a></li>
-                    <li class=""><a href="#">Optional</a></li>
-                </ol>
             </div>
 
             <div class="col-lg-9">
@@ -82,7 +31,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body bs-step-inner">
 
-                                <h3>Step 2: Optional Fields .</h3>
+                                <h3>Step 2: Optional Fields.</h3>
 
                                 <div class="row">
                                     <div class="form-group">
@@ -103,9 +52,10 @@
                                 <div class="row">
                                     <div class="form-group">
                                         <div class="map-wrapper">
-                                            <div class="small">You can drag and drop the marker to the correct location</div>
+                                            <label class="col-xs-2">Location</label>
+                                            <div class="map-hint">You can drag and drop the marker to the correct location</div>
                                             <div id="map" style="height: 400px;"></div>
-                                            <input id="addresspicker_map" name="addresspicker_map" class="form-control" placeholder="Type the Street Address or drag and drop the map marker to the correct location">
+                                            <input id="addresspicker_map" name="addresspicker_map" class="form-control" placeholder="Type the address here or drag marker to the correct location.">
                                             {!! Form::hidden('latitude',null, array('id' => 'latitude')) !!}
                                             {!! Form::hidden('longitude',null, array('id' => 'longitude')) !!}
                                         </div>
@@ -121,10 +71,6 @@
                                         </div>
 
 
-                                        <div class="clearfix pull-right">
-                                            <input type="checkbox" name="terms" id="terms" class="required terms_checkbox" checked>
-                                            <span>I agree to <a href="">Terms of Service</a></span>
-                                        </div>
 
                                     </div>
 

@@ -33,6 +33,11 @@
 			<span class="help-block"></span>
 
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Yalla! Sign Up</button>
+
+			<div class="tos-agreement">
+				By pressing the sign up button you agree to the <a href="#">terms of service</a>.
+
+			</div>
 		{!! Form::close() !!}
 
 	</div>

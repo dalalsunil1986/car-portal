@@ -177,13 +177,28 @@ input{
 }
 
 
-.bs-wizzard .select2-container .select2-choice {
+.select2-container .select2-choice {
     border-radius: 0 5px 5px 0;
     margin: auto;
     padding-left: 5%;
     padding-top: 5px;
     height: 36px;
     color: #333;
+}
+
+.alert-block{
+    width: 52%;
+    margin: auto auto 25px;
+    color: rgba(34, 34, 34, 0.83);
+    background-color: rgba(61, 61, 61, 0.03);
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.14) inset;
+    border: none;
+
+}
+
+.alert-block button.close{
+    background-color: rgba(255, 255, 255, 0);
+    color: black;
 }
 /*==================================================
                   Media Queries

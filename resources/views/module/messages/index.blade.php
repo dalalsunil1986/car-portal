@@ -12,7 +12,7 @@
 
         <div class="title">
 
-            <span id="back"><i class="fa fa-arrow-circle-left"></i> <span class="go-back">Go Back</span></span>
+            <span id="back"><i class="fa fa-arrow-circle-left"></i> <span class="go-back">Back to Results</span></span>
 
             <h1 class="title">Inbox</h1>
         </div>
@@ -28,6 +28,7 @@
                 </div>
 
                 <div class="col-md-12 column message-preview">
+
                     <img src="//www.gravatar.com/avatar/{{ $thread->latestMessage->user->email }}?s=50" class="profile-picture-inbox pull-left" width="50" height="50">
 
                     <div class="message-text">

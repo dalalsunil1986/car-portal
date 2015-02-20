@@ -149,14 +149,7 @@
 @section('script')
     @parent
 
-    <script>
-        $(".go-back").hide()
-        $(".fa-arrow-circle-left").mouseenter(function () {
-            $(".go-back").show(400)
-        }).mouseleave(function () {
-            $(".go-back").hide(400)
-        });
-    </script>
+
 
     <script>
         /*! jQuery Mobile v1.4.5 | Copyright 2010, 2014 jQuery Foundation, Inc. | jquery.org/license */

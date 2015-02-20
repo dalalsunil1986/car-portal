@@ -87,7 +87,22 @@
 
         });
 
-        //init-nanoscroller
+        //go-back-show-animation
+
+        $(".go-back").hide()
+        $(".fa-arrow-circle-left").mouseenter(function () {
+            $(".go-back").show(400),
+            $(this).click( function(){
+                window.history.back()
+                });
+        }).mouseleave(function () {
+            $(".go-back").hide(400)
+        });
+
+
+
+
+    //init-nanoscroller
         $(".int-col").hover( function(){
             $(".nano").nanoScroller();
         });

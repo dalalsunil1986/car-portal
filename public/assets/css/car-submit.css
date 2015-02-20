@@ -7,6 +7,12 @@ input {
     padding-right: 0;
 }
 
+
+.select2-container .select2-choice {
+
+    padding-left: 15px !important;
+}
+
 .panel-body {
     padding-left: 30px;
     padding-right: 30px;
@@ -31,6 +37,14 @@ input {
     font-weight: 300;
     font-family: 'Open Sans', sans-serif;
 }
+
+.create-panel h3{
+    font-size: 1.8em;
+    padding-bottom: 20px;
+    padding-left: 15px;
+}
+
+
 
 .panel-default > .panel-heading {
     background-color: rgba(247, 247, 247, 0.43);
@@ -63,7 +77,7 @@ label {
 .select2-container .select2-choice {
 
     border-radius: 0 4px 4px 0;
-
+    border: 1px solid #DDD;
 }
 
 .hint {
@@ -87,6 +101,9 @@ input {
     padding-top: 5px;
 }
 
+.select2-container .select2-choice .select2-arrow{
+    border-left: 1px solid #DDD;
+}
 .panel-body .row {
     margin-bottom: 10px;
 }
@@ -102,7 +119,7 @@ input[type=text], textarea {
     -ms-transition: all 0.30s ease-in-out;
     -o-transition: all 0.30s ease-in-out;
     outline: none;
-    padding: 3px 0 3px 3px;
+    padding: 3px 0 3px 15px;
     border: 1px solid #DDDDDD;
 
 }
@@ -135,7 +152,8 @@ h3 {
 }
 
 input[type="checkbox"] {
-    height: 14px;
+    height: 12px;
+    width: 20px;
     padding-left: 5px;
     margin-left: 5px;
     margin-top: 3px;
@@ -165,3 +183,95 @@ input[type="checkbox"] {
 button#btn-signup {
     margin-left: 20px;
 }
+
+.price-hidden{
+    padding-bottom: 20px;
+}
+
+
+.create-panel textarea{
+    border-radius: 0 5px 5px;
+}
+
+ .number{
+    background: rgba(205, 207, 207, 1);
+    color: white;
+    padding: 13px 16px;
+    border-radius: 30px;
+    display: inline-flex;
+    margin-bottom: 18px;
+}
+
+.active .number{
+
+    background: rgb(10, 166, 153);
+}
+
+.steps-submit{
+    float: left;
+    text-align: left;
+    margin-top: 45px;
+}
+
+.steps-submit li a{
+    color: rgba(129, 129, 129, 0.56);
+    text-decoration: none;
+    font-size: 20px;
+    padding-left: 9px;
+}
+.active .steps-submit li a{
+    color: #812901;
+}
+
+.save-step .submit-save-button{
+    color: #fff;
+    background-color: #A5A9A9;
+    border: none;
+    border-bottom: 3px solid rgba(142, 142, 142, 1);
+    float: right;
+    width: 120px;
+    margin-right: 120px;
+}
+
+.save-step .submit-save-button:hover{
+    color: #FFF;
+    background: rgb(136, 136, 136);
+}
+
+.save-step .submit-save-button:focus{
+    box-shadow: none;
+    border: none;
+    color: #FFF;
+}
+.save-step .submit-save-button:hover{
+    box-shadow: none;
+    color: #FFF;
+}
+/* Google Map */
+#map{
+    border-radius: 0 0 5px 5px;
+}
+
+#addresspicker_map{
+    width: 65%;
+    margin: auto;
+    border: none;
+    border-bottom: 1px solid rgb(19, 168, 156);
+}
+
+.map-hint{
+    height: 37px;
+    padding: 12px;
+    border-radius: 0 5px 0 0;
+    text-align: center;
+    background-color: rgba(211, 211, 211, 0.2);
+
+}
+
+.map-wrapper label{
+    border-bottom: 0;
+    margin-bottom: 0;
+    border-radius: 5px 0 0 0;
+}
+
+
