@@ -117,7 +117,7 @@ function favoriteButton(FavoriteService) {
         link: function link(scope) {
 
             scope.save = function () {
-                scope.favorite = {}; // just to change the text to remove 
+                scope.favorite = {}; // just to change the text to remove
                 var postData = {
                     "favoriteable_id": scope.favoreableId,
                     "favoriteable_type": scope.favoreableType
