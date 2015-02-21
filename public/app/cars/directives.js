@@ -115,10 +115,9 @@ function favoriteButton(FavoriteService) {
             favorite: '='
         },
         link: function link(scope) {
-            if (typeof scope.favorite != 'object') {
-                return false;
-            }
+
             scope.save = function () {
+                scope.favorite = {}; // just to change the text to remove 
                 var postData = {
                     "favoriteable_id": scope.favoreableId,
                     "favoriteable_type": scope.favoreableType
@@ -131,9 +130,11 @@ function favoriteButton(FavoriteService) {
             };
 
             scope.destroy = function () {
-                FavoriteService.destroy(scope.favorite).then(function () {
-                    scope.favorite = null;
-                });
+                if (typeof scope.favorite != 'object') {
+                    return false;
+                }
+                FavoriteService.destroy(scope.favorite);
+                scope.favorite = null;
             };
         }
     };
