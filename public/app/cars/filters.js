@@ -15,7 +15,6 @@ angular.module('app').filter('propsFilter', function() {
                         break;
                     }
                 }
-
                 if (itemMatches) {
                     out.push(item);
                 }
@@ -27,4 +26,11 @@ angular.module('app').filter('propsFilter', function() {
 
         return out;
     };
+});
+
+angular.module('app').filter('myDateFormat', function myDateFormat($filter){
+    return function(text){
+        var  tempdate= new Date(text.replace(/-/g,"/"));
+        return $filter('date')(tempdate, "MMM,dd yyyy");
+    }
 });

@@ -26,7 +26,7 @@ class CarsController extends Controller {
     public function __construct(CarRepository $carRepository)
     {
         $this->carRepository = $carRepository;
-        Auth::loginUsingId(1);
+        Auth::loginUsingId(2);
     }
 
     public function index()

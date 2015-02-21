@@ -149,7 +149,9 @@ return [
 		/*********************************************************************************************************
 		 * Custom Provider
 		 ********************************************************************************************************/
-		'Illuminate\View\ViewServiceProvider',
+        'App\Providers\ViewServiceProvider',
+
+        'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',

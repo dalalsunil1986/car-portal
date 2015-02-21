@@ -31,7 +31,7 @@ class Message extends BaseModel {
      */
     public function participants()
     {
-        return $this->hasMany('Cmgmyr\Messenger\Models\Participant', 'thread_id', 'thread_id');
+        return $this->hasMany('App\Src\Message\Participant', 'thread_id', 'thread_id');
     }
 
     /**

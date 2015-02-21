@@ -9,28 +9,29 @@
 @section('content')
 
     <div class="one-column">
-    <div class="title">
+        <div class="title">
 
-        <span id="back"><i class="fa fa-arrow-circle-left"></i> <span class="go-back">Go Back to Inbox</span></span>
+            <span id="back"><i class="fa fa-arrow-circle-left"></i> <span class="go-back">Go Back to Inbox</span></span>
 
-        <h1 class="title">Message</h1>
+            <h1 class="title">Message</h1>
 
-    </div>
+        </div>
 
-    <div class="row clearfix">
+        <div class="row clearfix">
 
-        <div class="col-md-12 column message-unit">
+            <div class="col-md-12 column message-unit">
 
-            <div class="row clearfix">
-                <div class="col-md-12 column message-title new-message">
-                    <h2>{{ $thread->subject }}</h2>
-                    <span class="delete-message-btn cd-popup-trigger"><a href="#">Delete</a></span>
+                <div class="row clearfix">
+                    <div class="col-md-12 column message-title new-message">
+                        <h2>{{ $thread->subject }}</h2>
+                        <span class="delete-message-btn cd-popup-trigger"><a href="#">Delete</a></span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row clearfix message-preview">
-                <div class="col-md-12 column">
+                <div class="row clearfix message-preview">
+                    <div class="col-md-12 column">
 
+<<<<<<< HEAD
                     @foreach($thread->messages as $message)
                         <div class="row">
                             <div class="{{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left' : 'reply-text pull-right' }}">
@@ -38,24 +39,33 @@
                             </div>
                             <div class=" col-md-10 {{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left' : 'reply-text pull-right' }}">
                                 <p>{{ $message->body }}</p>
+=======
+                        @foreach($thread->messages as $message)
+                            <div class="row">
+                                <div class="col-md-1 {{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left' : 'reply-text pull-right' }}">
+                                    <img src="//www.gravatar.com/avatar/{{$message->user->email}}?s=50" class="profile-picture-inbox" width="50" height="50">
+                                </div>
+                                <div class=" col-md-10 {{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left' : 'reply-text pull-right' }}">
+                                    <p>{{ $message->body }}</p>
+>>>>>>> e954e71d1628ea780e24dbc57a014d876c6bc24a
 
-                                <small>{{ $message->user->name }} - {{ $message->created_at->diffForHumans() }}</small>
+                                    <small>{{ $message->user->name }} - {{ $message->created_at->diffForHumans() }}</small>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
 
-                    {!! Form::open(['action' => ['MessagesController@update',$thread->id], 'method' => 'PATCH']) !!}
+                        {!! Form::open(['action' => ['MessagesController@update',$thread->id], 'method' => 'PATCH']) !!}
 
-                    {!! Form::text('body',null,['class'=>'col-xs-12 form-control ']) !!}
+                        {!! Form::text('body',null,['class'=>'col-xs-12 form-control ']) !!}
 
-                    {!! Form::submit('Send', ['class' => 'btn btn-success ']) !!}
+                        {!! Form::submit('Send', ['class' => 'btn btn-success ']) !!}
 
-                    {!! Form::close() !!}
+                        {!! Form::close() !!}
+                    </div>
                 </div>
+
             </div>
 
         </div>
-
-    </div>
     </div>
 @stop

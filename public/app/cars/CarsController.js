@@ -89,6 +89,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
             $scope.filters.page++;
 
             CarService.getIndex($scope.filters).then(function (response) {
+
                 $scope.sortorder = "-created_at";
 
                 // If Data retrieved is equal, then just return
@@ -141,7 +142,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
         $scope.getFilterNames();
 
         var modalInstance = $modal.open({
-            templateUrl: '/app/views/partials/notification-tpl.html',
+            templateUrl: '/app/cars/notify-modal.html',
             controller: function ($scope, $modalInstance, filters) {
                 $scope.filters = filters;
                 $scope.cancel = function () {

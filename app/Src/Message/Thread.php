@@ -13,14 +13,19 @@ class Thread extends BaseModel {
 
     public $timestamps = true;
 
+    public function messageable()
+    {
+        return $this->morphTo();
+    }
+
+    /**
+     * Messages relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function messages()
     {
         return $this->hasMany('App\Src\Message\Message');
-    }
-
-    public function participants()
-    {
-        return $this->hasMany('App\Src\Message\Participant');
     }
 
     /**
@@ -29,6 +34,43 @@ class Thread extends BaseModel {
     public function latestMessage()
     {
         return $this->hasOne('App\Src\Message\Message')->latest();
+    }
+
+    /**
+     * Participants relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function participants()
+    {
+        return $this->hasMany('App\Src\Message\Participant');
+    }
+
+    /**
+     * Returns all of the latest threads by updated_at date
+     *
+     * @return mixed
+     */
+    public static function getAllLatest()
+    {
+        return self::latest('updated_at')->get();
+    }
+
+    /**
+     * Returns an array of user ids that are associated with the thread
+     *
+     * @param null $userId
+     * @return array
+     */
+    public function participantsUserIds($userId = null)
+    {
+        $users = $this->participants()->withTrashed()->lists('user_id');
+
+        if ($userId) {
+            $users[] = $userId;
+        }
+
+        return $users;
     }
 
     /**
@@ -59,30 +101,87 @@ class Thread extends BaseModel {
     {
         return $query->join('participants', 'threads.id', '=', 'participants.thread_id')
             ->where('participants.user_id', $userId)
-            ->where('participants.deleted_at', null)
-            ->where('threads.updated_at', '>', DB::raw('participants.last_read'))
+            ->whereNull('participants.deleted_at')
+            ->where(function ($query) {
+                $query->where('threads.updated_at', '>', $this->getConnection()->raw('participants.last_read'))
+                    ->orWhereNull('participants.last_read');
+            })
             ->select('threads.*')
             ->latest('updated_at')
             ->get();
     }
 
     /**
-     * @param int $paginate
-     * @return mixed Get Threads Related to the Authenticated User
-     * Get Threads Related to the Authenticated User
-     * @todo: Replace 1 with Auth
+     * Returns threads with new messages that the user is associated with
+     *
+     * @param $query
+     * @param $userId
+     * @return mixed
      */
-    public function getUserThreads($paginate = 15)
+    public function scopeForUserWithNewMessagesCount($query,$userId)
     {
-        return $this->whereHas('messages', function ($q) {
-            $q->where('recepient_id', Auth::user()->id)// Replace 1 with Auth::user()->id
-            ->orWhere('sender_id', Auth::user()->id);
-        })->paginate($paginate);
+        return $query->join('participants', 'threads.id', '=', 'participants.thread_id')
+            ->where('participants.user_id', $userId)
+            ->whereNull('participants.deleted_at')
+            ->where(function ($query) {
+                $query->where('threads.updated_at', '>', $this->getConnection()->raw('participants.last_read'))
+                    ->orWhereNull('participants.last_read');
+            })
+            ->select('count(threads.*)')
+            ->latest('updated_at')
+            ->get();
     }
 
-    public function messageable()
+    /**
+     * Adds users to this thread
+     *
+     * @param array $participants list of all participants
+     * @return void
+     */
+    public function addParticipants(array $participants)
     {
-        return $this->morphTo();
+        if (count($participants)) {
+            foreach ($participants as $user_id) {
+                Participant::firstOrCreate([
+                    'user_id' => $user_id,
+                    'thread_id' => $this->id,
+                ]);
+            }
+        }
+    }
+
+    /**
+     * Mark a thread as read for a user
+     *
+     * @param integer $userId
+     */
+    public function markAsRead($userId)
+    {
+        try {
+            $participant = $this->getParticipantFromUser($userId);
+            $participant->last_read = new Carbon;
+            $participant->save();
+        } catch (ModelNotFoundException $e) {
+            // do nothing
+        }
+    }
+
+    /**
+     * See if the current thread is unread by the user
+     *
+     * @param integer $userId
+     * @return bool
+     */
+    public function isUnread($userId)
+    {
+        try {
+            $participant = $this->getParticipantFromUser($userId);
+            if ($this->updated_at > $participant->last_read) {
+                return true;
+            }
+        } catch (ModelNotFoundException $e) {}
+
+        return false;
     }
 
     /**
@@ -98,14 +197,13 @@ class Thread extends BaseModel {
     }
 
     /**
-     * Mark a thread as read for a user
-     *
-     * @param integer $userId
+     * Restores all participants within a thread that has a new message
      */
-    public function markAsRead($userId)
+    public function activateAllParticipants()
     {
-        $participant = $this->getParticipantFromUser($userId);
-        $participant->last_read = new Carbon;
-        $participant->save();
+        $participants = $this->participants()->withTrashed()->get();
+        foreach ($participants as $participant) {
+            $participant->restore();
+        }
     }
 }

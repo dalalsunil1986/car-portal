@@ -10,8 +10,10 @@ function FavoritesController($scope, FavoriteService) {
         $scope.favorites = FavoriteService.favorites;
     });
 
-    FavoriteService.list().then(function () {
-        $scope.favorites = FavoriteService.favorites;
-    });
+    $scope.getFavorites = function() {
+        FavoriteService.list().then(function () {
+            $scope.favorites = FavoriteService.favorites;
+        });
+    }
 
 }

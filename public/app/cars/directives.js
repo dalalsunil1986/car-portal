@@ -30,12 +30,12 @@ angular.module('app').directive('priceSlider', function () {
                 onFinish: function (obj) { // callback, is called once, after slider finished it's work
                     scope.filters.priceFrom = obj.from;
                     scope.filters.priceTo = obj.to;
-                    scope.resetValues();
-                    scope.getCars();
+                    scope.refreshCars();
                 }
             });
 
         }
+
     }
 });
 
@@ -61,10 +61,9 @@ angular.module('app').directive('mileageSlider', function () {
                 grid_margin: scope.slider.gridMargin,
                 keyboard: scope.slider.keyboard,
                 onFinish: function (obj) { // callback, is called once, after slider finished it's work
-                    scope.resetValues();
                     scope.filters.mileageFrom = obj.from;
                     scope.filters.mileageTo = obj.to;
-                    scope.getCars();
+                    scope.refreshCars();
                 }
             });
 
@@ -92,10 +91,9 @@ angular.module('app').directive('yearSlider', function () {
                 grid_margin: scope.slider.gridMargin,
                 keyboard: scope.slider.keyboard,
                 onFinish: function (obj) { // callback, is called once, after slider finished it's work
-                    scope.resetValues();
                     scope.filters.yearFrom = obj.from;
                     scope.filters.yearTo = obj.to;
-                    scope.getCars();
+                    scope.refreshCars();
                 }
             });
 
@@ -103,58 +101,41 @@ angular.module('app').directive('yearSlider', function () {
     }
 });
 
-angular.module('app').directive('favoriteTpl', favoriteTpl);
+angular.module('app').directive('favoriteButton', favoriteButton);
 
-favoriteTpl.$inject = ['FavoriteService'];
+favoriteButton.$inject = ['FavoriteService'];
 
-function favoriteTpl(FavoriteService) {
+function favoriteButton(FavoriteService) {
     return {
         restrict: 'EA',
-        templateUrl: '/app/views/partials/favorite-tpl.html',
+        templateUrl: '/app/cars/partials/favorite-button.html',
         scope: {
             favoreableType: '@',
             favoreableId: '@',
             favorite: '='
         },
         link: function link(scope) {
-            // format of scope.favorite = { id: 1, user_id: 1, favoriteable_id: 30, favoriteable_type: "Car", created_at: "2015-02-13 09:38:20", updated_at: "2015-02-13 09:38:20", deleted_at: null }
-            if (typeof scope.favorite != 'object') {
-                return false;
-            }
+
             scope.save = function () {
+                scope.favorite = {}; // just to change the text to remove
                 var postData = {
                     "favoriteable_id": scope.favoreableId,
                     "favoriteable_type": scope.favoreableType
                 };
-                var response = FavoriteService.save(postData);
-                scope.favorite = response;
+
+                FavoriteService.save(postData).then(function (favorite) {
+                    scope.favorite = favorite;
+                })
+
             };
 
             scope.destroy = function () {
-                FavoriteService.destroy(scope.favorite).then(function (data) {
-                    scope.favorite = null;
-                });
+                if (typeof scope.favorite != 'object') {
+                    return false;
+                }
+                FavoriteService.destroy(scope.favorite);
+                scope.favorite = null;
             };
         }
     };
-}
-
-angular.module('app').directive('favoritePanel', favoritePanel);
-
-favoritePanel.$inject = ['FavoriteService'];
-
-function favoritePanel(FavoriteService) {
-
-    return {
-        restrict: 'EA',
-        templateUrl: '/app/views/partials/favorite-panel.html',
-        link: function (scope) {
-            scope.destroy = function (favorite) {
-                FavoriteService.destroy(favorite).then(function (result) {
-                    //element.fadeOut(1000);
-                });
-            };
-        }
-    }
-
 }

@@ -20,17 +20,12 @@ class ThreadRepository extends BaseRepository {
         parent::__construct(new MessageBag);
     }
 
-    public function findAllByThread()
-    {
-    }
-
     public function getMessagesByThread($threadID)
     {
-        return $this->model->with(['messages.user'])->whereHas('messages',function($q){
+        return $this->model->with(['messages.user'])->whereHas('messages', function ($q) {
             $q->latest();
         })->find($threadID);
     }
-
 
 
 }

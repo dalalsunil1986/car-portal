@@ -1,48 +1,19 @@
-<?php namespace App\Src\User;
+<?php namespace App\Src\Message;
 
-use App\Core\BaseModel;
-use App\Src\Message\Participant;
-use App\Src\Message\Thread;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-
-class User extends BaseModel implements AuthenticatableContract, CanResetPasswordContract {
-
-    use Authenticatable, CanResetPassword;
-
+trait Messagable
+{
     /**
-     * The database table used by the model.
+     * Message relationship
      *
-     * @var string
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    protected $table = 'users';
-
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = ['password', 'remember_token'];
-
-    public function favorites()
-    {
-        return $this->morphMany('App\Src\Favorite\Favorite', 'favoriteable');
-    }
-
     public function messages()
     {
-        return $this->hasMany('App\Src\Message\Message', 'user_id');
-    }
-
-    public function participants()
-    {
-        return $this->hasMany('App\Src\Message\Participant', 'user_id');
+        return $this->hasMany('App\Src\Message\Message');
     }
 
     /**
-     * User relationship
+     * Thread relationship
      *
      * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
      */
@@ -82,10 +53,5 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
         }
 
         return $threadsWithNewMessages;
-    }
-
-    public function newMessages()
-    {
-
     }
 }

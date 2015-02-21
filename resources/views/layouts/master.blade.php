@@ -13,10 +13,10 @@
         {!! HTML::style('packages/ionrangeslider/css/ion.rangeSlider.css') !!}
         {!! HTML::style('packages/ionrangeslider/css/ion.rangeSlider.skinFlat.css') !!}
         {!! HTML::style('packages/nanoscroller/bin/css/nanoscroller.css') !!}
+
         {!! HTML::style('assets/css/modules/form.css') !!}
         {!! HTML::style('assets/css/modules/filter.css') !!}
         {!! HTML::style('assets/css/modules/result.css') !!}
-
         {!! HTML::style('assets/css/global.css') !!}
 
         <link rel="shortcut icon" href="../img/icons/favicon.ico">
@@ -53,6 +53,7 @@
     {!! HTML::script('packages/jquery/dist/jquery.js') !!}
     {!! HTML::script('packages/bootstrap/dist/js/bootstrap.js') !!}
 
+    <!-- Angular Libs -->
     {!! Html::script('packages/angular/angular.js') !!}
     {!! Html::script('packages/angular-bootstrap/ui-bootstrap.js') !!}
     {!! Html::script('packages/angular-bootstrap/ui-bootstrap-tpls.js') !!}
@@ -63,20 +64,22 @@
     {!! Html::script('packages/underscore/underscore.js') !!}
     {!! Html::script('packages/ngInfiniteScroll/build/ng-infinite-scroll.min.js') !!}
 
-    {!! Html::script('app/app.js') !!}
-    {!! Html::script('app/filters.js') !!}
-    {!! Html::script('app/directives.js') !!}
-    {!! Html::script('app/animations.js') !!}
-
-    {!! Html::script('app/controllers/FavoritesController.js') !!}
-    {!! Html::script('app/services/FavoriteService.js') !!}
-    <!-- end angular -->
-
-    <!-- custom scripts -->
-    {!! Html::script('/assets/js/scripts.js') !!}
+    <!-- custom packages -->
     {!! Html::script('/packages/Slidebars/distribution/0.9/slidebars.min.js') !!}
     {!! Html::script('/packages/ionrangeslider/js/ion.rangeSlider.js') !!}
     {!! Html::script('/packages/nanoscroller/bin/javascripts/jquery.nanoscroller.js') !!}
+
+    <!--  Angular Scripts -->
+    {!! Html::script('app/app.js') !!}
+    {!! Html::script('app/animations.js') !!}
+
+    {!! Html::script('app/favorites/FavoritesController.js') !!}
+    {!! Html::script('app/favorites/FavoriteService.js') !!}
+    {!! Html::script('app/favorites/directives.js') !!}
+
+    <!-- custom scripts -->
+    {!! Html::script('/assets/js/scripts.js') !!}
+
 
     <script>
         angular.module("app").constant("CSRF_TOKEN", '{!! csrf_token() !!}');
@@ -87,6 +90,7 @@
 
         });
 
+<<<<<<< HEAD
         //go-back-show-animation
 
         $(".go-back").hide()
@@ -104,6 +108,10 @@
 
     //init-nanoscroller
         $(".int-col").hover( function(){
+=======
+        //init-nanoscroller
+        $(".int-col").hover(function () {
+>>>>>>> e954e71d1628ea780e24dbc57a014d876c6bc24a
             $(".nano").nanoScroller();
         });
 

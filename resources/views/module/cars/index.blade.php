@@ -27,9 +27,12 @@
 @section('script')
     @parent
 
-    {!! Html::script('app/controllers/CarsController.js') !!}
-    {!! Html::script('app/services/CarService.js') !!}
-    {!! Html::script('app/services/NotificationService.js') !!}
+    {!! Html::script('app/cars/CarsController.js') !!}
+    {!! Html::script('app/cars/CarService.js') !!}
+    {!! Html::script('app/cars/filters.js') !!}
+    {!! Html::script('app/cars/directives.js') !!}
+
+    {!! Html::script('app/notifications/NotificationService.js') !!}
 
     <script>
         $(document).ready(function () {
