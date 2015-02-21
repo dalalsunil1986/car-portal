@@ -59,8 +59,8 @@
                                     <div class="asking text-center">Price</div>
                                     <div class="price-cost text-center">{[ car.price ]} KD</div>
 
-                                    <favorite-tpl favorite="car.favorited" favoreable-type="Car" favoreable-id="{[car.id]}"/>
-                                    </favorite-tpl>
+                                    <favorite-button favorite="car.favorited" favoreable-type="Car" favoreable-id="{[car.id]}"/>
+                                    </favorite-button>
 
                                 </div>
 

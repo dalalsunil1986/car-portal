@@ -101,14 +101,14 @@ angular.module('app').directive('yearSlider', function () {
     }
 });
 
-angular.module('app').directive('favoriteTpl', favoriteTpl);
+angular.module('app').directive('favoriteButton', favoriteButton);
 
-favoriteTpl.$inject = ['FavoriteService'];
+favoriteButton.$inject = ['FavoriteService'];
 
-function favoriteTpl(FavoriteService) {
+function favoriteButton(FavoriteService) {
     return {
         restrict: 'EA',
-        templateUrl: '/app/views/partials/favorite-tpl.html',
+        templateUrl: '/app/cars/partials/favorite-button.html',
         scope: {
             favoreableType: '@',
             favoreableId: '@',
@@ -137,26 +137,4 @@ function favoriteTpl(FavoriteService) {
             };
         }
     };
-}
-
-angular.module('app').directive('favoritePanel', favoritePanel);
-
-favoritePanel.$inject = ['FavoriteService'];
-
-function favoritePanel(FavoriteService) {
-
-    return {
-        restrict: 'EA',
-        templateUrl: '/app/views/partials/favorite-panel.html',
-        link: function (scope,element) {
-            scope.destroy = function (favorite) {
-                element.addClass('ng-leave');
-                element.fadeOut(1000);
-                FavoriteService.destroy(favorite).then(function () {
-                    scope.favorite = null;
-                });
-            };
-        }
-    }
-
 }

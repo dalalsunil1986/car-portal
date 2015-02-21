@@ -15,7 +15,6 @@ angular.module('app').filter('propsFilter', function() {
                         break;
                     }
                 }
-
                 if (itemMatches) {
                     out.push(item);
                 }
