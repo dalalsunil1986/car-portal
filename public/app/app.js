@@ -17,5 +17,5 @@ configure.inject = ['$interpolateProvider','$locationProvider'];
 
 function configure($interpolateProvider,$locationProvider) {
     $interpolateProvider.startSymbol('{[').endSymbol(']}');
-    $locationProvider.html5Mode({enabled: true,requireBase: false});
+    //$locationProvider.html5Mode({enabled: true,requireBase: false});
 }
