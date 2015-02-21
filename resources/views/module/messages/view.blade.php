@@ -31,25 +31,17 @@
                 <div class="row clearfix message-preview">
                     <div class="col-md-12 column">
 
-<<<<<<< HEAD
-                    @foreach($thread->messages as $message)
-                        <div class="row">
-                            <div class="{{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left' : 'reply-text pull-right' }}">
-                                <img src="//www.gravatar.com/avatar/{{$message->user->email}}?s=50" class="profile-picture-inbox-view" width="50" height="50">
-                            </div>
-                            <div class=" col-md-10 {{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left' : 'reply-text pull-right' }}">
-                                <p>{{ $message->body }}</p>
-=======
                         @foreach($thread->messages as $message)
                             <div class="row">
-                                <div class="col-md-1 {{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left' : 'reply-text pull-right' }}">
-                                    <img src="//www.gravatar.com/avatar/{{$message->user->email}}?s=50" class="profile-picture-inbox" width="50" height="50">
+                                <div class="{{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left' : 'reply-text pull-right' }}">
+                                    <img src="//www.gravatar.com/avatar/{{$message->user->email}}?s=50"
+                                         class="profile-picture-inbox-view" width="50" height="50">
                                 </div>
                                 <div class=" col-md-10 {{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left' : 'reply-text pull-right' }}">
                                     <p>{{ $message->body }}</p>
->>>>>>> e954e71d1628ea780e24dbc57a014d876c6bc24a
 
-                                    <small>{{ $message->user->name }} - {{ $message->created_at->diffForHumans() }}</small>
+                                    <small>{{ $message->user->name }}
+                                        - {{ $message->created_at->diffForHumans() }}</small>
                                 </div>
                             </div>
                         @endforeach

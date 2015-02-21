@@ -90,7 +90,6 @@
 
         });
 
-<<<<<<< HEAD
         //go-back-show-animation
 
         $(".go-back").hide()
@@ -108,10 +107,6 @@
 
     //init-nanoscroller
         $(".int-col").hover( function(){
-=======
-        //init-nanoscroller
-        $(".int-col").hover(function () {
->>>>>>> e954e71d1628ea780e24dbc57a014d876c6bc24a
             $(".nano").nanoScroller();
         });
 
