@@ -31,7 +31,6 @@
 
                         {!! Form::submit('Save', ['class' => 'btn form-control submit-save-button']) !!}
 
-
                     </div>
                 </div>
 
