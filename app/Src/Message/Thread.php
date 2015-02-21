@@ -30,12 +30,10 @@ class Thread extends BaseModel {
 
     /**
      * Returns the latest message from a thread
-     *
-     * @return \Cmgmyr\Messenger\Models\Message
      */
     public function latestMessage()
     {
-        return $this->messages()->latest()->first();
+        return $this->hasOne('App\Src\Message\Message')->latest();
     }
 
     /**
@@ -114,6 +112,27 @@ class Thread extends BaseModel {
     }
 
     /**
+     * Returns threads with new messages that the user is associated with
+     *
+     * @param $query
+     * @param $userId
+     * @return mixed
+     */
+    public function scopeForUserWithNewMessagesCount($query,$userId)
+    {
+        return $query->join('participants', 'threads.id', '=', 'participants.thread_id')
+            ->where('participants.user_id', $userId)
+            ->whereNull('participants.deleted_at')
+            ->where(function ($query) {
+                $query->where('threads.updated_at', '>', $this->getConnection()->raw('participants.last_read'))
+                    ->orWhereNull('participants.last_read');
+            })
+            ->select('count(threads.*)')
+            ->latest('updated_at')
+            ->get();
+    }
+
+    /**
      * Adds users to this thread
      *
      * @param array $participants list of all participants
@@ -160,9 +179,7 @@ class Thread extends BaseModel {
             if ($this->updated_at > $participant->last_read) {
                 return true;
             }
-        } catch (ModelNotFoundException $e) {
-            // do nothing
-        }
+        } catch (ModelNotFoundException $e) {}
 
         return false;
     }

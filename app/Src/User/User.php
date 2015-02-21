@@ -1,8 +1,9 @@
 <?php namespace App\Src\User;
 
 use App\Core\BaseModel;
+use App\Src\Message\Participant;
+use App\Src\Message\Thread;
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
@@ -67,28 +68,20 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
      */
     public function threadsWithNewMessages()
     {
+        $threadsWithNewMessages = [];
+        $participants = Participant::where('user_id', $this->id)->lists('last_read', 'thread_id');
 
-        // find threads
-        $threads = $this->threads;
+        if ($participants) {
+            $threads = Thread::whereIn('id', array_keys($participants))->get();
 
-        foreach($threads as $thread) {
-            foreach ($thread->messages as $message) {
-                dd($message);
+            foreach ($threads as $thread) {
+                if ($thread->updated_at > $participants[$thread->id]) {
+                    $threadsWithNewMessages[] = $thread->id;
+                }
             }
         }
 
-//        $threadsWithNewMessages = [];
-//        $participants           = $this->participants->lists('last_read', 'thread_id');
-//        if ( $participants ) {
-//            $threads = $this->threads;
-//
-//            foreach ( $threads as $thread ) {
-//                if ( $thread->updated_at > $participants[$thread->id] ) {
-//                    $threadsWithNewMessages[] = $thread->id;
-//                }
-//            }
-//        }
-
+        return $threadsWithNewMessages;
     }
 
     public function newMessages()

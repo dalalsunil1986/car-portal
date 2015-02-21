@@ -5,12 +5,7 @@
 
 <div class="profile-links">
 
-    <a href="{{ action('MessagesController@index') }}">
-    <div class="mail-icon">
-        {!! HTML::image('/assets/img/icons/mail_icon.png') !!}
-        <div class="mail-count"> 1 </div>
-    </div>
-    </a>
+    @include('module.messages.partials.new_messages_count')
     <a href="{{ action('UsersController@getProfile') }}">
         <div class="user-icon">
        {!! HTML::image('/assets/img/icons/user-icon.png', null , array('width'=>'15', 'height'=>'16')) !!}

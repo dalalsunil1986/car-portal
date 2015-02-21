@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider {
+class ViewServiceProvider extends ServiceProvider {
 
 	/**
 	 * Bootstrap any application services.
@@ -11,7 +11,7 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-
+        view()->composer('module.messages.partials.new_messages_count', 'App\Http\Composers\MessageComposer');
 	}
 
 	/**
@@ -25,10 +25,7 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bind(
-			'Illuminate\Contracts\Auth\Registrar',
-			'App\Services\Registrar'
-		);
+
 	}
 
 }

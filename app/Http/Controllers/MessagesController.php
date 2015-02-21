@@ -26,7 +26,7 @@ class MessagesController extends Controller {
     {
         $this->messageRepository = $messageRepository;
         $this->threadRepository  = $threadRepository;
-        Auth::loginUsingId(1);
+        Auth::loginUsingId(2);
     }
 
     /**
@@ -52,11 +52,8 @@ class MessagesController extends Controller {
     {
         $user = Auth::user();
         $thread = $this->threadRepository->getMessagesByThread($threadID);
-
         //@todo: If this Thread is not assosiated with this user, then redirect
 
-
-        //@todo: Mark Read
         $thread->markAsRead($user->id);
         return view('module.messages.view', compact('thread'));
     }
