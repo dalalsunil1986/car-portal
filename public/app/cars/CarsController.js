@@ -84,7 +84,6 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
 
         if ($scope.hasRecords) {
 
-            $scope.loading = true;
 
             $scope.filters.page++;
 
