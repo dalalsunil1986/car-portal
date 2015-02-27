@@ -134,14 +134,14 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
                 $scope.filters.selectedModelNames = data.results.models;
             }
         );
-    }
+    };
 
     $scope.openModal = function (size, selectedFilters) {
 
         $scope.getFilterNames();
 
         var modalInstance = $modal.open({
-            templateUrl: '/app/cars/notify-modal.html',
+            templateUrl: '/app/cars/partials/notify-modal.html',
             controller: function ($scope, $modalInstance, filters) {
                 $scope.filters = filters;
                 $scope.cancel = function () {
@@ -175,12 +175,12 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
         $scope.cars = [];
         $scope.hasRecords = true;
         $scope.emptyRecords = false;
-    }
+    };
 
     $scope.refreshCars = function () {
         $scope.resetValues();
         $scope.getCars();
-    }
+    };
 
     // Model Watchers
     $scope.$watch('filters.selectedMakes', function (newVal, oldVal) {
