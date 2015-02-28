@@ -199,10 +199,9 @@ class AuthController extends Controller {
 
     }
 
+
     public function sendActivationLink()
     {
-
-
         $userId = Input::get('user_id');
         $user   = $this->userRepository->findById($userId);
         if ( $user ) {

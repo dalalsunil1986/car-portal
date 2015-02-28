@@ -1,24 +1,24 @@
-<p class="username-nav">Hi Khalid!</p>
-<a href="{{ action('UsersController@getProfile') }}">{!! HTML::image('/assets/img/custom/user_profile_picture.jpg', 'Profile Picture', array('class'=>'profiel_picture_nav img-responsive', 'width'=>'225','height'=>'225')) !!}</a>
+@if(!Auth::check())
+    <p class="username-nav">Hello, Guest</p>
+@else
+    <p class="username-nav">Hi {{ Auth::user()->name }}</p>
+    <a href="{{ action('UsersController@getProfile') }}">{!! HTML::image('/assets/img/custom/user_profile_picture.jpg', 'Profile Picture', array('class'=>'profiel_picture_nav img-responsive', 'width'=>'225','height'=>'225')) !!}</a>
 
-<!--Start Profile Links-->
+    <div class="profile-links">
 
-<div class="profile-links">
-
-    @include('module.messages.partials.new_messages_count')
-    <a href="{{ action('UsersController@getProfile') }}">
-        <div class="user-icon">
-       {!! HTML::image('/assets/img/icons/user-icon.png', null , array('width'=>'15', 'height'=>'16')) !!}
+        @include('module.messages.partials.new_messages_count')
+        <a href="{{ action('UsersController@getProfile') }}">
+            <div class="user-icon">
+                {!! HTML::image('/assets/img/icons/user-icon.png', null , array('width'=>'15', 'height'=>'16')) !!}
+            </div>
+        </a>
+        <a href="cars/create">
+            <div class="my-posts-icon">
+                {!! HTML::image('/assets/img/icons/post_icon.png', null, array('width'=>'14', 'height'=>'14')) !!}
+            </div>
+        </a>
     </div>
-    </a>
-    <a href="cars/create">
-    <div class="my-posts-icon">
-        {!! HTML::image('/assets/img/icons/post_icon.png', null, array('width'=>'14', 'height'=>'14')) !!}
-    </div>
-    </a>
-</div>
-<!--End Profile Links-->
-<!--Start Navigation Links-->
+@endif
 
 <ul class="nav-links">
 
@@ -56,7 +56,6 @@
             <span class="shift-link-text">Travel</span>
         </a>
     </li>
-
 
 
     <li><a href="#">

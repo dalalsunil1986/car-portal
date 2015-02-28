@@ -32,7 +32,7 @@ Route::post('account/send-activation-link', ['as' => 'user.token.send-activation
 /*********************************************************************************************************
  * User Routes
  ********************************************************************************************************/
-Route::get('user/{id}/profile', array('as' => 'profile', 'uses' => 'UsersController@getProfile'));
+Route::get('profile', array('as' => 'profile', 'uses' => 'UsersController@getProfile'));
 
 Route::resource('user', 'UsersController');
 
