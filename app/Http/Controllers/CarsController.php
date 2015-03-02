@@ -160,10 +160,10 @@ class CarsController extends Controller {
      */
     public function getCars(CarRepository $carRepository)
     {
-        $getMakes    = Input::get('make') ? Input::get('make') : '';
-        $getBrands   = Input::get('brand') ? Input::get('brand') : '';
-        $getModels   = Input::get('model') ? Input::get('model') : '';
-        $getTypes    = Input::get('type') ? Input::get('type') : '';
+        $makeArray   = array_filter(explode(',', Input::get('make')));
+        $brandArray  = array_filter(explode(',', Input::get('brand')));
+        $modelArray  = array_filter(explode(',', Input::get('model')));
+        $typeArray   = array_filter(explode(',', Input::get('type')));
         $mileageFrom = Input::get('mileage_from');
         $mileageTo   = Input::get('mileage_to');
         $priceFrom   = Input::get('price_from');
@@ -174,35 +174,30 @@ class CarsController extends Controller {
         $maxYear     = $carRepository::MAXYEAR;
         $maxMileage  = $carRepository::MAXMILEAGE;
 
-        if ( !(empty($getMakes)) || !(empty($getBrands)) || !(empty($getModels)) || !(empty($getTypes)) || !(empty($priceFrom)) || !(empty($yearFrom)) || !(empty($mileageFrom)) ) {
-
-            $makeArray  = array_filter(explode(',', $getMakes));
-            $brandArray = array_filter(explode(',', $getBrands));
-            $modelArray = array_filter(explode(',', $getModels));
-            $typeArray  = array_filter(explode(',', $getTypes));
+        if ( $makeArray || $brandArray || $modelArray || $typeArray || !(empty($priceFrom)) || !(empty($yearFrom)) || !(empty($mileageFrom)) ) {
 
             $cars = $this->carRepository->model->with(['thumbnail', 'favorited'])
                 // start querying
                 ->where(function ($query) use ($makeArray, $brandArray, $modelArray, $typeArray, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $maxMileage, $maxPrice, $maxYear) {
 
-                    if ( count($modelArray) ) {
+                    if ( $modelArray ) {
                         $query->whereIn('model_id', $modelArray);
-                    } elseif ( count($brandArray) ) {
+                    } elseif ( $brandArray ) {
                         $query->whereHas('model', function ($query) use ($brandArray) {
                             $query->whereIn('car_models.brand_id', $brandArray);
                         });
-                        if ( count($typeArray) ) {
+                        if ( $typeArray ) {
                             $query->whereHas('model', function ($query) use ($typeArray) {
                                 $query->whereIn('car_models.type_id', $typeArray);
                             });
                         }
-                    } elseif ( count($makeArray) ) {
+                    } elseif ( $makeArray ) {
                         $query->whereHas('model', function ($query) use ($makeArray) {
                             $query->whereHas('brand', function ($query) use ($makeArray) {
                                 $query->whereIn('car_brands.make_id', $makeArray);
                             });
                         });
-                        if ( count($typeArray) ) {
+                        if ( $typeArray ) {
                             $query->whereHas('model', function ($query) use ($typeArray) {
                                 $query->whereIn('car_models.type_id', $typeArray);
                             });
@@ -228,8 +223,8 @@ class CarsController extends Controller {
                     }
 
                 })
-                ->select(['id','model_id','year','mileage','price','created_at'])
-                ->orderBy('created_at','DESC')
+                ->select(['id', 'model_id', 'year', 'mileage', 'price', 'created_at'])
+                ->orderBy('created_at', 'DESC')
                 ->paginate(10);
         } else {
             $cars = $this->carRepository->model->with(['thumbnail', 'favorited'])->paginate(10);
