@@ -185,28 +185,28 @@ class CarsController extends Controller {
                 // start querying
                 ->where(function ($query) use ($makeArray, $brandArray, $modelArray, $typeArray, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $maxMileage, $maxPrice, $maxYear) {
 
-                    if ( count($makeArray) ) {
+                    if ( count($modelArray) ) {
+                        $query->whereIn('model_id', $modelArray);
+                    } elseif ( count($brandArray) ) {
+                        $query->whereHas('model', function ($query) use ($brandArray) {
+                            $query->whereIn('car_models.brand_id', $brandArray);
+                        });
+                        if ( count($typeArray) ) {
+                            $query->whereHas('model', function ($query) use ($typeArray) {
+                                $query->whereIn('car_models.type_id', $typeArray);
+                            });
+                        }
+                    } elseif ( count($makeArray) ) {
                         $query->whereHas('model', function ($query) use ($makeArray) {
                             $query->whereHas('brand', function ($query) use ($makeArray) {
                                 $query->whereIn('car_brands.make_id', $makeArray);
                             });
                         });
-                    }
-
-                    if ( count($brandArray) ) {
-                        $query->whereHas('model', function ($query) use ($brandArray) {
-                            $query->whereIn('car_models.brand_id', $brandArray);
-                        });
-                    }
-
-                    if ( count($modelArray) ) {
-                        $query->whereIn('model_id', $modelArray);
-                    }
-
-                    if ( count($typeArray) ) {
-                        $query->whereHas('model', function ($query) use ($typeArray) {
-                            $query->whereIn('car_models.type_id', $typeArray);
-                        });
+                        if ( count($typeArray) ) {
+                            $query->whereHas('model', function ($query) use ($typeArray) {
+                                $query->whereIn('car_models.type_id', $typeArray);
+                            });
+                        }
                     }
 
                     if ( $mileageTo < $maxMileage ) {
@@ -228,6 +228,7 @@ class CarsController extends Controller {
                     }
 
                 })
+                ->select(['id','model_id','year','mileage','price','created_at'])
                 ->paginate(10);
         } else {
             $cars = $this->carRepository->model->with(['thumbnail', 'favorited'])->paginate(10);

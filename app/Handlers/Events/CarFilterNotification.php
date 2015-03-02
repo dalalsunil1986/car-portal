@@ -29,7 +29,6 @@ class CarFilterNotification {
     {
         // find the car filterer's who mathches with the car request
         // send them email
-        $models   = $event->car->model;
         $car      = $event->car;
         $carModel = $event->car->model;
         $carBrand = $carModel->brand;
