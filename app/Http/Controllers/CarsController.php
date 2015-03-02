@@ -184,6 +184,7 @@ class CarsController extends Controller {
             $cars = $this->carRepository->model->with(['thumbnail', 'favorited'])
                 // start querying
                 ->where(function ($query) use ($makeArray, $brandArray, $modelArray, $typeArray, $mileageFrom, $mileageTo, $priceFrom, $priceTo, $yearFrom, $yearTo, $maxMileage, $maxPrice, $maxYear) {
+
                     if ( count($makeArray) ) {
                         $query->whereHas('model', function ($query) use ($makeArray) {
                             $query->whereHas('brand', function ($query) use ($makeArray) {
@@ -226,7 +227,8 @@ class CarsController extends Controller {
                         $query->where('year', '>', $yearFrom);
                     }
 
-                })->paginate(10);
+                })
+                ->paginate(10);
         } else {
             $cars = $this->carRepository->model->with(['thumbnail', 'favorited'])->paginate(10);
         }

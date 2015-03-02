@@ -40,7 +40,7 @@ class Car extends BaseModel {
 
     public function favorited()
     {
-        return $this->morphOne('App\Src\Favorite\Favorite', 'favoriteable')->where('user_id', Auth::user()->id);
+        return $this->morphOne('App\Src\Favorite\Favorite', 'favoriteable')->where('user_id', Auth::user()->id)->select(['id','user_id','favoriteable_id','favoriteable_type']);
     }
 
     public function photos()
