@@ -8,7 +8,8 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class User extends BaseModel implements AuthenticatableContract, CanResetPasswordContract {
+class User extends BaseModel implements AuthenticatableContract, CanResetPasswordContract
+{
 
     use Authenticatable, CanResetPassword;
 
@@ -46,8 +47,9 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
         return $this->hasMany('App\Src\Car\Car', 'user_id');
     }
 
-    public function notifications(){
-        return $this->hasMany('App\Src\Notification\Notification','user_id');
+    public function notifications()
+    {
+        return $this->hasMany('App\Src\Notification\Notification', 'user_id');
     }
 
     /**
@@ -80,11 +82,11 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
         $threadsWithNewMessages = [];
         $participants           = Participant::where('user_id', $this->id)->lists('last_read', 'thread_id');
 
-        if ( $participants ) {
+        if ($participants) {
             $threads = Thread::whereIn('id', array_keys($participants))->get();
 
-            foreach ( $threads as $thread ) {
-                if ( $thread->updated_at > $participants[$thread->id] ) {
+            foreach ($threads as $thread) {
+                if ($thread->updated_at > $participants[$thread->id]) {
                     $threadsWithNewMessages[] = $thread->id;
                 }
             }

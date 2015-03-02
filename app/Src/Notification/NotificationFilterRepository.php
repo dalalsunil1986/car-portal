@@ -4,7 +4,8 @@ use App\Core\BaseRepository;
 use App\Core\CrudableTrait;
 use Illuminate\Support\MessageBag;
 
-class NotificationFilterRepository extends BaseRepository  {
+class NotificationFilterRepository extends BaseRepository
+{
 
     use CrudableTrait;
 

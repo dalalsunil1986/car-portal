@@ -5,7 +5,8 @@ use Auth;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Redirect;
 
-class UsersController extends Controller {
+class UsersController extends Controller
+{
 
     /**
      * User Model
@@ -43,7 +44,12 @@ class UsersController extends Controller {
      */
     public function getProfile()
     {
-        $user = $this->userRepository->model->with(['cars.model.brand', 'cars.thumbnail', 'favorites', 'notifications.filters'])->find(Auth::user()->id);
+        $user = $this->userRepository->model->with([
+            'cars.model.brand',
+            'cars.thumbnail',
+            'favorites',
+            'notifications.filters'
+        ])->find(Auth::user()->id);
 
         return view('module.users.profile', compact('user'));
     }
@@ -69,12 +75,12 @@ class UsersController extends Controller {
 
         $val = $this->userRepository->getEditForm($id);
 
-        if ( !$val->isValid() ) {
+        if (!$val->isValid()) {
 
             return Redirect::back()->with('errors', $val->getErrors())->withInput();
         }
 
-        if ( !$user = $this->userRepository->update($id, $val->getInputData()) ) {
+        if (!$user = $this->userRepository->update($id, $val->getInputData())) {
 
             return Redirect::back()->with('errors', $this->userRepository->errors())->withInput();
         }
@@ -93,7 +99,7 @@ class UsersController extends Controller {
         dd('deleted user with id ' . $id);
         $user = $this->userRepository->model->find($id);
 
-        if ( !$user->delete() ) {
+        if (!$user->delete()) {
 
             return Redirect::back('/')->with('errors', 'Could Not Delete Account.');
         }

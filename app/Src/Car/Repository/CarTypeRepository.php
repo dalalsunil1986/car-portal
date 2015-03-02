@@ -6,7 +6,8 @@ use App\Src\Car\CarType;
 use Illuminate\Support\MessageBag;
 
 
-class CarTypeRepository extends BaseRepository  {
+class CarTypeRepository extends BaseRepository
+{
 
     use CrudableTrait;
 

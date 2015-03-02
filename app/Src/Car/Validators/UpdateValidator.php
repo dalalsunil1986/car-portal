@@ -2,7 +2,8 @@
 
 use App\Core\BaseValidator;
 
-class UpdateValidator extends BaseValidator {
+class UpdateValidator extends BaseValidator
+{
 
     /**
      * Validation rules
@@ -10,13 +11,14 @@ class UpdateValidator extends BaseValidator {
      * @var array
      */
     protected $rules = array(
-        'model_id' => 'integer',
-        'year' => 'integer',
-        'mileage' => 'integer',
-        'price' => 'integer',
-        'phone' => 'integer',
+        'model_id'  => 'integer',
+        'year'      => 'integer',
+        'mileage'   => 'integer',
+        'price'     => 'integer',
+        'phone'     => 'integer',
         'thumbnail' => 'image',
     );
+
     /**
      * Get the prepared input data.
      *
@@ -25,7 +27,15 @@ class UpdateValidator extends BaseValidator {
     public function getInputData()
     {
         return array_only($this->inputData, [
-            'model_id','year','mileage','price','phone','thumbnail','description','latitude','longitude'
+            'model_id',
+            'year',
+            'mileage',
+            'price',
+            'phone',
+            'thumbnail',
+            'description',
+            'latitude',
+            'longitude'
         ]);
     }
 

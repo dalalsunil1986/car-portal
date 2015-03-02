@@ -3,7 +3,8 @@
 use App\Core\BaseModel;
 use App\Core\LocaleTrait;
 
-class CarMake extends BaseModel {
+class CarMake extends BaseModel
+{
 
     use LocaleTrait;
     public static $name = 'carMake';

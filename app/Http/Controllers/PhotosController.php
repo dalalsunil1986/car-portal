@@ -4,7 +4,8 @@ use App\Src\Photo\ImageService;
 use App\Src\Photo\PhotoRepository;
 use Illuminate\Support\Facades\Redirect;
 
-class PhotosController extends Controller {
+class PhotosController extends Controller
+{
 
     private $photoRepository;
 
@@ -21,8 +22,8 @@ class PhotosController extends Controller {
     {
         $imageableType = Input::get('imageable_type');
         $imageableId   = Input::get('imageable_id');
-        if ( empty($imageableType) || empty($imageableId))  {
-            return Redirect::action('AdminEventsController@index')->with('warning','Wrong Access');
+        if (empty($imageableType) || empty($imageableId)) {
+            return Redirect::action('AdminEventsController@index')->with('warning', 'Wrong Access');
         }
 
         $this->render('admin.photos.create', compact('imageableType', 'imageableId'));
@@ -35,12 +36,13 @@ class PhotosController extends Controller {
     {
         $imageableType = Input::get('imageable_type');
         $imageableId   = Input::get('imageable_id');
-        if ( empty($imageableType) || empty($imageableId))  {
-            return Redirect::action('AdminEventsController@index')->with('warning','Wrong Access');
+        if (empty($imageableType) || empty($imageableId)) {
+            return Redirect::action('AdminEventsController@index')->with('warning', 'Wrong Access');
         }
 
         $this->render('admin.photos.create-normal', compact('imageableType', 'imageableId'));
     }
+
     /**
      * Store the Image
      * Resolve the Dependent class for polymorphic relation
@@ -51,9 +53,11 @@ class PhotosController extends Controller {
         $val           = $this->photoRepository->getCreateForm();
         $imageableType = Input::get('imageable_type');
 
-        if ( ! $val->isValid() ) {
+        if (!$val->isValid()) {
 
-            if ( Request::ajax() ) return false;
+            if (Request::ajax()) {
+                return false;
+            }
 
             return Redirect::back()->withInput()->withErrors($val->getErrors());
         }
@@ -63,8 +67,10 @@ class PhotosController extends Controller {
         // uplad the file to the server
         $upload = $imageService->store(Input::file('name'));
 
-        if ( ! $upload ) {
-            if ( Request::ajax() ) return false;
+        if (!$upload) {
+            if (Request::ajax()) {
+                return false;
+            }
 
             return Redirect::back()->withInput()->with('errors', $imageService->errors());
         }
@@ -72,8 +78,7 @@ class PhotosController extends Controller {
         // save in the database
         try {
             $this->photoRepository->create(array_merge(['name' => $upload->getHashedName()], $val->getInputData()));
-        }
-        catch ( \Exception $e ) {
+        } catch ( \Exception $e ) {
 
             // if something goes wrong, and cant save the photo in the database
             // then delete the files from the server
@@ -82,7 +87,9 @@ class PhotosController extends Controller {
             return Redirect::back()->withInput()->with('error', 'Sorry, Could Not Save the Image info in the database');
         }
 
-        if ( Request::ajax() ) return null;
+        if (Request::ajax()) {
+            return null;
+        }
 
         return Redirect::back()->with('success', 'photo saved');
 
@@ -96,7 +103,7 @@ class PhotosController extends Controller {
     public function destroy($id)
     {
         $photo = $this->photoRepository->findById($id);
-        if ( $photo->delete() ) {
+        if ($photo->delete()) {
 
             $this->photoImageService->destroy($photo->name);
 

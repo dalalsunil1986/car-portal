@@ -2,7 +2,8 @@
 
 use App\Core\BaseModel;
 
-class NotificationFilter extends BaseModel {
+class NotificationFilter extends BaseModel
+{
 
     protected $guarded = ['id'];
 

@@ -2,7 +2,8 @@
 
 use App\Core\BaseValidator;
 
-class UpdateValidator extends BaseValidator {
+class UpdateValidator extends BaseValidator
+{
 
     /**
      * Validation rules

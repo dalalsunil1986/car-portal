@@ -3,7 +3,8 @@
 use App\Core\BaseModel;
 use App\Core\LocaleTrait;
 
-class CarBrand extends BaseModel {
+class CarBrand extends BaseModel
+{
 
     use LocaleTrait;
 

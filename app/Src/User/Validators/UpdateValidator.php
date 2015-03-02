@@ -2,7 +2,8 @@
 
 use App\Core\BaseValidator;
 
-class UpdateValidator extends BaseValidator {
+class UpdateValidator extends BaseValidator
+{
 
     /**
      * Validation rules
@@ -10,7 +11,7 @@ class UpdateValidator extends BaseValidator {
      * @var array
      */
     protected $rules = array(
-        'name'  => 'alpha_num|between:3,20',
+        'name'     => 'alpha_num|between:3,20',
         'password' => 'alpha_num|between:6,12|confirmed',
     );
 
@@ -29,7 +30,8 @@ class UpdateValidator extends BaseValidator {
     public function getInputData()
     {
         return array_only($this->inputData, [
-            'name', 'password'
+            'name',
+            'password'
         ]);
     }
 }

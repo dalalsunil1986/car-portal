@@ -2,7 +2,8 @@
 
 use App\Core\BaseValidator;
 
-class CreateValidator extends BaseValidator  {
+class CreateValidator extends BaseValidator
+{
 
     /**
      * Validation rules
@@ -10,11 +11,11 @@ class CreateValidator extends BaseValidator  {
      * @var array
      */
     protected $rules = array(
-        'model_id' => 'integer|required',
-        'year' => 'integer|required',
-        'mileage' => 'integer|required',
-        'price' => 'integer|required',
-        'mobile' => 'integer|required',
+        'model_id'  => 'integer|required',
+        'year'      => 'integer|required',
+        'mileage'   => 'integer|required',
+        'price'     => 'integer|required',
+        'mobile'    => 'integer|required',
         'thumbnail' => 'required | image',
     );
 
@@ -26,15 +27,21 @@ class CreateValidator extends BaseValidator  {
     public function getInputData()
     {
         return array_only($this->inputData, [
-            'model_id','year','mileage','price','mobile','thumbnail'
+            'model_id',
+            'year',
+            'mileage',
+            'price',
+            'mobile',
+            'thumbnail'
         ]);
     }
 
     /**
      * unset thumbnail after the validation, to avoid sending the data in create method
      */
-    public function afterValidation(){
-         unset($this->inputData['thumbnail']);
+    public function afterValidation()
+    {
+        unset($this->inputData['thumbnail']);
     }
 
 }

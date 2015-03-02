@@ -4,7 +4,8 @@ use App\Core\BaseRepository;
 use App\Core\CrudableTrait;
 use Illuminate\Support\MessageBag;
 
-class UserRepository extends BaseRepository  {
+class UserRepository extends BaseRepository
+{
 
     use CrudableTrait;
 

@@ -1,8 +1,10 @@
-<?php namespace App\Src\Notification;
+<?php
+namespace App\Src\Notification;
 
 use App\Core\BaseModel;
 
-class Notification extends BaseModel {
+class Notification extends BaseModel
+{
 
     protected $guarded = ['id'];
 

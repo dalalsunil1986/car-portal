@@ -2,7 +2,8 @@
 
 use Kuwaitii\Core\Validators\AbstractValidator;
 
-class CreateValidator extends AbstractValidator {
+class CreateValidator extends AbstractValidator
+{
 
     /**
      * Validation rules
@@ -10,8 +11,8 @@ class CreateValidator extends AbstractValidator {
      * @var array
      */
     protected $rules = [
-        'imageable_type'=>'required',
-        'imageable_id'=>'required | integer'
+        'imageable_type' => 'required',
+        'imageable_id'   => 'required | integer'
     ];
 
     /**
@@ -22,7 +23,9 @@ class CreateValidator extends AbstractValidator {
     public function getInputData()
     {
         return array_only($this->inputData, [
-             'imageable_type','imageable_id','name'
+            'imageable_type',
+            'imageable_id',
+            'name'
         ]);
     }
 

@@ -5,7 +5,8 @@ use App\Core\CrudableTrait;
 use App\Src\Car\Car;
 use Illuminate\Support\MessageBag;
 
-class CarRepository extends BaseRepository {
+class CarRepository extends BaseRepository
+{
 
     use CrudableTrait;
 
@@ -32,7 +33,6 @@ class CarRepository extends BaseRepository {
     {
         return $this->model->with($with);
     }
-
 
 
 }

@@ -2,7 +2,8 @@
 
 use App\Core\BaseModel;
 
-class Message extends BaseModel {
+class Message extends BaseModel
+{
 
     public static $name = 'message';
 

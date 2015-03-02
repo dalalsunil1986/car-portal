@@ -2,7 +2,8 @@
 
 use App\Core\BaseModel;
 
-class Favorite extends BaseModel {
+class Favorite extends BaseModel
+{
 
     public static $name = 'favorite';
 
@@ -22,7 +23,8 @@ class Favorite extends BaseModel {
         return $this->morphTo();
     }
 
-    public function getFavoriteableTypeAttribute($type) {
+    public function getFavoriteableTypeAttribute($type)
+    {
         // transform to lower case
         $type = strtolower($type);
 

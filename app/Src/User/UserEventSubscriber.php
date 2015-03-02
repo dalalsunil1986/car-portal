@@ -1,6 +1,7 @@
 <?php namespace App\Src\User;
 
-class UserEventSubscriber {
+class UserEventSubscriber
+{
 
     public function subscribe($events)
     {

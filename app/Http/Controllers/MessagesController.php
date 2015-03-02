@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
-class MessagesController extends Controller {
+class MessagesController extends Controller
+{
 
     /**
      * @var MessageRepository
@@ -50,11 +51,12 @@ class MessagesController extends Controller {
      */
     public function show($threadID)
     {
-        $user = Auth::user();
+        $user   = Auth::user();
         $thread = $this->threadRepository->getMessagesByThread($threadID);
         //@todo: If this Thread is not assosiated with this user, then redirect
 
         $thread->markAsRead($user->id);
+
         return view('module.messages.view', compact('thread'));
     }
 
@@ -69,7 +71,7 @@ class MessagesController extends Controller {
         // Create Message
         $val = $this->messageRepository->getCreateForm();
 
-        if ( !$val->isValid() ) {
+        if (!$val->isValid()) {
             return Redirect::back()->with('errors', $val->getErrors())->withInput();
         }
 
@@ -100,9 +102,9 @@ class MessagesController extends Controller {
 
     public function update($id)
     {
-        $val    = $this->messageRepository->getEditForm($id);
+        $val = $this->messageRepository->getEditForm($id);
 
-        if ( !$val->isValid() ) {
+        if (!$val->isValid()) {
 
             return Redirect::back()->with('errors', $val->getErrors())->withInput();
         }
@@ -113,7 +115,7 @@ class MessagesController extends Controller {
 
         $thread->messages()->create($data);
 
-        return Redirect::back()->with('success',trans('word.saved'));
+        return Redirect::back()->with('success', trans('word.saved'));
     }
 
     public function destroy($id)

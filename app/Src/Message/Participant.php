@@ -2,7 +2,8 @@
 
 use App\Core\BaseModel;
 
-class Participant extends BaseModel {
+class Participant extends BaseModel
+{
 
 
     protected $guarded = ['id'];
