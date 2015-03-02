@@ -229,6 +229,7 @@ class CarsController extends Controller {
 
                 })
                 ->select(['id','model_id','year','mileage','price','created_at'])
+                ->orderBy('created_at','DESC')
                 ->paginate(10);
         } else {
             $cars = $this->carRepository->model->with(['thumbnail', 'favorited'])->paginate(10);

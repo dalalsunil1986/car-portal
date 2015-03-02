@@ -217,7 +217,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
 
         if (oldVal == newVal) return;
 
-        $scope.initCars();
+        $scope.refreshCars();
 
     }, true);
 
