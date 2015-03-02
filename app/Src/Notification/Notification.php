@@ -18,9 +18,4 @@ class Notification extends BaseModel {
         return $this->hasMany('App\Src\Notification\NotificationFilter', 'notification_id');
     }
 
-    public function scopeFilterOfType($query, $type)
-    {
-        return $this->filters()->where('notification_filters.filterable_type', $type)->get();
-    }
-
 }

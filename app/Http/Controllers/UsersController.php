@@ -2,6 +2,7 @@
 
 use App\Src\User\UserRepository;
 use Auth;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Redirect;
 
 class UsersController extends Controller {
@@ -42,15 +43,7 @@ class UsersController extends Controller {
      */
     public function getProfile()
     {
-        $user = $this->userRepository->model->with(['cars.model.brand', 'cars.thumbnail', 'favorites', 'notifications'])->find(Auth::user()->id);
-
-        foreach ( $user->notifications as $notification ) {
-//            foreach ( $notification->filterOfType('CarMake') as $a ) {
-//                dd($a->filterable->name);
-//            }
-
-//            dd($notification->filterOfType('CarMake'));
-        }
+        $user = $this->userRepository->model->with(['cars.model.brand', 'cars.thumbnail', 'favorites', 'notifications.filters'])->find(Auth::user()->id);
 
         return view('module.users.profile', compact('user'));
     }
