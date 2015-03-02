@@ -3,7 +3,8 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class BaseModel extends Model {
+class BaseModel extends Model
+{
 
     /**
      * Create a new model.
@@ -17,6 +18,7 @@ class BaseModel extends Model {
         static::beforeCreate($input);
         $return = parent::create($input);
         static::afterCreate($input, $return);
+
         return $return;
     }
 
@@ -56,6 +58,7 @@ class BaseModel extends Model {
         $this->beforeUpdate($input);
         $return = parent::update($input);
         $this->afterUpdate($input, $return);
+
         return $return;
     }
 
@@ -165,17 +168,16 @@ class BaseModel extends Model {
         $table = ($this->getTable());
 
         // initialize MySQL variables inline
-        $query->from( DB::raw("(SELECT @rank:=0, @group:=0) as vars, {$table}") );
+        $query->from(DB::raw("(SELECT @rank:=0, @group:=0) as vars, {$table}"));
 
         // if no columns already selected, let's select *
-        if ( ! $query->getQuery()->columns)
-        {
+        if (!$query->getQuery()->columns) {
             $query->select("{$table}.*");
         }
 
         // make sure column aliases are unique
-        $groupAlias = 'group_'.md5(time());
-        $rankAlias  = 'rank_'.md5(time());
+        $groupAlias = 'group_' . md5(time());
+        $rankAlias  = 'rank_' . md5(time());
 
         // apply mysql variables
         $query->addSelect(DB::raw(

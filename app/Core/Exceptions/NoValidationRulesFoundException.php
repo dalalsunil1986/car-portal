@@ -1,5 +1,6 @@
 <?php namespace App\Core\Exceptions;
 
-class NoValidationRulesFoundException extends \Exception {
+class NoValidationRulesFoundException extends \Exception
+{
 
 }

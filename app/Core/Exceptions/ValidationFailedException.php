@@ -2,7 +2,8 @@
 
 use Illuminate\Support\MessageBag;
 
-class ValidationFailedException extends \Exception {
+class ValidationFailedException extends \Exception
+{
 
     protected $errors;
 

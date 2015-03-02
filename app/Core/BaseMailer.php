@@ -4,7 +4,8 @@ use App\Core\Contracts\MailerContract;
 use Config;
 use Illuminate\Mail\Mailer;
 
-abstract class BaseMailer implements MailerContract {
+abstract class BaseMailer implements MailerContract
+{
 
     protected $mailer;
     protected $senderEmail;
@@ -27,12 +28,12 @@ abstract class BaseMailer implements MailerContract {
         try {
             $this->mailer->send($this->view, $data, function ($message) {
                 $message
-                ->from($this->senderEmail,$this->sender)
-                ->sender($this->senderEmail,$this->sender)
-                ->to($this->recepient, $this->recepientName)
-                ->subject($this->subject);
+                    ->from($this->senderEmail, $this->sender)
+                    ->sender($this->senderEmail, $this->sender)
+                    ->to($this->recepient, $this->recepientName)
+                    ->subject($this->subject);
             });
+        } catch ( \Exception $e ) {
         }
-        catch ( \Exception $e ) {}
     }
 }

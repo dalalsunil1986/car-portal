@@ -1,6 +1,7 @@
 <?php namespace App\Core;
 
-trait CrudableTrait {
+trait CrudableTrait
+{
 
     /**
      * @return validator class
@@ -9,7 +10,8 @@ trait CrudableTrait {
     public function getCreateForm()
     {
         $classPath = $this->getValidatorClass();
-        $validator = $classPath.'CreateValidator';
+        $validator = $classPath . 'CreateValidator';
+
         return new $validator;
     }
 
@@ -21,7 +23,8 @@ trait CrudableTrait {
     public function getEditForm($id)
     {
         $classPath = $this->getValidatorClass();
-        $validator = $classPath.'UpdateValidator';
+        $validator = $classPath . 'UpdateValidator';
+
         return new $validator($id);
     }
 
@@ -51,7 +54,9 @@ trait CrudableTrait {
 
         $record->fill($input);
 
-        if ( $this->save($record) ) return $record;
+        if ($this->save($record)) {
+            return $record;
+        }
 
         $this->addError('Could Not Update');
 

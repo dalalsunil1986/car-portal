@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 
 abstract class BaseValidator
 {
+
     /**
      * The input data of the current request.
      *
@@ -62,7 +63,7 @@ abstract class BaseValidator
     {
         $this->beforeValidation();
 
-        if ( ! isset($this->rules)) {
+        if (!isset($this->rules)) {
             throw new NoValidationRulesFoundException('no validation rules found in class ' . get_called_class());
         }
 
@@ -113,7 +114,12 @@ abstract class BaseValidator
 
     }
 
-    protected function beforeValidation() {}
-    protected function afterValidation() {}
+    protected function beforeValidation()
+    {
+    }
+
+    protected function afterValidation()
+    {
+    }
 
 }

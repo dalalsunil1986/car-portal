@@ -5,7 +5,8 @@ use Illuminate\Support\MessageBag;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-abstract class BaseImageService extends BaseRepository{
+abstract class BaseImageService extends BaseRepository
+{
 
     private $hashedName;
 
@@ -35,7 +36,7 @@ abstract class BaseImageService extends BaseRepository{
         $this->largeImagePath     = $this->getUploadDir() . 'large/';
         $this->mediumImagePath    = $this->getUploadDir() . 'medium/';
         $this->thumbnailImagePath = $this->getUploadDir() . 'thumbnail/';
-        $this->messageBag = $errors;
+        $this->messageBag         = $errors;
     }
 
     abstract function store(UploadedFile $image);
@@ -45,26 +46,28 @@ abstract class BaseImageService extends BaseRepository{
         $this->setHashedName($image);
 
         try {
-            foreach ( $imageDimensions as $imageDimension ) {
-                switch ( $imageDimension ) {
+            foreach ($imageDimensions as $imageDimension) {
+                switch ($imageDimension) {
                     case 'large':
-                        Image::make($image->getRealPath())->resize($this->largeImageWidth,$this->largeImageHeight)->save($this->largeImagePath . $this->hashedName);
+                        Image::make($image->getRealPath())->resize($this->largeImageWidth,
+                            $this->largeImageHeight)->save($this->largeImagePath . $this->hashedName);
                         break;
                     case 'medium':
-                        Image::make($image->getRealPath())->resize($this->mediumImageWidth,$this->mediumImageHeight)->save($this->mediumImagePath . $this->hashedName);
+                        Image::make($image->getRealPath())->resize($this->mediumImageWidth,
+                            $this->mediumImageHeight)->save($this->mediumImagePath . $this->hashedName);
                         break;
                     case 'thumbnail':
-                        Image::make($image->getRealPath())->resize($this->thumbnailImageWidth,$this->thumbnailImageHeight)->save($this->thumbnailImagePath . $this->hashedName);
+                        Image::make($image->getRealPath())->resize($this->thumbnailImageWidth,
+                            $this->thumbnailImageHeight)->save($this->thumbnailImagePath . $this->hashedName);
                         break;
                     default :
                         break;
                 }
             }
-        }
-
-        catch( Exception $e) {
+        } catch ( Exception $e ) {
             dd($e->getMessage());
             $this->addError($e->getMessage());
+
             return false;
         }
 
@@ -115,14 +118,14 @@ abstract class BaseImageService extends BaseRepository{
 
     public function destroy($name)
     {
-        if(file_exists($this->getThumbnailImagePath().$name)) {
-            unlink($this->getThumbnailImagePath().$name);
+        if (file_exists($this->getThumbnailImagePath() . $name)) {
+            unlink($this->getThumbnailImagePath() . $name);
         }
-        if(file_exists($this->getMediumImagePath().$name)) {
-            unlink($this->getMediumImagePath().$name);
+        if (file_exists($this->getMediumImagePath() . $name)) {
+            unlink($this->getMediumImagePath() . $name);
         }
-        if(file_exists($this->getLargeImagePath().$name)) {
-            unlink($this->getLargeImagePath().$name);
+        if (file_exists($this->getLargeImagePath() . $name)) {
+            unlink($this->getLargeImagePath() . $name);
         }
     }
 

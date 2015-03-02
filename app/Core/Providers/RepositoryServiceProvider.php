@@ -3,7 +3,8 @@
 use App\Src\User\UserEventSubscriber;
 use Illuminate\Support\ServiceProvider;
 
-class RepositoryServiceProvider extends ServiceProvider {
+class RepositoryServiceProvider extends ServiceProvider
+{
 
     /**
      * Register

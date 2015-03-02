@@ -1,5 +1,6 @@
 <?php namespace App\Core\Exceptions;
 
-class MailSendingFailedException extends \Exception {
+class MailSendingFailedException extends \Exception
+{
 
 }
