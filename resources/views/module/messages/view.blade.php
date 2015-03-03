@@ -33,10 +33,11 @@
 
                         @foreach($thread->messages as $message)
                             <div class="row">
-                                <div class="{{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left' : 'reply-text pull-right' }}">
+                                <div class=" col-md-1 {{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left ' : 'reply-text pull-right' }}">
                                     <img src="//www.gravatar.com/avatar/{{$message->user->email}}?s=50"
                                          class="profile-picture-inbox-view" width="50" height="50">
                                 </div>
+
                                 <div class=" col-md-10 {{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left' : 'reply-text pull-right' }}">
                                     <p>{{ $message->body }}</p>
 
@@ -46,13 +47,22 @@
                             </div>
                         @endforeach
 
+                        <div class="row">
+
+                            <div class="col-md-12 reply-area">
                         {!! Form::open(['action' => ['MessagesController@update',$thread->id], 'method' => 'PATCH']) !!}
 
-                        {!! Form::text('body',null,['class'=>'col-xs-12 form-control ']) !!}
+                        {!! Form::textarea('body',null,['class'=>'col-xs-12 send-message-input']) !!}
 
-                        {!! Form::submit('Send', ['class' => 'btn btn-success ']) !!}
+                        {!! Form::submit('Send', ['class' => 'btn col-xs-12 pull-right send-button']) !!}
 
                         {!! Form::close() !!}
+
+
+
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
@@ -60,4 +70,6 @@
 
         </div>
     </div>
+
+
 @stop

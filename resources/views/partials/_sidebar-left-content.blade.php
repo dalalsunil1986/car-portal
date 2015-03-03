@@ -1,5 +1,5 @@
 <p class="username-nav">Hi Khalid!</p>
-<a href="{{ action('UsersController@getProfile') }}">{!! HTML::image('/assets/img/custom/user_profile_picture.jpg', 'Profile Picture', array('class'=>'profiel_picture_nav img-responsive', 'width'=>'225','height'=>'225')) !!}</a>
+<a href="{{ action('UsersController@getProfile') }}">{!! HTML::image('/assets/img/custom/user_profile_picture.jpg', 'Profile Picture', array('class'=>'profile_picture_nav img-responsive', 'width'=>'225','height'=>'225')) !!}</a>
 
 <!--Start Profile Links-->
 
