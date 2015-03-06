@@ -5,38 +5,40 @@
             <div class="row sort-row">
                 <h3 class="results-title pull-left clearfix">Results</h3>
 
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        Show
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" ng-model="sortorder" role="menu" aria-labelledby="dropdownMenu1">
-                        <li><option value="+created_at">Oldest</option></li>
-                        <li><a href="#" value="-year">Year: Old to new</a></li>
-                        <li><option value="+price">Low Price</option></li>
-                        <li><a href="#">Price: High to Low </a></li>
-                        <li><a href="#">Mileage: High to Low</a></li>
-                        <li><a href="#">Mileage: Low to High</a></li>
-                        <li><a href="#">Submition: New to Old</a></li>
-                        <li><a href="#" value="+created_at">Submition: Old to New</a></li>
-                    </ul>
-                </div>
-
-                {{--<div class="btn-group pull-left clearfix">--}}
-                {{--<button class="btn btn-default dropdown-toggle toggle-reset" data-toggle="dropdown">All--}}
-                {{--<span class="caret"></span></button>--}}
-                {{--<ul class="dropdown-menu" ng-model="sortorder" class="input-small">--}}
-                {{--<option value="+created_at">Oldest</option>--}}
-                {{--<option value="+year">Lower Year</option>--}}
-                {{--<option value="-year">Higher Year</option>--}}
-                {{--<option value="+price">Low Price</option>--}}
-                {{--<option value="-price">High Price</option>--}}
-                {{--<option value="+mileage">Low Mileage</option>--}}
-                {{--<option value="-mileage">High Mileage</option>--}}
-                {{--</ul>--}}
+                {{--<div class="dropdown">--}}
+                    {{--<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">--}}
+                        {{--Show--}}
+                        {{--<span class="caret"></span>--}}
+                    {{--</button>--}}
+                    {{--<ul class="dropdown-menu" ng-model="sortorder" role="menu" aria-labelledby="dropdownMenu1">--}}
+                        {{--<li><option value="+created_at">Oldest</option></li>--}}
+                        {{--<li><a href="#" value="-year">Year: Old to new</a></li>--}}
+                        {{--<li><option value="+price">Low Price</option></li>--}}
+                        {{--<li><a href="#">Price: High to Low </a></li>--}}
+                        {{--<li><a href="#">Mileage: High to Low</a></li>--}}
+                        {{--<li><a href="#">Mileage: Low to High</a></li>--}}
+                        {{--<li><a href="#">Submition: New to Old</a></li>--}}
+                        {{--<li><a href="#" value="+created_at">Submition: Old to New</a></li>--}}
+                    {{--</ul>--}}
                 {{--</div>--}}
 
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                        <select ng-model="sortorder">
+                            <option selected="selected" value="+created_at">Upload Date : Old to New</option>
+                            <option value="-created_at">Upload Date : New to Old</option>
+                            <option value="-year">Year: New to Old</option>
+                            <option value="+year">Year: Old to New</option>
+                            <option value="-price">Price: High to Low</option>
+                            <option value="+price">Price: Low to High</option>
+                            <option value="-mileage">Mileage : High to Low</option>
+                            <option value="+mileage">Mileage: Low to High</option>
+                        </select>
+                        <span class="caret"></span>
+                    </button>
+                </div>
             </div>
+
             <div class="result-entry">
                 <!--SAMPLE ROW-->
                 <div infinite-scroll="getCars()" infinite-scroll-distance='0' infinite-scroll-disabled='loading'
