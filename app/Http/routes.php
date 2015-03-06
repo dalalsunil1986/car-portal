@@ -1,5 +1,10 @@
 <?php
 /*********************************************************************************************************
+ * Locale Route
+ ********************************************************************************************************/
+Route::get('locale/{lang}', ['as' => 'locale.select', 'uses' => 'LocaleController@setLocale']);
+
+/*********************************************************************************************************
  * Car Routes
  ********************************************************************************************************/
 Route::resource('cars', 'CarsController');
@@ -27,7 +32,8 @@ Route::post('password/reset', ['as' => 'user.token.post', 'uses' => 'AuthControl
 
 Route::get('account/activate/{token}', ['as' => 'user.token.confirm', 'uses' => 'AuthController@activate']);
 
-Route::post('account/send-activation-link', ['as' => 'user.token.send-activation', 'uses' => 'AuthController@sendActivationLink']);
+Route::post('account/send-activation-link',
+    ['as' => 'user.token.send-activation', 'uses' => 'AuthController@sendActivationLink']);
 
 /*********************************************************************************************************
  * User Routes
@@ -55,28 +61,28 @@ Route::get('/', ['as' => 'home', 'uses' => 'CarsController@index']);
 
 Route::group(array('prefix' => 'api'), function ($router) {
 
-	/*********************************************************************************************************
-	 * Car Routes
-	 ********************************************************************************************************/
-	Route::get('cars/filter', 'CarsController@filter'); // get Filter ( Ajax )
+    /*********************************************************************************************************
+     * Car Routes
+     ********************************************************************************************************/
+    Route::get('cars/filter', 'CarsController@filter'); // get Filter ( Ajax )
 
-	Route::get('cars/{id}/favorite', 'CarsController@favorite');
+    Route::get('cars/{id}/favorite', 'CarsController@favorite');
 
-	Route::get('cars/name','CarsController@getFilterNames');
+    Route::get('cars/name', 'CarsController@getFilterNames');
 
 
-	Route::get('cars', 'CarsController@getCars');
+    Route::get('cars', 'CarsController@getCars');
 
-	/*********************************************************************************************************
-	 * Favorites
-	 ********************************************************************************************************/
-	Route::resource('favorites', 'FavoritesController');
+    /*********************************************************************************************************
+     * Favorites
+     ********************************************************************************************************/
+    Route::resource('favorites', 'FavoritesController');
 
-	/*********************************************************************************************************
-	 * Notifcation
-	 ********************************************************************************************************/
-	Route::get('notifications/test', 'NotificationsController@test');
-	Route::resource('notifications','NotificationsController'); //todo : change to post
+    /*********************************************************************************************************
+     * Notifcation
+     ********************************************************************************************************/
+    Route::get('notifications/test', 'NotificationsController@test');
+    Route::resource('notifications', 'NotificationsController'); //todo : change to post
 
 });
 

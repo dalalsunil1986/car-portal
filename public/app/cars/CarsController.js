@@ -9,6 +9,14 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
     $scope.filters = {};
     $scope.slider = {};
 
+    $scope.constructor = function () {
+        $scope.filters.page = 0;
+        $scope.loading = true;
+        $scope.cars = [];
+        $scope.hasRecords = true;
+        $scope.emptyRecords = false;
+    };
+
     // Directive Vars
     $scope.slider.type = 'double';
     $scope.slider.maxPostfix = " +";
@@ -59,31 +67,11 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
     $scope.filters.yearFrom = 2005;
     $scope.filters.yearTo = 2014;
 
-    $scope.initCars = function () {
-
-        $scope.resetValues();
-
-        CarService.getFilter($scope.filters)
-            .then(function (data) {
-                // GET the makes,brands,models,types with unique values, excluding the values which are already selected
-                $scope.makes = data.results.makes;
-                $scope.brands = data.results.brands;
-                $scope.types = data.results.types;
-                $scope.models = data.results.models;
-                // Selected Values
-                $scope.filters.selectedBrands = data.results.brandsArray;
-                $scope.filters.selectedModels = data.results.modelsArray;
-
-                // load cars
-                $scope.getCars();
-            }
-        );
-    };
-
     $scope.getCars = function () {
 
-        if ($scope.hasRecords) {
+        $scope.loading = true;
 
+        if ($scope.hasRecords) {
 
             $scope.filters.page++;
 
@@ -114,14 +102,32 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
                     // set there are no more records . just to avoid unnecessary XHR requests
                     $scope.hasRecords = false;
                 }
-
-                // set loading to false
                 $scope.loading = false;
-
             });
         } else {
             $scope.loading = false;
         }
+    };
+
+    $scope.initCars = function () {
+
+        $scope.constructor();
+
+        CarService.getFilter($scope.filters)
+            .then(function (data) {
+                // GET the makes,brands,models,types with unique values, excluding the values which are already selected
+                $scope.makes = data.results.makes;
+                $scope.brands = data.results.brands;
+                $scope.types = data.results.types;
+                $scope.models = data.results.models;
+                // Selected Values
+                $scope.filters.selectedBrands = data.results.brandsArray;
+                $scope.filters.selectedModels = data.results.modelsArray;
+
+                // load cars
+                $scope.getCars();
+            }
+        );
     };
 
     $scope.getFilterNames = function () {
@@ -169,16 +175,8 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
         });
     };
 
-    $scope.resetValues = function () {
-        $scope.loading = true;
-        $scope.filters.page = 0;
-        $scope.cars = [];
-        $scope.hasRecords = true;
-        $scope.emptyRecords = false;
-    };
-
     $scope.refreshCars = function () {
-        $scope.resetValues();
+        $scope.constructor();
         $scope.getCars();
     };
 

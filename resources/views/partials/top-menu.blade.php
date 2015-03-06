@@ -1,6 +1,12 @@
 <div class="row clearfix language-bar">
     <div class="col-md-12">
-        <span class="pull-right"><a href="#" class="arabic-lang">العربية</a></span>
+
+        @if(App::getLocale() == 'en')
+            <span class="pull-right"><a href="{{action('LocaleController@setLocale',['ar']) }} "> العربية  </a></span>
+        @else
+            <span class="pull-right"><a href="{{action('LocaleController@setLocale',['en']) }} "> English  </a></span>
+        @endif
+
         @if(Auth::check())
             <span class=" pull-right register" ><a href="{{action('AuthController@getLogout')}}"> Logout</a></span>
         @else

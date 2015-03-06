@@ -7,6 +7,18 @@ angular.module('app').directive('carResults', function () {
     }
 });
 
+angular.module('app').directive('loader', function () {
+    return {
+        restrict: "EA",
+        replace: true,
+        scope: {
+            loading: '=',
+            emptyRecords: '='
+        },
+        templateUrl: '/app/views/partials/loader.html'
+    }
+});
+
 angular.module('app').directive('priceSlider', function () {
     return {
         restrict: 'EA',
