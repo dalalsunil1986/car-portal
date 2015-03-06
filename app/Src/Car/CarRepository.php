@@ -1,4 +1,5 @@
-<?php namespace App\Src\Car;
+<?php
+namespace App\Src\Car;
 
 use App\Core\BaseRepository;
 use App\Core\CrudableTrait;

@@ -1,4 +1,5 @@
-<?php namespace Kuwaitii\Package\Validators;
+<?php
+namespace Kuwaitii\Package\Validators;
 
 use Kuwaitii\Core\Validators\AbstractValidator;
 

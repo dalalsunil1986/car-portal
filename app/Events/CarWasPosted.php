@@ -1,4 +1,5 @@
-<?php namespace App\Events;
+<?php
+namespace App\Events;
 
 use App\Src\Car\CarRepository;
 use Illuminate\Queue\SerializesModels;

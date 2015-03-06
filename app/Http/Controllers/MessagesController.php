@@ -1,4 +1,5 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
 use App\Src\Message\MessageRepository;
 use App\Src\Message\ThreadRepository;

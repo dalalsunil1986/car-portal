@@ -1,4 +1,5 @@
-<?php namespace App\Src\Car;
+<?php
+namespace App\Src\Car;
 
 use App\Core\LocaleTrait;
 use App\Core\BaseModel;

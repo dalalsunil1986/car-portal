@@ -1,4 +1,5 @@
-<?php namespace App\Src\Photo;
+<?php
+namespace App\Src\Photo;
 
 use App\Core\BaseImageService;
 use Symfony\Component\HttpFoundation\File\UploadedFile;

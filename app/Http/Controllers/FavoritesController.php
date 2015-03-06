@@ -1,4 +1,5 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
 use App\Src\Favorite\FavoriteRepository;
 use Illuminate\Support\Facades\Input;

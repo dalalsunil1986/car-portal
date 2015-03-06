@@ -1,4 +1,5 @@
-<?php namespace App\Src\Message\Validators;
+<?php
+namespace App\Src\Message\Validators;
 
 use App\Core\BaseValidator;
 

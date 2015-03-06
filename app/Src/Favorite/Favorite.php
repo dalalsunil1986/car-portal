@@ -1,4 +1,5 @@
-<?php namespace App\Src\Favorite;
+<?php
+namespace App\Src\Favorite;
 
 use App\Core\BaseModel;
 

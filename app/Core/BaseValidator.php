@@ -1,4 +1,5 @@
-<?php namespace App\Core;
+<?php
+namespace App\Core;
 
 use App\Core\Exceptions\NoValidationRulesFoundException;
 use Illuminate\Support\Facades\App;

@@ -1,4 +1,5 @@
-<?php namespace App\Src\Message;
+<?php
+namespace App\Src\Message;
 
 trait Messagable
 {

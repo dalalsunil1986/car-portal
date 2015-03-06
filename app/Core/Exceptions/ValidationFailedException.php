@@ -1,4 +1,5 @@
-<?php namespace App\Core\Exceptions;
+<?php
+namespace App\Core\Exceptions;
 
 use Illuminate\Support\MessageBag;
 

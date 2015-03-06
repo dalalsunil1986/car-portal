@@ -1,4 +1,5 @@
-<?php namespace App\Src\Notification;
+<?php
+namespace App\Src\Notification;
 
 use App\Core\BaseModel;
 

@@ -1,4 +1,5 @@
-<?php namespace App\Src\Tag;
+<?php
+namespace App\Src\Tag;
 
 use App\Core\BaseRepository;
 use App\Core\CrudableTrait;

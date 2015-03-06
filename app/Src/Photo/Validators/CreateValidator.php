@@ -1,4 +1,5 @@
-<?php namespace Kuwaitii\Photo\Validators;
+<?php
+namespace Kuwaitii\Photo\Validators;
 
 use Kuwaitii\Core\Validators\AbstractValidator;
 

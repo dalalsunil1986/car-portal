@@ -1,4 +1,5 @@
-<?php namespace App\Core;
+<?php
+namespace App\Core;
 
 trait CrudableTrait
 {

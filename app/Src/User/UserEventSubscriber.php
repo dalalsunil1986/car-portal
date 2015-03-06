@@ -1,4 +1,5 @@
-<?php namespace App\Src\User;
+<?php
+namespace App\Src\User;
 
 class UserEventSubscriber
 {

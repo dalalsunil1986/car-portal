@@ -1,4 +1,5 @@
-<?php namespace App\Src\User\Events;
+<?php
+namespace App\Src\User\Events;
 
 use Illuminate\Contracts\Auth\User;
 use Illuminate\Support\Facades\Event;

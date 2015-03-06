@@ -1,4 +1,5 @@
-<?php namespace App\Commands;
+<?php
+namespace App\Commands;
 
 use App\Src\Car\CarMake;
 use App\Src\Car\Repository\CarBrandRepository;
@@ -12,7 +13,8 @@ use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Auth;
 
-class CreateNotification extends Command implements SelfHandling {
+class CreateNotification extends Command implements SelfHandling
+{
 
     use SerializesModels;
     /**
@@ -80,8 +82,19 @@ class CreateNotification extends Command implements SelfHandling {
      * @param $yearTo
      * @internal param $user
      */
-    public function __construct($filterType, $selectedMakes, $selectedBrands, $selectedModels, $selectedTypes, $priceFrom, $priceTo, $mileageFrom, $mileageTo, $yearFrom, $yearTo)
-    {
+    public function __construct(
+        $filterType,
+        $selectedMakes,
+        $selectedBrands,
+        $selectedModels,
+        $selectedTypes,
+        $priceFrom,
+        $priceTo,
+        $mileageFrom,
+        $mileageTo,
+        $yearFrom,
+        $yearTo
+    ) {
         $this->filterType  = $filterType;
         $this->make        = $selectedMakes;
         $this->brand       = $selectedBrands;
@@ -106,8 +119,14 @@ class CreateNotification extends Command implements SelfHandling {
      * @param NotificationFilterRepository $notificationFilterRepository
      * @return bool
      */
-    public function handle(NotificationRepository $notificationRepository, CarMakeRepository $carMakeRepository, CarBrandRepository $carBrandRepository, CarModelRepository $carModelRepository, CarTypeRepository $carTypeRepository, NotificationFilterRepository $notificationFilterRepository)
-    {
+    public function handle(
+        NotificationRepository $notificationRepository,
+        CarMakeRepository $carMakeRepository,
+        CarBrandRepository $carBrandRepository,
+        CarModelRepository $carModelRepository,
+        CarTypeRepository $carTypeRepository,
+        NotificationFilterRepository $notificationFilterRepository
+    ) {
         $makes  = array_filter($this->make);
         $brands = array_filter($this->brand);
         $models = array_filter($this->model);
@@ -129,29 +148,29 @@ class CreateNotification extends Command implements SelfHandling {
         // if brands are set, ignore the rest except models and make
         // if makes are set, include everything
 
-        if ( $models ) {
-            foreach ( $models as $model ) {
+        if ($models) {
+            foreach ($models as $model) {
                 $carModelModel = $carModelRepository->model->find($model);
                 $carModelModel->filters()->create(['notification_id' => $notification->id]);
             }
-        } elseif ( $brands ) {
-            foreach ( $brands as $brand ) {
+        } elseif ($brands) {
+            foreach ($brands as $brand) {
                 $carBrandModel = $carBrandRepository->model->find($brand);
                 $carBrandModel->filters()->create(['notification_id' => $notification->id]);
             }
-            if ( $types ) {
-                foreach ( $types as $type ) {
+            if ($types) {
+                foreach ($types as $type) {
                     $carTypeModel = $carTypeRepository->model->find($type);
                     $carTypeModel->filters()->create(['notification_id' => $notification->id]);
                 }
             }
-        } elseif ( $makes ) {
-            foreach ( $makes as $make ) {
+        } elseif ($makes) {
+            foreach ($makes as $make) {
                 $carMakeModel = $carMakeRepository->model->find($make);
                 $carMakeModel->filters()->create(['notification_id' => $notification->id]);
             }
-            if ( $types ) {
-                foreach ( $types as $type ) {
+            if ($types) {
+                foreach ($types as $type) {
                     $carTypeModel = $carTypeRepository->model->find($type);
                     $carTypeModel->filters()->create(['notification_id' => $notification->id]);
                 }

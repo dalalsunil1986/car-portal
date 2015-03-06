@@ -1,4 +1,5 @@
-<?php namespace App\Core;
+<?php
+namespace App\Core;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;

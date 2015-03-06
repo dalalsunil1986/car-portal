@@ -1,4 +1,5 @@
-<?php namespace App\Src\Favorite;
+<?php
+namespace App\Src\Favorite;
 
 use App\Core\BaseRepository;
 use App\Core\CrudableTrait;
@@ -41,9 +42,10 @@ class FavoriteRepository extends BaseRepository
             $favoriteableId)->where('favoriteable_type', $favoriteableType)->first();
 
         if (!$fav) {
-            $this->model->create(['user_id'           => $userId,
-                                  'favoriteable_id'   => $favoriteableId,
-                                  'favoriteable_type' => $favoriteableType
+            $this->model->create([
+                'user_id'           => $userId,
+                'favoriteable_id'   => $favoriteableId,
+                'favoriteable_type' => $favoriteableType
             ]);
         }
 

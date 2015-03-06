@@ -1,38 +1,40 @@
-<?php namespace App\Providers;
+<?php
+namespace App\Providers;
 
 use App\Events\CarWasPosted;
 use App\Handlers\Events\CarFilterNotification;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
-class EventServiceProvider extends ServiceProvider {
+class EventServiceProvider extends ServiceProvider
+{
 
-	/**
-	 * The event handler mappings for the application.
-	 *
-	 * @var array
-	 */
-	protected $listen = [
+    /**
+     * The event handler mappings for the application.
+     *
+     * @var array
+     */
+    protected $listen = [
 //		'App\Events\CarWasPosted' => [
 //			'App\Handlers\Events\CarFilterNotification@handle',
 //		],
-		CarWasPosted::class => [
-			CarFilterNotification::class
-		]
+        CarWasPosted::class => [
+            CarFilterNotification::class
+        ]
 
-	];
+    ];
 
-	/**
-	 * Register any other events for your application.
-	 *
-	 * @param  \Illuminate\Contracts\Events\Dispatcher  $events
-	 * @return void
-	 */
-	public function boot(DispatcherContract $events)
-	{
-		parent::boot($events);
+    /**
+     * Register any other events for your application.
+     *
+     * @param  \Illuminate\Contracts\Events\Dispatcher $events
+     * @return void
+     */
+    public function boot(DispatcherContract $events)
+    {
+        parent::boot($events);
 
-		//
-	}
+        //
+    }
 
 }

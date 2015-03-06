@@ -1,4 +1,5 @@
-<?php namespace App\Handlers\Events;
+<?php
+namespace App\Handlers\Events;
 
 use App\Events\CarWasPosted;
 
@@ -6,7 +7,8 @@ use App\Src\Car\CarRepository;
 use App\Src\Notification\NotificationRepository;
 use Illuminate\Support\Facades\Mail;
 
-class CarFilterNotification {
+class CarFilterNotification
+{
 
 
     /**
@@ -61,7 +63,7 @@ class CarFilterNotification {
 
         $notificationIds = $mergedFilters->lists('notification_id');
 
-        $notifications   = $this->notificationRepository->model->with(['user'])
+        $notifications = $this->notificationRepository->model->with(['user'])
             ->whereIn('id', $notificationIds)
             ->where('mileage_from', '<', $car->mileage)
             ->where('mileage_to', '>', $car->mileage)
@@ -72,7 +74,7 @@ class CarFilterNotification {
             ->groupBy('user_id')
             ->get();
 
-        foreach ( $notifications as $notification ) {
+        foreach ($notifications as $notification) {
             Mail::send('emails.welcome', [], function ($message) use ($notification) {
                 $message->to($notification->user->email, $notification->user->name)->subject('a car has been posted !');
             });

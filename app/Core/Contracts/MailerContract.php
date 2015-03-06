@@ -1,4 +1,5 @@
-<?php namespace App\Core\Contracts;
+<?php
+namespace App\Core\Contracts;
 
 interface MailerContract
 {

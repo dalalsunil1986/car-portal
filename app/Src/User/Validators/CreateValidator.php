@@ -1,4 +1,5 @@
-<?php namespace App\Src\User\Validators;
+<?php
+namespace App\Src\User\Validators;
 
 use App\Core\BaseValidator;
 
