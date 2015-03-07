@@ -1,8 +1,10 @@
-<?php namespace App\Src\Photo;
+<?php
+namespace App\Src\Photo;
 
 use App\Core\BaseModel;
 
-class Photo extends BaseModel {
+class Photo extends BaseModel
+{
 
     public static $name = 'photo';
 

@@ -1,4 +1,5 @@
-<?php namespace App\Src\Car\Repository;
+<?php
+namespace App\Src\Car\Repository;
 
 use App\Core\BaseRepository;
 use App\Core\CrudableTrait;
@@ -6,7 +7,8 @@ use App\Src\Car\CarType;
 use Illuminate\Support\MessageBag;
 
 
-class CarTypeRepository extends BaseRepository  {
+class CarTypeRepository extends BaseRepository
+{
 
     use CrudableTrait;
 

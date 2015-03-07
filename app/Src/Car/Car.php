@@ -1,10 +1,12 @@
-<?php namespace App\Src\Car;
+<?php
+namespace App\Src\Car;
 
 use App\Core\BaseModel;
 use App\Core\LocaleTrait;
 use Auth;
 
-class Car extends BaseModel {
+class Car extends BaseModel
+{
 
     use LocaleTrait;
 
@@ -40,7 +42,8 @@ class Car extends BaseModel {
 
     public function favorited()
     {
-        return $this->morphOne('App\Src\Favorite\Favorite', 'favoriteable')->where('user_id', Auth::user()->id);
+        return $this->morphOne('App\Src\Favorite\Favorite', 'favoriteable')->where('user_id',
+            Auth::user()->id)->select(['id', 'user_id', 'favoriteable_id', 'favoriteable_type']);
     }
 
     public function photos()

@@ -1,10 +1,12 @@
-<?php namespace App\Src\Message;
+<?php
+namespace App\Src\Message;
 
 use App\Core\BaseRepository;
 use App\Core\CrudableTrait;
 use Illuminate\Support\MessageBag;
 
-class ThreadRepository extends BaseRepository {
+class ThreadRepository extends BaseRepository
+{
 
     use CrudableTrait;
 

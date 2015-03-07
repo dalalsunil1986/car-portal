@@ -1,9 +1,11 @@
-<?php namespace App\Src\Car;
+<?php
+namespace App\Src\Car;
 
 use App\Core\BaseImageService;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class ImageService extends BaseImageService {
+class ImageService extends BaseImageService
+{
 
     public function store(UploadedFile $image)
     {

@@ -1,9 +1,11 @@
-<?php namespace App\Src\User\Events;
+<?php
+namespace App\Src\User\Events;
 
 use Illuminate\Contracts\Auth\User;
 use Illuminate\Support\Facades\Event;
 
-class UserEventHandler extends AbstractMailer {
+class UserEventHandler extends AbstractMailer
+{
 
     /**
      * @param array|\User $user
@@ -11,9 +13,9 @@ class UserEventHandler extends AbstractMailer {
      */
     public function handle(array $user)
     {
-        if ( Event::firing() == 'user.created' ) {
+        if (Event::firing() == 'user.created') {
             return $this->sendActivationMail($user);
-        } elseif ( Event::firing() == 'user.reset' ){
+        } elseif (Event::firing() == 'user.reset') {
             return $this->sendPasswordResetMail($user);
         }
     }
@@ -21,10 +23,11 @@ class UserEventHandler extends AbstractMailer {
     public function sendActivationMail($user)
     {
         $this->view          = 'emails.auth.default';
-        $this->recepient     =  $user['email'];
-        $this->recepientName =  $user['name'];
+        $this->recepient     = $user['email'];
+        $this->recepientName = $user['name'];
         $this->subject       = 'Please Activate Your Email';
-        $user['body']           = 'To activate your Kuwaitii.com Account,<a href="' . action('AuthController@activate', $user['confirmation_code']) . '"> Click this link </a> ';
+        $user['body']        = 'To activate your Kuwaitii.com Account,<a href="' . action('AuthController@activate',
+                $user['confirmation_code']) . '"> Click this link </a> ';
 
         // Send Email
         $this->fire($user);
@@ -47,10 +50,11 @@ class UserEventHandler extends AbstractMailer {
     private function sendPasswordResetMail(User $user)
     {
         $this->view          = 'emails.auth.default';
-        $this->recepient     =  $user->email;
-        $this->recepientName =  $user->name;
+        $this->recepient     = $user->email;
+        $this->recepientName = $user->name;
         $this->subject       = 'Please Reset Your Email';
-        $user->body          = 'To Reset your Kuwaitii.com Password,<a href="' . action('AuthController@getReset', $user->confirmation_code) . '"> Click this link </a> ';
+        $user->body          = 'To Reset your Kuwaitii.com Password,<a href="' . action('AuthController@getReset',
+                $user->confirmation_code) . '"> Click this link </a> ';
 
         // Send Email
         $this->fire($user->toArray());

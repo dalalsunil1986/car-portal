@@ -1,4 +1,5 @@
-<?php namespace App\Src\Photo;
+<?php
+namespace App\Src\Photo;
 
 use App;
 use App\Core\BaseRepository;
@@ -7,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\MessageBag;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class PhotoRepository extends BaseRepository {
+class PhotoRepository extends BaseRepository
+{
 
     use CrudableTrait;
     /**
@@ -55,13 +57,13 @@ class PhotoRepository extends BaseRepository {
     {
         $upload = $this->uploadFile($file, $model);
 
-        if ( !$upload ) {
+        if (!$upload) {
             return false;
         }
 
         $photo = $this->create($model, array_merge($fields, ['name' => $upload->getHashedName()]));
 
-        if ( !$photo ) {
+        if (!$photo) {
             $this->addError('Could Not save the photo record in the database');
 
             return false;
@@ -90,11 +92,12 @@ class PhotoRepository extends BaseRepository {
     public function replace(UploadedFile $file, Model $model, $fields = [], $imageableID)
     {
         $reflectionModel = new \ReflectionClass($model);
-        $photos          = $this->model->where('imageable_type', $reflectionModel->getShortName())->where('imageable_id', $imageableID)->where('thumbnail', 1)->get();
+        $photos          = $this->model->where('imageable_type',
+            $reflectionModel->getShortName())->where('imageable_id', $imageableID)->where('thumbnail', 1)->get();
 
         // delete the old file
-        if ( count($photos) ) {
-            foreach ( $photos as $photo ) {
+        if (count($photos)) {
+            foreach ($photos as $photo) {
                 $this->destroy($model, $photo);
             }
         }

@@ -1,7 +1,9 @@
-<?php namespace App\Src\Message;
+<?php
+namespace App\Src\Message;
 
 trait Messagable
 {
+
     /**
      * Message relationship
      *
@@ -40,7 +42,7 @@ trait Messagable
     public function threadsWithNewMessages()
     {
         $threadsWithNewMessages = [];
-        $participants = Participant::where('user_id', $this->id)->lists('last_read', 'thread_id');
+        $participants           = Participant::where('user_id', $this->id)->lists('last_read', 'thread_id');
 
         if ($participants) {
             $threads = Thread::whereIn('id', array_keys($participants))->get();

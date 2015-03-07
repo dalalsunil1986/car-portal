@@ -1,11 +1,13 @@
-<?php namespace App\Core;
+<?php
+namespace App\Core;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 use StdClass;
 use Illuminate\Support\MessageBag;
 
-abstract class BaseRepository {
+abstract class BaseRepository
+{
 
     /**
      * @var \Illuminate\Database\Eloquent\Model
@@ -66,7 +68,7 @@ abstract class BaseRepository {
 
     protected function storeEloquentModel($model)
     {
-        if ( $model->getDirty() ) {
+        if ($model->getDirty()) {
             return $model->save();
         } else {
             return $model->touch();
@@ -82,7 +84,7 @@ abstract class BaseRepository {
 
     public function save(Model $model)
     {
-        if ( $model->getDirty() ) {
+        if ($model->getDirty()) {
             return $model->save();
         } else {
             return $model->touch();
@@ -117,8 +119,8 @@ abstract class BaseRepository {
      */
     public function getNames($array = null)
     {
-        if ( !empty($array) ) {
-            $data = $this->model->whereIn('id',$array)->get(['id', 'name_' . App::getLocale() . ' as name']);
+        if (!empty($array)) {
+            $data = $this->model->whereIn('id', $array)->get(['id', 'name_' . App::getLocale() . ' as name']);
         } else {
             $data = $this->model->get(['id', 'name_' . App::getLocale() . ' as name']);
         }

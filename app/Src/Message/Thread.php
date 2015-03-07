@@ -1,11 +1,13 @@
-<?php namespace App\Src\Message;
+<?php
+namespace App\Src\Message;
 
 use App\Core\BaseModel;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class Thread extends BaseModel {
+class Thread extends BaseModel
+{
 
     protected $guarded = ['id'];
 
@@ -118,7 +120,7 @@ class Thread extends BaseModel {
      * @param $userId
      * @return mixed
      */
-    public function scopeForUserWithNewMessagesCount($query,$userId)
+    public function scopeForUserWithNewMessagesCount($query, $userId)
     {
         return $query->join('participants', 'threads.id', '=', 'participants.thread_id')
             ->where('participants.user_id', $userId)
@@ -143,7 +145,7 @@ class Thread extends BaseModel {
         if (count($participants)) {
             foreach ($participants as $user_id) {
                 Participant::firstOrCreate([
-                    'user_id' => $user_id,
+                    'user_id'   => $user_id,
                     'thread_id' => $this->id,
                 ]);
             }
@@ -158,10 +160,10 @@ class Thread extends BaseModel {
     public function markAsRead($userId)
     {
         try {
-            $participant = $this->getParticipantFromUser($userId);
+            $participant            = $this->getParticipantFromUser($userId);
             $participant->last_read = new Carbon;
             $participant->save();
-        } catch (ModelNotFoundException $e) {
+        } catch ( ModelNotFoundException $e ) {
             // do nothing
         }
     }
@@ -179,7 +181,8 @@ class Thread extends BaseModel {
             if ($this->updated_at > $participant->last_read) {
                 return true;
             }
-        } catch (ModelNotFoundException $e) {}
+        } catch ( ModelNotFoundException $e ) {
+        }
 
         return false;
     }

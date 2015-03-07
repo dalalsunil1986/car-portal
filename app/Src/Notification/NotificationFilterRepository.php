@@ -1,10 +1,12 @@
-<?php namespace App\Src\Notification;
+<?php
+namespace App\Src\Notification;
 
 use App\Core\BaseRepository;
 use App\Core\CrudableTrait;
 use Illuminate\Support\MessageBag;
 
-class NotificationFilterRepository extends BaseRepository  {
+class NotificationFilterRepository extends BaseRepository
+{
 
     use CrudableTrait;
 

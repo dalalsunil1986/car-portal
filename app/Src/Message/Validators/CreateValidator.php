@@ -1,8 +1,10 @@
-<?php namespace App\Src\Message\Validators;
+<?php
+namespace App\Src\Message\Validators;
 
 use App\Core\BaseValidator;
 
-class CreateValidator extends BaseValidator  {
+class CreateValidator extends BaseValidator
+{
 
     /**
      * Validation rules
@@ -28,7 +30,8 @@ class CreateValidator extends BaseValidator  {
     /**
      * unset thumbnail after the validation, to avoid sending the data in create method
      */
-    public function afterValidation(){
+    public function afterValidation()
+    {
         unset($this->inputData['subject']);
     }
 

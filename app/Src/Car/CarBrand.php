@@ -1,9 +1,11 @@
-<?php namespace App\Src\Car;
+<?php
+namespace App\Src\Car;
 
 use App\Core\BaseModel;
 use App\Core\LocaleTrait;
 
-class CarBrand extends BaseModel {
+class CarBrand extends BaseModel
+{
 
     use LocaleTrait;
 

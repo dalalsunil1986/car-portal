@@ -1,5 +1,7 @@
-<?php namespace App\Core\Exceptions;
+<?php
+namespace App\Core\Exceptions;
 
-class EntityNotFoundException extends \Exception {
+class EntityNotFoundException extends \Exception
+{
 
 }

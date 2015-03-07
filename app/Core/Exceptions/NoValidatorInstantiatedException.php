@@ -1,5 +1,7 @@
-<?php namespace App\Core\Exceptions;
+<?php
+namespace App\Core\Exceptions;
 
-class NoValidatorInstantiatedException extends \Exception {
+class NoValidatorInstantiatedException extends \Exception
+{
 
 }

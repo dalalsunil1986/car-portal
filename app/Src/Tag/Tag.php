@@ -1,9 +1,11 @@
-<?php namespace App\Src\Tag;
+<?php
+namespace App\Src\Tag;
 
 use App\Core\BaseModel;
 use App\Core\LocaleTrait;
 
-class Tag extends BaseModel {
+class Tag extends BaseModel
+{
 
     use LocaleTrait;
 

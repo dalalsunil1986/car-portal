@@ -110,77 +110,72 @@
                                 <li><a href="#">Events</a></li>
                             </ul>
                         </div>
-                        <div class="row">
-                            @foreach($user->notifications as $notification)
 
+                        @foreach($user->notifications as $notification)
+                            <div class="row">
                                 <div class="col-md-9 notify-pannel">
                                     <div class="row clearfix">
                                         <button type="button" class="delete delete-button" aria-hidden="true">×</button>
-                                        <div class="col-xs-6 column">
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Make:</span>
-                                                </div>
-                                                <div class="col-md-9 column">
-                                                    @if($notification->filterOfType('CarMake'))
-                                                        @foreach($notification->filterOfType('CarMake') as $filter)
+                                        <div class="col-md-6 column">
+
+                                            @if(count($notification->filters()->OfType('CarMake')))
+                                                <div class="row clearfix ntf-row">
+                                                    <div class="col-md-3 column"><span class="ntf-feild">Make:</span>
+                                                    </div>
+                                                    <div class="col-md-9 column">
+                                                        @foreach($notification->filters()->OfType('CarMake') as $filter)
                                                             <span class="ntf-input">{{ $filter->filterable->name }}</span>
                                                         @endforeach
-                                                    @else
-                                                        None
-                                                    @endif
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
 
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Brand:</span>
-                                                </div>
-                                                <div class="col-md-9 column">
-                                                    @if($notification->filterOfType('CarBrand'))
-                                                        @foreach($notification->filterOfType('CarBrand') as $filter)
+                                            @if(count($notification->filters()->OfType('CarBrand')))
+                                                <div class="row clearfix ntf-row">
+                                                    <div class="col-md-3 column"><span class="ntf-feild">Brand:</span>
+                                                    </div>
+                                                    <div class="col-md-9 column">
+                                                        @foreach($notification->filters()->OfType('CarBrand') as $filter)
                                                             <span class="ntf-input">{{ $filter->filterable->name }}</span>
                                                         @endforeach
-                                                    @else
-                                                        Unspecified
-                                                    @endif
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
 
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Type:</span>
-                                                </div>
-                                                <div class="col-md-9 column">
-
-                                                    @if($notification->filterOfType('CarType'))
-                                                        @foreach($notification->filterOfType('CarType') as $filter)
+                                            @if(count($notification->filters()->OfType('CarType')))
+                                                <div class="row clearfix ntf-row">
+                                                    <div class="col-md-3 column">
+                                                        <span class="ntf-feild">Type:</span>
+                                                    </div>
+                                                    <div class="col-md-9 column">
+                                                        @foreach($notification->filters()->OfType('CarType') as $filter)
                                                             <span class="ntf-input">{{ $filter->filterable->name }}</span>
                                                         @endforeach
-                                                    @else
-                                                        Unspecified
-                                                    @endif
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
 
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Model:</span>
-                                                </div>
-                                                <div class="col-md-9 column">
-                                                    @if($notification->filterOfType('CarModel'))
-                                                        @foreach($notification->filterOfType('CarModel') as $filter)
+                                            @if(count($notification->filters()->OfType('CarModel')))
+                                                <div class="row clearfix ntf-row">
+                                                    <div class="col-md-3 column">
+                                                        <span class="ntf-feild">Model:</span>
+                                                    </div>
+                                                    <div class="col-md-9 column">
+                                                        @foreach($notification->filters()->OfType('CarModel') as $filter)
                                                             <span class="ntf-input">{{ $filter->filterable->name }}</span>
                                                         @endforeach
-                                                    @else
-                                                        Unspecified
-                                                    @endif
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
+
                                         </div>
 
-                                        <div class="col-xs-6 column">
+                                        <div class="col-md-6 column">
                                             <div class="row clearfix ntf-row">
                                                 <div class="col-md-4 column"><span class="ntf-feild">Year:</span>
                                                 </div>
                                                 <div class="col-md-8 column">
-                                                    <span class="ntf-input">{{ $notification->year_from .'-'.$notification->year_to }}</span>
+                                                    <span class="ntf-input">{{ $notification->year_from .' - '.$notification->year_to }}</span>
                                                 </div>
                                             </div>
                                             <div class="row clearfix ntf-row">
@@ -198,12 +193,13 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
-                            @endforeach
-
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
+
                 </div>
             </div>
         </div>
@@ -219,5 +215,5 @@
             <!-- cd-popup-container -->
         </div>
         <!-- cd-popup -->
-
+    </div>
 @stop

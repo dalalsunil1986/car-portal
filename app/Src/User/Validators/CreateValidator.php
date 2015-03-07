@@ -1,8 +1,10 @@
-<?php namespace App\Src\User\Validators;
+<?php
+namespace App\Src\User\Validators;
 
 use App\Core\BaseValidator;
 
-class CreateValidator extends BaseValidator  {
+class CreateValidator extends BaseValidator
+{
 
     /**
      * Validation rules
@@ -21,8 +23,9 @@ class CreateValidator extends BaseValidator  {
      */
     public function afterValidation()
     {
-        if ( !empty($this->inputData['password_confirmation']) )
+        if (!empty($this->inputData['password_confirmation'])) {
             unset($this->inputData['password_confirmation']);
+        }
 
     }
 }

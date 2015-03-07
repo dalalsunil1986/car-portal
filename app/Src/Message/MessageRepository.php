@@ -1,10 +1,12 @@
-<?php namespace App\Src\Message;
+<?php
+namespace App\Src\Message;
 
 use App\Core\BaseRepository;
 use App\Core\CrudableTrait;
 use Illuminate\Support\MessageBag;
 
-class MessageRepository extends BaseRepository {
+class MessageRepository extends BaseRepository
+{
 
     use CrudableTrait;
 
@@ -23,8 +25,6 @@ class MessageRepository extends BaseRepository {
     public function findThreadsForUser()
     {
     }
-
-
 
 
 }

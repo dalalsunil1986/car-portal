@@ -1,8 +1,10 @@
-<?php namespace App\Src\Message;
+<?php
+namespace App\Src\Message;
 
 use App\Core\BaseModel;
 
-class Message extends BaseModel {
+class Message extends BaseModel
+{
 
     public static $name = 'message';
 

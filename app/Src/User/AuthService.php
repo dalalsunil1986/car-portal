@@ -1,4 +1,5 @@
-<?php namespace App\Src\User;
+<?php
+namespace App\Src\User;
 
 use App\Core\BaseRepository;
 use Auth;
@@ -8,7 +9,8 @@ use Password;
 use Session;
 use User;
 
-class AuthService extends BaseRepository {
+class AuthService extends BaseRepository
+{
 
     public $userRepository;
 
@@ -28,10 +30,10 @@ class AuthService extends BaseRepository {
      */
     public function register(array $data)
     {
-        if(!isset($data['active'])) {
+        if (!isset($data['active'])) {
             $data['active'] = 0;
         }
-        if ( ! $user = $this->userRepository->create($data) ) {
+        if (!$user = $this->userRepository->create($data)) {
             $this->addError(trans('auth.alerts.user_registration_failed'));
 
             return false;
@@ -51,7 +53,7 @@ class AuthService extends BaseRepository {
     {
         $user = $this->find($id);
 
-        if ( $user ) {
+        if ($user) {
             return $user->delete();
         }
     }
@@ -64,17 +66,17 @@ class AuthService extends BaseRepository {
     public function activateUser($token)
     {
         $user = $this->findByToken($token);
-        if ( $user ) {
+        if ($user) {
             // valid token
             // check if user is active
-            if ( $user->active == 1 ) {
+            if ($user->active == 1) {
                 // Error: account already active
                 $this->addError(trans('auth.alerts.account_already_active'));
 
                 return false;
             }
 
-            if ( $user->created_at < Carbon::now()->subDay() ) {
+            if ($user->created_at < Carbon::now()->subDay()) {
                 // link expired
                 //@todo make link expired view
                 $this->addError(trans('auth.alerts.token_link_expired'));
@@ -119,9 +121,9 @@ class AuthService extends BaseRepository {
         $user = $this->userRepository->findByEmail($email['email']);
 
         // Check if Valid User
-        if ( $user ) {
+        if ($user) {
             // Check if his Account is active
-            if ( ! $user->active == 1 ) {
+            if (!$user->active == 1) {
                 $this->addError(trans('auth.alerts.not_confirmed'));
 
                 return false;
@@ -176,7 +178,7 @@ class AuthService extends BaseRepository {
 
         $user->save();
 
-        Event::fire('user.activated',[$user->toArray()]);
+        Event::fire('user.activated', [$user->toArray()]);
     }
 
     public function deactivate($user)
@@ -188,12 +190,12 @@ class AuthService extends BaseRepository {
 
         $user->save();
 
-        Event::fire('user.deactivated',[$user->toArray()]);
+        Event::fire('user.deactivated', [$user->toArray()]);
     }
 
     public function changeActivateStatus($user)
     {
-        if($user->active) {
+        if ($user->active) {
             $this->deactivate($user);
         } else {
             $this->activate($user);
@@ -209,9 +211,9 @@ class AuthService extends BaseRepository {
         $user->confirmation_code = $this->generateToken();
         $user->save();
 
-        $data = $user->toArray();
+        $data                      = $user->toArray();
         $data['confirmation_code'] = $user->confirmation_code;
 
-        Event::fire('user.created',[$data]);
+        Event::fire('user.created', [$data]);
     }
 }

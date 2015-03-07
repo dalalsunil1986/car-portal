@@ -1,8 +1,10 @@
-<?php namespace App\Src\Message\Validators;
+<?php
+namespace App\Src\Message\Validators;
 
 use App\Core\BaseValidator;
 
-class UpdateValidator extends BaseValidator {
+class UpdateValidator extends BaseValidator
+{
 
     /**
      * Validation rules

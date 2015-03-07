@@ -1,8 +1,10 @@
-<?php namespace App\Core;
+<?php
+namespace App\Core;
 
 use Illuminate\Support\Facades\App;
 
-trait LocaleTrait {
+trait LocaleTrait
+{
 
     /**
      * @param $name
@@ -11,18 +13,22 @@ trait LocaleTrait {
      */
     public function __get($name)
     {
-        if ( in_array($name, $this->localeStrings) ) {
+        if (in_array($name, $this->localeStrings)) {
 
             $locale = App::getLocale();
-            if ( $locale == 'en' ) {
+            if ($locale == 'en') {
 
-                if ( ! is_null($this->{$name . '_en'}) ) return $this->{$name . '_en'};
+                if (!is_null($this->{$name . '_en'})) {
+                    return $this->{$name . '_en'};
+                }
 
                 return $this->{$name . '_ar'};
 
             } else {
 
-                if ( ! is_null($this->{$name . '_ar'}) ) return $this->{$name . '_ar'};
+                if (!is_null($this->{$name . '_ar'})) {
+                    return $this->{$name . '_ar'};
+                }
 
                 return $this->{$name . '_en'};
             }

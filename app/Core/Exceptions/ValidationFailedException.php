@@ -1,8 +1,10 @@
-<?php namespace App\Core\Exceptions;
+<?php
+namespace App\Core\Exceptions;
 
 use Illuminate\Support\MessageBag;
 
-class ValidationFailedException extends \Exception {
+class ValidationFailedException extends \Exception
+{
 
     protected $errors;
 

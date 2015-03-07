@@ -1,8 +1,10 @@
-<?php namespace App\Src\Message;
+<?php
+namespace App\Src\Message;
 
 use App\Core\BaseModel;
 
-class Participant extends BaseModel {
+class Participant extends BaseModel
+{
 
 
     protected $guarded = ['id'];

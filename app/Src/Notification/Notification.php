@@ -1,8 +1,10 @@
-<?php namespace App\Src\Notification;
+<?php
+namespace App\Src\Notification;
 
 use App\Core\BaseModel;
 
-class Notification extends BaseModel {
+class Notification extends BaseModel
+{
 
     protected $guarded = ['id'];
 
@@ -16,11 +18,6 @@ class Notification extends BaseModel {
     public function filters()
     {
         return $this->hasMany('App\Src\Notification\NotificationFilter', 'notification_id');
-    }
-
-    public function scopeFilterOfType($query, $type)
-    {
-        return $this->filters()->where('notification_filters.filterable_type', $type)->get();
     }
 
 }

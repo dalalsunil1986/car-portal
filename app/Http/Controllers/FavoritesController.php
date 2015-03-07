@@ -1,10 +1,12 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
 use App\Src\Favorite\FavoriteRepository;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 
-class FavoritesController extends Controller {
+class FavoritesController extends Controller
+{
 
     /**
      * @var FavoriteRepository
@@ -37,15 +39,16 @@ class FavoritesController extends Controller {
         $userId           = 1; // Auth::user()->id;
         $favoriteableId   = Input::get('favoriteable_id');
         $favoriteableType = Input::get('favoriteable_type');
-        $favorite         = $this->favoriteRepository->hasFavorited($userId,$favoriteableId, $favoriteableType);
+        $favorite         = $this->favoriteRepository->hasFavorited($userId, $favoriteableId, $favoriteableType);
 
-        if ( !$favorite ) {
-            if ( $record = $this->favoriteRepository->create(array_merge(['user_id' => $userId], Input::all())) ) {
+        if (!$favorite) {
+            if ($record = $this->favoriteRepository->create(array_merge(['user_id' => $userId], Input::all()))) {
                 $favorite = $this->favoriteRepository->model->find($record->id);
 
                 return $favorite;
             }
         }
+
         // If already Favorited
         return Response::make('invalid', 401);
     }

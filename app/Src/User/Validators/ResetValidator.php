@@ -1,8 +1,10 @@
-<?php namespace App\Src\User\Validators;
+<?php
+namespace App\Src\User\Validators;
 
 use App\Core\BaseValidator;
 
-class ResetValidator extends BaseValidator {
+class ResetValidator extends BaseValidator
+{
 
     /**
      * Validation rules
@@ -10,7 +12,7 @@ class ResetValidator extends BaseValidator {
      * @var array
      */
     protected $rules = array(
-        'email'    => 'required|email',
+        'email' => 'required|email',
     );
 
 }

@@ -1,5 +1,7 @@
-<?php namespace App\Core\Exceptions;
+<?php
+namespace App\Core\Exceptions;
 
-class NotAuthorizedException extends \Exception {
+class NotAuthorizedException extends \Exception
+{
 
 }

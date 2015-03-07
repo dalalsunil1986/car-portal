@@ -1,9 +1,11 @@
-<?php namespace App\Http\Composers;
+<?php
+namespace App\Http\Composers;
 
 use Auth;
 use Illuminate\View\View;
 
-class MessageComposer {
+class MessageComposer
+{
 
     /**
      * @param View $view
@@ -11,12 +13,13 @@ class MessageComposer {
      */
     public function compose(View $view)
     {
-        if ( !Auth::check() ) {
+        if (!Auth::check()) {
             return $view->with('newMessagesCount', 0);
         }
 
         $user          = Auth::user();
         $messagesCount = $user->newMessagesCount();
+
         return $view->with('newMessagesCount', $messagesCount);
     }
 }

@@ -1,10 +1,13 @@
-<?php namespace App\Src\Car\Repository;
+<?php
+namespace App\Src\Car\Repository;
 
 use App\Core\BaseRepository;
 use App\Core\CrudableTrait;
 use App\Src\Car\CarModel;
 use Illuminate\Support\MessageBag;
-class CarModelRepository extends BaseRepository  {
+
+class CarModelRepository extends BaseRepository
+{
 
     use CrudableTrait;
 

@@ -1,4 +1,5 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
 use App\Commands\CreateNotification;
 use App\Events\CarWasPosted;
@@ -15,7 +16,8 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 
-class NotificationsController extends Controller {
+class NotificationsController extends Controller
+{
 
     /**
      * @var NotificationRepository
@@ -45,12 +47,12 @@ class NotificationsController extends Controller {
      */
     public function test(Request $request, CarRepository $carRepository)
     {
-        $filterModel = new NotificationFilter();
-        $notificationModel  = new Notification();
+        $filterModel       = new NotificationFilter();
+        $notificationModel = new Notification();
 
         $notificationArray = [
             'user_id'      => '1',
-            'type'=>'Car',
+            'type'         => 'Car',
             'price_from'   => '2000',
             'price_to'     => '3000',
             'mileage_from' => '10000',
@@ -59,7 +61,7 @@ class NotificationsController extends Controller {
             'year_to'      => '2013'
         ];
 
-        $notification  = $notificationModel->create($notificationArray);
+        $notification = $notificationModel->create($notificationArray);
 
         $filterArray = [
             'notification_id' => $notification->id,

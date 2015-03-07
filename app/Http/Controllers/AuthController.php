@@ -1,4 +1,5 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
 use App\Src\User\AuthService;
 use App\Src\User\UserRepository;
@@ -9,7 +10,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
 
-class AuthController extends Controller {
+class AuthController extends Controller
+{
 
     /**
      * @var AuthRepository
@@ -26,8 +28,8 @@ class AuthController extends Controller {
      */
     public function __construct(AuthService $service, UserRepository $userRepository)
     {
-        $this->service = $service;
-        $this->userRepository    = $userRepository;
+        $this->service        = $service;
+        $this->userRepository = $userRepository;
     }
 
     public function getLogin()
@@ -41,11 +43,11 @@ class AuthController extends Controller {
         $password = Input::get('password');
         $remember = Input::has('remember') ? true : false;
 
-        if ( !Auth::attempt(['email' => $email, 'password' => $password], $remember) ) {
+        if (!Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
             return Redirect::action('AuthController@getLogin')->with('error', trans('auth.alerts.wrong_credentials'));
         }
 
-        if ( !Auth::user()->active ) {
+        if (!Auth::user()->active) {
             Session::put('account_not_active', true);
             Session::put('user.id', Auth::user()->id);
             Auth::logout();
@@ -65,6 +67,7 @@ class AuthController extends Controller {
     public function getSignup()
     {
         $this->title = trans('auth.signup.title');
+
         return view('module.users.signup');
     }
 
@@ -75,13 +78,13 @@ class AuthController extends Controller {
         $val = $this->service->getRegistrationForm();
 
         // check if the form is valid
-        if ( !$val->isValid() ) {
+        if (!$val->isValid()) {
 
             return Redirect::back()->with('errors', $val->getErrors())->withInput();
         }
 
         // If Auth Sevice Fails to Register the User
-        if ( !$this->service->register($val->getInputData()) ) {
+        if (!$this->service->register($val->getInputData())) {
 
             return Redirect::home()->with('errors', $this->service->errors());
         }
@@ -97,6 +100,7 @@ class AuthController extends Controller {
     public function getForgot()
     {
         $this->title = trans('auth.forgot.title');
+
         return view('site.auth.forgot');
     }
 
@@ -111,12 +115,13 @@ class AuthController extends Controller {
             $message->subject(trans('auth.reset.title'));
 
         });
-        switch ( $response ) {
+        switch ($response) {
             case Password::INVALID_USER:
                 return Redirect::back()->with('error', trans('auth.alerts.invalid_user'));
 
             case Password::REMINDER_SENT:
-                return Redirect::action('AuthController@getLogin')->with('success', trans('auth.alerts.reminders_sent'));
+                return Redirect::action('AuthController@getLogin')->with('success',
+                    trans('auth.alerts.reminders_sent'));
         }
 
     }
@@ -130,6 +135,7 @@ class AuthController extends Controller {
     public function getReset($token = null)
     {
         $this->title = trans('auth.reset.title');
+
         return view('site.auth.reset', array('token' => $token));
     }
 
@@ -148,7 +154,7 @@ class AuthController extends Controller {
         $val = $this->userRepository->getPasswordResetForm();
 
         // check if the form is valid
-        if ( !$val->isValid() ) {
+        if (!$val->isValid()) {
 
             return Redirect::back()->with('errors', $val->getErrors())->withInput();
         }
@@ -156,7 +162,7 @@ class AuthController extends Controller {
         $response = $this->service->resetPassword($credentials);
 
 
-        switch ( $response ) {
+        switch ($response) {
 
             case Password::INVALID_PASSWORD:
                 return Redirect::back()->with('error', trans('auth.alerts.wrong_password_reset'))->withInput();
@@ -165,7 +171,8 @@ class AuthController extends Controller {
             case Password::INVALID_USER:
                 return Redirect::back()->with('error', trans('auth.alerts.invalid_user'))->withInput();
             case Password::PASSWORD_RESET:
-                return Redirect::action('AuthController@getLogin')->with('success', trans('auth.alerts.password_resetted'));
+                return Redirect::action('AuthController@getLogin')->with('success',
+                    trans('auth.alerts.password_resetted'));
 
         }
     }
@@ -189,7 +196,7 @@ class AuthController extends Controller {
     public function activate($token)
     {
         // If not activated ( errors )
-        if ( !$this->service->activateUser($token) ) {
+        if (!$this->service->activateUser($token)) {
 
             return Redirect::home()->with('errors', $this->service->errors());
         }
@@ -204,7 +211,7 @@ class AuthController extends Controller {
     {
         $userId = Input::get('user_id');
         $user   = $this->userRepository->findById($userId);
-        if ( $user ) {
+        if ($user) {
             $this->service->processActivation($user);
 
             return Redirect::back()->with('success', trans('auth.alerts.account_activation_link_sent'));

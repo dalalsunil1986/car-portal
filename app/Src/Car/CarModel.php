@@ -1,9 +1,11 @@
-<?php namespace App\Src\Car;
+<?php
+namespace App\Src\Car;
 
 use App\Core\BaseModel;
 use App\Core\LocaleTrait;
 
-class CarModel extends BaseModel {
+class CarModel extends BaseModel
+{
 
     use LocaleTrait;
     public static $name = 'carModel';
