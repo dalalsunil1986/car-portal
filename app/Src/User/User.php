@@ -28,7 +28,7 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
 
     public function favorites()
     {
-        return $this->morphMany('App\Src\Favorite\Favorite', 'favoriteable');
+        return $this->hasMany('App\Src\Favorite\Favorite', 'user_id');
     }
 
     public function messages()
@@ -39,6 +39,15 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
     public function participants()
     {
         return $this->hasMany('App\Src\Message\Participant', 'user_id');
+    }
+
+    public function cars()
+    {
+        return $this->hasMany('App\Src\Car\Car', 'user_id');
+    }
+
+    public function notifications(){
+        return $this->hasMany('App\Src\Notification\Notification','user_id');
     }
 
     /**
@@ -69,13 +78,13 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
     public function threadsWithNewMessages()
     {
         $threadsWithNewMessages = [];
-        $participants = Participant::where('user_id', $this->id)->lists('last_read', 'thread_id');
+        $participants           = Participant::where('user_id', $this->id)->lists('last_read', 'thread_id');
 
-        if ($participants) {
+        if ( $participants ) {
             $threads = Thread::whereIn('id', array_keys($participants))->get();
 
-            foreach ($threads as $thread) {
-                if ($thread->updated_at > $participants[$thread->id]) {
+            foreach ( $threads as $thread ) {
+                if ( $thread->updated_at > $participants[$thread->id] ) {
                     $threadsWithNewMessages[] = $thread->id;
                 }
             }

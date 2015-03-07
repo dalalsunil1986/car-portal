@@ -12,6 +12,14 @@ class NotificationFilter extends BaseModel {
 
     public $timestamps = false;
 
+    protected $types = [
+        'carmake' => 'App\Src\Car\CarMake',
+        'carbrand' => 'App\Src\Car\CarBrand',
+        'cartype' => 'App\Src\Car\CarType',
+        'carmodel' => 'App\Src\Car\CarModel'
+    ];
+
+
     public function notification()
     {
         return $this->belongsTo('App\Src\Notification\Notification', 'notification_id');
@@ -21,4 +29,19 @@ class NotificationFilter extends BaseModel {
     {
         return $this->morphTo();
     }
+
+
+    public function getFilterableTypeAttribute($type) {
+        // transform to lower case
+        $type = strtolower($type);
+
+        // to make sure this returns value from the array
+        return array_get($this->types, $type, $type);
+    }
+
+    public function scopeOfType($query,$type)
+    {
+        return $query->where('filterable_type',$type)->get();
+    }
+
 }

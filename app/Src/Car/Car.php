@@ -2,6 +2,7 @@
 
 use App\Core\BaseModel;
 use App\Core\LocaleTrait;
+use Auth;
 
 class Car extends BaseModel {
 
@@ -37,8 +38,9 @@ class Car extends BaseModel {
         return $this->morphMany('App\Src\Favorite\Favorite', 'favoriteable');
     }
 
-    public function favorited() {
-        return $this->morphOne('App\Src\Favorite\Favorite', 'favoriteable')->where('user_id',1);
+    public function favorited()
+    {
+        return $this->morphOne('App\Src\Favorite\Favorite', 'favoriteable')->where('user_id', Auth::user()->id);
     }
 
     public function photos()
@@ -48,7 +50,7 @@ class Car extends BaseModel {
 
     public function thumbnail()
     {
-        return $this->morphOne('App\Src\Photo\Photo', 'imageable')->where('thumbnail',1);
+        return $this->morphOne('App\Src\Photo\Photo', 'imageable')->where('thumbnail', 1);
     }
 
     public function tags()
@@ -64,7 +66,7 @@ class Car extends BaseModel {
 
     public function threads()
     {
-        return $this->morphMany('App\Src\Message\Thread','messageable');
+        return $this->morphMany('App\Src\Message\Thread', 'messageable');
     }
 
 }

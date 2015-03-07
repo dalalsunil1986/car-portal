@@ -54,7 +54,9 @@ function CarService($http, $q) {
                 deferred.reject('An error has occurred ');
             }
         );
+
         return deferred.promise;
+
     }
 
     function getView(id) {

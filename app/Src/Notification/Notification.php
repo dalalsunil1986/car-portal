@@ -13,4 +13,14 @@ class Notification extends BaseModel {
         return $this->belongsTo('App\Src\User\User', 'user_id');
     }
 
+    public function filters()
+    {
+        return $this->hasMany('App\Src\Notification\NotificationFilter', 'notification_id');
+    }
+
+    public function scopeFilterOfType($query, $type)
+    {
+        return $this->filters()->where('notification_filters.filterable_type', $type)->get();
+    }
+
 }

@@ -2,26 +2,8 @@
 
 @section('style')
     @parent
-
-    {!! HTML::style('assets/css/pop-up.css') !!}
     {!! HTML::style('assets/css/style-profile.css') !!}
     {!! HTML::style('assets/css/layout-profile-page.css') !!}
-
-@stop
-@section('script')
-    @parent
-    {!! HTML::script('assets/js/pop-up.js') !!}
-
-    <script>
-        $(document).ready(function () {
-            $("#make").select2();
-            $("#type").select2({
-                placeholder: "Select a Type",
-                allowClear: true,
-                maximumSelectionSize: 3
-            });
-        });
-    </script>
 @stop
 
 @section('content')
@@ -50,17 +32,14 @@
                             <div class="col-xs-7 basic-info">
                                 <div class="row">
 
-                                    <h2>Khalid Al-Something</h2>
+                                    <h2>{{ $user->name }}</h2>
 
                                     <div class="col-xs-12 account-row">
 
-                               {{--<a href="#" id="username" data-type="text" data-pk="1" data-url="/post"--}}
-                                       {{--data-title="Enter username">superuser</a>--}}
+                                        <div class="col-xs-12"><span>E-Mail: </span>{{$user->email}}</div>
+                                        {{ $user->phone? '<div class="col-xs-12"><span>Mobile: </span>'. $user->phone .'</div>' :''  }}
 
-                                <div class="col-xs-12"><span>E-Mail: </span>thedude45@gmail.com</div>
-                                <div class="col-xs-12"><span>Mobile: </span>959-845-9542</div>
-
-                            </div>
+                                    </div>
 
                                 </div>
 
@@ -70,8 +49,12 @@
                                     <h2>Settings</h2>
 
                                     <div class="col-xs-12 account-row">
-                                        <div class="col-xs-12"><a href="#"> Edit Account</a></div>
-                                        <div class="col-xs-12">Deactivate</div>
+                                        <div class="col-xs-12">
+                                            <a href="{{ action('UsersController@edit',$user->id) }}"> Edit Account</a>
+                                        </div>
+                                        {!! Form::open(['action'=>['UsersController@destroy',$user->id],'method'=>'DELETE']) !!}
+                                        {!! Form::submit('Deactivate',['class'=>'col-xs-12']) !!}
+                                        {!! Form::close()!!}
                                     </div>
 
                                 </div>
@@ -91,17 +74,9 @@
                                 <li><a href="#">Events</a></li>
                             </ul>
                         </div>
-                        <div class="row item-row post-item">
-                            <div class="col-md-8 column title-color">
-                                <img class="post-image" src="/assets/img/custom/car-thumb.jpg">
-                                <h3 class="post-title">2010 - BMW - M3</h3>
-                            </div>
-                            <div class="col-md-2 column cost-color">
-                                <div class="post-option">Edit</div>
-                                <div class="post-option">View</div>
-                                <button type="button" class="delete delete-button" aria-hidden="true">×</button>
-                            </div>
-                        </div>
+                        @foreach($user->cars as $car)
+                            @include('module.cars._result_single',['car'=>$car])
+                        @endforeach
                     </div>
                     <div class="tab-pane" id="favorites">
                         <div class="tab-pane" id="posts">
@@ -117,19 +92,10 @@
                                 </ul>
                             </div>
 
+                            @foreach($user->favorites as $favorite)
+                                @include('module.cars._result_single',['car'=>$favorite->favoriteable])
+                            @endforeach
 
-                            <div class="row item-row">
-                                <div class="col-xs-8 column title-color">
-                                    <img class="post-image" src="/assets/img/custom/car-thumb.jpg">
-
-                                    <h3 class="post-title">2010 - BMW - M3</h3>
-                                </div>
-                                <div class="col-xs-2 column cost-color">
-                                    <div class="fav-view">View</div>
-                                    <button type="button" class="delete  cd-popup-trigger delete-button" aria-hidden="true">×
-                                    </button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="notifyme">
@@ -145,76 +111,113 @@
                             </ul>
                         </div>
                         <div class="row">
+                            @foreach($user->notifications as $notification)
 
-                            <div class="row">
                                 <div class="col-md-9 notify-pannel">
                                     <div class="row clearfix">
                                         <button type="button" class="delete delete-button" aria-hidden="true">×</button>
                                         <div class="col-xs-6 column">
                                             <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Make:</span></div>
+                                                <div class="col-md-3 column"><span class="ntf-feild">Make:</span>
+                                                </div>
                                                 <div class="col-md-9 column">
-                                                    <span class="ntf-input">Japanese, American</span></div>
-                                            </div>
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Type:</span></div>
-                                                <div class="col-md-9 column"><span class="ntf-input">SUV</span></div>
-                                            </div>
-                                            <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Brand:</span></div>
-                                                <div class="col-md-9 column"><span class="ntf-input">Unspecified</span>
+                                                    @if($notification->filterOfType('CarMake'))
+                                                        @foreach($notification->filterOfType('CarMake') as $filter)
+                                                            <span class="ntf-input">{{ $filter->filterable->name }}</span>
+                                                        @endforeach
+                                                    @else
+                                                        None
+                                                    @endif
                                                 </div>
                                             </div>
+
                                             <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Model:</span></div>
-                                                <div class="col-md-9 column"><span class="ntf-input">Unspecified</span>
+                                                <div class="col-md-3 column"><span class="ntf-feild">Brand:</span>
+                                                </div>
+                                                <div class="col-md-9 column">
+                                                    @if($notification->filterOfType('CarBrand'))
+                                                        @foreach($notification->filterOfType('CarBrand') as $filter)
+                                                            <span class="ntf-input">{{ $filter->filterable->name }}</span>
+                                                        @endforeach
+                                                    @else
+                                                        Unspecified
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="row clearfix ntf-row">
+                                                <div class="col-md-3 column"><span class="ntf-feild">Type:</span>
+                                                </div>
+                                                <div class="col-md-9 column">
+
+                                                    @if($notification->filterOfType('CarType'))
+                                                        @foreach($notification->filterOfType('CarType') as $filter)
+                                                            <span class="ntf-input">{{ $filter->filterable->name }}</span>
+                                                        @endforeach
+                                                    @else
+                                                        Unspecified
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="row clearfix ntf-row">
+                                                <div class="col-md-3 column"><span class="ntf-feild">Model:</span>
+                                                </div>
+                                                <div class="col-md-9 column">
+                                                    @if($notification->filterOfType('CarModel'))
+                                                        @foreach($notification->filterOfType('CarModel') as $filter)
+                                                            <span class="ntf-input">{{ $filter->filterable->name }}</span>
+                                                        @endforeach
+                                                    @else
+                                                        Unspecified
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-xs-6 column">
                                             <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Years:</span></div>
-                                                <div class="col-md-9 column"><span class="ntf-input">2008 - 20013</span>
+                                                <div class="col-md-4 column"><span class="ntf-feild">Year:</span>
+                                                </div>
+                                                <div class="col-md-8 column">
+                                                    <span class="ntf-input">{{ $notification->year_from .'-'.$notification->year_to }}</span>
                                                 </div>
                                             </div>
                                             <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Milage:</span>
+                                                <div class="col-md-4 column"><span class="ntf-feild">Mileage:</span>
                                                 </div>
-                                                <div class="col-md-9 column">
-                                                    <span class="ntf-input">50,000 - 80,000</span>
+                                                <div class="col-md-8 column">
+                                                    <span class="ntf-input">{{ $notification->mileage_from .' - '.$notification->mileage_to }} KM</span>
                                                 </div>
                                             </div>
                                             <div class="row clearfix ntf-row">
-                                                <div class="col-md-3 column"><span class="ntf-feild">Price:</span></div>
-                                                <div class="col-md-9 column">
-                                                    <span class="ntf-input">4,000KD - 6,000 KD</span></div>
+                                                <div class="col-md-4 column"><span class="ntf-feild">Price:</span>
+                                                </div>
+                                                <div class="col-md-8 column">
+                                                    <span class="ntf-input">{{ round($notification->price_from,0) .' - '. round($notification->price_to,0) }} KD</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-
-
-
+                            @endforeach
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="cd-popup" role="alert">
-        <div class="cd-popup-container">
-            <p>Are you sure you want to delete this?</p>
-            <ul class="cd-buttons" style="padding-left: 0px;">
-                <li><a href="#0">Yes</a></li>
-                <li><a href="#0">No</a></li>
-            </ul>
-            <a href="#0" class="cd-popup-close img-replace">Close</a></div>
-        <!-- cd-popup-container -->
-    </div>
-    <!-- cd-popup -->
+        <div class="cd-popup" role="alert">
+            <div class="cd-popup-container">
+                <p>Are you sure you want to delete this?</p>
+                <ul class="cd-buttons" style="padding-left: 0px;">
+                    <li><a href="#0">Yes</a></li>
+                    <li><a href="#0">No</a></li>
+                </ul>
+                <a href="#0" class="cd-popup-close img-replace">Close</a></div>
+            <!-- cd-popup-container -->
+        </div>
+        <!-- cd-popup -->
 
 @stop
