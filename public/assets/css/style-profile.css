@@ -18,9 +18,7 @@
     font-size: 21px;
 }
 
-.tab-content{
-    border-left: 1px solid rgba(68, 83, 83, 0.11);
-}
+
 /*Account Tab*/
 
 
@@ -311,7 +309,15 @@ h3.post-title {
 
 .cost-color div {
     padding-bottom: 8px;
+    padding-top: 25px;
+
 }
+
+.cost-color div a {
+    color: white;
+}
+
+
 
 button.delete {
     background: #ff7373;
@@ -321,6 +327,9 @@ button.delete {
 
 }
 
+#posts a{
+    color: #ffffff;
+}
 .delete:hover, .delete:focus {
     color: #FFF;
     text-decoration: none;
@@ -347,7 +356,7 @@ button.delete {
 }
 
 .post-option {
-    height: 50%;
+    height: 100%;
     transition: background-color 0.35s ease;
     padding: 6px;
     text-align: center;
@@ -434,3 +443,5 @@ div.row.clearfix.ntf-row {
     background-color: #0F9287;
     border-color: #0aa699;
 }
+
+
