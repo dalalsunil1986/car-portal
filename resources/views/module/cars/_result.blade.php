@@ -1,4 +1,4 @@
-<div class="result-col col-lg-8 col-md-8 clearfix">
+<div class="result-col col-lg-8 col-md-8 clearfix" id="filter">
     <div class="row">
         <div class="col-md-12 clearfix">
             <!-- Drop Down Filter-->

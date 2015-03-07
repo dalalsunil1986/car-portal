@@ -1,7 +1,7 @@
 <!--navigation - visible only on mobile-->
 <div class="row clearfix row-middle visible-xs hidden-lg hidden-md hidden-sm ">
 
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
 
             <button type="button" class="navbar-toggle sb-toggle-left  left-toggle">

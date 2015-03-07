@@ -157,14 +157,6 @@ div#select2-drop {
     border-color: #ddd;
 }
 
-html.sb-active-left, html.sb-active-right {
-    overflow: hidden;
-}
-
-.sb-left {
-    width: 180px;
-}
-
 input{
     height: 37px;
     padding: 0;

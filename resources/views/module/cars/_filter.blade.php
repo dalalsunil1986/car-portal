@@ -82,9 +82,10 @@
             </button>
 
             <!--Btn Sm Layout-->
-            <button ng-click="refreshCars()" class="btn btn-info btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl filter-btn">
+           <a href="#filter"> <button ng-click="refreshCars()" class="btn btn-info btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl filter-btn">
                 <i class="icon-white fa fa-sort-by-attributes"></i> Filter!
             </button>
+           </a>
             <button ng-click="openModal('lg',filters)" class="btn cd-popup-trigger btn-large col-xs-12 col-sm-11 hidden-lg hidden-xl notify-sm notify-btn">
                 <i class="icon-white fa fa-phone  "></i> Notify Me
             </button>

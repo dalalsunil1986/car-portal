@@ -63,30 +63,3 @@
 
     @stop
 <!-- End Middle Section #content -->
-
-<!-- Scripts -->
-@section('script')
-    @parent
-
-
-{{ HTML::script('site\vendors\autogrow-master\autogrow.min.js') }}
-
-<script>
-    //Text Area Auto Grow
-    $('textarea').autogrow();
-
-    // Back Button Hint
-    $(".go-back").hide()
-
-    $( ".title .fa" ).hover(
-        function() {
-            $(".go-back").fadeIn()()
-            ;
-        }, function() {
-            $(".go-back").fadeOut()
-        }
-    );
-
-</script>
-@stop
-<!-- End Scripts -->
