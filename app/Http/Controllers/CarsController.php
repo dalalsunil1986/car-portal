@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
-use Session;
 
 class CarsController extends Controller
 {
@@ -39,8 +38,6 @@ class CarsController extends Controller
 
     public function show($id)
     {
-        dd(Session::get('lang'));
-
         $car = $this->carRepository->model->with([
             'model.brand',
             'user',

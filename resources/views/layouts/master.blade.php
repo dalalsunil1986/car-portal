@@ -2,24 +2,31 @@
 <html lang="en" ng-app='app' ng-cloak>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kuwaitii.com</title>
 
     @section('style')
+        <link rel="shortcut icon" href="/assets/img/icons/favicon.ico">
         <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' type='text/css'>
         {!! HTML::style('packages/bootstrap/dist/css/bootstrap.css') !!}
+        @if(App::getLocale() == 'ar')
+            {!! HTML::style('packages/bootstrap-rtl/dist/css/bootstrap-rtl.css') !!}
+        @endif
         {!! HTML::style('packages/fontawesome/css/font-awesome.css') !!}
         {!! HTML::style('packages/Slidebars/distribution/0.10.2/slidebars.min.css') !!}
         {!! HTML::style('packages/ionrangeslider/css/ion.rangeSlider.css') !!}
         {!! HTML::style('packages/ionrangeslider/css/ion.rangeSlider.skinFlat.css') !!}
         {!! HTML::style('packages/nanoscroller/bin/css/nanoscroller.css') !!}
-
         {!! HTML::style('assets/css/modules/form.css') !!}
         {!! HTML::style('assets/css/modules/filter.css') !!}
         {!! HTML::style('assets/css/modules/result.css') !!}
         {!! HTML::style('assets/css/global.css') !!}
 
-        <link rel="shortcut icon" href="../img/icons/favicon.ico">
+        @if(App::getLocale() == 'ar')
+            <!-- custom arabic Styles -->
+        @endif
+
     @show
 </head>
 
@@ -91,22 +98,18 @@
         });
 
         //go-back-show-animation
-
         $(".go-back").hide()
         $(".fa-arrow-circle-left").mouseenter(function () {
             $(".go-back").show(400),
-            $(this).click( function(){
-                window.history.back()
-                });
+                    $(this).click(function () {
+                        window.history.back()
+                    });
         }).mouseleave(function () {
             $(".go-back").hide(400)
         });
 
-
-
-
-    //init-nanoscroller
-        $(".int-col").hover( function(){
+        //init-nanoscroller
+        $(".int-col").hover(function () {
             $(".nano").nanoScroller();
         });
 
