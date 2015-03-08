@@ -42,6 +42,9 @@ angular.module('app').directive('priceSlider', function () {
                 onFinish: function (obj) { // callback, is called once, after slider finished it's work
                     scope.filters.priceFrom = obj.from;
                     scope.filters.priceTo = obj.to;
+                    _.defer(function () {
+                        scope.$apply();
+                    });
                     scope.refreshCars();
                 }
             });
@@ -75,6 +78,9 @@ angular.module('app').directive('mileageSlider', function () {
                 onFinish: function (obj) { // callback, is called once, after slider finished it's work
                     scope.filters.mileageFrom = obj.from;
                     scope.filters.mileageTo = obj.to;
+                    _.defer(function () {
+                        scope.$apply();
+                    });
                     scope.refreshCars();
                 }
             });

@@ -11,7 +11,7 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
 
     $scope.constructor = function () {
         $scope.filters.page = 0;
-        $scope.loading = true;
+        $scope.loading = false;
         $scope.cars = [];
         $scope.hasRecords = true;
         $scope.emptyRecords = false;
@@ -59,13 +59,13 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
 
     //Slider Filters
     $scope.filters.priceFrom = 1000;
-    $scope.filters.priceTo = 10000;
+    $scope.filters.priceTo = 50000;
 
-    $scope.filters.mileageFrom = 6000;
-    $scope.filters.mileageTo = 100000;
+    $scope.filters.mileageFrom = 5000;
+    $scope.filters.mileageTo = 300000;
 
-    $scope.filters.yearFrom = 2005;
-    $scope.filters.yearTo = 2014;
+    $scope.filters.yearFrom = 1970;
+    $scope.filters.yearTo = 2015;
 
     $scope.getCars = function () {
 
@@ -94,7 +94,9 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
                     this.push(response);
                 }, $scope.cars);
 
-                $location.hash('Hf31x6' + response.from);
+                var last = response.data[0].id;
+
+                $location.hash('Hf31x6' + last);
 
                 $anchorScroll();
 

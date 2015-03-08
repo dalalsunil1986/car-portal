@@ -13,9 +13,9 @@ angular
     .module('app')
     .config(configure);
 
-configure.inject = ['$interpolateProvider', '$locationProvider', '$httpProvider', '$compileProvider'];
+configure.inject = ['$interpolateProvider', '$httpProvider', '$locationProvider', '$compileProvider'];
 
-function configure($interpolateProvider, $locationProvider, $httpProvider, $compileProvider) {
+function configure($interpolateProvider, $httpProvider, $locationProvider, $compileProvider) {
     $interpolateProvider.startSymbol('{[').endSymbol(']}');
     $httpProvider.useApplyAsync(true);
     //$compileProvider.debugInfoEnabled(false);

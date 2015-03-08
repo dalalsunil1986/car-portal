@@ -25,8 +25,8 @@
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                         <select ng-model="sortorder">
-                            <option selected="selected" value="+created_at">Upload Date : Old to New</option>
-                            <option value="-created_at">Upload Date : New to Old</option>
+                            <option selected="selected" value="-created_at">Upload Date : New to Old</option>
+                            <option value="+created_at">Upload Date : Old to New</option>
                             <option value="-year">Year: New to Old</option>
                             <option value="+year">Year: Old to New</option>
                             <option value="-price">Price: High to Low</option>

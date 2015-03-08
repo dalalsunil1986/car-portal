@@ -250,13 +250,20 @@ class CarsController extends Controller
 
                 })
                 ->select(['id', 'model_id', 'year', 'mileage', 'price', 'created_at'])
-                ->orderBy('created_at', 'DESC')
+                ->orderBy('id', 'DESC')
                 ->paginate(10);
         } else {
             $cars = $this->carRepository->model->with(['thumbnail', 'favorited'])->paginate(10);
         }
-
         return $cars;
+//        debug
+//        $a = $cars->toArray();
+//        $array = $a['data'];
+//        dd($array);
+//        foreach($array as $b) {
+//            echo $b['id'].'<br>';
+//        }
+//        dd('end');
     }
 
 
