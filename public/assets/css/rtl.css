@@ -1,0 +1,208 @@
+.container {
+    margin-right: 100px;
+    padding-left: 0%;
+}
+
+.one-column {
+    width: 79%;
+    padding-left: 160px;
+    margin: auto;
+}
+
+.result-col {
+    padding-right: 440px;
+    margin: 0;
+    width: 96%;
+
+}
+
+
+/*Navigation*/
+.nav-col{
+    right: 0;
+}
+
+.int-col{
+    left: 0;
+    right: inherit;
+}
+.nav-links{
+    padding-right: 8px;
+}
+.shift-link-text{
+    padding-right: 10px;
+    padding-left: 0px;
+
+}
+
+/*Favorites*/
+
+.int-container {
+    margin-right: 45px;
+}
+.nano > .nano-content {
+    right: 22px; !important;
+}
+.int-col{
+    padding-right: 2px;
+}
+
+.plus-icon {
+    position: fixed;
+    display: block;
+    margin-left: 63px;
+    margin-top: 9px;
+}
+.int-title {
+    margin: 5px 61px 25px 0;
+}
+.nano > .nano-pane {
+    left: 0;
+    right: inherit;!important;
+}
+/*Results*/
+.price-box {
+    border-radius: 5px 0px 0px 5px;
+}
+
+.result-image {
+    border-radius: 0px 5px 5px 0px;
+}
+
+.posted-date-box {
+    float: left;
+    padding-left: 15px;
+}
+.distance-box{
+    margin-right: 10px;
+}
+.info-box h4 {
+    padding-right: 10px;
+}
+.results-title {
+    float: right;
+    margin-left: 13px;
+}
+
+
+#loading{
+    margin: auto;
+    width: 1px;
+    padding-left: 100px;
+    padding-right: 0px; !important;
+}
+
+
+/*View Car*/
+
+.car-details  .result-image{
+    float: right;!important;
+}
+
+.car-details .title-color {
+    border-left: 7px solid #DEE2E4;
+    border-right: none;
+}
+
+.car-details .interested-box {
+    border-right: 7px solid rgb(181, 212, 233);
+    border-left: none;
+    border-radius: 0px 0px 0px 5px;
+}
+
+.car-details .cd-item-info {
+    right: inherit;
+    left: 0;!important;
+}
+.car-details #car-title {
+    padding-right: 110px;
+}
+
+.car-details .details-tab{
+    border-left: 5px solid rgba(181, 212, 233, 0);!important;
+    border-right: 5px solid rgba(181, 212, 233, 1);
+}
+.car-details .glyphicon{
+    margin-left: 10px;
+    margin-right: 0;
+
+}
+/*Forms*/
+label{
+    border-radius: 0 5px 5px 0;
+}
+
+ul.select2-choices {
+    border-radius: 5px 0 0 5px;
+}
+
+.notify-lg {
+    margin-left: 4px;
+}
+
+.int-container {
+    width: 150px;
+    margin-right: 45px;
+}
+
+
+/*Mail*/
+
+.delete-message-btn {
+    position: absolute;
+    top: 15px;
+    right: inherit !important;
+    left: 15px;
+}
+
+img.profile-picture-inbox {
+    float: right;
+}
+
+/* Car Submit*/
+a.select2-choice.select2-default {
+    float: right;
+    width: 360px;
+    margin-right: 0px;
+    border-radius: 5px 0 0 5px;
+}
+
+
+.submit-form label{
+    float: right;
+}
+
+.submit-form input{
+    float: right;
+    width: 360px;
+    margin-right: 0px;
+    border-radius: 5px 0 0 5px;
+    padding-right: 25px;
+
+}
+
+.steps-submit {
+    float: left;
+    text-align: initial;
+    margin-top: 45px;
+}
+
+.number{
+    margin-left: 10px;
+}
+
+.save-step .submit-save-button {
+    color: #fff;
+    background-color: #A5A9A9;
+    border: none;
+    border-bottom: 3px solid rgba(142, 142, 142, 1);
+    float: left;
+    width: 120px;
+    margin-left: 255px;
+}
+
+.price-hidden {
+    padding-bottom: 20px;
+    float: left;
+    margin-left: 114px;
+}

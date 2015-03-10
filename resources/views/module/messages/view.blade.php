@@ -4,6 +4,7 @@
 @section('style')
     @parent
     {!! HTML::style('assets/css/modules/inbox.css') !!}
+
 @stop
 
 @section('content')
@@ -33,7 +34,7 @@
 
                         @foreach($thread->messages as $message)
                             <div class="row">
-                                <div class=" col-md-1 {{ ($message->user->id == Auth::user()->id) ? 'message-text pull-left ' : 'reply-text pull-right' }}">
+                                <div class=" col-md-1 {{ ($message->user->id == Auth::user()->id) ? 'message-text' : 'reply-text pull-right' }}">
                                     <img src="//www.gravatar.com/avatar/{{$message->user->email}}?s=50"
                                          class="profile-picture-inbox-view" width="50" height="50">
                                 </div>

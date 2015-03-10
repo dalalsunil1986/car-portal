@@ -99,6 +99,13 @@ h3 {
     color: white;
 }
 
+select{
+    border: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 6px;
+}
 .middle {
     overflow: hidden;
 }
@@ -344,9 +351,8 @@ h3 {
     display: inline;
     width: 15px;
     height: 15px;
-    padding: 9px 13px 10px 13px;
-    margin-left: 28px;
-    transition: background-color 0.35s ease;
+    padding: 9px 12px 10px 18px;
+   transition: background-color 0.35s ease;
 }
 
 .user-icon:hover, .my-posts-icon:hover {
@@ -411,8 +417,8 @@ h3 {
     -ms-transition: width .3s ease-in;
     -o-transition: width .3s ease-in;
     transition: width .3s ease-in;
-    transition-delay: .1s;
-    -webkit-transition-delay: .1s;
+    transition-delay: .3s;
+    -webkit-transition-delay: .3s;
 }
 
 .int-col:hover {
@@ -651,6 +657,7 @@ button.close {
     padding-bottom: 0;
     margin-right: 13px;
     margin-bottom: 0;
+    float: left;
 }
 
 .toggle-reset {
@@ -704,6 +711,7 @@ button.close {
 
 /** ||||||||||||| MENU  ||||||||||||||*/
 
+
 #red-text {
     color: #fc8383;
 }
@@ -715,7 +723,8 @@ button.close {
     border-bottom: 1px solid rgba(252, 131, 131, 0.3);
     width: 100%;
     margin-bottom: 13px;
-
+    transition-delay: .3s;
+    -webkit-transition-delay: .3s;
 }
 
 .row-filter-nav {
@@ -1193,6 +1202,7 @@ button.close {
 .modal-open .modal{
     overflow: hidden;
     overflow-y: hidden;
+    background-color: rgba(0, 0, 0, 0.37)
 }
 
 

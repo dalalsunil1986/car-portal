@@ -728,3 +728,50 @@ header h1 {
     color: #afa8a0;
     line-height: 1.8;
 }
+
+
+.cd-slider::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(81, 62, 93, 0.4) url("/assets/img/icons/cd-icon-zoom.svg") no-repeat center center;
+    background-size: 48px;
+    opacity: 0;
+    z-index: 4;
+    -webkit-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+}
+
+
+
+
+#transition:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(81, 62, 93, 0.4) url("/assets/img/icons/cd-icon-zoom.svg") no-repeat center center;
+    background-size: 48px;
+    opacity: 0;
+    z-index: 4;
+    -webkit-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+}
+#transition:hover,
+#transition:focus {
+    /* things won't work in IE 10 without this declaration */
+}
+#transition:hover:before,
+#transition:focus:before {
+    opacity: 0;
+}
+

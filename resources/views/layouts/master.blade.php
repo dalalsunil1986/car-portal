@@ -24,7 +24,7 @@
         {!! HTML::style('assets/css/global.css') !!}
 
         @if(App::getLocale() == 'ar')
-            <!-- custom arabic Styles -->
+            {!! HTML::style('assets/css/rtl.css') !!}
         @endif
 
     @show

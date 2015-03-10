@@ -39,7 +39,8 @@ Created on: 7/7/2014 By Vincent.
     font-size: .6em;
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 0;
-    padding-right: 5px;
+    padding-right: 15px;
+    float: right;
 }
 
 .more-box {
@@ -262,6 +263,7 @@ button#dropdownMenu1:focus {
     width: 1px;
     padding-right: 100px;
 }
+
 .input-small {
     border: none;
     color: black;

@@ -32,7 +32,12 @@
                     <h3 id="car-title">{{ $car->title }}</h3>
                 </div>
                 <div class="col-md-3 col-sm-3 column interested-box">
-                    <div class="price-cost text-center">{{ $car->price }}</div>
+                    <div class="price-cost text-center">
+
+                        <favorite-button favorite="car.favorited" favoreable-type="Car" favoreable-id="{[car.id]}"/>
+                        </favorite-button>
+
+                       </div>
                 </div>
             </div>
 
@@ -49,6 +54,7 @@
                             @endforeach
                         @else
                             <li class="selected"><img src="/assets/img/custom/sample1.jpg" alt="Product Image 1"></li>
+                            <li><img src="/assets/img/custom/sample1.jpg" alt="Product Image 1"></li>
                         @endif
                     </ul> <!-- cd-slider -->
 
@@ -65,7 +71,7 @@
 
                <dl>
                    <dt>Asking Price</dt>
-                   <dd>25,000 KWD</dd>
+                   <dd> {{ $car->price }}</dd>
                    <dt>Mileage</dt>
                    <dd>25,000 km</dd>
                    <dt>Seller</dt>
@@ -267,5 +273,9 @@
                 return ( mq=='mobile' || $container.hasClass('cd-slider-active'));
             }
         });
+//
+//        $(".cd-slider").hover(function(){
+//            $(".cd-slider::after").css("opacity",1);
+//        })
     </script>
 @stop

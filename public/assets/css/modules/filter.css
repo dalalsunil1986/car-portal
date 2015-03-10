@@ -373,7 +373,6 @@ dl{
 
 
 .list-block{
-    width: 80%;
     border-top: 1px solid rgba(255, 0, 0, 0.18);
     margin-top: 12px;
     padding: 0;
@@ -385,8 +384,12 @@ dl{
     color: rgb(2, 44, 40);
 }
 .list-block img{
-    margin-top: -5px;
+    margin-top: -10px;
+    width: 380px;
+    border-radius: 15px 0;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.13);
 }
+
 
 
 /*Spinner CSS*/
