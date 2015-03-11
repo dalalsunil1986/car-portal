@@ -363,7 +363,12 @@ button#dropdownMenu1:focus {
         margin: auto;
         margin-top: 2.5em;
     }
-
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 1px;
+        text-overflow: '';
+    }
     .img-box {
         width: 100%;
     }

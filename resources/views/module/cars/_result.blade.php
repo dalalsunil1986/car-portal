@@ -5,22 +5,17 @@
             <div class="row sort-row">
                 <h3 class="results-title clearfix">Results</h3>
 
-
-
                 <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        <select ng-model="sortorder">
-                            <option selected="selected" value="-created_at">Upload Date : New to Old</option>
-                            <option value="+created_at">Upload Date : Old to New</option>
-                            <option value="-year">Year: New to Old</option>
-                            <option value="+year">Year: Old to New</option>
-                            <option value="-price">Price: High to Low</option>
-                            <option value="+price">Price: Low to High</option>
-                            <option value="-mileage">Mileage : High to Low</option>
-                            <option value="+mileage">Mileage: Low to High</option>
-                        </select>
-                        <span class="caret"></span>
-                    </button>
+                    <select ng-model="sortorder">
+                        <option selected="selected" value="+created_at">Date &#x25BE; </option>
+                        <option value="-created_at">Date &#x25B4;</option>
+                        <option value="-year">Year &#x25BE;</option>
+                        <option value="+year">Year &#x25B4;</option>
+                        <option value="-price">Price &#x25BE;</option>
+                        <option value="+price">Price &#x25B4;</option>
+                        <option value="-mileage">Mileage &#x25BE;</option>
+                        <option value="+mileage">Mileage &#x25B4;</option>
+                    </select>
                 </div>
             </div>
 

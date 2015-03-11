@@ -211,6 +211,7 @@ select{
     -moz-box-shadow: 2px 1px 0px 20000px  rgba(69, 89, 87, 0.42);
     box-shadow: 2px 1px 0px 20000px rgba(69, 89, 87, 0.42);
     transition: all .5s;
+    transition-delay: 0.2s;
     border-right: 1px solid rgba(36, 95, 90, 0.18);
 }
 
@@ -427,6 +428,7 @@ select{
     -moz-box-shadow: 2px 1px 0px 20000px  rgba(69, 89, 87, 0.42);
     box-shadow: 2px 1px 0px 20000px rgba(69, 89, 87, 0.42);
     transition: all .5s;
+    transition-delay: 0.2s;
     border-left: 1px solid rgba(36, 95, 90, 0.18);
 
 }
