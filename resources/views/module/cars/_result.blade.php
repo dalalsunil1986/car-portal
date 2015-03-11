@@ -3,24 +3,9 @@
         <div class="col-md-12 clearfix">
             <!-- Drop Down Filter-->
             <div class="row sort-row">
-                <h3 class="results-title pull-left clearfix">Results</h3>
+                <h3 class="results-title clearfix">Results</h3>
 
-                {{--<div class="dropdown">--}}
-                    {{--<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">--}}
-                        {{--Show--}}
-                        {{--<span class="caret"></span>--}}
-                    {{--</button>--}}
-                    {{--<ul class="dropdown-menu" ng-model="sortorder" role="menu" aria-labelledby="dropdownMenu1">--}}
-                        {{--<li><option value="+created_at">Oldest</option></li>--}}
-                        {{--<li><a href="#" value="-year">Year: Old to new</a></li>--}}
-                        {{--<li><option value="+price">Low Price</option></li>--}}
-                        {{--<li><a href="#">Price: High to Low </a></li>--}}
-                        {{--<li><a href="#">Mileage: High to Low</a></li>--}}
-                        {{--<li><a href="#">Mileage: Low to High</a></li>--}}
-                        {{--<li><a href="#">Submition: New to Old</a></li>--}}
-                        {{--<li><a href="#" value="+created_at">Submition: Old to New</a></li>--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
+
 
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -74,7 +59,7 @@
                                         <img src="/assets/img/icons/speed-icon.png" class="km-icon" style="width:18px;height:10px"/>
                                         {[ car.mileage ]} KM
                                     </p>
-                                    <p class="posted-date-box pull-right">{[ car.created_at | myDateFormat ]}</p>
+                                    <p class="posted-date-box">{[ car.created_at | myDateFormat ]}</p>
                                     <a class="more-box text-center" href="/cars/{[ car.id ]}">More Information</a>
                                 </div>
 

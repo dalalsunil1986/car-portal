@@ -93,8 +93,7 @@
 
         <div class="row">
             <div class="col-md-12 list-block">
-                {!! HTML::image('/assets/img/icons/key.png', null , array('class'=>'shift-link-icon nav-icons')) !!}
-                <span> <a href="{{action('CarsController@create')}}">List your car. It's quick and free!</a></span>
+                <a href="{{action('CarsController@create')}}"><img class="img-responsive" src="assets/img/icons/list.gif" alt="List your car!"> </a>
             </div>
         </div>
 

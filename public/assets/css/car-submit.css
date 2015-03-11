@@ -45,7 +45,9 @@ input {
 }
 
 
-
+.submit-form label{
+    float: left;
+}
 .panel-default > .panel-heading {
     background-color: rgba(247, 247, 247, 0.43);
     color: rgb(118, 114, 114);

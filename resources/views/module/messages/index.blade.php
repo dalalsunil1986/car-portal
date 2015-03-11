@@ -29,7 +29,7 @@
 
                 <div class="col-md-12 column message-preview">
 
-                    <img src="//www.gravatar.com/avatar/{{ $thread->latestMessage->user->email }}?s=50" class="profile-picture-inbox pull-left" width="50" height="50">
+                    <img src="//www.gravatar.com/avatar/{{ $thread->latestMessage->user->email }}?s=50" class="profile-picture-inbox" width="50" height="50">
 
                     <div class="message-text">
                         <p>{{ $thread->latestMessage->body }}</p>
