@@ -373,7 +373,6 @@ dl{
 
 
 .list-block{
-    border-top: 1px solid rgba(255, 0, 0, 0.18);
     margin-top: 12px;
     padding: 0;
     padding-top: 11px;
@@ -390,6 +389,12 @@ dl{
     box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.13);
 }
 
+
+.list-block img:hover{
+    box-shadow: 10px 10px 0px rgba(135, 135, 135, 0.32);
+    transition: all .5s;
+
+}
 
 
 /*Spinner CSS*/

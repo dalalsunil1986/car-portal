@@ -9,14 +9,14 @@
 
                 <div class="dropdown">
                     <select ng-model="sortorder">
-                        <option selected="selected" value="+created_at">Upload Date : Old to New</option>
-                        <option value="-created_at">Upload Date : New to Old</option>
-                        <option value="-year">Year: New to Old</option>
-                        <option value="+year">Year: Old to New</option>
-                        <option value="-price">Price: High to Low</option>
-                        <option value="+price">Price: Low to High</option>
-                        <option value="-mileage">Mileage : High to Low</option>
-                        <option value="+mileage">Mileage: Low to High</option>
+                        <option selected="selected" value="+created_at">Date &#x25BE; </option>
+                        <option value="-created_at">Date &#x25B4;</option>
+                        <option value="-year">Year &#x25BE;</option>
+                        <option value="+year">Year &#x25B4;</option>
+                        <option value="-price">Price &#x25BE;</option>
+                        <option value="+price">Price &#x25B4;</option>
+                        <option value="-mileage">Mileage &#x25BE;</option>
+                        <option value="+mileage">Mileage &#x25B4;</option>
                     </select>
                 </div>
             </div>
