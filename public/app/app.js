@@ -3,7 +3,6 @@ angular
         'ngAnimate',
         'ngSanitize',
         'ui.select',
-        'infinite-scroll',
         'ngResource',
         'ui.bootstrap'
     ]);

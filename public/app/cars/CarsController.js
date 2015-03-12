@@ -96,12 +96,6 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
                     this.push(response);
                 }, $scope.cars);
 
-                var last = response.data[0].id;
-
-                $location.hash('Hf31x6' + last);
-
-                $anchorScroll();
-
                 if (response.next_page_url == null) {
                     // set there are no more records . just to avoid unnecessary XHR requests
                     $scope.hasRecords = false;
