@@ -38,7 +38,6 @@
                             </div>
                             <div class="col-xs-7 basic-info">
                                 <div class="row">
-
                                     <h2>About Me</h2>
 
                                     <div class="col-xs-12 account-row">
@@ -46,7 +45,6 @@
                                         <div class="col-xs-12"><span>E-Mail: </span>{{$user->email}}</div>
                                         {{ $user->phone? '<div class="col-xs-12"><span>Mobile: </span>'. $user->phone .'</div>' :''  }}
                                     </div>
-
                                 </div>
 
                                 <div class="row">
@@ -59,7 +57,6 @@
                                         {!! Form::submit('Deactivate',['class'=>'col-md-4 col-xs-12 btn btn-md submitLink']) !!}
                                         {!! Form::close()!!}
                                     </div>
-
                                 </div>
 
                             </div>

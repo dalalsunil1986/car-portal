@@ -21,7 +21,7 @@
 
             <div class="result-entry">
                 <!--SAMPLE ROW-->
-                <div infinite-scroll="getCars()" infinite-scroll-distance='0' infinite-scroll-disabled='loading'
+                <div infinite-scroll="getCars()" infinite-scroll-distance='1' infinite-scroll-disabled='loading'
                      infinite-scroll-parent="true"
                      infinite-scroll-immediate-check="false">
                     <div id="Hf31x6{[car.id]}" class="my-repeat-animation" ng-repeat="car in cars | orderBy:sortorder ">
