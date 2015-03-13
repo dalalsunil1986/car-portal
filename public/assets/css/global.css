@@ -169,10 +169,10 @@ select{
 /* Large Devices, Wide Screens */
 @media only screen and (min-width: 1200px) {
     .container {
-        padding-left: 10%;
+        padding-left: 14%;
         margin-left: 0;
         margin-right: 0;
-        width: 95%;
+        width: 98%;
     }
 
     body {
@@ -242,7 +242,7 @@ select{
     white-space: nowrap;
     position: absolute;
     top: 70px;
-    right: 38px;
+    right: 25px;
 }
 
 .nav-col:hover > .username-nav {
