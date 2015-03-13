@@ -1,9 +1,12 @@
-
         <div class="row item-row post-item">
-
-
             <div class="col-xs-10 col-sm-8 column title-color">
-                {!! $car->thumbnail ? '<a href="/cars/'. $car->id .'"><img src="/uploads/thumbnail/'.$car->thumbnail->name.'" class="img-responsive post-image"/></a>' : '<a href="/cars/'.$car->id.'"><img src="assets/img/custom/car-thumb.jpg" class="post-image"/></a>' !!}
+                <a href="{{action('CarsController@show',$car->id) }}">
+                    @if($car->thumbnail)
+                        <img src="/uploads/thumbnail/{{ $car->thumbnail->name  }}" class="post-image"/>
+                    @else
+                        <img src="assets/img/custom/car-thumb.jpg" class="post-image"/>
+                    @endif
+                </a>
 
                 <h3 class="post-title">
                     <a href="{{ action('CarsController@show',$car->id) }}" >  {{ $car->year}} - {{ $car->model->brand->name }} - {{ $car->model->name}}  </a>

@@ -2,16 +2,16 @@ angular
     .module('app')
     .controller('CarsController', CarsController);
 
-CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', '$modal', 'NotificationService'];
+CarsController.inject = ['$scope', 'CarService', '$modal', 'NotificationService'];
 
-function CarsController($scope, CarService, $location, $anchorScroll, $modal, NotificationService) {
+function CarsController($scope, CarService, $modal, NotificationService) {
 
     $scope.filters = {};
     $scope.slider = {};
 
     $scope.constructor = function () {
         $scope.filters.page = 0;
-        $scope.loading = true;
+        $scope.loading = false;
         $scope.cars = [];
         $scope.hasRecords = true;
         $scope.emptyRecords = false;
@@ -59,13 +59,13 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
 
     //Slider Filters
     $scope.filters.priceFrom = 1000;
-    $scope.filters.priceTo = 10000;
+    $scope.filters.priceTo = 50000;
 
-    $scope.filters.mileageFrom = 6000;
-    $scope.filters.mileageTo = 100000;
+    $scope.filters.mileageFrom = 5000;
+    $scope.filters.mileageTo = 300000;
 
-    $scope.filters.yearFrom = 2005;
-    $scope.filters.yearTo = 2014;
+    $scope.filters.yearFrom = 1970;
+    $scope.filters.yearTo = 2015;
 
     $scope.getCars = function () {
 
@@ -93,10 +93,6 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
                 angular.forEach(response.data, function (response) {
                     this.push(response);
                 }, $scope.cars);
-
-                $location.hash('Hf31x6' + response.from);
-
-                $anchorScroll();
 
                 if (response.next_page_url == null) {
                     // set there are no more records . just to avoid unnecessary XHR requests

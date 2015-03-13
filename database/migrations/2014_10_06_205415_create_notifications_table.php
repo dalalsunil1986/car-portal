@@ -21,8 +21,8 @@ class CreateNotificationsTable extends Migration {
 			$table->integer('year_to')->nullable();
 			$table->integer('mileage_from')->nullable();
 			$table->integer('mileage_to')->nullable();
-			$table->decimal('price_from',6,2)->nullable();
-			$table->decimal('price_to',6,2)->nullable();
+			$table->decimal('price_from',9,2)->nullable();
+            $table->decimal('price_to',9,2)->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

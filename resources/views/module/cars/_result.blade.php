@@ -5,8 +5,6 @@
             <div class="row sort-row">
                 <h3 class="results-title clearfix">Results</h3>
 
-
-
                 <div class="dropdown">
                     <select ng-model="sortorder">
                         <option selected="selected" value="+created_at">Date &#x25BE; </option>
@@ -41,7 +39,7 @@
 
                                 <div class="col-sm-3 col-sm-push-6 column price-box">
                                     <div class="asking text-center">Price</div>
-                                    <div class="price-cost text-center">{[ car.price ]} KD</div>
+                                    <div class="price-cost text-center">{[ car.price | number:0]} KD</div>
 
                                     <favorite-button favorite="car.favorited" favoreable-type="Car" favoreable-id="{[car.id]}"/>
                                     </favorite-button>
@@ -54,7 +52,7 @@
                                     </h4>
                                     <p class="distance-box">
                                         <img src="/assets/img/icons/speed-icon.png" class="km-icon" style="width:18px;height:10px"/>
-                                        {[ car.mileage ]} KM
+                                        {[ car.mileage | number:0 ]} KM
                                     </p>
                                     <p class="posted-date-box">{[ car.created_at | myDateFormat ]}</p>
                                     <a class="more-box text-center" href="/cars/{[ car.id ]}">More Information</a>

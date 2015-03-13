@@ -28,7 +28,7 @@ class CarsController extends Controller
     public function __construct(CarRepository $carRepository)
     {
         $this->carRepository = $carRepository;
-        Auth::loginUsingId(2);
+        Auth::loginUsingId(1);
     }
 
     public function index()
@@ -56,6 +56,7 @@ class CarsController extends Controller
      */
     public function create(CarModelRepository $carModelRepository, TagRepository $tagRepository)
     {
+
         $models = ['' => ''] + $carModelRepository->model->get()->lists('name_en', 'id');
         $tags   = $tagRepository->model->get()->lists('name', 'id');
 
@@ -250,13 +251,20 @@ class CarsController extends Controller
 
                 })
                 ->select(['id', 'model_id', 'year', 'mileage', 'price', 'created_at'])
-                ->orderBy('created_at', 'DESC')
+                ->orderBy('id', 'DESC')
                 ->paginate(10);
         } else {
             $cars = $this->carRepository->model->with(['thumbnail', 'favorited'])->paginate(10);
         }
-
         return $cars;
+//        debug
+//        $a = $cars->toArray();
+//        $array = $a['data'];
+//        dd($array);
+//        foreach($array as $b) {
+//            echo $b['id'].'<br>';
+//        }
+//        dd('end');
     }
 
 
