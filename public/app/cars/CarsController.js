@@ -67,6 +67,8 @@ function CarsController($scope, CarService, $modal, NotificationService) {
     $scope.filters.yearFrom = 1970;
     $scope.filters.yearTo = 2015;
 
+    $scope.sortorder = "-created_at";
+
     $scope.getCars = function () {
 
         $scope.loading = true;
@@ -76,8 +78,6 @@ function CarsController($scope, CarService, $modal, NotificationService) {
             $scope.filters.page++;
 
             CarService.getIndex($scope.filters).then(function (response) {
-
-                $scope.sortorder = "-created_at";
 
                 // If Data retrieved is equal, then just return
                 // if there is no more record, set has Records to false so that no more ajax requests are sent to server
