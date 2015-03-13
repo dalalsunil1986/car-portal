@@ -57,7 +57,7 @@ function FavoriteService($rootScope, $http, $q, $resource) {
 
     function destroy(favorite) {
 
-        $http.delete('api/favorites/' + favorite.id).then(function () {
+        $http.delete('/api/favorites/' + favorite.id).then(function () {
 
             var index = service.favorites.indexOf(favorite);
 

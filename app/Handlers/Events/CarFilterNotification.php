@@ -2,8 +2,6 @@
 namespace App\Handlers\Events;
 
 use App\Events\CarWasPosted;
-
-use App\Src\Car\CarRepository;
 use App\Src\Notification\NotificationRepository;
 use Illuminate\Support\Facades\Mail;
 
@@ -75,13 +73,36 @@ class CarFilterNotification
             ->get();
 
         foreach ($notifications as $notification) {
-            Mail::send('emails.welcome', [], function ($message) use ($notification) {
-                $message->to($notification->user->email, $notification->user->name)->subject('a car has been posted !');
-            });
+            $this->sendMail($notification);
+            $this->sendSms($notification);
         }
+
 
     }
 
+    public function sendSms($notification)
+    {
+        $twilio = new \Services_Twilio('AC4f2b8e1fb5461a2f25b7fd369bb4ceb9','e0feb617aa88de161ff57720d2062c3f');
+        $number = '+96597978803';
+        $message = 'Car of you choice is filtered';
+        $twilio->account->messages->sendMessage(
+            $_ENV['TWILIO_NUMBER'], // the text will be sent from your Twilio number
+            $number, // the phone number the text will be sent to
+            $message // the body of the text message
+        );
+
+        // Return the message object to the browser as JSON
+    }
+
+    /**
+     * @param $notification
+     */
+    public function sendMail($notification)
+    {
+        Mail::send('emails.welcome', [], function ($message) use ($notification) {
+            $message->to($notification->user->email, $notification->user->name)->subject('a car has been posted !');
+        });
+    }
 
 //    public function handle(CarWasPosted $event)
 //    {

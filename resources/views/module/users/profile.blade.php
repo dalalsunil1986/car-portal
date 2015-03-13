@@ -4,6 +4,13 @@
     @parent
     {!! HTML::style('assets/css/style-profile.css') !!}
     {!! HTML::style('assets/css/layout-profile-page.css') !!}
+    <style>
+        .submitLink {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 @stop
 
 @section('content')
@@ -38,22 +45,18 @@
                                         <div class="col-xs-12"><span>Name: </span>{{$user->name}}</div>
                                         <div class="col-xs-12"><span>E-Mail: </span>{{$user->email}}</div>
                                         {{ $user->phone? '<div class="col-xs-12"><span>Mobile: </span>'. $user->phone .'</div>' :''  }}
-
                                     </div>
 
                                 </div>
 
-
                                 <div class="row">
-
                                     <h2>Settings</h2>
-
                                     <div class="col-xs-12 account-row">
                                         <div class="col-xs-12">
                                             <a href="{{ action('UsersController@edit',$user->id) }}"> Edit Account</a>
                                         </div>
                                         {!! Form::open(['action'=>['UsersController@destroy',$user->id],'method'=>'DELETE']) !!}
-                                        {!! Form::submit('Deactivate',['class'=>'col-xs-12']) !!}
+                                        {!! Form::submit('Deactivate',['class'=>'col-md-4 col-xs-12 btn btn-md submitLink']) !!}
                                         {!! Form::close()!!}
                                     </div>
 
@@ -93,7 +96,9 @@
                             </div>
 
                             @foreach($user->favorites as $favorite)
-                                @include('module.cars._result_single',['car'=>$favorite->favoriteable])
+                                @if($favorite->favoriteable)
+                                    @include('module.cars._result_single',['car'=>$favorite->favoriteable])
+                                @endif
                             @endforeach
 
                         </div>
@@ -207,6 +212,7 @@
         <div class="cd-popup" role="alert">
             <div class="cd-popup-container">
                 <p>Are you sure you want to delete this?</p>
+                <ul class="cd-buttons" style="padding-left: 0px;">
                 <ul class="cd-buttons" style="padding-left: 0px;">
                     <li><a href="#0">Yes</a></li>
                     <li><a href="#0">No</a></li>

@@ -30,6 +30,7 @@ class NotificationsController extends Controller
     public function __construct(NotificationRepository $notificationRepository)
     {
         $this->notificationRepository = $notificationRepository;
+        Auth::loginUsingId(1);
     }
 
     /**
@@ -51,7 +52,7 @@ class NotificationsController extends Controller
         $notificationModel = new Notification();
 
         $notificationArray = [
-            'user_id'      => '1',
+            'user_id'      => Auth::user()->id,
             'type'         => 'Car',
             'price_from'   => '2000',
             'price_to'     => '3000',

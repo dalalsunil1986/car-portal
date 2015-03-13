@@ -22,7 +22,7 @@ class UsersController extends Controller
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
-        Auth::loginUsingId(2);
+        Auth::loginUsingId(1);
     }
 
     /**
@@ -32,9 +32,6 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = $this->userRepository->model->find($id);
-        dd($user);
-
         return $this->getProfile($id);
     }
 

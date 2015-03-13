@@ -2,9 +2,9 @@ angular
     .module('app')
     .controller('CarsController', CarsController);
 
-CarsController.inject = ['$scope', 'CarService', '$location', '$anchorScroll', '$modal', 'NotificationService'];
+CarsController.inject = ['$scope', 'CarService', '$modal', 'NotificationService'];
 
-function CarsController($scope, CarService, $location, $anchorScroll, $modal, NotificationService) {
+function CarsController($scope, CarService, $modal, NotificationService) {
 
     $scope.filters = {};
     $scope.slider = {};
@@ -75,8 +75,6 @@ function CarsController($scope, CarService, $location, $anchorScroll, $modal, No
 
             $scope.filters.page++;
 
-            //var response = CarService.getIndex($scope.filters);
-            //console.log(response.data);
             CarService.getIndex($scope.filters).then(function (response) {
 
                 $scope.sortorder = "-created_at";

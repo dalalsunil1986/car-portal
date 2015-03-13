@@ -28,7 +28,7 @@ class CarsController extends Controller
     public function __construct(CarRepository $carRepository)
     {
         $this->carRepository = $carRepository;
-        Auth::loginUsingId(2);
+        Auth::loginUsingId(1);
     }
 
     public function index()
@@ -56,6 +56,7 @@ class CarsController extends Controller
      */
     public function create(CarModelRepository $carModelRepository, TagRepository $tagRepository)
     {
+
         $models = ['' => ''] + $carModelRepository->model->get()->lists('name_en', 'id');
         $tags   = $tagRepository->model->get()->lists('name', 'id');
 

@@ -133,7 +133,7 @@ function favoriteButton(FavoriteService) {
             favorite: '='
         },
         link: function link(scope) {
-
+            console.log(scope.favorite);
             scope.save = function () {
                 scope.favorite = {}; // just to change the text to remove
                 var postData = {
