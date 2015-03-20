@@ -92,7 +92,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12 list-block">
+            <div class="col-md-12 list-block hidden-sm hidden-xs ">
                 <a href="{{action('CarsController@create')}}"><img class="img-responsive" src="assets/img/icons/list.gif" alt="List your car!"> </a>
             </div>
         </div>

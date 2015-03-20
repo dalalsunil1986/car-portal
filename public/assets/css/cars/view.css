@@ -110,8 +110,17 @@ textarea::-webkit-input-placeholder {
     padding-top: 9px;
 }
 
-.interested-box .interested-button {
-    background: none;
+.interested-button {
+    padding-top: 5px;
+    color: #FFF;
+    margin: auto;
+    margin-top: 1px;
+    border-radius: 9px;
+    width: 111px;
+    height: 22px;
+    transition: background-color 0.35s ease;
+    cursor: pointer;
+    background-color: rgba(51, 159, 219, 1);
 }
 
 .interested-box .interested-button:hover {

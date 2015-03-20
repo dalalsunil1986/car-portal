@@ -53,9 +53,9 @@
                                         <div class="col-xs-12">
                                             <a href="{{ action('UsersController@edit',$user->id) }}"> Edit Account</a>
                                         </div>
-                                        {!! Form::open(['action'=>['UsersController@destroy',$user->id],'method'=>'DELETE']) !!}
-                                        {!! Form::submit('Deactivate',['class'=>'col-md-4 col-xs-12 btn btn-md submitLink']) !!}
-                                        {!! Form::close()!!}
+                                        {{--{!! Form::open(['action'=>['UsersController@destroy',$user->id],'method'=>'DELETE']) !!}--}}
+                                        {{--{!! Form::submit('Deactivate',['class'=>'col-md-4 col-xs-12 btn btn-md submitLink']) !!}--}}
+                                        {{--{!! Form::close()!!}--}}
                                     </div>
                                 </div>
 
