@@ -7,8 +7,8 @@
 
                 <div class="dropdown">
                     <select ng-model="sortorder">
-                        <option selected="selected" value="+created_at">Date &#x25BE; </option>
-                        <option value="-created_at">Date &#x25B4;</option>
+                        <option selected="selected" value="+created_at">Date &#x25B4;</option>
+                        <option value="-created_at">Date &#x25BE;</option>
                         <option value="-year">Year &#x25BE;</option>
                         <option value="+year">Year &#x25B4;</option>
                         <option value="-price">Price &#x25BE;</option>

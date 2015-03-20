@@ -382,9 +382,10 @@ dl{
     padding-left: 4px;
     color: rgb(2, 44, 40);
 }
+
 .list-block img{
-    margin-top: -10px;
-    width: 380px;
+    margin-top: 0px;
+    width: 93%;
     border-radius: 15px 0;
     box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.13);
 }

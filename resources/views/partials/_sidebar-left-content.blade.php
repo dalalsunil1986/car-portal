@@ -95,7 +95,7 @@
                 {!! HTML::image('/assets/img/icons/electronics-icon.png', null , array('class'=>'shift-link-icon
                 nav-icons')) !!}
             </div>
-            <span class="shift-link-text">Electroncis</span>
+            <span class="shift-link-text">Electronics</span>
         </a>
     </li>
 
