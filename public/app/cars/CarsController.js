@@ -59,13 +59,13 @@ function CarsController($scope, CarService, $modal, NotificationService) {
 
     //Slider Filters
     $scope.filters.priceFrom = 1000;
-    $scope.filters.priceTo = 50000;
+    $scope.filters.priceTo = 15000;
 
-    $scope.filters.mileageFrom = 5000;
-    $scope.filters.mileageTo = 300000;
+    $scope.filters.mileageFrom = 10000;
+    $scope.filters.mileageTo = 200000;
 
-    $scope.filters.yearFrom = 1970;
-    $scope.filters.yearTo = 2015;
+    $scope.filters.yearFrom = 2001;
+    $scope.filters.yearTo = 2014;
 
     $scope.sortorder = "-created_at";
 

@@ -79,7 +79,7 @@
                         @endforeach
                     </div>
                     <div class="tab-pane" id="favorites">
-                        <div class="tab-pane" id="posts">
+                        <div class="tab-pane">
                             <div class="btn-group pull-left clearfix">
                                 <button class="btn btn-default dropdown-toggle toggle-reset" data-toggle="dropdown">All <span
                                             class="caret"></span></button>
