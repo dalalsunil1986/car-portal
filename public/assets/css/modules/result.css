@@ -40,6 +40,7 @@ Created on: 7/7/2014 By Vincent.
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 0;
     padding-right: 15px;
+    padding-top: 6px;
     float: right;
 }
 
@@ -85,7 +86,7 @@ Created on: 7/7/2014 By Vincent.
 }
 
 .asking {
-    padding-top: .7em;
+    padding-top: 12px;
     color: #006f9e;
     font-size: .8em;
 }
@@ -118,7 +119,7 @@ Created on: 7/7/2014 By Vincent.
 .km-icon {
     height: 11px;
     width: 18px;
-    margin: 0 0 2px 0;
+    margin: 0 0 2px 2px;
 }
 
 .result-image {
@@ -144,12 +145,12 @@ Created on: 7/7/2014 By Vincent.
 }
 
 .result-image {
-    height: 79px;
+    height: 90px;
     width: 100%;
 }
 
 .img-box {
-    width: 119px;
+    width: 139px;
     padding-right: 0;
     padding-left: 0;
 }
@@ -158,9 +159,9 @@ Created on: 7/7/2014 By Vincent.
     padding-left: 0;
     padding-right: 0;
     background-color: #009fe3;
-    height: 79px;
     color: #FFF;
     font-size: 1.2em;
+    height: 90px;
 }
 
 .distance-box {
@@ -169,12 +170,14 @@ Created on: 7/7/2014 By Vincent.
 
 .price-box {
     background-color: rgb(85, 191, 224);
-    height: 79px;
+    height: 90px;
     border-radius: 0px 5px 5px 0;
 }
 
 .info-box h4 {
     padding: 5px;
+    padding-top: 8px;
+    padding-left: 10px;
     font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -185,11 +188,11 @@ Created on: 7/7/2014 By Vincent.
 }
 
 .info-box h4 a:hover {
-    color: rgb(0, 103, 152);
+    color: rgb(221, 221, 221);
 }
 .car-result-box {
     margin-bottom: 15px;
-    width: 100%;
+    width: 98%;
 }
 
 .result-middle {
@@ -404,7 +407,7 @@ button#dropdownMenu1:focus {
 @media only screen and (min-width: 768px) {
 
     .img-box {
-        width: 119px;
+        width: 139px;
     }
 
     .price-box {
@@ -413,7 +416,7 @@ button#dropdownMenu1:focus {
 
     .result-image {
         border-radius: 5px 0 0 5px;
-        height: 79px;
+        height: 90px;
     }
 
     .info-box {
