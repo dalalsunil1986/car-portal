@@ -1,8 +1,9 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Car;
 
 use App\Events\CarWasPosted;
-use App\Src\Car\CarRepository;
+use App\Http\Controllers\Controller;
+use App\Src\Car\Repository\CarRepository;
 use App\Src\Car\Repository\CarBrandRepository;
 use App\Src\Car\Repository\CarMakeRepository;
 use App\Src\Car\Repository\CarModelRepository;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 
-class CarsController extends Controller
+class CarController extends Controller
 {
 
     private $carRepository;

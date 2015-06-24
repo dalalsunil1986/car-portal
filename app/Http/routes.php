@@ -3,18 +3,21 @@
 /*********************************************************************************************************
  * API Routes
  ********************************************************************************************************/
-Route::group(array('prefix' => 'api/v1'), function ($router) {
+Route::group(['prefix' => 'api/v1'], function () {
 
-    /*********************************************************************************************************
-     * Car Routes
-     ********************************************************************************************************/
-    Route::get('cars/filter', 'CarsController@filter'); // get Filter ( Ajax )
+    Route::group(['prefix' => 'cars', 'namespace' => 'Car'], function () {
 
-    Route::get('cars/{id}/favorite', 'CarsController@favorite');
+        /*********************************************************************************************************
+         * Car Routes
+         ********************************************************************************************************/
+        Route::get('search', 'CarSearchController@search'); // get Filter ( Ajax )
 
-    Route::get('cars/name', 'CarsController@getFilterNames');
+        Route::get('cars/{id}/favorite', 'CarsController@favorite');
 
-    Route::get('cars', 'CarsController@getCars');
+        Route::get('cars/name', 'CarsController@getFilterNames');
+
+        Route::get('cars', 'CarsController@getCars');
+    });
 
     /*********************************************************************************************************
      * Favorites
