@@ -17,9 +17,7 @@ class UserRepository extends BaseRepository
 
     /**
      * Construct
-     *
-     * @param \Illuminate\Database\Eloquent\Model|\User $model
-     * @internal param \Illuminate\Database\Eloquent\Model $user
+     * @param User $model
      */
     public function __construct(User $model)
     {

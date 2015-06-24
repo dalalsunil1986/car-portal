@@ -121,7 +121,7 @@ class MessagesController extends Controller
 
     public function destroy($id)
     {
-        $message = $this->$messageRepository->findById($id);
+        $message = $this->messageRepository->findById($id);
         $message->delete();
     }
 

@@ -3,18 +3,12 @@ namespace App\Src\Photo;
 
 use App;
 use App\Core\BaseRepository;
-use App\Core\CrudableTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\MessageBag;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class PhotoRepository extends BaseRepository
 {
 
-    use CrudableTrait;
-    /**
-     * @var \Illuminate\Database\Eloquent\Model
-     */
     public $model;
 
     public $imageService;
@@ -27,8 +21,6 @@ class PhotoRepository extends BaseRepository
      */
     public function __construct(Photo $model)
     {
-        parent::__construct(new MessageBag);
-
         $this->model = $model;
     }
 

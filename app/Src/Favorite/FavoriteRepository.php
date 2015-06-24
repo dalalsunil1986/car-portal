@@ -2,23 +2,18 @@
 namespace App\Src\Favorite;
 
 use App\Core\BaseRepository;
-use App\Core\CrudableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\MessageBag;
 use ReflectionClass;
 
 class FavoriteRepository extends BaseRepository
 {
 
-    use CrudableTrait;
     public $model;
 
     public function __construct(Favorite $model)
     {
         $this->model = $model;
-
-        parent::__construct(new MessageBag);
     }
 
     public function findAllForUser($userId)
@@ -27,7 +22,7 @@ class FavoriteRepository extends BaseRepository
     }
 
     /**
-     * @param $getModel
+     * @param Model $getModel
      * @return bool
      */
     public function attach(Model $getModel)

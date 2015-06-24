@@ -14,10 +14,6 @@ class CarMake extends BaseModel
 
     protected $table = 'car_makes';
 
-    protected $dates = [''];
-
-    protected $hidden = [];
-
     public $timestamps = false;
 
     protected $localeStrings = ['name'];

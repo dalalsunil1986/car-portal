@@ -2,6 +2,8 @@
 namespace App\Src\Notification;
 
 use App\Core\BaseModel;
+use App\Src\Notification\NotificationFilter;
+use App\Src\User\User;
 
 class Notification extends BaseModel
 {
@@ -12,12 +14,12 @@ class Notification extends BaseModel
 
     public function user()
     {
-        return $this->belongsTo('App\Src\User\User', 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function filters()
     {
-        return $this->hasMany('App\Src\Notification\NotificationFilter', 'notification_id');
+        return $this->hasMany(NotificationFilter::class, 'notification_id');
     }
 
 }

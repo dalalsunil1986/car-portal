@@ -4,7 +4,7 @@ namespace App\Core;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class BaseModel extends Model
+abstract class BaseModel extends Model
 {
 
     /**

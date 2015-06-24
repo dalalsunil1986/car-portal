@@ -6,11 +6,7 @@ use App\Core\BaseModel;
 class Photo extends BaseModel
 {
 
-    public static $name = 'photo';
-
-    protected $guarded = array('id');
-
-    protected $hidden = [];
+    protected $guarded = ['id'];
 
     protected $table = 'photos';
 

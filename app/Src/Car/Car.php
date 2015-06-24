@@ -3,6 +3,12 @@ namespace App\Src\Car;
 
 use App\Core\BaseModel;
 use App\Core\LocaleTrait;
+use App\Src\Car\CarModel;
+use App\Src\Favorite\Favorite;
+use App\Src\Message\Thread;
+use App\Src\Photo\Photo;
+use App\Src\Tag\Tag;
+use App\Src\User\User;
 use Auth;
 
 class Car extends BaseModel
@@ -20,45 +26,45 @@ class Car extends BaseModel
 
     protected $with = ['model.brand'];
 
-    // brand      => model => car
-    // countries  => users =>  posts
-    // make => brand => model
-    // hasManyThrough
-
     public function user()
     {
-        return $this->belongsTo('App\Src\User\User', 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function model()
     {
-        return $this->belongsTo('App\Src\Car\CarModel', 'model_id');
+        return $this->belongsTo(CarModel::class, 'model_id');
     }
 
     public function favorites()
     {
-        return $this->morphMany('App\Src\Favorite\Favorite', 'favoriteable');
+        return $this->morphMany(Favorite::class, 'favoriteable');
     }
 
     public function favorited()
     {
-        return $this->morphOne('App\Src\Favorite\Favorite', 'favoriteable')->where('user_id',
+        return $this->morphOne(Favorite::class, 'favoriteable')->where('user_id',
             Auth::user()->id)->select(['id', 'user_id', 'favoriteable_id', 'favoriteable_type']);
     }
 
     public function photos()
     {
-        return $this->morphMany('App\Src\Photo\Photo', 'imageable');
+        return $this->morphMany(Photo::class, 'imageable');
     }
 
     public function thumbnail()
     {
-        return $this->morphOne('App\Src\Photo\Photo', 'imageable')->where('thumbnail', 1);
+        return $this->morphOne(Photo, 'imageable')->where('thumbnail', 1);
     }
 
     public function tags()
     {
-        return $this->morphToMany('App\Src\Tag\Tag', 'taggable');
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
+    public function threads()
+    {
+        return $this->morphMany(Thread::class, 'messageable');
     }
 
     // view presenter
@@ -67,9 +73,5 @@ class Car extends BaseModel
         return $this->year . ' ' . $this->model->brand->name . ' ' . $this->model->name;
     }
 
-    public function threads()
-    {
-        return $this->morphMany('App\Src\Message\Thread', 'messageable');
-    }
 
 }

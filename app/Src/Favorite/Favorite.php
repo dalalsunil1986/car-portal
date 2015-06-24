@@ -10,8 +10,6 @@ class Favorite extends BaseModel
 
     protected $guarded = ['id'];
 
-    protected $hidden = [];
-
     protected $table = 'favorites';
 
     protected $types = [
