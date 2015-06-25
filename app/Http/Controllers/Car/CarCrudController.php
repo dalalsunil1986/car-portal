@@ -23,19 +23,6 @@ class CarCrudController extends Controller
         auth()->loginUsingId(1);
     }
 
-    public function show($id)
-    {
-        $car = $this->carRepository->model->with([
-            'model.brand',
-            'user',
-            'thumbnail',
-            'photos',
-            'favorited'
-        ])->find($id);
-
-        return view('module.cars.view', compact('car'));
-    }
-
     /**
      * @param CarModelRepository $carModelRepository
      * @param TagRepository $tagRepository
