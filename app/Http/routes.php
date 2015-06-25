@@ -7,16 +7,12 @@ Route::group(['prefix' => 'api/v1'], function () {
 
     Route::group(['prefix' => 'cars', 'namespace' => 'Car'], function () {
 
-        /*********************************************************************************************************
-         * Car Routes
-         ********************************************************************************************************/
         Route::get('search', 'CarSearchController@search'); // get Filter ( Ajax )
+        Route::get('name', 'CarSearchController@getFilterNames');
 
-        Route::get('cars/{id}/favorite', 'CarsController@favorite');
+        Route::get('cars/{id}/favorite', 'CarController@favorite');
+        Route::get('/', 'CarController@getCars');
 
-        Route::get('cars/name', 'CarsController@getFilterNames');
-
-        Route::get('cars', 'CarsController@getCars');
     });
 
     /*********************************************************************************************************
