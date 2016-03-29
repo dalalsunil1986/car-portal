@@ -1,0 +1,463 @@
+/*
+Note: Controls the style and layout for the result module.
+Created on: 7/7/2014 By Vincent.
+
+*/
+
+/** |||||||||||||  RESULT CSS STYLES  ||||||||||||||*/
+
+.caret {
+    margin-left: 4px;
+}
+
+.post-title-box {
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    margin-top: 4px;
+    margin-left: 5px;
+    font-weight: 300 !important;
+}
+
+.distance-box {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .85em;
+    margin-bottom: 0;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.speed-icon {
+    margin-right: 5px;
+    margin-bottom: 2px;
+
+}
+
+.posted-date-box {
+    font-size: .6em;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0;
+    padding-right: 15px;
+    padding-top: 6px;
+    float: right;
+}
+
+.more-box {
+    font-size: 12px;
+    background-color: #0093D8;
+    display: block;
+    color: #FFF;
+    height: 17px;
+    margin-top: 15px;
+    font-size: .9em;
+    margin-top: 17px;
+    transition: background-color 0.35s ease;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.more-box:hover {
+    background-color: #0072a9;
+    color: #FFF;
+    text-decoration: none;
+
+}
+
+.text-center {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.result-cost {
+    background-color: #00b9ee;
+}
+
+.price-cost {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #FFF;
+}
+
+.asking {
+    padding-top: 12px;
+    color: #006f9e;
+    font-size: .8em;
+}
+
+.interested-button {
+    padding-top: 2px;
+    background-color: rgba(0, 102, 255, .1);
+    color: #FFF;
+    margin: auto;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    width: 88px;
+    height: 18px;
+    transition: background-color 0.35s ease;
+    cursor: pointer;
+}
+
+.interested-button:hover {
+    background-color: rgba(0, 102, 255, .4);
+}
+
+.int-icon {
+    height: 11px;
+    width: 12px;
+    margin: 0 0 2px 0;
+
+}
+
+.km-icon {
+    height: 11px;
+    width: 18px;
+    margin: 0 0 2px 2px;
+}
+
+.result-image {
+    border-radius: 5px 0 0 5px;
+}
+
+.result-cost {
+    border-radius: 0 5px 5px 0;
+}
+
+.ntf-row {
+    margin-top: 10px;
+    font-size: 18px;
+
+}
+
+.ntf-input {
+    color: rgba(10, 166, 153, 1);
+}
+
+.result-container {
+    margin-bottom: 15px;
+}
+
+.result-image {
+    height: 90px;
+    width: 100%;
+}
+
+.img-box {
+    width: 139px;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.info-box {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #009fe3;
+    color: #FFF;
+    font-size: 1.2em;
+    height: 90px;
+}
+
+.distance-box {
+    margin-top: 0;
+}
+
+.price-box {
+    background-color: rgb(85, 191, 224);
+    height: 90px;
+    border-radius: 0px 5px 5px 0;
+}
+
+.info-box h4 {
+    padding: 5px;
+    padding-top: 8px;
+    padding-left: 10px;
+    font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.info-box h4 a {
+    color: white;
+    text-decoration: none;
+    transition: all .3s;
+}
+
+.info-box h4 a:hover {
+    color: rgb(221, 221, 221);
+}
+.car-result-box {
+    margin-bottom: 15px;
+    width: 98%;
+}
+
+.result-middle {
+    width: 300px;
+    height: 62px;
+    display: block;
+    float: left;
+}
+
+.result-cost {
+    height: 79px;
+    width: 120px;
+    float: left;
+}
+
+.select2-search-field {
+    height: 25px;
+}
+
+.sort-row {
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(252, 131, 131, 0.3);
+    margin-bottom: 13px;
+    width: 80%;
+    padding-bottom: 3px;
+}
+
+.sort-row .dropdown-menu {
+    margin: 0px 109px 0;
+    border: none;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, .175);
+    webkit-box-shadow: 0 6px 15px rgba(0, 0, 0, .175);
+}
+
+button#dropdownMenu1 {
+    transition: all .3s;
+    margin-top: 0px;
+    background-color:  #ffffff;
+    border: none;
+}
+button#dropdownMenu1:hover {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    background-color:  #ffffff;
+    border: none;
+}
+button#dropdownMenu1:active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    background-color:  rgba(249, 249, 249, 0.5);
+    border: none;
+}
+button#dropdownMenu1:focus {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    background-color:  rgba(249, 249, 249, 0.5);
+    border: none;
+}
+
+.sort-row .btn-default {
+    border-color: #FFF;
+    padding-bottom: 2px;
+    height: 33px;
+    padding-top: 2px;
+    margin-top: 4px;
+}
+
+.sort-row .btn-default:hover {
+   background: #F4F4F4;
+}
+
+#loading{
+    margin: auto;
+    width: 1px;
+    padding-right: 100px;
+}
+
+.input-small {
+    border: none;
+    color: black;
+    background: none;
+    margin-top: 11px;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    overflow: hidden;
+
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+}
+
+.input-small select option {
+    border: none;
+    color: black;
+    background: none;
+    outline: none;
+}
+
+/* |||||||||||||  RESULT LAYOUT/MEDIA QUERY ||||||||||||||*/
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 329px) {
+    .img-box {
+        width: 100%;
+    }
+
+    .result-image {
+        border-radius: 5px 5px 0 0;
+
+    }
+
+    .price-box {
+        border-radius: 0;
+        background-color: rgba(0, 159, 227, 0.83);
+    }
+
+    .info-box, .more-box {
+        border-radius: 0 0 5px 5px;
+    }
+
+    .car-result-box {
+        margin-bottom: 2em;
+    }
+
+    .result-col {
+        margin: auto;
+        margin-top: 2.5em;
+    }
+
+}
+
+@media only screen and (min-width: 320px) {
+    .img-box {
+        width: 100%;
+    }
+
+    .result-image {
+        border-radius: 5px 5px 0 0;
+        height: 180px;
+    }
+
+    .price-box {
+        border-radius: 0;
+        background-color: rgba(0, 159, 227, 0.83);
+    }
+
+    .info-box, .more-box {
+        border-radius: 0 0 5px 5px;
+    }
+
+    .car-result-box {
+        margin-bottom: 2em;
+    }
+
+    .result-col {
+        margin: auto;
+        margin-top: 2.5em;
+    }
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+
+    .car-result-box {
+
+        margin: auto;
+    }
+
+    .result-col {
+        width: 90%;
+        margin: auto;
+        margin-top: 2.5em;
+    }
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 1px;
+        text-overflow: '';
+    }
+    .img-box {
+        width: 100%;
+    }
+
+    .result-image {
+        border-radius: 5px 5px 0 0;
+        height: 360px;
+    }
+
+    .price-box {
+        border-radius: 0;
+        background-color: rgba(0, 159, 227, 0.83);
+    }g
+
+    .info-box, .more-box {
+        border-radius: 0 0 5px 5px;
+    }
+
+    .car-result-box {
+        margin-bottom: 2em;
+    }
+
+    .more-box {
+        height: 50px;
+        font-size: 14px;
+        padding-top: 16px;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+
+    .img-box {
+        width: 139px;
+    }
+
+    .price-box {
+        border-radius: 0px 5px 5px 0;
+    }
+
+    .result-image {
+        border-radius: 5px 0 0 5px;
+        height: 90px;
+    }
+
+    .info-box {
+        border-radius: 0;
+    }
+
+    .car-result-box {
+        margin-bottom: 1em;
+    }
+
+    .more-box {
+        height: 17px;
+        font-size: 11px;
+        padding-top: 2px;
+        border-radius: 0;
+    }
+    
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+
+    .result-col {
+
+        margin-left: 0;
+        width: 66%;
+        margin: 0;
+    }
+
+    .car-result-box {
+        margin: 0 0 13px;
+    }
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+    .result-col {
+        padding-left: 50px;
+        margin: 0;
+        margin-left: 35%;
+    }
+
+}

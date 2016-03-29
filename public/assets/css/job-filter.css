@@ -1,0 +1,149 @@
+/* CSS Document */
+
+/*Filter*/
+
+label {
+    background-color: #13A89C;
+    border-bottom: 4px solid rgba(134, 136, 136, 0.39);
+    height: 36px;
+    padding-top: 7px;
+}
+
+.select2-container .select2-choice {
+    padding-left: 0;
+    border-radius: 0 5px 5px 0;
+    margin: auto;
+    padding-left: 7%;
+    padding-top: 5px;
+    height: 36px;
+}
+
+.label-color {
+    font-size: 15px;
+    color: #444;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300 !important;
+    position: relative;
+    top: 7px;
+    padding-left: 0;
+}
+
+.select2-container {
+    margin-bottom: 10px;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/*Result*/
+.title-color {
+    border-radius: 4px 0 0 0;
+}
+
+.title-color > h3 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.company-name {
+    padding-left: 0;
+}
+
+.title-color {
+    background-color: #00b9ee;
+    color: #FFF;
+    padding: 0;
+    height: 50px;
+}
+
+.cost-color {
+    color: #FFF;
+    height: 50px;
+    background-color: #009fe3;
+}
+
+.price-cost {
+    margin-top: 0;
+    padding-top: 3px;
+}
+
+.result-entry {
+    margin-bottom: 0;
+}
+
+.glyphicon {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.car-details {
+    padding-top: 20px;
+}
+
+.company-logo {
+    height: 50px;
+    float: left;
+    border: 2px solid rgba(54, 211, 255, 0.33);
+    border-right-width : 5px;
+    border-right-width: 2px;
+    width: 46px;
+    height: 45px;
+    margin: 3px 10px 3px 3px;
+}
+
+.result-middle {
+    height: 77px;
+    height: 50px;
+    padding-top: 10px;
+    padding-left: 5px;
+    width: 400px;
+}
+
+.result-cost {
+    height: 50px;
+}
+
+.job-title {
+    margin-top: 0;
+    padding-top: 3px;
+    margin-bottom: 2px;
+    padding-left: 55px;
+    font-size: 19px;
+    font-weight: 400;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+.job-result {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    width: 85%;
+}
+
+.flip {
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: rgba(35, 147, 194, 0.95);
+    color: white;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 0 0 4px 4px;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.flip:hover {
+    background-color: #09C;
+}
+
+.panel {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: none;
+    margin-bottom: 0;
+    padding: 0 5px 5px;
+    border-radius: 0;
+}
+
+

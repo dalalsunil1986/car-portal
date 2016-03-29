@@ -1,0 +1,203 @@
+/* CSS Document */
+
+
+h3, h4{
+	margin-top: 0px;
+}
+
+h3{
+	padding-top: 5px;
+margin-bottom: 5px;
+}
+
+h4{
+font-family: 'Open Sans', sans-serif;
+font-weight: 300 !important;
+padding-top: 5px;
+margin-bottom: 5px;
+}
+
+.col-md-6 {
+	padding-left: 22px;
+padding-bottom: 10px;
+}
+
+.car-details{
+	padding-top: 20px;
+}
+.result-image{
+    height: 50px;
+	float:left;
+
+}
+
+.result-middle{
+	
+    height: 77px;
+    height: 50px;
+    padding-top: 10px;
+    padding-left: 5px;
+	width: 400px;
+
+}
+
+.result-cost{
+	height: 50px;
+}
+
+
+
+.content-container{
+	margin:auto;
+	width: 599px;
+}
+.detials-tab{
+	background-color:#3694c8;
+	border-radius: 4px 4px 0 0;
+	
+}
+.gen-info{
+	margin-top: 10px;
+	background-color:#009fe3;
+	color: #FFF;
+	border-radius: 4px;
+	
+}
+
+.gen-info row {
+	margin-left: 0px;
+    margin-right: 0px;
+}
+
+.gen-info{
+margin-left: 0px;
+margin-right: 0px;
+}
+
+.user-column{
+	padding-left: 30px;
+}
+
+.user-column a {
+	color: #ACFFFB;
+}
+.icon-user{
+	margin-right: 5px;
+    margin-bottom: 5px;
+}
+textarea{
+border: 1px solid rgba(106, 180, 217, 0.87);
+margin: 0px;
+width: 100%;
+height: 98px;
+background-color: #2B93C6;
+color: #FFF;
+border-radius: 20px;
+padding: 10px;
+margin-bottom: 10px;
+ outline: 0;
+}
+
+textarea::-moz-placeholder {
+
+     color: #white;
+ 
+}
+
+textarea::-webkit-input-placeholder {
+
+    color: white;
+
+}
+
+
+
+/* Title*/
+
+.title-color{
+
+	background-color: #00b9ee;
+	color:#FFF;
+
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    height: 50px;
+	
+
+}
+
+.cost-color{
+	color:#FFF;
+	height: 50px;	
+	background-color: #009fe3;
+	border-radius:0px 0px 5px 0px;
+}
+
+#car-title{
+padding-left: 85px;
+padding-top: 5px;
+}
+
+.price-cost{
+	margin-top: 0px;
+	padding-top: 3px;
+}
+
+.result-entry{
+	margin-bottom: 10px;
+}
+
+
+.glyphicon{
+	margin-right: 10px;
+	font-size: 16px;
+}
+/*SlideShow*/
+
+.image-slideshow{
+	padding-left:0px;
+	padding-right: 0px;
+}
+
+/**/
+.details ul{
+	background-color: #2B93C6;
+	border-radius: 10px;
+	padding: 13px 22px;
+	border: 1px solid rgba(255, 255, 255, 0.26);
+}
+.details ul li{
+	list-style: none;
+
+}
+
+
+.overview ul li{
+	list-style-image: url(../img/icons/icon_check_white.png);
+}
+
+.description a {
+	color: white;
+	font-weight:bold;
+}
+
+
+.detials-tab{	
+
+border-bottom:1px solid rgba(0, 0, 0, 0.14);
+}
+
+
+.bottom-pannel{
+padding-top: 15px;	
+}
+
+
+.message button, .location button{
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+

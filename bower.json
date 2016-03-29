@@ -1,0 +1,38 @@
+{
+  "name": "kuwaitii5",
+  "version": "0.0.0",
+  "authors": [
+    "ZaL <z4ls@live.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": null,
+    "bootstrap": null,
+    "angular": null,
+    "angular-animate": null,
+    "angular-sanitize": null,
+    "angular-ui-select": null,
+    "fine-uploader": "~5.0.8",
+    "fontawesome": "~4.2.0",
+    "nanoscroller": "~0.8.4",
+    "ionrangeslider": "~2.0.6",
+    "underscore": "~1.7.0",
+    "select2": "~3.5.1",
+    "Slidebars": "~0.10.2",
+    "jquery-ui": "~1.11.2",
+    "blueimp-file-upload": "~9.8.0",
+    "dropzone": "~3.11.1",
+    "ngInfiniteScroll": "1.0.0",
+    "angular-resource": null,
+    "angular-bootstrap": null,
+    "bootstrap-rtl": null
+  }
+}

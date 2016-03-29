@@ -1,0 +1,399 @@
+/* CSS Document */
+
+h3, h4 {
+    margin-top: 0;
+}
+
+h3 {
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+
+h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300 !important;
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+
+.col-md-6 {
+    padding-left: 22px;
+    padding-bottom: 10px;
+}
+
+.car-details {
+    padding-top: 20px;
+}
+
+.result-image {
+    height: 50px;
+    float: left;
+
+}
+
+.result-middle {
+
+    height: 77px;
+    height: 50px;
+    padding-top: 10px;
+    padding-left: 5px;
+    width: 400px;
+
+}
+
+.result-cost {
+    height: 50px;
+}
+
+.content-container {
+    margin: auto;
+    width: 599px;
+}
+
+.detials-tab {
+    background-color: #3694c8;
+    border-radius: 4px 4px 0 0;
+
+}
+
+.gen-info {
+    margin-top: 10px;
+    background-color: #009fe3;
+    color: #FFF;
+    border-radius: 4px;
+
+}
+
+.gen-info .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.gen-info {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.user-column {
+    padding-left: 30px;
+}
+
+.user-column a {
+    color: #ACFFFB;
+}
+
+.icon-user {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+textarea {
+    border: 1px solid rgba(106, 180, 217, 0.87);
+    margin: 0;
+    width: 100%;
+    height: 98px;
+    background-color: #2B93C6;
+    color: #FFF;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    outline: 0;
+}
+
+/* Title*/
+
+.glyphicon {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+/*SlideShow*/
+
+.image-slideshow {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/**/
+.details ul {
+    background-color: #2B93C6;
+    border-radius: 10px;
+    padding: 13px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+.details ul li {
+    list-style: none;
+
+}
+
+.overview ul li {
+    list-style-image: url(../img/icons/icon_check_white.png);
+}
+
+.description a {
+    color: white;
+    font-weight: bold;
+}
+
+.detials-tab {
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+}
+
+.bottom-pannel {
+    padding-top: 15px;
+}
+
+.message button, .location button {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+h3 {
+
+    padding-left: 1em;
+    padding-top: 10px;
+}
+
+h4 {
+    font-weight: 300;
+}
+
+input {
+    border: 1px solid #e5e5e5;
+}
+
+.select2-container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.panel-body {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.bs-wizard-sidebar {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.round {
+    border-radius: 6px;
+    text-align: center;
+}
+
+.bottom-margin {
+    margin-bottom: 20px;
+}
+
+#car-submission > fieldset > div.bs-step.inv.shadow > div > div.panel-heading > h3 {
+    font-size: 1.2em;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.panel-default > .panel-heading {
+    background-color: rgba(247, 247, 247, 0.43);
+    color: rgb(118, 114, 114);
+}
+
+.panel {
+    border: 1px solid rgba(90, 134, 154, 0.0)
+}
+
+#car-submission > fieldset > div.bs-step.inv.shadow > div {
+    border: 5px solid #3694c8;
+}
+
+label {
+    font-size: 1.5em;
+    color: #0aa699;
+    background-color: rgba(204, 204, 204, 0);
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.bs-wizard-step {
+    float: right;
+}
+
+.counter {
+    background-color: white;
+    border: none;
+    padding: 5px;
+}
+
+.select2-container .select2-choice {
+    border-radius: 0 4px 4px 0;
+}
+
+.hint {
+    padding-left: 5px;
+    color: #DBDBDB;
+}
+
+label {
+    height: 25px;
+}
+
+input {
+    height: 37px;
+    border-radius: 0 4px 4px 0;
+
+}
+
+.select2-container .select2-choice {
+    height: 37px;
+    padding-top: 5px;
+}
+
+.panel-body .row {
+    margin-bottom: 10px;
+}
+
+input[type=text], textarea {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 3px 0 3px 3px;
+    border: 1px solid #DDDDDD;
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+    word-wrap: break-word;
+    border-radius: 0 10px 10px 10px
+}
+
+#car-submission textarea {
+    min-height: 100px;
+}
+
+input[type=text]:focus, textarea:focus {
+    box-shadow: 0 0 5px rgba(10, 166, 153, 0.95);
+    border: 1px solid rgba(10, 166, 153, 0.95);
+}
+
+#companyName {
+    padding-left: 18px;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+
+}
+
+input[type="checkbox"] {
+    height: 14px;
+    padding-left: 5px;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+.tags input[type="text"] {
+    border: none;
+    height: 25px;
+}
+
+.label-info {
+    background-color: #0aa699;
+}
+
+.title {
+    padding-top: 3px;
+    margin-bottom: 25px;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.col-xs-2 {
+    border-right: 1px solid #0aa699;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+.job-summary {
+    padding: 20px;
+    border-radius: 0 0 15px 15px;
+    background-color: rgb(243, 243, 243);
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgb(209, 209, 206);
+}
+
+.result-entry {
+    margin-bottom: 0;
+    height: 50px;
+}
+
+.salery-color {
+    background-color: #0aa699;
+    cursor: pointer;
+    font-size: 1.5em;
+
+}
+
+.salery-color:hover {
+    background-color: rgb(89, 192, 181);
+}
+
+.title-color {
+    background-color: #397B7E;
+    color: #FFF;
+}
+
+.cost-color, .price-cost {
+    border-radius: 0;
+}
+
+.apply-box {
+    background-color: rgba(241, 241, 241, 0.45);
+    margin-bottom: 0;
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.cv-btn {
+    margin-top: 15px;
+}
+
+.btn-default {
+    color: rgba(54, 54, 54, 0.65);
+    background-color: white;
+    border-color: rgba(216, 216, 216, 0.71);
+    font-size: 17px;
+}
+
+.apply-box h3 {
+    padding-top: 16px;
+    margin-bottom: 11px;
+}
+
+.apply-box a {
+    color: #397B7E;
+}
+
+.full-info label {
+    width: 100%;
+}
+
+textarea {
+    color: black;
+    background-color: white;
+}
+
+.main-info {
+    border-right: 1px solid rgba(204, 204, 204, 0.22);
+}
+
+.job-title-row {
+    margin-bottom: 0;
+}

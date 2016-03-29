@@ -1,0 +1,447 @@
+.title {
+    font-size: 50px;
+    padding-bottom: 50px;
+
+}
+
+/*Tabs*/
+
+.nav-tabs a {
+    color: rgb(156, 156, 156);
+}
+
+.fa-mobile{
+    font-size: 28px;
+}
+
+.fa-plus-circle, .fa.fa-user, .fa-pencil-square-o {
+    font-size: 21px;
+}
+
+
+/*Account Tab*/
+
+
+.info-row{
+    padding-left: 45px;
+}
+
+.account-row{
+    padding: 0 5px;
+    padding-top: 7px;
+    font-size: 18px;
+}
+.account-row div{
+    margin: 4px 0;
+    padding-bottom: 1px;
+}
+
+.account-row div span{
+  font-weight: 600;
+  font-size: 15px;
+
+}
+
+.basic-info > div {
+    font-size: 20px;
+}
+
+.basic-info  {
+    padding-left: 5px;
+}
+
+.basic-info h2 {
+    font-weight: 600 !important;
+    color: rgb(83, 180, 157);
+    font-size: 18px;
+}
+
+.basic-info a {
+
+    color: rgb(66, 66, 66);
+
+}
+.basic{
+    padding-top: 0;
+}
+#home h2 {
+
+    font-size: 22px;
+    border-bottom: 1px solid rgba(214, 214, 214, 1);
+    padding-bottom: 9px;
+    display: inline-block;
+
+}
+
+button.btn.btn-default.dropdown-toggle.toggle-reset {
+    position: absolute;
+
+    top: -47px;
+}
+
+ul.dropdown-menu {
+    top: -19px;
+}
+
+#home {
+
+    font-size: 20px;
+
+}
+
+.photo-row {
+    padding-right: 0;
+    margin-left: 30px;
+}
+
+.img-profile {
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.24);
+    max-width: 210px;
+    border-radius: 5px;
+    float: right;
+    margin-right: 38px;
+}
+
+.effects {
+    padding-left: 15px;
+}
+
+.effects .img {
+    position: relative;
+    float: left;
+    margin-bottom: 5px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.effects .img:nth-child(n) {
+    margin-right: 5px;
+}
+
+.effects .img:first-child {
+    margin-left: -15px;
+}
+
+.effects .img:last-child {
+    margin-right: 0;
+}
+
+.effects .img img {
+    display: block;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    height: auto;
+}
+
+.overlay {
+    display: block;
+    position: absolute;
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+a.close-overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 45px;
+    text-align: center;
+    background-color: #000;
+    cursor: pointer;
+}
+
+a.close-overlay.hidden {
+    display: none;
+}
+
+a.expand {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    width: 60px;
+    height: 60px;
+    border: solid 5px #fff;
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+    font-weight: 700;
+    font-size: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    border-radius: 30px;
+}
+
+/* ============================================================
+  EFFECT 5 - ICON BORDER ANIMATE
+============================================================ */
+#effect-5 .overlay {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+}
+
+#effect-5 .overlay a.expand {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+#effect-5 .img.hover .overlay {
+    opacity: 1;
+}
+
+#effect-5 .img.hover .overlay a.expand {
+    width: 60px;
+    height: 60px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.profile-image-setting {
+    height: 33.333%;
+    color: white;
+    background-color: #3AA590;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+}
+
+.profile-image-setting:hover {
+    background-color: #366;
+    -webkit-transition: background-color 1000ms linear;
+    -moz-transition: background-color 1000ms linear;
+    -o-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+
+}
+
+.profile-image-add {
+    border-radius: 6px 6px 0 0;
+}
+
+.back-profile {
+    border-radius: 0 0 6px 6px;
+
+}
+
+.back .fa {
+    font-size: 26px;
+    padding: 0;
+    float: right;
+    margin: 13px;
+}
+
+.back-text {
+    display: inline-block;
+    padding: 21px;
+    padding-left: 55px;
+}
+
+/*Posts*/
+
+h3.post-title {
+    font-size: 1.5em;
+}
+
+.post-title {
+    display: inline;
+    color: white;
+}
+
+.post-image {
+    height: 65px;
+
+}
+
+.title-color {
+    background-color: #009fe3;
+    padding: 0;
+}
+
+.cost-color {
+    background-color: rgb(85, 191, 224);
+    color: white;
+    height: 65px;
+}
+
+.filter-row {
+    height: 45px;
+}
+
+.cost-color {
+    padding: 0;
+}
+
+.cost-color div {
+    padding-bottom: 8px;
+    padding-top: 25px;
+
+}
+
+.cost-color div a {
+    color: white;
+}
+
+
+
+button.delete {
+    background: #ff7373;
+    padding-left: 4px;
+    width: 20px;
+    height: 20px;
+
+}
+
+#posts a{
+    color: #ffffff;
+}
+.delete:hover, .delete:focus {
+    color: #FFF;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1;
+    background-color: rgba(176, 9, 0, 1);
+    transition: background-color 0.35s ease;
+}
+
+.delete {
+    font-weight: normal;
+    float: right;
+    font-size: 17px;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 1px 0 #CECECE;
+    opacity: 1;
+    background-color: #F00;
+}
+
+.cd-popup {
+    background-color: rgba(13, 56, 49, 0.9);
+    z-index: 2000;
+}
+
+.post-option {
+    height: 100%;
+    transition: background-color 0.35s ease;
+    padding: 6px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.post-option:hover {
+    background-color: rgba(4, 150, 213, 0.44);
+
+}
+
+/*Favorites*/
+
+.fav-view {
+    height: 100%;
+    transition: background-color 0.35s ease;
+    padding: 6px;
+    text-align: center;
+    cursor: pointer;
+    padding: 18%;
+    font-size: 20px;
+}
+
+.fav-view:hover {
+    background-color: rgba(4, 150, 213, 0.44);
+}
+
+/*Notify*/
+
+
+
+.notify-pannel{
+    background-color: #009fe3;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-left: 25px;
+}
+
+.ntf-input {
+    color: rgba(255, 255, 255, 1);
+}
+div.row.clearfix.ntf-row {
+    padding-bottom: 5px;
+}
+
+
+/* x-editable*/
+
+.btn-mini {
+    padding: 5px 8px 4px;
+}
+
+.editable-click, a.editable-click, a.editable-click:hover {
+    text-decoration: none;
+    color: rgb(66, 66, 66);
+}
+
+.editable-cancel {
+    margin-left: 7px;
+    background-color: #fc7169;
+    color: white;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+
+.btn:hover, .btn:focus {
+    color: #FFF;
+    background-color: #E6645D;
+    text-decoration: none;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #0aa699;
+    border-color: rgba(255, 255, 255, 0);
+}
+
+
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
+    color: #fff;
+    background-color: #0F9287;
+    border-color: #0aa699;
+}
+
+

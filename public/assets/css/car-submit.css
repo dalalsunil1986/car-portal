@@ -1,0 +1,279 @@
+input {
+    border: 1px solid #e5e5e5;
+}
+
+.select2-container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+.select2-container .select2-choice {
+
+    padding-left: 15px !important;
+}
+
+.panel-body {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.bs-wizard-sidebar {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.round {
+    border-radius: 6px;
+    text-align: center;
+}
+
+.bottom-margin {
+    margin-bottom: 20px;
+}
+
+#car-submission > fieldset > div.bs-step.inv.shadow > div > div.panel-heading > h3 {
+    font-size: 1.2em;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.create-panel h3{
+    font-size: 1.8em;
+    padding-bottom: 20px;
+    padding-left: 15px;
+}
+
+
+.submit-form label{
+    float: left;
+}
+.panel-default > .panel-heading {
+    background-color: rgba(247, 247, 247, 0.43);
+    color: rgb(118, 114, 114);
+}
+
+.panel {
+    border: 1px solid rgba(90, 134, 154, 0.0)
+}
+
+#car-submission > fieldset > div.bs-step.inv.shadow > div {
+    border: 5px solid #3694c8;
+}
+
+label {
+    background-color: #009fe3;
+    color: #FFFFFF;
+}
+
+.bs-wizard-step {
+    float: right;
+}
+
+.counter {
+    background-color: white;
+    border: none;
+    padding: 5px;
+}
+
+.select2-container .select2-choice {
+
+    border-radius: 0 4px 4px 0;
+    border: 1px solid #DDD;
+}
+
+.hint {
+    padding-left: 5px;
+    color: #DBDBDB;
+}
+
+label {
+    padding-top: 9px;
+    height: 37px;
+}
+
+input {
+    height: 37px;
+    border-radius: 0 4px 4px 0;
+
+}
+
+.select2-container .select2-choice {
+    height: 37px;
+    padding-top: 5px;
+}
+
+.select2-container .select2-choice .select2-arrow{
+    border-left: 1px solid #DDD;
+}
+.panel-body .row {
+    margin-bottom: 10px;
+}
+
+label {
+    background-color: #0aa699;
+    color: #FFFFFF;
+}
+
+input[type=text], textarea {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 3px 0 3px 15px;
+    border: 1px solid #DDDDDD;
+
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+    word-wrap: break-word;
+    border-radius: 0 10px 10px 10px
+
+}
+
+#car-submission textarea {
+    min-height: 100px;
+}
+
+input[type=text]:focus, textarea:focus {
+    box-shadow: 0 0 5px rgba(10, 166, 153, 0.95);
+    border: 1px solid rgba(10, 166, 153, 0.95);
+}
+
+#companyName {
+    padding-left: 18px;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+
+}
+
+input[type="checkbox"] {
+    height: 12px;
+    width: 20px;
+    padding-left: 5px;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+.tags input[type="text"] {
+    border: none;
+    height: 25px;
+}
+
+.label-info {
+    background-color: #0aa699;
+}
+
+.btn-primary {
+    color: #0BA295;
+    background-color: #FFFFFF;
+    border-color: #0BA295;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0BA295;
+    border-color: #0BA295;
+}
+
+button#btn-signup {
+    margin-left: 20px;
+}
+
+.price-hidden{
+    padding-bottom: 20px;
+}
+
+
+.create-panel textarea{
+    border-radius: 0 5px 5px;
+}
+
+ .number{
+    background: rgba(205, 207, 207, 1);
+    color: white;
+    padding: 13px 16px;
+    border-radius: 30px;
+    display: inline-flex;
+    margin-bottom: 18px;
+}
+
+.active .number{
+
+    background: rgb(10, 166, 153);
+}
+
+.steps-submit{
+    float: left;
+    text-align: left;
+    margin-top: 45px;
+}
+
+.steps-submit li a{
+    color: rgba(129, 129, 129, 0.56);
+    text-decoration: none;
+    font-size: 20px;
+    padding-left: 9px;
+}
+.active .steps-submit li a{
+    color: #812901;
+}
+
+.save-step .submit-save-button{
+    color: #fff;
+    background-color: #A5A9A9;
+    border: none;
+    border-bottom: 3px solid rgba(142, 142, 142, 1);
+    float: right;
+    width: 120px;
+    margin-right: 120px;
+}
+
+.save-step .submit-save-button:hover{
+    color: #FFF;
+    background: rgb(136, 136, 136);
+}
+
+.save-step .submit-save-button:focus{
+    box-shadow: none;
+    border: none;
+    color: #FFF;
+}
+.save-step .submit-save-button:hover{
+    box-shadow: none;
+    color: #FFF;
+}
+/* Google Map */
+#map{
+    border-radius: 0 0 5px 5px;
+}
+
+#addresspicker_map{
+    width: 65%;
+    margin: auto;
+    border: none;
+    border-bottom: 1px solid rgb(19, 168, 156);
+}
+
+.map-hint{
+    height: 37px;
+    padding: 12px;
+    border-radius: 0 5px 0 0;
+    text-align: center;
+    background-color: rgba(211, 211, 211, 0.2);
+
+}
+
+.map-wrapper label{
+    border-bottom: 0;
+    margin-bottom: 0;
+    border-radius: 5px 0 0 0;
+}
+
+
