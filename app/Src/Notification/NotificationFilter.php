@@ -2,7 +2,6 @@
 namespace App\Src\Notification;
 
 use App\Core\BaseModel;
-use App\Src\Notification\Notification;
 
 class NotificationFilter extends BaseModel
 {
@@ -25,7 +24,7 @@ class NotificationFilter extends BaseModel
 
     public function notification()
     {
-        return $this->belongsTo(Notification::class, 'notification_id');
+        return $this->belongsTo('App\Src\Notification\Notification', 'notification_id');
     }
 
     public function filterable()

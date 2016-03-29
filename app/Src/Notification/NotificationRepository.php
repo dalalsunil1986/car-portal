@@ -2,9 +2,13 @@
 namespace App\Src\Notification;
 
 use App\Core\BaseRepository;
+use App\Core\CrudableTrait;
+use Illuminate\Support\MessageBag;
 
 class NotificationRepository extends BaseRepository
 {
+
+    use CrudableTrait;
 
     public $model;
 
@@ -13,6 +17,8 @@ class NotificationRepository extends BaseRepository
      */
     public function __construct(Notification $model)
     {
+        parent::__construct(new MessageBag);
+
         $this->model = $model;
     }
 

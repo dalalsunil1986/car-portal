@@ -9,13 +9,11 @@ class CarModel extends BaseModel
 
     use LocaleTrait;
     public static $name = 'carModel';
-
-    protected $guarded = ['id'];
-
-    protected $table = 'car_models';
-
     public $timestamps = false;
-
+    protected $fillable = [];
+    protected $table = 'car_models';
+    protected $dates = [''];
+    protected $hidden = [];
     protected $localeStrings = ['name'];
 
     protected $morphClass = 'CarModel';
