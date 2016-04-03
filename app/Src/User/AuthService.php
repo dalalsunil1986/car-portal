@@ -7,7 +7,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Event;
 use Password;
 use Session;
-use User;
 
 class AuthService extends BaseRepository
 {
